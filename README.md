@@ -6,8 +6,7 @@ It additionally provides scripts to generate markdown documentation corresponden
 
 ## Setup
 
-Recommended with use of [Node.js](https://nodejs.org/en/) v12.6.0 or higher.
-Requires [Yarn](https://yarnpkg.com/en/docs/install).
+Requires [Node.js](https://nodejs.org/en/) (recommended v12.6.0 or higher) and [Yarn](https://yarnpkg.com/en/docs/install).
 
 After cloning the repository, navigate to root directory and install the required dependencies using `yarn install`.
 
@@ -41,7 +40,7 @@ More specific and development only scripts can be found in [./package.json]()
 
 -   To edit the format for an existing language you may edit the code templates in [./util/templates/code/](). These changes will not be reflected in the future code generation unless you delete existing samples. This behavior is not recommended as it may also delete others' manual changes, be very careful if you choose to make these universal changes.
 
--   If you are adding a new language, simply create a new template in [./util/templates/code/](), and regenerate the required documents. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./util/templates/markdown/](). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb') so try to keep this consistent - likewise with the markdown.
+-   If you are adding a new language, simply create a new template in [./util/templates/code/](), and regenerate the required documents. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./util/templates/markdown/](). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb') so try to keep this consistent, likewise with the markdown.
 
 ## License
 
