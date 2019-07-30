@@ -1,0 +1,41 @@
+# RingCentral Python SDK Code Samples
+
+
+<%
+for (const url in endpoints) {
+    const endpoint = endpoints[url]
+    for (const method in endpoint) {
+        const operation = endpoint[method];
+        const sampleCodePath = samples.filePathTo(operation, 'py')
+        if(!fs.existsSync(sampleCodePath)) continue
+        %>
+## <%= operation.summary %>
+
+HTTP <%= method %> `<%= url %>`
+
+```python
+<%- fs.readFileSync(sampleCodePath, 'utf8') -%>
+```
+        <%_
+        responseType = defs.getResponseType(operation.responses)
+        if (responseType === 'byte[]') {
+            %>
+You can get response binary data by `binary = r.response().content`
+            <%_
+        } else if (responseType) {
+            %>
+You can get response json data by `json = r.json()`
+
+- `json` is an object with [this definition](./bin/definitions/<%= responseType %>.json)
+            <%_
+        } else {
+            %>
+Response body is empty
+            <%_
+        }
+        %>
+[Try it out](https://developer.ringcentral.com/api-reference/<%= operation.tags[0].replace(/ /g, '-') %>/<%= operation.operationId %>) in API Explorer.
+        <%_
+    }
+}
+%>

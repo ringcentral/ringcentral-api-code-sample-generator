@@ -1,0 +1,22 @@
+{
+    "name": "ringcentral-api-samples",
+    "scripts": {
+        "all": "node index -spec -xtag -defs -code -json -mkdn",
+        "sync": "node index -spec -xtag",
+        "defs": "node index -defs",
+        "code": "node index -code",
+        "json": "node index -json",
+        "mkdn": "node index -mkdn",
+        "generate": "node index -code -mkdn",
+        "destroy": "echo DEV USE ONLY, PROCEED WITH CAUTION && rmdir /s docs"
+    },
+    "version": "1.0.0",
+    "repository": "https://github.com/drewligman/ringcentral-api-samples",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "ejs": "^2.6.2",
+        "js-yaml": "^3.13.1",
+        "path": "^0.12.7"
+    }
+}

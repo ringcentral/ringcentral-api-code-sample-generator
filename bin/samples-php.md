@@ -1,0 +1,8554 @@
+# RingCentral Node JS SDK Code Samples
+
+
+
+## Get API Versions
+
+HTTP get `/restapi`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetVersionsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersions) in API Explorer.
+
+## Get Version Info
+
+HTTP get `/restapi/{apiVersion}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const apiVersion = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/${apiVersion}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetVersionResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersion) in API Explorer.
+
+## Get Service Status
+
+HTTP get `/restapi/v1.0/status`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/status`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIStatus) in API Explorer.
+
+## Get User Call Log Records
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //extensionNumber: '<ENTER VALUE>',
+    //showBlocked: true,
+    //phoneNumber: '<ENTER VALUE>',
+    //direction: [ 'Inbound', 'Outbound' ],
+    //sessionId: '<ENTER VALUE>',
+    //type: [ 'Voice', 'Fax' ],
+    //transport: [ 'PSTN', 'VoIP' ],
+    //view: 'Simple',
+    //withRecording: true,
+    //recordingType: 'Automatic',
+    //dateTo: '<ENTER VALUE>',
+    //dateFrom: '<ENTER VALUE>',
+    //page: 1,
+    //perPage: 100,
+    //showDeleted: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserCallLogResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallLog) in API Explorer.
+
+## Delete User Call Log
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //dateTo: '<ENTER VALUE>',
+    //phoneNumber: '<ENTER VALUE>',
+    //extensionNumber: '<ENTER VALUE>',
+    //type: [ 'Voice', 'Fax' ],
+    //direction: [ 'Inbound', 'Outbound' ],
+    //dateFrom: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log`, queryParams);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/deleteUserCallLog) in API Explorer.
+
+## Sync User Call Log
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log-sync`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //syncType: [ 'FSync', 'ISync' ],
+    //syncToken: '<ENTER VALUE>',
+    //dateFrom: '<ENTER VALUE>',
+    //recordCount: 000,
+    //statusGroup: [ 'Missed', 'All' ],
+    //view: 'Simple',
+    //showDeleted: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log-sync`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallLogSync.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/syncUserCallLog) in API Explorer.
+
+## Get User Call Record
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{callRecordId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const callRecordId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //view: 'Simple'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log/${callRecordId}`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserCallLogRecord.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallRecord) in API Explorer.
+
+## Get User Active Calls
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/active-calls`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //direction: [ 'Inbound', 'Outbound' ],
+    //view: 'Simple',
+    //type: [ 'Voice', 'Fax' ],
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/active-calls`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listExtensionActiveCalls) in API Explorer.
+
+## Get Company Call Log Records
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-log`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //extensionNumber: '<ENTER VALUE>',
+    //phoneNumber: '<ENTER VALUE>',
+    //direction: [ 'Inbound', 'Outbound' ],
+    //type: [ 'Voice', 'Fax' ],
+    //view: 'Simple',
+    //withRecording: true,
+    //recordingType: 'Automatic',
+    //dateFrom: '<ENTER VALUE>',
+    //dateTo: '<ENTER VALUE>',
+    //page: 1,
+    //perPage: 100,
+    //sessionId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-log`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AccountCallLogResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallLog) in API Explorer.
+
+## Get Company Call Log Record(s)
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-log/{callRecordId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const callRecordId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-log/${callRecordId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyCallLogRecord.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallRecord) in API Explorer.
+
+## Get Company Active Calls
+
+HTTP get `/restapi/v1.0/account/{accountId}/active-calls`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //direction: [ 'Inbound', 'Outbound' ],
+    //view: 'Simple',
+    //type: [ 'Voice', 'Fax' ],
+    //transport: [ 'PSTN', 'VoIP' ],
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/active-calls`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listCompanyActiveCalls) in API Explorer.
+
+## Get Call Recording
+
+HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const recordingId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/recording/${recordingId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetCallRecordingResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Recordings/readCallRecording) in API Explorer.
+
+## Get Call Recordings Data
+
+HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}/content`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const recordingId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/recording/${recordingId}/content`);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Recordings/listCallRecordingData) in API Explorer.
+
+## Create SMS/MMS Message
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/sms`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    from: {
+        phoneNumber: '<ENTER VALUE>'
+    },
+    to: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    text: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/sms`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SMS/createSMSMessage) in API Explorer.
+
+## Create Internal Text Message
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/company-pager`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    from: {
+        extensionId: '<ENTER VALUE>'
+    },
+    replyOn: 000,
+    text: '<ENTER VALUE>',
+    to: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/company-pager`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Pager-Messages/createInternalTextMessage) in API Explorer.
+
+## Create Fax Message
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/fax`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/FaxResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Fax/createFaxMessage) in API Explorer.
+
+## Get Fax Cover Page List
+
+HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/fax-cover-page`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ListFaxCoverPagesResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Fax/listFaxCoverPages) in API Explorer.
+
+## Get Message List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //availability: [ 'Alive', 'Deleted', 'Purged' ],
+    //conversationId: 000,
+    //dateFrom: '<ENTER VALUE>',
+    //dateTo: '<ENTER VALUE>',
+    //direction: [ 'Inbound', 'Outbound' ],
+    //distinctConversations: true,
+    //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
+    //readStatus: [ 'Read', 'Unread' ],
+    //page: 1,
+    //perPage: 100,
+    //phoneNumber: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/listMessages) in API Explorer.
+
+## Delete Conversation
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //conversationId: [ '<ENTER VALUE>' ],
+    //dateTo: '<ENTER VALUE>',
+    //type: 'Fax'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store`, queryParams);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/deleteMessageByFilter) in API Explorer.
+
+## Get Message
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const messageId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessage) in API Explorer.
+
+## Update Message(s)
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const messageId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    readStatus: 'Read'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessage) in API Explorer.
+
+## Delete Message
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const messageId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //purge: true,
+    //conversationId: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`, queryParams);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/deleteMessage) in API Explorer.
+
+## Get Message Content
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}/content/{attachmentId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const attachmentId = '<ENTER VALUE>';
+const messageId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //contentDisposition: 'Inline'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}/content/${attachmentId}`, queryParams);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessageContent) in API Explorer.
+
+## Sync Messages
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-sync`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //conversationId: 000,
+    //dateFrom: '<ENTER VALUE>',
+    //dateTo: '<ENTER VALUE>',
+    //direction: [ 'Inbound', 'Outbound' ],
+    //distinctConversations: true,
+    //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
+    //recordCount: 000,
+    //syncToken: '<ENTER VALUE>',
+    //syncType: [ 'FSync', 'ISync' ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-sync`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetMessageSyncResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/syncMessages) in API Explorer.
+
+## Get Message Store Configuration
+
+HTTP get `/restapi/v1.0/account/{accountId}/message-store-configuration`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-configuration`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessageStoreConfiguration) in API Explorer.
+
+## Update Message Store Configuration
+
+HTTP put `/restapi/v1.0/account/{accountId}/message-store-configuration`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    retentionPeriod: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/message-store-configuration`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessageStoreConfiguration) in API Explorer.
+
+## Make RingOut Call
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    from: {
+        phoneNumber: '<ENTER VALUE>',
+        forwardingNumberId: '<ENTER VALUE>'
+    },
+    to: {
+        phoneNumber: '<ENTER VALUE>'
+    },
+    callerId: {
+        phoneNumber: '<ENTER VALUE>'
+    },
+    playPrompt: true,
+    country: {
+        id: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/RingOut/createRingOutCall) in API Explorer.
+
+## Get RingOut Call Status
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/{ringoutId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const ringoutId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out/${ringoutId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/RingOut/readRingOutCallStatus) in API Explorer.
+
+## Cancel RingOut Call
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/{ringoutId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const ringoutId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out/${ringoutId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/RingOut/deleteRingOutCall) in API Explorer.
+
+## Get Contact List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //startsWith: '<ENTER VALUE>',
+    //sortBy: [ 'FirstName', 'LastName', 'Company' ],
+    //page: 1,
+    //perPage: 100,
+    //phoneNumber: [ '<ENTER VALUE>' ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ContactList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listContacts) in API Explorer.
+
+## Create Contact
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //dialingPlan: '<ENTER VALUE>'
+}
+
+// POST BODY
+const body = {
+    firstName: '<ENTER VALUE>',
+    lastName: '<ENTER VALUE>',
+    middleName: '<ENTER VALUE>',
+    nickName: '<ENTER VALUE>',
+    company: '<ENTER VALUE>',
+    jobTitle: '<ENTER VALUE>',
+    email: '<ENTER VALUE>',
+    email2: '<ENTER VALUE>',
+    email3: '<ENTER VALUE>',
+    birthday: '<ENTER VALUE>',
+    webPage: '<ENTER VALUE>',
+    notes: '<ENTER VALUE>',
+    homePhone: '<ENTER VALUE>',
+    homePhone2: '<ENTER VALUE>',
+    businessPhone: '<ENTER VALUE>',
+    businessPhone2: '<ENTER VALUE>',
+    mobilePhone: '<ENTER VALUE>',
+    businessFax: '<ENTER VALUE>',
+    companyPhone: '<ENTER VALUE>',
+    assistantPhone: '<ENTER VALUE>',
+    carPhone: '<ENTER VALUE>',
+    otherPhone: '<ENTER VALUE>',
+    otherFax: '<ENTER VALUE>',
+    callbackPhone: '<ENTER VALUE>',
+    homeAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    },
+    businessAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    },
+    otherAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact`, body, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/createContact) in API Explorer.
+
+## Get Contact
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const contactId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/readContact) in API Explorer.
+
+## Update Contact
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const contactId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //dialingPlan: '<ENTER VALUE>'
+}
+
+// POST BODY
+const body = {
+    firstName: '<ENTER VALUE>',
+    lastName: '<ENTER VALUE>',
+    middleName: '<ENTER VALUE>',
+    nickName: '<ENTER VALUE>',
+    company: '<ENTER VALUE>',
+    jobTitle: '<ENTER VALUE>',
+    email: '<ENTER VALUE>',
+    email2: '<ENTER VALUE>',
+    email3: '<ENTER VALUE>',
+    birthday: '<ENTER VALUE>',
+    webPage: '<ENTER VALUE>',
+    notes: '<ENTER VALUE>',
+    homePhone: '<ENTER VALUE>',
+    homePhone2: '<ENTER VALUE>',
+    businessPhone: '<ENTER VALUE>',
+    businessPhone2: '<ENTER VALUE>',
+    mobilePhone: '<ENTER VALUE>',
+    businessFax: '<ENTER VALUE>',
+    companyPhone: '<ENTER VALUE>',
+    assistantPhone: '<ENTER VALUE>',
+    carPhone: '<ENTER VALUE>',
+    otherPhone: '<ENTER VALUE>',
+    otherFax: '<ENTER VALUE>',
+    callbackPhone: '<ENTER VALUE>',
+    homeAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    },
+    businessAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    },
+    otherAddress: {
+        street: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`, body, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateContact) in API Explorer.
+
+## Delete Contact
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const contactId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/deleteContact) in API Explorer.
+
+## Address Book Synchronization
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book-sync`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //syncType: [ 'FSync', 'ISync' ],
+    //syncToken: '<ENTER VALUE>',
+    //perPage: 000,
+    //pageId: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book-sync`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AddressBookSync.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/syncAddressBook) in API Explorer.
+
+## Get Favorite Contact List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/favorite`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listFavoriteContacts) in API Explorer.
+
+## Update Favorite Contact List
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/favorite`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateFavoriteContactList) in API Explorer.
+
+## Search Company Directory Entries
+
+HTTP post `/restapi/v1.0/account/{accountId}/directory/entries/search`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    searchString: '<ENTER VALUE>',
+    showFederated: true,
+    extensionType: 'User',
+    orderBy: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    page: 000,
+    perPage: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/directory/entries/search`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/searchDirectoryEntries) in API Explorer.
+
+## Get Corporate Directory Entry
+
+HTTP get `/restapi/v1.0/account/{accountId}/directory/entries/{entryId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const entryId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/entries/${entryId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ContactResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readDirectoryEntry) in API Explorer.
+
+## Get Company Directory Entries
+
+HTTP get `/restapi/v1.0/account/{accountId}/directory/entries`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //showFederated: true,
+    //type: 'User',
+    //page: '<ENTER VALUE>',
+    //perPage: 1000,
+    //siteId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/entries`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/listDirectoryEntries) in API Explorer.
+
+## Get Account Federation
+
+HTTP get `/restapi/v1.0/account/{accountId}/directory/federation`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/federation`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/FederationResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readAccountFederation) in API Explorer.
+
+## Get User Presence Status
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //detailedTelephonyState: true,
+    //sipData: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/presence`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetPresenceInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Presence/readUserPresenceStatus) in API Explorer.
+
+## Update User Presence Status
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    userStatus: 'Offline',
+    dndStatus: 'TakeAllCalls',
+    message: '<ENTER VALUE>',
+    allowSeeMyPresence: true,
+    ringOnMonitoredCall: true,
+    pickUpCallsOnHold: true,
+    activeCalls: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/presence`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PresenceInfoResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Presence/updateUserPresenceStatus) in API Explorer.
+
+## Get User Presence Status List
+
+HTTP get `/restapi/v1.0/account/{accountId}/presence`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //detailedTelephonyState: true,
+    //sipData: true,
+    //page: 000,
+    //perPage: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/presence`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AccountPresenceInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Presence/readAccountPresence) in API Explorer.
+
+## Get Chats
+
+HTTP get `/restapi/v1.0/glip/chats`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
+    //recordCount: 30,
+    //pageToken: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/chats`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipChatsList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/listGlipChats) in API Explorer.
+
+## Get Chat
+
+HTTP get `/restapi/v1.0/glip/chats/{chatId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipChatInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/readGlipChat) in API Explorer.
+
+## Get Conversations
+
+HTTP get `/restapi/v1.0/glip/conversations`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //recordCount: 30,
+    //pageToken: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/conversations`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipConversationsList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Conversations/listGlipConversations) in API Explorer.
+
+## Create/Open Conversation
+
+HTTP post `/restapi/v1.0/glip/conversations`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    members: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/conversations`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Conversations/createGlipConversation) in API Explorer.
+
+## Get Conversation
+
+HTTP get `/restapi/v1.0/glip/conversations/{chatId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/conversations/${chatId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Conversations/readGlipConversation) in API Explorer.
+
+## Get Teams
+
+HTTP get `/restapi/v1.0/glip/teams`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //recordCount: 30,
+    //pageToken: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/teams`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipTeamsList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/listGlipTeams) in API Explorer.
+
+## Create Team
+
+HTTP post `/restapi/v1.0/glip/teams`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    public: true,
+    name: '<ENTER VALUE>',
+    description: '<ENTER VALUE>',
+    members: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/createGlipTeam) in API Explorer.
+
+## Get Team
+
+HTTP get `/restapi/v1.0/glip/teams/{chatId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/teams/${chatId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipTeam) in API Explorer.
+
+## Update Team
+
+HTTP patch `/restapi/v1.0/glip/teams/{chatId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    public: true,
+    name: '<ENTER VALUE>',
+    description: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/glip/teams/${chatId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipTeam) in API Explorer.
+
+## Delete Team
+
+HTTP delete `/restapi/v1.0/glip/teams/{chatId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/glip/teams/${chatId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/deleteGlipTeam) in API Explorer.
+
+## Join Team
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/join`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/join`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/joinGlipTeam) in API Explorer.
+
+## Leave Team
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/leave`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/leave`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/leaveGlipTeam) in API Explorer.
+
+## Add Team Members
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/add`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    members: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/add`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/addGlipTeamMembers) in API Explorer.
+
+## Remove Team Members
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/remove`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    members: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/remove`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/removeGlipTeamMembers) in API Explorer.
+
+## Archive Team
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/archive`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/archive`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/archiveGlipTeam) in API Explorer.
+
+## Unarchive Team
+
+HTTP post `/restapi/v1.0/glip/teams/{chatId}/unarchive`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/unarchive`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/unarchiveGlipTeam) in API Explorer.
+
+## Get Everyone Chat
+
+HTTP get `/restapi/v1.0/glip/everyone`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/everyone`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipEveryone) in API Explorer.
+
+## Update Everyone Сhat
+
+HTTP patch `/restapi/v1.0/glip/everyone`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    name: 000,
+    description: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/glip/everyone`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipEveryone) in API Explorer.
+
+## Get Recent Chats
+
+HTTP get `/restapi/v1.0/glip/recent/chats`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
+    //recordCount: 30
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/recent/chats`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/listRecentChats) in API Explorer.
+
+## Get Favorite Chats
+
+HTTP get `/restapi/v1.0/glip/favorites`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //recordCount: 30
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/favorites`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/listFavoriteChats) in API Explorer.
+
+## Add Chat to Favorites
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/favorite`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/favorite`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/favoriteGlipChat) in API Explorer.
+
+## Remove Chat from Favorites
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/unfavorite`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/unfavorite`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/unfavoriteGlipChat) in API Explorer.
+
+## Mark Chat as Read
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/read`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/read`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/markChatRead) in API Explorer.
+
+## Mark Chat as Unread
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/unread`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/unread`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Chats/markChatUnread) in API Explorer.
+
+## Get Post
+
+HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+const postId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPost) in API Explorer.
+
+## Update Post
+
+HTTP patch `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+const postId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    text: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Posts/patchGlipPost) in API Explorer.
+
+## Delete Post
+
+HTTP delete `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+const postId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Posts/deleteGlipPost) in API Explorer.
+
+## Get Posts
+
+HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //recordCount: 30,
+    //pageToken: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/posts`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPostsList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPosts) in API Explorer.
+
+## Create Post
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/posts`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    text: '<ENTER VALUE>',
+    attachments: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/posts`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Posts/createGlipPost) in API Explorer.
+
+## Get User Events List
+
+HTTP get `/restapi/v1.0/glip/events`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //recordCount: 30,
+    //pageToken: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/events`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventsInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readGlipEvents) in API Explorer.
+
+## Create Event
+
+HTTP post `/restapi/v1.0/glip/events`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    creatorId: '<ENTER VALUE>',
+    title: '<ENTER VALUE>',
+    startTime: '<ENTER VALUE>',
+    endTime: '<ENTER VALUE>',
+    allDay: true,
+    recurrence: 'None',
+    endingCondition: '<ENTER VALUE>',
+    endingAfter: 000,
+    endingOn: None,
+    color: Black,
+    location: '<ENTER VALUE>',
+    description: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/events`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEvent) in API Explorer.
+
+## Get Event
+
+HTTP get `/restapi/v1.0/glip/events/{eventId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const eventId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/events/${eventId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readEvent) in API Explorer.
+
+## Update Event
+
+HTTP put `/restapi/v1.0/glip/events/{eventId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const eventId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    creatorId: '<ENTER VALUE>',
+    title: '<ENTER VALUE>',
+    startTime: '<ENTER VALUE>',
+    endTime: '<ENTER VALUE>',
+    allDay: true,
+    recurrence: 'None',
+    endingCondition: '<ENTER VALUE>',
+    endingAfter: 000,
+    endingOn: None,
+    color: Black,
+    location: '<ENTER VALUE>',
+    description: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/glip/events/${eventId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/updateEvent) in API Explorer.
+
+## Delete Event
+
+HTTP delete `/restapi/v1.0/glip/events/{eventId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const eventId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/glip/events/${eventId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/deleteEvent) in API Explorer.
+
+## Create Event by Group ID
+
+HTTP post `/restapi/v1.0/glip/groups/{groupId}/events`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const groupId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    creatorId: '<ENTER VALUE>',
+    title: '<ENTER VALUE>',
+    startTime: '<ENTER VALUE>',
+    endTime: '<ENTER VALUE>',
+    allDay: true,
+    recurrence: 'None',
+    endingCondition: '<ENTER VALUE>',
+    endingAfter: 000,
+    endingOn: None,
+    color: Black,
+    location: '<ENTER VALUE>',
+    description: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/groups/${groupId}/events`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEventbyGroupId) in API Explorer.
+
+## Get Group Events
+
+HTTP get `/restapi/v1.0/glip/groups/{groupId}/events`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const groupId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/groups/${groupId}/events`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/listGroupEvents) in API Explorer.
+
+## Get Chat Tasks
+
+HTTP get `/restapi/v1.0/glip/chats/{chatId}/tasks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //creationTimeTo: '<ENTER VALUE>',
+    //creationTimeFrom: '<ENTER VALUE>',
+    //creatorId: [ '<ENTER VALUE>' ],
+    //status: [ 'Pending', 'InProgress', 'Completed' ],
+    //assignmentStatus: 'Unassigned',
+    //assigneeId: [ '<ENTER VALUE>' ],
+    //assigneeStatus: 'Pending',
+    //pageToken: '<ENTER VALUE>',
+    //recordCount: 30
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/tasks`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TaskList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/listChatTasks) in API Explorer.
+
+## Create Task
+
+HTTP post `/restapi/v1.0/glip/chats/{chatId}/tasks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const chatId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    subject: '<ENTER VALUE>',
+    assignees: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    completenessCondition: Simple,
+    startDate: '<ENTER VALUE>',
+    dueDate: '<ENTER VALUE>',
+    color: Black,
+    section: '<ENTER VALUE>',
+    description: '<ENTER VALUE>',
+    recurrence: {
+        schedule: None,
+        endingCondition: None,
+        endingAfter: 000,
+        endingOn: '<ENTER VALUE>'
+    },
+    attachments: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/tasks`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TaskList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/createTask) in API Explorer.
+
+## Get Task
+
+HTTP get `/restapi/v1.0/glip/tasks/{taskId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/tasks/${taskId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TaskList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/readTask) in API Explorer.
+
+## Patch Task
+
+HTTP patch `/restapi/v1.0/glip/tasks/{taskId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    subject: '<ENTER VALUE>',
+    assignees: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    completenessCondition: 'Simple',
+    startDate: '<ENTER VALUE>',
+    dueDate: '<ENTER VALUE>',
+    color: 'Black',
+    section: '<ENTER VALUE>',
+    description: '<ENTER VALUE>',
+    recurrence: {
+        schedule: None,
+        endingCondition: 'None',
+        endingAfter: 000,
+        endingOn: '<ENTER VALUE>'
+    },
+    attachments: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/glip/tasks/${taskId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TaskList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/patchTask) in API Explorer.
+
+## Delete Task
+
+HTTP delete `/restapi/v1.0/glip/tasks/{taskId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/glip/tasks/${taskId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/deleteTask) in API Explorer.
+
+## Complete Task
+
+HTTP post `/restapi/v1.0/glip/tasks/{taskId}/complete`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    status: 'Incomplete',
+    assignees: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    completenessPercentage: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/tasks/${taskId}/complete`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TaskList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Tasks/completeTask) in API Explorer.
+
+## Get Person
+
+HTTP get `/restapi/v1.0/glip/persons/{personId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const personId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/persons/${personId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPersonInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPerson) in API Explorer.
+
+## Get Company Info
+
+HTTP get `/restapi/v1.0/glip/companies/{companyId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const companyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/companies/${companyId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipCompany.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipCompany) in API Explorer.
+
+## Create Webhook in Group
+
+HTTP post `/restapi/v1.0/glip/groups/{groupId}/webhooks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const groupId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/groups/${groupId}/webhooks`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipWebhookInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/createGlipGroupWebhook) in API Explorer.
+
+## Get Webhooks in Group
+
+HTTP get `/restapi/v1.0/glip/groups/{groupId}/webhooks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const groupId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/groups/${groupId}/webhooks`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipGroupWebhooks) in API Explorer.
+
+## Get Webhooks
+
+HTTP get `/restapi/v1.0/glip/webhooks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/webhooks`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipWebhooks) in API Explorer.
+
+## Get Webhook
+
+HTTP get `/restapi/v1.0/glip/webhooks/{webhookId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const webhookId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/webhooks/${webhookId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/readGlipWebhook) in API Explorer.
+
+## Delete Webhook
+
+HTTP delete `/restapi/v1.0/glip/webhooks/{webhookId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const webhookId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/glip/webhooks/${webhookId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/deleteGlipWebhook) in API Explorer.
+
+## Activate Webhook
+
+HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/activate`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const webhookId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/webhooks/${webhookId}/activate`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/activateGlipWebhook) in API Explorer.
+
+## Suspend Webhook
+
+HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/suspend`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const webhookId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/webhooks/${webhookId}/suspend`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/suspendGlipWebhook) in API Explorer.
+
+## Get Preferences
+
+HTTP get `/restapi/v1.0/glip/preferences`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/preferences`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GlipPreferencesInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPreferences) in API Explorer.
+
+## Get Scheduled Meetings
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MeetingsResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/listMeetings) in API Explorer.
+
+## Create Meetings
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    topic: '<ENTER VALUE>',
+    meetingType: '<ENTER VALUE>',
+    schedule: {
+        startTime: '<ENTER VALUE>',
+        durationInMinutes: 000,
+        timeZone: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        }
+    },
+    password: '<ENTER VALUE>',
+    host: {
+        id: '<ENTER VALUE>'
+    },
+    allowJoinBeforeHost: true,
+    startHostVideo: true,
+    startParticipantsVideo: true,
+    usePersonalMeetingId: true,
+    audioOptions: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/createMeeting) in API Explorer.
+
+## Get Meeting Info
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const meetingId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/readMeeting) in API Explorer.
+
+## Update Meeting
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const meetingId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    topic: '<ENTER VALUE>',
+    meetingType: '<ENTER VALUE>',
+    schedule: {
+        startTime: '<ENTER VALUE>',
+        durationInMinutes: 000,
+        timeZone: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        }
+    },
+    password: '<ENTER VALUE>',
+    host: {
+        id: '<ENTER VALUE>'
+    },
+    allowJoinBeforeHost: true,
+    startHostVideo: true,
+    startParticipantsVideo: true,
+    usePersonalMeetingId: true,
+    audioOptions: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/updateMeeting) in API Explorer.
+
+## Delete Meeting
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const meetingId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/deleteMeeting) in API Explorer.
+
+## End Meeting
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}/end`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const meetingId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}/end`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/endMeeting) in API Explorer.
+
+## Get Meeting Service Info
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/service-info`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/service-info`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MeetingServiceInfoResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readMeetingServiceInfo) in API Explorer.
+
+## Get Assistants
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-configuration/assistants`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meetings-configuration/assistants`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AssistantsResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistants) in API Explorer.
+
+## Get Assisted Users
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-configuration/assisted`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meetings-configuration/assisted`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AssistedUsersResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistedUsers) in API Explorer.
+
+## Get Subscriptions
+
+HTTP get `/restapi/v1.0/subscription`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/subscription`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/RecordsCollectionResourceSubscriptionResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/listSubscriptions) in API Explorer.
+
+## Create Subscription
+
+HTTP post `/restapi/v1.0/subscription`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    eventFilters: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    deliveryMode: {
+        transportType: 'PubNub',
+        address: '<ENTER VALUE>',
+        encryption: true,
+        certificateName: '<ENTER VALUE>',
+        registrationId: '<ENTER VALUE>',
+        verificationToken: '<ENTER VALUE>'
+    },
+    expiresIn: 604800
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/subscription`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/createSubscription) in API Explorer.
+
+## Get Subscription
+
+HTTP get `/restapi/v1.0/subscription/{subscriptionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const subscriptionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/subscription/${subscriptionId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/readSubscription) in API Explorer.
+
+## Renew Subscription / Update Event Filters
+
+HTTP put `/restapi/v1.0/subscription/{subscriptionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const subscriptionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //aggregated: true
+}
+
+// POST BODY
+const body = {
+    eventFilters: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    deliveryMode: {
+        transportType: 'PubNub',
+        address: '<ENTER VALUE>',
+        encryption: true,
+        certificateName: '<ENTER VALUE>',
+        registrationId: '<ENTER VALUE>',
+        verificationToken: '<ENTER VALUE>'
+    },
+    expiresIn: 604800
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/subscription/${subscriptionId}`, body, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/updateSubscription) in API Explorer.
+
+## Cancel Subscription
+
+HTTP delete `/restapi/v1.0/subscription/{subscriptionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const subscriptionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/subscription/${subscriptionId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/deleteSubscription) in API Explorer.
+
+## Renew Subscription
+
+HTTP post `/restapi/v1.0/subscription/{subscriptionId}/renew`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const subscriptionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/subscription/${subscriptionId}/renew`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/renewSubscription) in API Explorer.
+
+## Get Authorization Profile
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/authz-profile`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AuthProfileResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/readAuthorizationProfile) in API Explorer.
+
+## Check User Permission
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile/check`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //permissionId: '<ENTER VALUE>',
+    //targetExtensionId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/authz-profile/check`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AuthProfileCheckResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/checkUserPermission) in API Explorer.
+
+## Get User Business Hours
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/business-hours`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetUserBusinessHoursResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readUserBusinessHours) in API Explorer.
+
+## Update User Business Hours
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        }
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/business-hours`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserBusinessHoursUpdateResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateUserBusinessHours) in API Explorer.
+
+## Get Company Business Hours
+
+HTTP get `/restapi/v1.0/account/{accountId}/business-hours`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/business-hours`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readCompanyBusinessHours) in API Explorer.
+
+## Update Company Business Hours
+
+HTTP put `/restapi/v1.0/account/{accountId}/business-hours`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        }
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/business-hours`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateCompanyBusinessHours) in API Explorer.
+
+## Get Caller Blocking Settings
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readCallerBlockingSettings) in API Explorer.
+
+## Update Caller Blocking Settings
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    mode: 'Specific',
+    noCallerId: 'BlockCallsAndFaxes',
+    payPhones: 'Block',
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateCallerBlockingSettings) in API Explorer.
+
+## Get Blocked/Allowed Phone Numbers
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 000,
+    //perPage: 000,
+    //status: 'Blocked'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumbersList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/listBlockedAllowedNumbers) in API Explorer.
+
+## Add Blocked/Allowed Number
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    label: '<ENTER VALUE>',
+    status: Blocked
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/createBlockedAllowedNumber) in API Explorer.
+
+## Get Blocked/Allowed Number
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const blockedNumberId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readBlockedAllowedNumber) in API Explorer.
+
+## Delete Blocked/Allowed Number
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const blockedNumberId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/deleteBlockedAllowedNumber) in API Explorer.
+
+## Update Blocked/Allowed Number
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const blockedNumberId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    label: '<ENTER VALUE>',
+    status: Blocked
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateBlockedAllowedNumber) in API Explorer.
+
+## Get Forwarding Number List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionForwardingNumberListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/listForwardingNumbers) in API Explorer.
+
+## Create Forwarding Number
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    label: '<ENTER VALUE>',
+    type: 'PhoneLine',
+    device: {
+        id: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/createForwardingNumber) in API Explorer.
+
+## Get Forwarding Number
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const forwardingNumberId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ForwardingNumberResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/readForwardingNumber) in API Explorer.
+
+## Update Forwarding Number
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const forwardingNumberId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    label: '<ENTER VALUE>',
+    flipNumber: '<ENTER VALUE>',
+    type: 'Home'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/updateForwardingNumber) in API Explorer.
+
+## Delete Forwarding Number
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const forwardingNumberId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/deleteForwardingNumber) in API Explorer.
+
+## Get Call Handling Rules
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //view: 'Detailed',
+    //enabledOnly: true,
+    //page: '<ENTER VALUE>',
+    //perPage: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserAnsweringRuleList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listAnsweringRules) in API Explorer.
+
+## Create Call Handling Rule
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    enabled: true,
+    type: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    callers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    calledNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        },
+        ranges: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        ref: 'BusinessHours'
+    },
+    callHandlingAction: 'ForwardCalls',
+    forwarding: {
+        notifyMySoftPhones: true,
+        notifyAdminSoftPhones: true,
+        softPhonesRingCount: 000,
+        ringingMode: 'Sequentially',
+        rules: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        mobileTimeout: true
+    },
+    unconditionalForwarding: {
+        phoneNumber: '<ENTER VALUE>'
+    },
+    queue: {
+        transferMode: 'Rotating',
+        fixedOrderAgents: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        holdAudioInterruptionMode: 'Never',
+        holdAudioInterruptionPeriod: 000,
+        agentTimeout: 000,
+        wrapUpTime: 000,
+        holdTime: 000,
+        maxCallers: 000,
+        maxCallersAction: 'Voicemail'
+    },
+    transfer: {
+        extension: {
+            id: '<ENTER VALUE>',
+            uri: '<ENTER VALUE>',
+            extensionNumber: '<ENTER VALUE>',
+            partnerId: '<ENTER VALUE>'
+        }
+    },
+    voicemail: {
+        enabled: true,
+        recipient: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        }
+    },
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    screening: 'Off'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createAnsweringRule) in API Explorer.
+
+## Get Call Handling Rule
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //showInactiveNumbers: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readAnsweringRule) in API Explorer.
+
+## Update Call Handling Rule
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    forwarding: {
+        notifyMySoftPhones: true,
+        notifyAdminSoftPhones: true,
+        softPhonesRingCount: 1,
+        ringingMode: 'Sequentially',
+        rules: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        mobileTimeout: true
+    },
+    enabled: true,
+    name: '<ENTER VALUE>',
+    callers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    calledNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        },
+        ranges: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        ref: 'BusinessHours'
+    },
+    callHandlingAction: 'ForwardCalls',
+    unconditionalForwarding: {
+        phoneNumber: '<ENTER VALUE>'
+    },
+    queue: {
+        transferMode: 'Rotating',
+        fixedOrderAgents: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        holdAudioInterruptionMode: 'Never',
+        holdAudioInterruptionPeriod: 000,
+        agentTimeout: 000,
+        wrapUpTime: 000,
+        holdTime: 000,
+        maxCallers: 000,
+        maxCallersAction: 'Voicemail'
+    },
+    voicemail: {
+        enabled: true,
+        recipient: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        }
+    },
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    screening: 'Off',
+    showInactiveNumbers: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateAnsweringRule) in API Explorer.
+
+## Delete Call Handling Rule
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/deleteAnsweringRule) in API Explorer.
+
+## Create Company Call Handling Rule
+
+HTTP post `/restapi/v1.0/account/{accountId}/answering-rule`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    name: '<ENTER VALUE>',
+    enabled: true,
+    type: 'BusinessHours',
+    callers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    calledNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        },
+        ranges: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        ref: 'BusinessHours'
+    },
+    callHandlingAction: 'Operator',
+    extension: {
+        callerId: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/answering-rule`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyAnsweringRule) in API Explorer.
+
+## Get Company Call Handling Rule List
+
+HTTP get `/restapi/v1.0/account/{accountId}/answering-rule`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/answering-rule`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCompanyAnsweringRules) in API Explorer.
+
+## Get Company Call Handling Rule
+
+HTTP get `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCompanyAnsweringRule) in API Explorer.
+
+## Update Company Call Handling Rule
+
+HTTP put `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    enabled: true,
+    name: '<ENTER VALUE>',
+    callers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    calledNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schedule: {
+        weeklyRanges: {
+            monday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            tuesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            wednesday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            thursday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            friday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            saturday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ],
+            sunday: [
+                {
+                    type: '<ENTER VALUE>',
+                    properties: '<ENTER VALUE>'
+                },
+                ]
+        },
+        ranges: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ],
+        ref: 'BusinessHours'
+    },
+    callHandlingAction: 'Operator',
+    extension: {
+        callerId: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCompanyAnsweringRule) in API Explorer.
+
+## Delete Company Call Handling Rule
+
+HTTP delete `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const ruleId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/deleteCompanyAnsweringRule) in API Explorer.
+
+## Get Standard Greeting List
+
+HTTP get `/restapi/v1.0/dictionary/greeting`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100,
+    //type: 'Introductory',
+    //usageType: 'UserExtensionAnsweringRule'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/greeting`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DictionaryGreetingList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listStandardGreetings) in API Explorer.
+
+## Get Standard Greeting
+
+HTTP get `/restapi/v1.0/dictionary/greeting/{greetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const greetingId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/greeting/${greetingId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DictionaryGreetingInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readStandardGreeting) in API Explorer.
+
+## Create Company Greeting
+
+HTTP post `/restapi/v1.0/account/{accountId}/greeting`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/greeting`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CustomCompanyGreetingInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyGreeting) in API Explorer.
+
+## Create Custom User Greeting
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/greeting`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCustomUserGreeting) in API Explorer.
+
+## Get Custom Greeting
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting/{greetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const greetingId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/greeting/${greetingId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCustomGreeting) in API Explorer.
+
+## Create IVR Prompts
+
+HTTP post `/restapi/v1.0/account/{accountId}/ivr-prompts`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/ivr-prompts`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRPrompt) in API Explorer.
+
+## Get IVR Prompt List
+
+HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/IVRPrompts.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/listIVRPrompts) in API Explorer.
+
+## Get IVR Prompt
+
+HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const promptId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRPrompt) in API Explorer.
+
+## Delete IVR Prompt
+
+HTTP delete `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const promptId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/deleteIVRPrompt) in API Explorer.
+
+## Update IVR Prompt
+
+HTTP put `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const promptId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    filename: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRPrompt) in API Explorer.
+
+## Get IVR Prompt Content
+
+HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}/content`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const promptId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}/content`);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRPromptContent) in API Explorer.
+
+## Create IVR Menu
+
+HTTP post `/restapi/v1.0/account/{accountId}/ivr-menus`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    uri: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    extensionNumber: '<ENTER VALUE>',
+    prompt: {
+        mode: 'Audio',
+        audio: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            localeCode: '<ENTER VALUE>'
+        },
+        text: '<ENTER VALUE>',
+        language: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        }
+    },
+    actions: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/ivr-menus`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRMenu) in API Explorer.
+
+## Get IVR Menu
+
+HTTP get `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const ivrMenuId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-menus/${ivrMenuId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRMenu) in API Explorer.
+
+## Update IVR Menu
+
+HTTP put `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const ivrMenuId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    uri: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    extensionNumber: '<ENTER VALUE>',
+    prompt: {
+        mode: 'Audio',
+        audio: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            localeCode: '<ENTER VALUE>'
+        },
+        text: '<ENTER VALUE>',
+        language: {
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        }
+    },
+    actions: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/ivr-menus/${ivrMenuId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRMenu) in API Explorer.
+
+## Get Call Recording Settings
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-recording`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCallRecordingSettings) in API Explorer.
+
+## Update Call Recording Settings
+
+HTTP put `/restapi/v1.0/account/{accountId}/call-recording`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    onDemand: {
+        enabled: true
+    },
+    automatic: {
+        enabled: true,
+        outboundCallTones: true,
+        outboundCallAnnouncement: true,
+        allowMute: true,
+        extensionCount: 000
+    },
+    greetings: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/call-recording`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCallRecordingSettings) in API Explorer.
+
+## Get Call Recording Extension List
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-recording/extensions`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording/extensions`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallRecordingExtensions.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingExtensions) in API Explorer.
+
+## Update Call Recording Extension List
+
+HTTP post `/restapi/v1.0/account/{accountId}/call-recording/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    addedExtensions: {
+        id: '<ENTER VALUE>',
+        uri: '<ENTER VALUE>',
+        extensionNumber: '<ENTER VALUE>',
+        type: '<ENTER VALUE>',
+        callDirection: 'Outbound'
+    },
+    updatedExtensions: {
+        id: '<ENTER VALUE>',
+        uri: '<ENTER VALUE>',
+        extensionNumber: '<ENTER VALUE>',
+        type: '<ENTER VALUE>',
+        callDirection: 'Outbound'
+    },
+    removedExtensions: {
+        id: '<ENTER VALUE>',
+        uri: '<ENTER VALUE>',
+        extensionNumber: '<ENTER VALUE>',
+        type: '<ENTER VALUE>',
+        callDirection: 'Outbound'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-recording/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCallRecordingExtensionList) in API Explorer.
+
+## Get Call Recording Custom Greeting List
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //type: 'StartRecording'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallRecordingCustomGreetings.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingCustomGreetings) in API Explorer.
+
+## Delete Call Recording Custom Greeting List
+
+HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/deleteCallRecordingCustomGreetingList) in API Explorer.
+
+## Delete Call Recording Custom Greeting
+
+HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings/{greetingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const greetingId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings/${greetingId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/deleteCallRecordingCustomGreeting) in API Explorer.
+
+## Register SIP Device
+
+HTTP post `/restapi/v1.0/client-info/sip-provision`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    device: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    sipInfo: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/client-info/sip-provision`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CreateSipRegistrationResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SIP/createSIPRegistration) in API Explorer.
+
+## Get Extension Phone Number List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/phone-number`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber' ],
+    //page: 000,
+    //perPage: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/phone-number`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionPhoneNumbersResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listExtensionPhoneNumbers) in API Explorer.
+
+## Get Extension
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtension) in API Explorer.
+
+## Update Extension
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    status: 'Disabled',
+    statusInfo: {
+        comment: '<ENTER VALUE>',
+        reason: 'Voluntarily'
+    },
+    reason: '<ENTER VALUE>',
+    comment: '<ENTER VALUE>',
+    extensionNumber: '<ENTER VALUE>',
+    contact: {
+        firstName: '<ENTER VALUE>',
+        lastName: '<ENTER VALUE>',
+        company: '<ENTER VALUE>',
+        jobTitle: '<ENTER VALUE>',
+        email: '<ENTER VALUE>',
+        businessPhone: '<ENTER VALUE>',
+        mobilePhone: '<ENTER VALUE>',
+        businessAddress: {
+            country: '<ENTER VALUE>',
+            state: '<ENTER VALUE>',
+            city: '<ENTER VALUE>',
+            street: '<ENTER VALUE>',
+            zip: '<ENTER VALUE>'
+        },
+        emailAsLoginName: true,
+        pronouncedName: {
+            type: 'Default',
+            text: '<ENTER VALUE>'
+        },
+        department: '<ENTER VALUE>'
+    },
+    regionalSettings: {
+        homeCountry: {
+            id: '<ENTER VALUE>'
+        },
+        timezone: {
+            id: '<ENTER VALUE>'
+        },
+        language: {
+            id: '<ENTER VALUE>'
+        },
+        greetingLanguage: {
+            id: '<ENTER VALUE>'
+        },
+        formattingLocale: {
+            id: '<ENTER VALUE>'
+        },
+        timeFormat: 12h
+    },
+    setupWizardState: 'NotStarted',
+    partnerId: '<ENTER VALUE>',
+    ivrPin: '<ENTER VALUE>',
+    password: '<ENTER VALUE>',
+    callQueueInfo: {
+        slaGoal: 000,
+        slaThresholdSeconds: 000,
+        includeAbandonedCalls: true,
+        abandonedThresholdSeconds: 000
+    },
+    transition: [
+        {
+            description: '<ENTER VALUE>',
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtension) in API Explorer.
+
+## Delete Extension
+
+HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/deleteExtension) in API Explorer.
+
+## Get Extension Caller ID
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-id`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtensionCallerId) in API Explorer.
+
+## Update Extension Caller ID
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    uri: '<ENTER VALUE>',
+    byDevice: [
+        {
+            description: '<ENTER VALUE>',
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    byFeature: [
+        {
+            description: '<ENTER VALUE>',
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    extensionNameForOutboundCalls: true,
+    extensionNumberForInternalCalls: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-id`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtensionCallerId) in API Explorer.
+
+## Get Extension Grant List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/grant`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: '<ENTER VALUE>',
+    //perPage: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/grant`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionGrantListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/listExtensionGrants) in API Explorer.
+
+## Get Users
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //type: 'User'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/users`, queryParams);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readAutomaticLocationUpdatesUsers) in API Explorer.
+
+## Enable Automatic Location Updates for Users
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    enabledUserIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    disabledUserIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/users/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/assignMultipleUsersAutomaticaLocationUpdates) in API Explorer.
+
+## Get Wireless Point List
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //siteId: '<ENTER VALUE>',
+    //searchString: '<ENTER VALUE>',
+    //orderBy: '<ENTER VALUE>',
+    //perPage: 000,
+    //page: 1
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/WirelessPointsList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listWirelessPoints) in API Explorer.
+
+## Create Wireless Point
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    bssid: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    site: {
+        id: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    emergencyAddress: {
+        country: '<ENTER VALUE>',
+        countryId: '<ENTER VALUE>',
+        countryIsoCode: '<ENTER VALUE>',
+        countryName: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        stateId: '<ENTER VALUE>',
+        stateIsoCode: '<ENTER VALUE>',
+        stateName: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        street2: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createWirelessPoint) in API Explorer.
+
+## Get Wireless Point
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pointId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readWirelessPoint) in API Explorer.
+
+## Update Wireless Point
+
+HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pointId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    bssid: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    site: {
+        id: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    emergencyAddress: {
+        country: '<ENTER VALUE>',
+        countryId: '<ENTER VALUE>',
+        countryIsoCode: '<ENTER VALUE>',
+        countryName: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        stateId: '<ENTER VALUE>',
+        stateIsoCode: '<ENTER VALUE>',
+        stateName: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        street2: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateWirelessPoint) in API Explorer.
+
+## Delete Wireless Point
+
+HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pointId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/deleteWirelessPoint) in API Explorer.
+
+## Get Network Map
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/NetworksList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listNetworks) in API Explorer.
+
+## Create Network
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createNetwork) in API Explorer.
+
+## Get Network
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const networkId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readNetwork) in API Explorer.
+
+## Update Network
+
+HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const networkId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    name: '<ENTER VALUE>',
+    site: '<ENTER VALUE>',
+    publicIpRanges: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    privateIpRanges: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateNetwork) in API Explorer.
+
+## Delete Network
+
+HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const networkId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/deleteNetwork) in API Explorer.
+
+## Get Device List
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //siteId: '<ENTER VALUE>',
+    //featureEnabled: true,
+    //model: '<ENTER VALUE>',
+    //compatibleOnly: true,
+    //searchString: '<ENTER VALUE>',
+    //orderBy: '<ENTER VALUE>',
+    //perPage: 000,
+    //page: 1
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/devices`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ListDevicesAutomaticLocationUpdates.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listDevicesAutomaticLocationUpdates) in API Explorer.
+
+## Enable Automatic Location Updates for Devices
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    enabledDeviceIds: [
+        {
+            type: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        },
+        ],
+    disabledDeviceIds: [
+        {
+            type: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/devices/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/assignMultipleDevicesAutomaticLocationUpdates) in API Explorer.
+
+## Get Account Switch List
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //siteId: '<ENTER VALUE>',
+    //searchString: '<ENTER VALUE>',
+    //orderBy: '<ENTER VALUE>',
+    //perPage: 000,
+    //page: 1
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SwitchesList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listAccountSwitches) in API Explorer.
+
+## Create Switch
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    chassisId: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    site: {
+        id: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    emergencyAddress: {
+        country: '<ENTER VALUE>',
+        countryId: '<ENTER VALUE>',
+        countryIsoCode: '<ENTER VALUE>',
+        countryName: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        stateId: '<ENTER VALUE>',
+        stateIsoCode: '<ENTER VALUE>',
+        stateName: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        street2: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createSwitch) in API Explorer.
+
+## Get Switch
+
+HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const switchId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readSwitch) in API Explorer.
+
+## Update Switch
+
+HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const switchId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    chassisId: '<ENTER VALUE>',
+    name: '<ENTER VALUE>',
+    site: {
+        id: '<ENTER VALUE>',
+        name: '<ENTER VALUE>'
+    },
+    emergencyAddress: {
+        country: '<ENTER VALUE>',
+        countryId: '<ENTER VALUE>',
+        countryIsoCode: '<ENTER VALUE>',
+        countryName: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        stateId: '<ENTER VALUE>',
+        stateIsoCode: '<ENTER VALUE>',
+        stateName: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        street2: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateSwitch) in API Explorer.
+
+## Delete Switch
+
+HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const switchId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/deleteSwitch) in API Explorer.
+
+## Create Multiple Switches
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-create`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-create`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CreateMultipleSwitchesResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleSwitches) in API Explorer.
+
+## Update Multiple Switches
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-update`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-update`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UpdateMultipleSwitchesResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleSwitches) in API Explorer.
+
+## Create Multiple Wireless Points
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-create`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-create`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CreateMultipleWirelessPointsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleWirelessPoints) in API Explorer.
+
+## Update Multiple Wireless Points
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-update`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-update`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UpdateMultipleWirelessPointsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleWirelessPoints) in API Explorer.
+
+## Validate Multiple Wireless Points
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-validate`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-validate`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ValidateMultipleWirelessPointsResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleWirelessPoints) in API Explorer.
+
+## Validate Multiple Switches
+
+HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-validate`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    records: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-validate`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ValidateMultipleSwitchesResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleSwitches) in API Explorer.
+
+## Get Notification Settings
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/notification-settings`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readNotificationSettings) in API Explorer.
+
+## Update Notification Settings
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    emailAddresses: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    smsEmailAddresses: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    advancedMode: true,
+    voicemails: {
+        notifyByEmail: true,
+        notifyBySms: true,
+        advancedEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        advancedSmsEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        includeAttachment: true,
+        markAsRead: true
+    },
+    inboundFaxes: {
+        notifyByEmail: true,
+        notifyBySms: true,
+        advancedEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        advancedSmsEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        includeAttachment: true,
+        markAsRead: true
+    },
+    outboundFaxes: {
+        notifyByEmail: true,
+        notifyBySms: true,
+        advancedEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        advancedSmsEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ]
+    },
+    inboundTexts: {
+        notifyByEmail: true,
+        notifyBySms: true,
+        advancedEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        advancedSmsEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ]
+    },
+    missedCalls: {
+        notifyByEmail: true,
+        notifyBySms: true,
+        advancedEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ],
+        advancedSmsEmailAddresses: [
+            {
+                type: '<ENTER VALUE>'
+            },
+            ]
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/notification-settings`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateNotificationSettings) in API Explorer.
+
+## Get User Profile Image
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readUserProfileImage) in API Explorer.
+
+## Upload User Profile Image
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/createUserProfileImage) in API Explorer.
+
+## Update User Profile Image
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const extensionId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateUserProfileImage) in API Explorer.
+
+## Get Scaled User Profile Image
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image/{scaleSize}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+const scaleSize = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image/${scaleSize}`);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readScaledPofileImage) in API Explorer.
+
+## Get User Conferencing Settings
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //countryId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/conferencing`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readConferencingSettings) in API Explorer.
+
+## Update User Conferencing Settings
+
+HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    allowJoinBeforeHost: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/conferencing`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateConferencingSettings) in API Explorer.
+
+## Get Account Info
+
+HTTP get `/restapi/v1.0/account/{accountId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetAccountInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountInfo) in API Explorer.
+
+## Get Account Business Address
+
+HTTP get `/restapi/v1.0/account/{accountId}/business-address`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/business-address`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountBusinessAddress) in API Explorer.
+
+## Update Company Business Address
+
+HTTP put `/restapi/v1.0/account/{accountId}/business-address`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    company: '<ENTER VALUE>',
+    email: '<ENTER VALUE>',
+    businessAddress: {
+        country: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/business-address`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Company/updateAccountBusinessAddress) in API Explorer.
+
+## Get Account Service Info
+
+HTTP get `/restapi/v1.0/account/{accountId}/service-info`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/service-info`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetServiceInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountServiceInfo) in API Explorer.
+
+## Get Language List
+
+HTTP get `/restapi/v1.0/dictionary/language`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/language`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/LanguageList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLanguages) in API Explorer.
+
+## Get Language
+
+HTTP get `/restapi/v1.0/dictionary/language/{languageId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const languageId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/language/${languageId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/LanguageInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readLanguage) in API Explorer.
+
+## Get Country List
+
+HTTP get `/restapi/v1.0/dictionary/country`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //loginAllowed: true,
+    //signupAllowed: true,
+    //numberSelling: true,
+    //page: 1,
+    //perPage: 100,
+    //freeSoftphoneLine: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/country`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetCountryListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listCountries) in API Explorer.
+
+## Get Country
+
+HTTP get `/restapi/v1.0/dictionary/country/{countryId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const countryId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/country/${countryId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetCountryInfoDictionaryResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readCountry) in API Explorer.
+
+## Get Location List
+
+HTTP get `/restapi/v1.0/dictionary/location`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //orderBy: 'Npa',
+    //page: 1,
+    //perPage: 100,
+    //stateId: '<ENTER VALUE>',
+    //withNxx: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/location`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetLocationListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLocations) in API Explorer.
+
+## Get States List
+
+HTTP get `/restapi/v1.0/dictionary/state`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //allCountries: true,
+    //countryId: 000,
+    //page: 1,
+    //perPage: 100,
+    //withPhoneNumbers: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/state`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetStateListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listStates) in API Explorer.
+
+## Get State
+
+HTTP get `/restapi/v1.0/dictionary/state/{stateId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const stateId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/state/${stateId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetStateInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readState) in API Explorer.
+
+## Get Timezone List
+
+HTTP get `/restapi/v1.0/dictionary/timezone`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: '<ENTER VALUE>',
+    //perPage: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/timezone`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetTimezoneListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listTimezones) in API Explorer.
+
+## Get Timezone
+
+HTTP get `/restapi/v1.0/dictionary/timezone/{timezoneId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const timezoneId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: '<ENTER VALUE>',
+    //perPage: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/dictionary/timezone/${timezoneId}`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetTimezoneInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readTimezone) in API Explorer.
+
+## Get Company Phone Number List
+
+HTTP get `/restapi/v1.0/account/{accountId}/phone-number`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100,
+    //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/phone-number`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/AccountPhoneNumbers.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listAccountPhoneNumbers) in API Explorer.
+
+## Get Phone Number
+
+HTTP get `/restapi/v1.0/account/{accountId}/phone-number/{phoneNumberId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const phoneNumberId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/phone-number/${phoneNumberId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CompanyPhoneNumberInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/readAccountPhoneNumber) in API Explorer.
+
+## Get Extension List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //extensionId: '<ENTER VALUE>',
+    //email: '<ENTER VALUE>',
+    //page: 1,
+    //perPage: 100,
+    //status: [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
+    //type: [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionListResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Extensions/listExtensions) in API Explorer.
+
+## Create Extension
+
+HTTP post `/restapi/v1.0/account/{accountId}/extension`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    contact: {
+        firstName: '<ENTER VALUE>',
+        lastName: '<ENTER VALUE>',
+        company: '<ENTER VALUE>',
+        jobTitle: '<ENTER VALUE>',
+        email: '<ENTER VALUE>',
+        businessPhone: '<ENTER VALUE>',
+        mobilePhone: '<ENTER VALUE>',
+        businessAddress: {
+            country: '<ENTER VALUE>',
+            state: '<ENTER VALUE>',
+            city: '<ENTER VALUE>',
+            street: '<ENTER VALUE>',
+            zip: '<ENTER VALUE>'
+        },
+        emailAsLoginName: true,
+        pronouncedName: {
+            type: 'Default',
+            text: '<ENTER VALUE>'
+        },
+        department: '<ENTER VALUE>'
+    },
+    extensionNumber: '<ENTER VALUE>',
+    password: '<ENTER VALUE>',
+    references: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    roles: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    regionalSettings: {
+        homeCountry: {
+            id: '<ENTER VALUE>',
+            uri: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            isoCode: '<ENTER VALUE>',
+            callingCode: '<ENTER VALUE>'
+        },
+        timezone: {
+            id: '<ENTER VALUE>',
+            uri: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            description: '<ENTER VALUE>'
+        },
+        language: {
+            id: '<ENTER VALUE>',
+            uri: '<ENTER VALUE>',
+            greeting: true,
+            formattingLocale: true,
+            localeCode: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            ui: true
+        },
+        greetingLanguage: {
+            id: '<ENTER VALUE>',
+            localeCode: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
+        formattingLocale: {
+            id: '<ENTER VALUE>',
+            localeCode: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
+        timeFormat: '12h'
+    },
+    setupWizardState: NotStarted,
+    status: 'Enabled',
+    statusInfo: {
+        comment: '<ENTER VALUE>',
+        reason: 'Voluntarily'
+    },
+    type: 'User',
+    hidden: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ExtensionCreationResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Extensions/createExtension) in API Explorer.
+
+## Get User Template List
+
+HTTP get `/restapi/v1.0/account/{accountId}/templates`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //type: 'UserSettings',
+    //page: '<ENTER VALUE>',
+    //perPage: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/templates`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserTemplates.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Extensions/listUserTemplates) in API Explorer.
+
+## Get User Template
+
+HTTP get `/restapi/v1.0/account/{accountId}/templates/{templateId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const templateId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/templates/${templateId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/TemplateInfo.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Extensions/readUserTemplate) in API Explorer.
+
+## Get Call Queues
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-queues`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100,
+    //memberExtensionId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-queues`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallQueues.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueues) in API Explorer.
+
+## Get Call Queue Members
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/members`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-queues/${groupId}/members`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallQueueMembers.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueueMembers) in API Explorer.
+
+## Assign Multiple Call Queue Members
+
+HTTP post `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    addedExtensionIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    removedExtensionIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-queues/${groupId}/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/assignMultipleCallQueueMembers) in API Explorer.
+
+## Get Paging Group Users
+
+HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/users`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pagingOnlyGroupId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/users`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupUsers.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupUsers) in API Explorer.
+
+## Get Paging Group Devices
+
+HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/devices`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pagingOnlyGroupId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/devices`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupDevices.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupDevices) in API Explorer.
+
+## Assign Paging Group Users and Devices
+
+HTTP post `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const pagingOnlyGroupId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    addedUserIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    removedUserIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    addedDeviceIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    removedDeviceIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/assignMultiplePagingGroupUsersDevices) in API Explorer.
+
+## Create Call Monitoring Group
+
+HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    name: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-monitoring-groups`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/createCallMonitoringGroup) in API Explorer.
+
+## Get Call Monitoring Groups List
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100,
+    //memberExtensionId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-monitoring-groups`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallMonitoringGroups.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroups) in API Explorer.
+
+## Updates Call Monitoring Group
+
+HTTP put `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    id: '<ENTER VALUE>',
+    name: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/updateCallMonitoringGroup) in API Explorer.
+
+## Delete Call Monitoring Group
+
+HTTP delete `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/deleteCallMonitoringGroup) in API Explorer.
+
+## Get Call Monitoring Group Member List
+
+HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/members`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //page: 1,
+    //perPage: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}/members`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallMonitoringGroupMemberList.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroupMembers) in API Explorer.
+
+## Update Call Monitoring Group List
+
+HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/bulk-assign`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const groupId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    updatedExtensions: [
+        {
+            type: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}/bulk-assign`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/updateCallMonitoringGroupList) in API Explorer.
+
+## Parse Phone Number
+
+HTTP post `/restapi/v1.0/number-parser/parse`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //homeCountry: '<ENTER VALUE>',
+    //nationalAsPriority: true
+}
+
+// POST BODY
+const body = {
+    originalStrings: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/number-parser/parse`, body, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ParsePhoneNumberResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/parsePhoneNumber) in API Explorer.
+
+## Get Device
+
+HTTP get `/restapi/v1.0/account/{accountId}/device/{deviceId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const deviceId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //syncEmergencyAddress: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/device/${deviceId}`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetDeviceInfoResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Devices/readDevice) in API Explorer.
+
+## Update Device
+
+HTTP put `/restapi/v1.0/account/{accountId}/device/{deviceId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const deviceId = '<ENTER VALUE>';
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    emergencyServiceAddress: {
+        customerName: '<ENTER VALUE>',
+        street: '<ENTER VALUE>',
+        street2: '<ENTER VALUE>',
+        city: '<ENTER VALUE>',
+        zip: '<ENTER VALUE>',
+        state: '<ENTER VALUE>',
+        country: '<ENTER VALUE>'
+    },
+    extension: {
+        id: '<ENTER VALUE>'
+    },
+    phoneLines: {
+        phoneLines: [
+            {
+                type: '<ENTER VALUE>',
+                properties: '<ENTER VALUE>'
+            },
+            ]
+    },
+    useAsCommonPhone: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/restapi/v1.0/account/${accountId}/device/${deviceId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DeviceResource.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Devices/updateDevice) in API Explorer.
+
+## Get Extension Device List
+
+HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/device`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const extensionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //linePooling: 'Host',
+    //feature: 'Intercom'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/device`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/GetExtensionDevicesResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Devices/listExtensionDevices) in API Explorer.
+
+## Check Health
+
+HTTP get `/scim/v2/health`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/scim/v2/health`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/checkHealth2) in API Explorer.
+
+## Get Service Provider Config
+
+HTTP get `/scim/v2/ServiceProviderConfig`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/scim/v2/ServiceProviderConfig`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/ServiceProviderConfig.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/readServiceProviderConfig2) in API Explorer.
+
+## Search/List Users
+
+HTTP get `/scim/v2/Users`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //filter: '<ENTER VALUE>',
+    //startIndex: 1,
+    //count: 100
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/scim/v2/Users`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaGet2) in API Explorer.
+
+## Create User
+
+HTTP post `/scim/v2/Users`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    active: true,
+    addresses: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    emails: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    externalId: '<ENTER VALUE>',
+    id: '<ENTER VALUE>',
+    name: {
+        familyName: '<ENTER VALUE>',
+        givenName: '<ENTER VALUE>'
+    },
+    phoneNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    photos: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schemas: [
+        {
+            type: '<ENTER VALUE>',
+            enum: '<ENTER VALUE>'
+        },
+        ],
+    urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
+        department: '<ENTER VALUE>'
+    },
+    userName: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/scim/v2/Users`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/createUser2) in API Explorer.
+
+## Search/List Users
+
+HTTP post `/scim/v2/Users/.search`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    count: 000,
+    filter: '<ENTER VALUE>',
+    schemas: [
+        {
+            type: '<ENTER VALUE>',
+            enum: '<ENTER VALUE>'
+        },
+        ],
+    startIndex: 000
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/scim/v2/Users/.search`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaPost2) in API Explorer.
+
+## Get User
+
+HTTP get `/scim/v2/Users/{id}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const id = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/scim/v2/Users/${id}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/readUser2) in API Explorer.
+
+## Update/Replace User
+
+HTTP put `/scim/v2/Users/{id}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const id = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    active: true,
+    addresses: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    emails: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    externalId: '<ENTER VALUE>',
+    id: '<ENTER VALUE>',
+    name: {
+        familyName: '<ENTER VALUE>',
+        givenName: '<ENTER VALUE>'
+    },
+    phoneNumbers: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    photos: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schemas: [
+        {
+            type: '<ENTER VALUE>',
+            enum: '<ENTER VALUE>'
+        },
+        ],
+    urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
+        department: '<ENTER VALUE>'
+    },
+    userName: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.put(`/scim/v2/Users/${id}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/replaceUser2) in API Explorer.
+
+## Delete User
+
+HTTP delete `/scim/v2/Users/{id}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const id = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/scim/v2/Users/${id}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/deleteUser2) in API Explorer.
+
+## Update/Patch User
+
+HTTP patch `/scim/v2/Users/{id}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const id = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    Operations: [
+        {
+            type: '<ENTER VALUE>',
+            required: '<ENTER VALUE>',
+            properties: '<ENTER VALUE>'
+        },
+        ],
+    schemas: [
+        {
+            type: '<ENTER VALUE>',
+            enum: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/scim/v2/Users/${id}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/UserResponse.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/SCIM/patchUser2) in API Explorer.
+
+## Create CallOut Call Session
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/call-out`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    from: {
+        deviceId: '<ENTER VALUE>'
+    },
+    to: {
+        phoneNumber: '<ENTER VALUE>',
+        extensionNumber: '<ENTER VALUE>'
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/call-out`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallSession.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/createCallOutCallSession) in API Explorer.
+
+## Get Call Session Status
+
+HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //timestamp: '<ENTER VALUE>',
+    //timeout: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}`, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallSessionObject.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallSessionStatus) in API Explorer.
+
+## Drop Call Session
+
+HTTP delete `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.delete(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/deleteCallSession) in API Explorer.
+
+## Hold Call Party
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/hold`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/hold`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/holdCallParty) in API Explorer.
+
+## Unhold Call Party
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/unhold`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/unhold`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/unholdCallParty) in API Explorer.
+
+## Reject Call Party
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/reject`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/reject`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/rejectParty) in API Explorer.
+
+## Transfer Call Party
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/transfer`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    voicemail: '<ENTER VALUE>',
+    parkOrbit: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/transfer`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/transferCallParty) in API Explorer.
+
+## Forward Call Party
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/forward`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    phoneNumber: '<ENTER VALUE>',
+    voicemail: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/forward`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/forwardCallParty) in API Explorer.
+
+## Call Flip on Party
+
+HTTP post `/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/flip`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    callFlipId: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/flip`, body);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/callFlipParty) in API Explorer.
+
+## Get Call Party Status
+
+HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallPartyStatus) in API Explorer.
+
+## Update Call Party
+
+HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    party: {
+        muted: true,
+        standAlone: true
+    }
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallParty.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/updateCallParty) in API Explorer.
+
+## Create Recording
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/recordings`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/startCallRecording) in API Explorer.
+
+## Pause/Resume Recording
+
+HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings/{recordingId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+const partyId = '<ENTER VALUE>';
+const recordingId = '<ENTER VALUE>';
+
+// OPTIONAL QUERY PARAMETERS
+const queryParams = {
+    //brandId: '<ENTER VALUE>'
+}
+
+// POST BODY
+const body = {
+    active: true
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.patch(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/recordings/${recordingId}`, body, queryParams);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/CallRecording.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/pauseResumeCallRecording) in API Explorer.
+
+## Supervise Call
+
+HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/supervise`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const telephonySessionId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    mode: 'Listen',
+    deviceId: '<ENTER VALUE>',
+    extensionNumber: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/supervise`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/SuperviseCallSession.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Call-Control/superviseCallSession) in API Explorer.
+
+## Get Glip Data Archive
+
+HTTP get `/restapi/v1.0/glip/data-export/{taskId}/archive/{archiveId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+const archiveId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/data-export/${taskId}/archive/${archiveId}`);
+```
+
+You can get response binary data by `const buffer = await r.response().buffer()`
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/readComplianceArchive) in API Explorer.
+
+## Create Data Export Task
+
+HTTP post `/restapi/v1.0/glip/data-export`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// POST BODY
+const body = {
+    dateFrom: '<ENTER VALUE>',
+    dateTo: '<ENTER VALUE>',
+    userIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ],
+    chatIds: [
+        {
+            type: '<ENTER VALUE>'
+        },
+        ]
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/glip/data-export`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/createDataExportTask) in API Explorer.
+
+## Get Data Export Task
+
+HTTP get `/restapi/v1.0/glip/data-export/{taskId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const taskId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/glip/data-export/${taskId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/readDataExportTask) in API Explorer.
+
+## Create Message Store Report
+
+HTTP post `/restapi/v1.0/account/{accountId}/message-store-report`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+
+// POST BODY
+const body = {
+    dateFrom: '<ENTER VALUE>',
+    dateTo: '<ENTER VALUE>'
+}
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.post(`/restapi/v1.0/account/${accountId}/message-store-report`, body);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/createMessageStoreReport) in API Explorer.
+
+## Get Message Store Report Task
+
+HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const taskId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportTask) in API Explorer.
+
+## Get Message Store Report Archive
+
+HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archive`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const taskId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}/archive`);
+```
+
+You can get response json data by `const json = r.json()`
+- `json` is an object with [this definition](./bin/definitions/MessageStoreReportArchive.json)
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportArchive) in API Explorer.
+
+## Get Message Store Report Archive Content
+
+HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archive/{archiveId}`
+
+```js
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+
+// PATH PARAMETERS
+const accountId = '<ENTER VALUE>';
+const taskId = '<ENTER VALUE>';
+const archiveId = '<ENTER VALUE>';
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}/archive/${archiveId}`);
+```
+
+Response body is empty
+
+[Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportArchiveContent) in API Explorer.
+

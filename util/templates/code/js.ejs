@@ -1,0 +1,36 @@
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+<%
+let pathParams, queryParams, postParams
+if (operation.parameters && (pathParams = operation.parameters.filter(param => param.in === 'path')).length > 0) {
+    %>
+// PATH PARAMETERS
+    <%_
+    for (pathParam of pathParams) {
+        -%>
+const <%= pathParam.name %> = '<ENTER VALUE>';
+        <%_
+    }
+}
+
+if (operation.parameters && (queryParams = operation.parameters.filter(param => param.in === 'query')).length > 0) {
+    %>
+// OPTIONAL QUERY PARAMETERS
+const queryParams = <%- defs.renderGetDef(queryParams) %>
+<%
+}
+
+if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
+    const def = defs.loadDefinition(postParams.schema['$ref'].substring(postParams.schema['$ref'].lastIndexOf('/') + 1))
+    %>
+// POST BODY
+const body = <%- defs.renderPostDef(def) %>
+    <%_
+}
+-%>
+
+const SDK = require('ringcentral');
+const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
+const platform = rcsdk.platform();
+await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
+const r = await platform.<%= method %>(`<%= url.replace(/{/g, '${') %>`<%= (postParams ? ', body' : '') + (queryParams && queryParams.length > 0 ? ', queryParams' : '') %>);
