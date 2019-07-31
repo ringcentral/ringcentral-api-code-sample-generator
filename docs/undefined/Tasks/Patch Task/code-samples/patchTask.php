@@ -36,5 +36,5 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/glip/tasks/{$taskId}");
+$r = $platform->patch("/restapi/v1.0/glip/tasks/{$taskId}", $body);
 ?>

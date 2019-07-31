@@ -103,7 +103,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -138,7 +138,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log')
+r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log', queryParams)
 ```
 
 Response body is empty
@@ -173,7 +173,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log-sync')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log-sync', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -204,7 +204,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{callRecordId}')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{callRecordId}', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -238,7 +238,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/active-calls')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/active-calls', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -278,7 +278,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-log')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-log', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -337,7 +337,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/active-calls')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/active-calls', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -424,7 +424,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/sms')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/sms', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -463,7 +463,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/company-pager')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/company-pager', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -515,7 +515,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/fax-cover-page')
+r = platform.get('/restapi/v1.0/dictionary/fax-cover-page', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -555,7 +555,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -587,7 +587,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store')
+r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store', queryParams)
 ```
 
 Response body is empty
@@ -643,7 +643,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -675,7 +675,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}')
+r = platform.delete(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}', queryParams)
 ```
 
 Response body is empty
@@ -706,7 +706,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}/content/{attachmentId}')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}/content/{attachmentId}', queryParams)
 ```
 
 You can get response binary data by `binary = r.response().content`
@@ -743,7 +743,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-sync')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-sync', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -796,7 +796,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/message-store-configuration')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/message-store-configuration', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -839,7 +839,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -924,7 +924,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1000,7 +1000,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact', body, queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1103,7 +1103,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}', body, queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1161,7 +1161,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book-sync')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book-sync', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1222,7 +1222,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1262,7 +1262,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/directory/entries/search')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/directory/entries/search', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1320,7 +1320,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/directory/entries')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/directory/entries', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1375,7 +1375,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1432,7 +1432,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1464,7 +1464,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/presence')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/presence', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1492,7 +1492,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/chats')
+r = platform.get('/restapi/v1.0/glip/chats', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1543,7 +1543,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/conversations')
+r = platform.get('/restapi/v1.0/glip/conversations', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1574,7 +1574,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/glip/conversations')
+r = platform.post('/restapi/v1.0/glip/conversations', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1625,7 +1625,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/teams')
+r = platform.get('/restapi/v1.0/glip/teams', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1659,7 +1659,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/glip/teams')
+r = platform.post('/restapi/v1.0/glip/teams', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1714,7 +1714,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/restapi/v1.0/glip/teams/{chatId}')
+r = platform.patch(f'/restapi/v1.0/glip/teams/{chatId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1817,7 +1817,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/teams/{chatId}/add')
+r = platform.post(f'/restapi/v1.0/glip/teams/{chatId}/add', body)
 ```
 
 Response body is empty
@@ -1849,7 +1849,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/teams/{chatId}/remove')
+r = platform.post(f'/restapi/v1.0/glip/teams/{chatId}/remove', body)
 ```
 
 Response body is empty
@@ -1942,7 +1942,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch('/restapi/v1.0/glip/everyone')
+r = platform.patch('/restapi/v1.0/glip/everyone', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1969,7 +1969,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/recent/chats')
+r = platform.get('/restapi/v1.0/glip/recent/chats', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -1995,7 +1995,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/favorites')
+r = platform.get('/restapi/v1.0/glip/favorites', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2142,7 +2142,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/restapi/v1.0/glip/chats/{chatId}/posts/{postId}')
+r = platform.patch(f'/restapi/v1.0/glip/chats/{chatId}/posts/{postId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2196,7 +2196,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/posts')
+r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/posts', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2231,7 +2231,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/posts')
+r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/posts', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2258,7 +2258,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/glip/events')
+r = platform.get('/restapi/v1.0/glip/events', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2296,7 +2296,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/glip/events')
+r = platform.post('/restapi/v1.0/glip/events', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2361,7 +2361,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/glip/events/{eventId}')
+r = platform.put(f'/restapi/v1.0/glip/events/{eventId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2425,7 +2425,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/groups/{groupId}/events')
+r = platform.post(f'/restapi/v1.0/glip/groups/{groupId}/events', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2486,7 +2486,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/tasks')
+r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/tasks', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2537,7 +2537,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/tasks')
+r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/tasks', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2612,7 +2612,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/restapi/v1.0/glip/tasks/{taskId}')
+r = platform.patch(f'/restapi/v1.0/glip/tasks/{taskId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2670,7 +2670,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/glip/tasks/{taskId}/complete')
+r = platform.post(f'/restapi/v1.0/glip/tasks/{taskId}/complete', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -2978,7 +2978,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3057,7 +3057,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3240,7 +3240,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/subscription')
+r = platform.post('/restapi/v1.0/subscription', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3309,7 +3309,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/subscription/{subscriptionId}')
+r = platform.put(f'/restapi/v1.0/subscription/{subscriptionId}', body, queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3412,7 +3412,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile/check')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile/check', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3512,7 +3512,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3610,7 +3610,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/business-hours')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/business-hours', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3677,7 +3677,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3709,7 +3709,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3741,7 +3741,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3825,7 +3825,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3856,7 +3856,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3891,7 +3891,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -3951,7 +3951,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4009,7 +4009,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4180,7 +4180,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4211,7 +4211,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4372,7 +4372,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4508,7 +4508,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/answering-rule')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/answering-rule', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4668,7 +4668,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4721,7 +4721,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/greeting')
+r = platform.get('/restapi/v1.0/dictionary/greeting', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4947,7 +4947,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5028,7 +5028,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/ivr-menus')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/ivr-menus', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5111,7 +5111,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5179,7 +5179,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/call-recording')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/call-recording', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5252,7 +5252,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/call-recording/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/call-recording/bulk-assign', body)
 ```
 
 Response body is empty
@@ -5280,7 +5280,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-recording/custom-greetings')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-recording/custom-greetings', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5364,7 +5364,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/client-info/sip-provision')
+r = platform.post('/restapi/v1.0/client-info/sip-provision', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5396,7 +5396,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/phone-number')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/phone-number', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5514,7 +5514,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5625,7 +5625,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5656,7 +5656,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/grant')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/grant', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5685,7 +5685,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users', queryParams)
 ```
 
 Response body is empty
@@ -5718,7 +5718,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users/bulk-assign', body)
 ```
 
 Response body is empty
@@ -5750,7 +5750,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5798,7 +5798,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -5873,7 +5873,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6013,7 +6013,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}', body)
 ```
 
 Response body is empty
@@ -6072,7 +6072,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6106,7 +6106,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices/bulk-assign', body)
 ```
 
 Response body is empty
@@ -6138,7 +6138,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6186,7 +6186,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6261,7 +6261,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6337,7 +6337,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-create')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-create', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6390,7 +6390,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-update')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-update', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6442,7 +6442,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-create')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-create', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6495,7 +6495,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-update')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-update', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6548,7 +6548,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-validate')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-validate', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6601,7 +6601,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-validate')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-validate', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6716,7 +6716,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6843,7 +6843,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6879,7 +6879,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6964,7 +6964,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/business-address')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/business-address', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7064,7 +7064,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/country')
+r = platform.get('/restapi/v1.0/dictionary/country', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7118,7 +7118,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/location')
+r = platform.get('/restapi/v1.0/dictionary/location', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7148,7 +7148,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/state')
+r = platform.get('/restapi/v1.0/dictionary/state', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7199,7 +7199,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/restapi/v1.0/dictionary/timezone')
+r = platform.get('/restapi/v1.0/dictionary/timezone', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7229,7 +7229,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/dictionary/timezone/{timezoneId}')
+r = platform.get(f'/restapi/v1.0/dictionary/timezone/{timezoneId}', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7260,7 +7260,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/phone-number')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/phone-number', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7319,7 +7319,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7426,7 +7426,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/extension', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7457,7 +7457,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/templates')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/templates', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7513,7 +7513,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7544,7 +7544,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues/{groupId}/members')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues/{groupId}/members', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7579,7 +7579,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/call-queues/{groupId}/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/call-queues/{groupId}/bulk-assign', body)
 ```
 
 Response body is empty
@@ -7609,7 +7609,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/users')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/users', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7640,7 +7640,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/devices')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/devices', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7681,7 +7681,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/bulk-assign', body)
 ```
 
 Response body is empty
@@ -7710,7 +7710,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7741,7 +7741,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7772,7 +7772,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7827,7 +7827,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/members')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/members', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7864,7 +7864,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/bulk-assign')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/bulk-assign', body)
 ```
 
 Response body is empty
@@ -7897,7 +7897,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/number-parser/parse')
+r = platform.post('/restapi/v1.0/number-parser/parse', body, queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7927,7 +7927,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/device/{deviceId}')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/device/{deviceId}', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -7976,7 +7976,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/device/{deviceId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/device/{deviceId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8007,7 +8007,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/device')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/device', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8076,7 +8076,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get('/scim/v2/Users')
+r = platform.get('/scim/v2/Users', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8143,7 +8143,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/scim/v2/Users')
+r = platform.post('/scim/v2/Users', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8174,7 +8174,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/scim/v2/Users/.search')
+r = platform.post('/scim/v2/Users/.search', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8268,7 +8268,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/scim/v2/Users/{id}')
+r = platform.put(f'/scim/v2/Users/{id}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8329,7 +8329,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/scim/v2/Users/{id}')
+r = platform.patch(f'/scim/v2/Users/{id}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8364,7 +8364,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/call-out')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/call-out', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8395,7 +8395,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.get(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}')
+r = platform.get(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}', queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8529,7 +8529,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/transfer')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/transfer', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8561,7 +8561,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/forward')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/forward', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8592,7 +8592,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/flip')
+r = platform.post(f'/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/flip', body)
 ```
 
 Response body is empty
@@ -8651,7 +8651,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}')
+r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8713,7 +8713,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings/{recordingId}')
+r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings/{recordingId}', body, queryParams)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8745,7 +8745,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/supervise')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/supervise', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8802,7 +8802,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post('/restapi/v1.0/glip/data-export')
+r = platform.post('/restapi/v1.0/glip/data-export', body)
 ```
 
 You can get response json data by `json = r.json()`
@@ -8856,7 +8856,7 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/message-store-report')
+r = platform.post(f'/restapi/v1.0/account/{accountId}/message-store-report', body)
 ```
 
 You can get response json data by `json = r.json()`

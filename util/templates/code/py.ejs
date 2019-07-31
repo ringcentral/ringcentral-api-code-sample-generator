@@ -49,4 +49,4 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.<%= method %>(<%= url.includes('{') ? 'f' : '' %>'<%= url %>'<%= this.params ? ', queryParams' : ''%>)
+r = platform.<%= method %>(<%= url.includes('{') ? 'f' : '' %>'<%= url %>'<%= (postParams ? ', body' : '') + (queryParams && queryParams.length > 0 ? ', queryParams' : '') %>)

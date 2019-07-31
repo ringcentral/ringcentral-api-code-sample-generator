@@ -96,4 +96,4 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}')
+r = platform.put(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}', body)

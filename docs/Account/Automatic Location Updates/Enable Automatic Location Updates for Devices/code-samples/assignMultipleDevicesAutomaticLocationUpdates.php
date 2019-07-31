@@ -19,5 +19,5 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices/bulk-assign", $body);
 ?>

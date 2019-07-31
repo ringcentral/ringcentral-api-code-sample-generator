@@ -106,7 +106,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log", $queryParams);
 ?>
 ```
 
@@ -142,7 +142,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log");
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log", $queryParams);
 ?>
 ```
 
@@ -178,7 +178,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log-sync");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log-sync", $queryParams);
 ?>
 ```
 
@@ -210,7 +210,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log/{$callRecordId}");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log/{$callRecordId}", $queryParams);
 ?>
 ```
 
@@ -245,7 +245,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/active-calls");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/active-calls", $queryParams);
 ?>
 ```
 
@@ -286,7 +286,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-log");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-log", $queryParams);
 ?>
 ```
 
@@ -347,7 +347,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/active-calls");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/active-calls", $queryParams);
 ?>
 ```
 
@@ -437,7 +437,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/sms");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/sms", $body);
 ?>
 ```
 
@@ -477,7 +477,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/company-pager");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/company-pager", $body);
 ?>
 ```
 
@@ -531,7 +531,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/fax-cover-page");
+$r = $platform->get("/restapi/v1.0/dictionary/fax-cover-page", $queryParams);
 ?>
 ```
 
@@ -572,7 +572,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store", $queryParams);
 ?>
 ```
 
@@ -605,7 +605,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store");
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store", $queryParams);
 ?>
 ```
 
@@ -663,7 +663,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}", $body);
 ?>
 ```
 
@@ -696,7 +696,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}");
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}", $queryParams);
 ?>
 ```
 
@@ -728,7 +728,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}/content/{$attachmentId}");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}/content/{$attachmentId}", $queryParams);
 ?>
 ```
 
@@ -766,7 +766,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-sync");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-sync", $queryParams);
 ?>
 ```
 
@@ -821,7 +821,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/message-store-configuration");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/message-store-configuration", $body);
 ?>
 ```
 
@@ -865,7 +865,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/ring-out");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/ring-out", $body);
 ?>
 ```
 
@@ -953,7 +953,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact", $queryParams);
 ?>
 ```
 
@@ -1030,7 +1030,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact", $body, $queryParams);
 ?>
 ```
 
@@ -1135,7 +1135,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact/{$contactId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact/{$contactId}", $body, $queryParams);
 ?>
 ```
 
@@ -1195,7 +1195,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book-sync");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book-sync", $queryParams);
 ?>
 ```
 
@@ -1258,7 +1258,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/favorite");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/favorite", $body);
 ?>
 ```
 
@@ -1299,7 +1299,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/directory/entries/search");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/directory/entries/search", $body);
 ?>
 ```
 
@@ -1359,7 +1359,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/directory/entries");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/directory/entries", $queryParams);
 ?>
 ```
 
@@ -1416,7 +1416,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence", $queryParams);
 ?>
 ```
 
@@ -1474,7 +1474,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence", $body);
 ?>
 ```
 
@@ -1507,7 +1507,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/presence");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/presence", $queryParams);
 ?>
 ```
 
@@ -1536,7 +1536,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/chats");
+$r = $platform->get("/restapi/v1.0/glip/chats", $queryParams);
 ?>
 ```
 
@@ -1589,7 +1589,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/conversations");
+$r = $platform->get("/restapi/v1.0/glip/conversations", $queryParams);
 ?>
 ```
 
@@ -1621,7 +1621,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/conversations");
+$r = $platform->post("/restapi/v1.0/glip/conversations", $body);
 ?>
 ```
 
@@ -1674,7 +1674,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/teams");
+$r = $platform->get("/restapi/v1.0/glip/teams", $queryParams);
 ?>
 ```
 
@@ -1709,7 +1709,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/teams");
+$r = $platform->post("/restapi/v1.0/glip/teams", $body);
 ?>
 ```
 
@@ -1766,7 +1766,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/glip/teams/{$chatId}");
+$r = $platform->patch("/restapi/v1.0/glip/teams/{$chatId}", $body);
 ?>
 ```
 
@@ -1873,7 +1873,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/add");
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/add", $body);
 ?>
 ```
 
@@ -1906,7 +1906,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/remove");
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/remove", $body);
 ?>
 ```
 
@@ -2003,7 +2003,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/glip/everyone");
+$r = $platform->patch("/restapi/v1.0/glip/everyone", $body);
 ?>
 ```
 
@@ -2031,7 +2031,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/recent/chats");
+$r = $platform->get("/restapi/v1.0/glip/recent/chats", $queryParams);
 ?>
 ```
 
@@ -2058,7 +2058,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/favorites");
+$r = $platform->get("/restapi/v1.0/glip/favorites", $queryParams);
 ?>
 ```
 
@@ -2211,7 +2211,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/glip/chats/{$chatId}/posts/{$postId}");
+$r = $platform->patch("/restapi/v1.0/glip/chats/{$chatId}/posts/{$postId}", $body);
 ?>
 ```
 
@@ -2267,7 +2267,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/posts");
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/posts", $queryParams);
 ?>
 ```
 
@@ -2303,7 +2303,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/posts");
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/posts", $body);
 ?>
 ```
 
@@ -2331,7 +2331,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/events");
+$r = $platform->get("/restapi/v1.0/glip/events", $queryParams);
 ?>
 ```
 
@@ -2370,7 +2370,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/events");
+$r = $platform->post("/restapi/v1.0/glip/events", $body);
 ?>
 ```
 
@@ -2437,7 +2437,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/glip/events/{$eventId}");
+$r = $platform->put("/restapi/v1.0/glip/events/{$eventId}", $body);
 ?>
 ```
 
@@ -2503,7 +2503,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/groups/{$groupId}/events");
+$r = $platform->post("/restapi/v1.0/glip/groups/{$groupId}/events", $body);
 ?>
 ```
 
@@ -2566,7 +2566,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/tasks");
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/tasks", $queryParams);
 ?>
 ```
 
@@ -2618,7 +2618,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/tasks");
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/tasks", $body);
 ?>
 ```
 
@@ -2695,7 +2695,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/glip/tasks/{$taskId}");
+$r = $platform->patch("/restapi/v1.0/glip/tasks/{$taskId}", $body);
 ?>
 ```
 
@@ -2755,7 +2755,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/tasks/{$taskId}/complete");
+$r = $platform->post("/restapi/v1.0/glip/tasks/{$taskId}/complete", $body);
 ?>
 ```
 
@@ -3075,7 +3075,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting", $body);
 ?>
 ```
 
@@ -3156,7 +3156,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}", $body);
 ?>
 ```
 
@@ -3346,7 +3346,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/subscription");
+$r = $platform->post("/restapi/v1.0/subscription", $body);
 ?>
 ```
 
@@ -3417,7 +3417,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/subscription/{$subscriptionId}");
+$r = $platform->put("/restapi/v1.0/subscription/{$subscriptionId}", $body, $queryParams);
 ?>
 ```
 
@@ -3524,7 +3524,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/authz-profile/check");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/authz-profile/check", $queryParams);
 ?>
 ```
 
@@ -3626,7 +3626,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/business-hours");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/business-hours", $body);
 ?>
 ```
 
@@ -3726,7 +3726,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-hours");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-hours", $body);
 ?>
 ```
 
@@ -3795,7 +3795,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking", $body);
 ?>
 ```
 
@@ -3828,7 +3828,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers", $queryParams);
 ?>
 ```
 
@@ -3861,7 +3861,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers", $body);
 ?>
 ```
 
@@ -3948,7 +3948,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers/{$blockedNumberId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers/{$blockedNumberId}", $body);
 ?>
 ```
 
@@ -3980,7 +3980,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number", $queryParams);
 ?>
 ```
 
@@ -4016,7 +4016,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number", $body);
 ?>
 ```
 
@@ -4078,7 +4078,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number/{$forwardingNumberId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number/{$forwardingNumberId}", $body);
 ?>
 ```
 
@@ -4138,7 +4138,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule", $queryParams);
 ?>
 ```
 
@@ -4310,7 +4310,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule", $body);
 ?>
 ```
 
@@ -4342,7 +4342,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}", $queryParams);
 ?>
 ```
 
@@ -4504,7 +4504,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}", $body);
 ?>
 ```
 
@@ -4642,7 +4642,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/answering-rule");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/answering-rule", $body);
 ?>
 ```
 
@@ -4805,7 +4805,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/answering-rule/{$ruleId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/answering-rule/{$ruleId}", $body);
 ?>
 ```
 
@@ -4860,7 +4860,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/greeting");
+$r = $platform->get("/restapi/v1.0/dictionary/greeting", $queryParams);
 ?>
 ```
 
@@ -5095,7 +5095,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}", $body);
 ?>
 ```
 
@@ -5178,7 +5178,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/ivr-menus");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/ivr-menus", $body);
 ?>
 ```
 
@@ -5263,7 +5263,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-menus/{$ivrMenuId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-menus/{$ivrMenuId}", $body);
 ?>
 ```
 
@@ -5333,7 +5333,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-recording");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-recording", $body);
 ?>
 ```
 
@@ -5408,7 +5408,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-recording/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-recording/bulk-assign", $body);
 ?>
 ```
 
@@ -5437,7 +5437,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-recording/custom-greetings");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-recording/custom-greetings", $queryParams);
 ?>
 ```
 
@@ -5524,7 +5524,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/client-info/sip-provision");
+$r = $platform->post("/restapi/v1.0/client-info/sip-provision", $body);
 ?>
 ```
 
@@ -5557,7 +5557,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/phone-number");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/phone-number", $queryParams);
 ?>
 ```
 
@@ -5677,7 +5677,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}", $body);
 ?>
 ```
 
@@ -5791,7 +5791,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-id");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-id", $body);
 ?>
 ```
 
@@ -5823,7 +5823,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/grant");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/grant", $queryParams);
 ?>
 ```
 
@@ -5853,7 +5853,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users", $queryParams);
 ?>
 ```
 
@@ -5887,7 +5887,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users/bulk-assign", $body);
 ?>
 ```
 
@@ -5920,7 +5920,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points", $queryParams);
 ?>
 ```
 
@@ -5969,7 +5969,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points", $body);
 ?>
 ```
 
@@ -6046,7 +6046,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points/{$pointId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points/{$pointId}", $body);
 ?>
 ```
 
@@ -6191,7 +6191,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks/{$networkId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks/{$networkId}", $body);
 ?>
 ```
 
@@ -6252,7 +6252,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices", $queryParams);
 ?>
 ```
 
@@ -6287,7 +6287,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices/bulk-assign", $body);
 ?>
 ```
 
@@ -6320,7 +6320,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches", $queryParams);
 ?>
 ```
 
@@ -6369,7 +6369,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches", $body);
 ?>
 ```
 
@@ -6446,7 +6446,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches/{$switchId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches/{$switchId}", $body);
 ?>
 ```
 
@@ -6524,7 +6524,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-create");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-create", $body);
 ?>
 ```
 
@@ -6578,7 +6578,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-update");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-update", $body);
 ?>
 ```
 
@@ -6631,7 +6631,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-create");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-create", $body);
 ?>
 ```
 
@@ -6685,7 +6685,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-update");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-update", $body);
 ?>
 ```
 
@@ -6739,7 +6739,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-validate");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-validate", $body);
 ?>
 ```
 
@@ -6793,7 +6793,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-validate");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-validate", $body);
 ?>
 ```
 
@@ -6910,7 +6910,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/notification-settings");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/notification-settings", $body);
 ?>
 ```
 
@@ -7042,7 +7042,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing", $queryParams);
 ?>
 ```
 
@@ -7079,7 +7079,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing", $body);
 ?>
 ```
 
@@ -7167,7 +7167,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-address");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-address", $body);
 ?>
 ```
 
@@ -7271,7 +7271,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/country");
+$r = $platform->get("/restapi/v1.0/dictionary/country", $queryParams);
 ?>
 ```
 
@@ -7327,7 +7327,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/location");
+$r = $platform->get("/restapi/v1.0/dictionary/location", $queryParams);
 ?>
 ```
 
@@ -7358,7 +7358,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/state");
+$r = $platform->get("/restapi/v1.0/dictionary/state", $queryParams);
 ?>
 ```
 
@@ -7411,7 +7411,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/timezone");
+$r = $platform->get("/restapi/v1.0/dictionary/timezone", $queryParams);
 ?>
 ```
 
@@ -7442,7 +7442,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/dictionary/timezone/{$timezoneId}");
+$r = $platform->get("/restapi/v1.0/dictionary/timezone/{$timezoneId}", $queryParams);
 ?>
 ```
 
@@ -7474,7 +7474,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/phone-number");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/phone-number", $queryParams);
 ?>
 ```
 
@@ -7535,7 +7535,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension", $queryParams);
 ?>
 ```
 
@@ -7643,7 +7643,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension", $body);
 ?>
 ```
 
@@ -7675,7 +7675,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/templates");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/templates", $queryParams);
 ?>
 ```
 
@@ -7733,7 +7733,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues", $queryParams);
 ?>
 ```
 
@@ -7765,7 +7765,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/members");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/members", $queryParams);
 ?>
 ```
 
@@ -7801,7 +7801,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/bulk-assign", $body);
 ?>
 ```
 
@@ -7832,7 +7832,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/users");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/users", $queryParams);
 ?>
 ```
 
@@ -7864,7 +7864,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/devices");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/devices", $queryParams);
 ?>
 ```
 
@@ -7906,7 +7906,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/bulk-assign", $body);
 ?>
 ```
 
@@ -7936,7 +7936,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups", $body);
 ?>
 ```
 
@@ -7968,7 +7968,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups", $queryParams);
 ?>
 ```
 
@@ -8000,7 +8000,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}", $body);
 ?>
 ```
 
@@ -8057,7 +8057,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/members");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/members", $queryParams);
 ?>
 ```
 
@@ -8095,7 +8095,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/bulk-assign");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/bulk-assign", $body);
 ?>
 ```
 
@@ -8129,7 +8129,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/number-parser/parse");
+$r = $platform->post("/restapi/v1.0/number-parser/parse", $body, $queryParams);
 ?>
 ```
 
@@ -8160,7 +8160,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/device/{$deviceId}");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/device/{$deviceId}", $queryParams);
 ?>
 ```
 
@@ -8210,7 +8210,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/device/{$deviceId}");
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/device/{$deviceId}", $body);
 ?>
 ```
 
@@ -8242,7 +8242,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/device");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/device", $queryParams);
 ?>
 ```
 
@@ -8314,7 +8314,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/scim/v2/Users");
+$r = $platform->get("/scim/v2/Users", $queryParams);
 ?>
 ```
 
@@ -8382,7 +8382,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/scim/v2/Users");
+$r = $platform->post("/scim/v2/Users", $body);
 ?>
 ```
 
@@ -8414,7 +8414,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/scim/v2/Users/.search");
+$r = $platform->post("/scim/v2/Users/.search", $body);
 ?>
 ```
 
@@ -8510,7 +8510,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/scim/v2/Users/{$id}");
+$r = $platform->put("/scim/v2/Users/{$id}", $body);
 ?>
 ```
 
@@ -8573,7 +8573,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/scim/v2/Users/{$id}");
+$r = $platform->patch("/scim/v2/Users/{$id}", $body);
 ?>
 ```
 
@@ -8609,7 +8609,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/call-out");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/call-out", $body);
 ?>
 ```
 
@@ -8641,7 +8641,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->get("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}");
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}", $queryParams);
 ?>
 ```
 
@@ -8780,7 +8780,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/transfer");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/transfer", $body);
 ?>
 ```
 
@@ -8813,7 +8813,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/forward");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/forward", $body);
 ?>
 ```
 
@@ -8845,7 +8845,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/flip");
+$r = $platform->post("/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/flip", $body);
 ?>
 ```
 
@@ -8906,7 +8906,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}");
+$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}", $body);
 ?>
 ```
 
@@ -8970,7 +8970,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/recordings/{$recordingId}");
+$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/recordings/{$recordingId}", $body, $queryParams);
 ?>
 ```
 
@@ -9003,7 +9003,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/supervise");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/supervise", $body);
 ?>
 ```
 
@@ -9062,7 +9062,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/glip/data-export");
+$r = $platform->post("/restapi/v1.0/glip/data-export", $body);
 ?>
 ```
 
@@ -9118,7 +9118,7 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/message-store-report");
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/message-store-report", $body);
 ?>
 ```
 
