@@ -9,11 +9,12 @@ const extensionId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            extensionId: '<ENTER VALUE>',
+            contactId: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

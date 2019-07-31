@@ -8,11 +8,30 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            chassisId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

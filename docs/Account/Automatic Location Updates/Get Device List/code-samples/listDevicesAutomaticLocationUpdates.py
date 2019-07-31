@@ -1,6 +1,21 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'siteId': '<ENTER VALUE>',
+    #'featureEnabled': true,
+    #'model': '<ENTER VALUE>',
+    #'compatibleOnly': true,
+    #'searchString': '<ENTER VALUE>',
+    #'orderBy': 'name',
+    #'perPage': 000,
+    #'page': '1'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

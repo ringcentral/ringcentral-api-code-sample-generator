@@ -8,18 +8,15 @@ const id = '<ENTER VALUE>';
 const body = {
     Operations: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            op: 'add',
+            path: '<ENTER VALUE>',
+            value: '<ENTER VALUE>'
+        },
     ],
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:api:messages:2.0:PatchOp',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

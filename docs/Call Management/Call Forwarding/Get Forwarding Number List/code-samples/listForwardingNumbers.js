@@ -7,8 +7,8 @@ const extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');

@@ -9,12 +9,11 @@ const body = {
     status: 'Incomplete',
     assignees: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     completenessPercentage: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

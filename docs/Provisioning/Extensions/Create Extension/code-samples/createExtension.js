@@ -32,15 +32,15 @@ const body = {
     password: '<ENTER VALUE>',
     references: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            ref: '<ENTER VALUE>',
+            type: 'PartnerId'
+        },
     ],
     roles: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        },
     ],
     regionalSettings: {
         homeCountry: {
@@ -85,7 +85,7 @@ const body = {
     },
     type: 'User',
     hidden: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

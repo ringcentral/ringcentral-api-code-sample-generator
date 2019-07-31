@@ -1,6 +1,26 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+groupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'creatorId': '<ENTER VALUE>',
+    'title': '<ENTER VALUE>',
+    'startTime': '<ENTER VALUE>',
+    'endTime': '<ENTER VALUE>',
+    'allDay': true,
+    'recurrence': 'None',
+    'endingCondition': '<ENTER VALUE>',
+    'endingAfter': 000,
+    'endingOn': 'None',
+    'color': 'Black',
+    'location': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

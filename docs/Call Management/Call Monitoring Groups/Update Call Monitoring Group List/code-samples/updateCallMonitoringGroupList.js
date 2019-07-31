@@ -9,11 +9,13 @@ const groupId = '<ENTER VALUE>';
 const body = {
     updatedExtensions: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            permissions: [
+                'Monitoring',
+            ]
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

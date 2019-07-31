@@ -1,6 +1,28 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'from': {
+        'phoneNumber': '<ENTER VALUE>',
+        'forwardingNumberId': '<ENTER VALUE>'
+    },
+    'to': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'callerId': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'playPrompt': true,
+    'country': {
+        'id': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

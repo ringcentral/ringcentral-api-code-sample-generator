@@ -8,28 +8,20 @@ const extensionId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     emailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     smsEmailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     advancedMode: true,
     voicemails: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         includeAttachment: true,
         markAsRead: true
@@ -38,14 +30,10 @@ const body = {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         includeAttachment: true,
         markAsRead: true
@@ -54,45 +42,33 @@ const body = {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     },
     inboundTexts: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     },
     missedCalls: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

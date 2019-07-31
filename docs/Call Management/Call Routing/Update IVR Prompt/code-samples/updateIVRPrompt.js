@@ -8,7 +8,7 @@ const promptId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     filename: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

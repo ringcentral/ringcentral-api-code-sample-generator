@@ -9,9 +9,8 @@ const body = {
     subject: '<ENTER VALUE>',
     assignees: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     completenessCondition: 'Simple',
     startDate: '<ENTER VALUE>',
@@ -27,11 +26,10 @@ const body = {
     },
     attachments: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

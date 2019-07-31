@@ -7,70 +7,69 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     name: '<ENTER VALUE>',
-    enabled: true,
+    enabled: 'true',
     type: 'BusinessHours',
     callers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            callerId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
     ],
     calledNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     schedule: {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         },
         ranges: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                from: '<ENTER VALUE>',
+                to: '<ENTER VALUE>'
+            },
         ],
         ref: 'BusinessHours'
     },
@@ -81,11 +80,16 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'Introductory',
+            usageType: 'UserExtensionAnsweringRule',
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

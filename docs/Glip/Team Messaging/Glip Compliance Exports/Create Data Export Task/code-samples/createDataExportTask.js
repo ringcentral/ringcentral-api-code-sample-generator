@@ -6,16 +6,12 @@ const body = {
     dateFrom: '<ENTER VALUE>',
     dateTo: '<ENTER VALUE>',
     userIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     chatIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

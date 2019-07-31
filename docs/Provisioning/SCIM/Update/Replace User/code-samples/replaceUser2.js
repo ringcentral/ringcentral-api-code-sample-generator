@@ -9,17 +9,19 @@ const body = {
     active: true,
     addresses: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            country: '<ENTER VALUE>',
+            locality: '<ENTER VALUE>',
+            postalCode: '<ENTER VALUE>',
+            region: '<ENTER VALUE>',
+            streetAddress: '<ENTER VALUE>',
+            type: 'work'
+        },
     ],
     emails: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     externalId: '<ENTER VALUE>',
     id: '<ENTER VALUE>',
@@ -29,29 +31,24 @@ const body = {
     },
     phoneNumbers: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     photos: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'photo',
+            value: '<ENTER VALUE>'
+        },
     ],
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:schemas:core:2.0:User',
     ],
     urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
         department: '<ENTER VALUE>'
     },
     userName: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

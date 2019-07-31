@@ -14,12 +14,10 @@ const body = {
     text: '<ENTER VALUE>',
     to: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            extensionId: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

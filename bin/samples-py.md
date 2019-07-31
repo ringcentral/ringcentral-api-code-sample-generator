@@ -19,7 +19,6 @@ r = platform.get('/restapi')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetVersionsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersions) in API Explorer.
@@ -32,6 +31,9 @@ HTTP get `/restapi/{apiVersion}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+apiVersion = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -41,7 +43,6 @@ r = platform.get(f'/restapi/{apiVersion}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetVersionResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersion) in API Explorer.
@@ -74,6 +75,29 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'extensionNumber': '<ENTER VALUE>',
+    #'showBlocked': 'true',
+    #'phoneNumber': '<ENTER VALUE>',
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'sessionId': '<ENTER VALUE>',
+    #'type': [ 'Voice', 'Fax' ],
+    #'transport': [ 'PSTN', 'VoIP' ],
+    #'view': 'Simple',
+    #'withRecording': true,
+    #'recordingType': 'Automatic',
+    #'dateTo': '<ENTER VALUE>',
+    #'dateFrom': '<ENTER VALUE>',
+    #'page': '1',
+    #'perPage': '100',
+    #'showDeleted': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -83,7 +107,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserCallLogResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallLog) in API Explorer.
@@ -95,6 +118,20 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'dateTo': '<ENTER VALUE>',
+    #'phoneNumber': '<ENTER VALUE>',
+    #'extensionNumber': '<ENTER VALUE>',
+    #'type': [ 'Voice', 'Fax' ],
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'dateFrom': '<ENTER VALUE>'
+}
 
 import os
 from ringcentral import SDK
@@ -116,6 +153,21 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log-syn
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'syncType': [ 'FSync', 'ISync' ],
+    #'syncToken': '<ENTER VALUE>',
+    #'dateFrom': '<ENTER VALUE>',
+    #'recordCount': 000,
+    #'statusGroup': [ 'Missed', 'All' ],
+    #'view': 'Simple',
+    #'showDeleted': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -125,7 +177,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallLogSync.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/syncUserCallLog) in API Explorer.
@@ -138,6 +189,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{ca
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+callRecordId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'view': 'Simple'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -147,7 +208,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserCallLogRecord.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallRecord) in API Explorer.
@@ -160,6 +220,19 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/active-calls
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'view': 'Simple',
+    #'type': [ 'Voice', 'Fax' ],
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -169,7 +242,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/act
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listExtensionActiveCalls) in API Explorer.
@@ -182,6 +254,25 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-log`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'extensionNumber': '<ENTER VALUE>',
+    #'phoneNumber': '<ENTER VALUE>',
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'type': [ 'Voice', 'Fax' ],
+    #'view': 'Simple',
+    #'withRecording': true,
+    #'recordingType': 'Automatic',
+    #'dateFrom': '<ENTER VALUE>',
+    #'dateTo': '<ENTER VALUE>',
+    #'page': '1',
+    #'perPage': '100',
+    #'sessionId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -191,7 +282,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-log')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AccountCallLogResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallLog) in API Explorer.
@@ -204,6 +294,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-log/{callRecordId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+callRecordId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -213,7 +307,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-log/{callRecordId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyCallLogRecord.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallRecord) in API Explorer.
@@ -226,6 +319,19 @@ HTTP get `/restapi/v1.0/account/{accountId}/active-calls`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'view': 'Simple',
+    #'type': [ 'Voice', 'Fax' ],
+    #'transport': [ 'PSTN', 'VoIP' ],
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -235,7 +341,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/active-calls')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listCompanyActiveCalls) in API Explorer.
@@ -248,6 +353,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+recordingId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -257,7 +366,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/recording/{recordingId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetCallRecordingResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Recordings/readCallRecording) in API Explorer.
@@ -269,6 +377,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}/content`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+recordingId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -290,6 +402,23 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/sms`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'from': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'to': [
+        {
+            'phoneNumber': '<ENTER VALUE>'
+        }
+    ],
+    'text': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -299,7 +428,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/sm
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SMS/createSMSMessage) in API Explorer.
@@ -312,6 +440,24 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/company-pag
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'from': {
+        'extensionId': '<ENTER VALUE>'
+    },
+    'replyOn': 000,
+    'text': '<ENTER VALUE>',
+    'to': [
+        {
+            'extensionId': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -321,7 +467,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/co
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Pager-Messages/createInternalTextMessage) in API Explorer.
@@ -334,6 +479,10 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -343,7 +492,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fa
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/FaxResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Fax/createFaxMessage) in API Explorer.
@@ -356,6 +504,12 @@ HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -365,7 +519,6 @@ r = platform.get('/restapi/v1.0/dictionary/fax-cover-page')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ListFaxCoverPagesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Fax/listFaxCoverPages) in API Explorer.
@@ -378,6 +531,25 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-stor
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'availability': [ 'Alive', 'Deleted', 'Purged' ],
+    #'conversationId': 000,
+    #'dateFrom': '<ENTER VALUE>',
+    #'dateTo': '<ENTER VALUE>',
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'distinctConversations': true,
+    #'messageType': [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
+    #'readStatus': [ 'Read', 'Unread' ],
+    #'page': '1',
+    #'perPage': '100',
+    #'phoneNumber': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -387,7 +559,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mes
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/listMessages) in API Explorer.
@@ -399,6 +570,17 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-s
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'conversationId': [ string ],
+    #'dateTo': '<ENTER VALUE>',
+    #'type': 'All'
+}
 
 import os
 from ringcentral import SDK
@@ -420,6 +602,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-stor
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+messageId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -429,7 +616,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mes
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessage) in API Explorer.
@@ -442,6 +628,16 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-stor
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+messageId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'readStatus': 'Read'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -451,7 +647,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mes
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessage) in API Explorer.
@@ -463,6 +658,17 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-s
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+messageId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'purge': true,
+    #'conversationId': 000
+}
 
 import os
 from ringcentral import SDK
@@ -484,6 +690,17 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-stor
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+attachmentId = '<ENTER VALUE>'
+messageId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'contentDisposition': 'Inline'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -504,6 +721,23 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-sync
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'conversationId': 000,
+    #'dateFrom': '<ENTER VALUE>',
+    #'dateTo': '<ENTER VALUE>',
+    #'direction': [ 'Inbound', 'Outbound' ],
+    #'distinctConversations': true,
+    #'messageType': [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
+    #'recordCount': 000,
+    #'syncToken': '<ENTER VALUE>',
+    #'syncType': [ 'FSync', 'ISync' ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -513,7 +747,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mes
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetMessageSyncResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/syncMessages) in API Explorer.
@@ -526,6 +759,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/message-store-configuration`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -535,7 +771,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/message-store-configuration
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessageStoreConfiguration) in API Explorer.
@@ -548,6 +783,14 @@ HTTP put `/restapi/v1.0/account/{accountId}/message-store-configuration`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'retentionPeriod': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -557,7 +800,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/message-store-configuration
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessageStoreConfiguration) in API Explorer.
@@ -570,6 +812,28 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'from': {
+        'phoneNumber': '<ENTER VALUE>',
+        'forwardingNumberId': '<ENTER VALUE>'
+    },
+    'to': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'callerId': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'playPrompt': true,
+    'country': {
+        'id': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -579,7 +843,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ri
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/RingOut/createRingOutCall) in API Explorer.
@@ -592,6 +855,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/{ri
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+ringoutId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -601,7 +869,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/rin
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/RingOut/readRingOutCallStatus) in API Explorer.
@@ -613,6 +880,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+ringoutId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -634,6 +906,19 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'startsWith': '<ENTER VALUE>',
+    #'sortBy': [ 'FirstName', 'LastName', 'Company' ],
+    #'page': '1',
+    #'perPage': '100',
+    #'phoneNumber': [ string ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -643,7 +928,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/add
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listContacts) in API Explorer.
@@ -656,6 +940,61 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-boo
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'dialingPlan': '<ENTER VALUE>'
+}
+
+# POST BODY
+body = {
+    'firstName': '<ENTER VALUE>',
+    'lastName': '<ENTER VALUE>',
+    'middleName': '<ENTER VALUE>',
+    'nickName': '<ENTER VALUE>',
+    'company': '<ENTER VALUE>',
+    'jobTitle': '<ENTER VALUE>',
+    'email': '<ENTER VALUE>',
+    'email2': '<ENTER VALUE>',
+    'email3': '<ENTER VALUE>',
+    'birthday': '<ENTER VALUE>',
+    'webPage': '<ENTER VALUE>',
+    'notes': '<ENTER VALUE>',
+    'homePhone': '<ENTER VALUE>',
+    'homePhone2': '<ENTER VALUE>',
+    'businessPhone': '<ENTER VALUE>',
+    'businessPhone2': '<ENTER VALUE>',
+    'mobilePhone': '<ENTER VALUE>',
+    'businessFax': '<ENTER VALUE>',
+    'companyPhone': '<ENTER VALUE>',
+    'assistantPhone': '<ENTER VALUE>',
+    'carPhone': '<ENTER VALUE>',
+    'otherPhone': '<ENTER VALUE>',
+    'otherFax': '<ENTER VALUE>',
+    'callbackPhone': '<ENTER VALUE>',
+    'homeAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    },
+    'businessAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    },
+    'otherAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -665,7 +1004,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ad
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/createContact) in API Explorer.
@@ -678,6 +1016,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+contactId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -687,7 +1030,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/add
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/readContact) in API Explorer.
@@ -700,6 +1042,62 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+contactId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'dialingPlan': '<ENTER VALUE>'
+}
+
+# POST BODY
+body = {
+    'firstName': '<ENTER VALUE>',
+    'lastName': '<ENTER VALUE>',
+    'middleName': '<ENTER VALUE>',
+    'nickName': '<ENTER VALUE>',
+    'company': '<ENTER VALUE>',
+    'jobTitle': '<ENTER VALUE>',
+    'email': '<ENTER VALUE>',
+    'email2': '<ENTER VALUE>',
+    'email3': '<ENTER VALUE>',
+    'birthday': '<ENTER VALUE>',
+    'webPage': '<ENTER VALUE>',
+    'notes': '<ENTER VALUE>',
+    'homePhone': '<ENTER VALUE>',
+    'homePhone2': '<ENTER VALUE>',
+    'businessPhone': '<ENTER VALUE>',
+    'businessPhone2': '<ENTER VALUE>',
+    'mobilePhone': '<ENTER VALUE>',
+    'businessFax': '<ENTER VALUE>',
+    'companyPhone': '<ENTER VALUE>',
+    'assistantPhone': '<ENTER VALUE>',
+    'carPhone': '<ENTER VALUE>',
+    'otherPhone': '<ENTER VALUE>',
+    'otherFax': '<ENTER VALUE>',
+    'callbackPhone': '<ENTER VALUE>',
+    'homeAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    },
+    'businessAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    },
+    'otherAddress': {
+        'street': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -709,7 +1107,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/add
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateContact) in API Explorer.
@@ -721,6 +1118,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-b
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+contactId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -742,6 +1144,18 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'syncType': [ 'FSync', 'ISync' ],
+    #'syncToken': '<ENTER VALUE>',
+    #'perPage': 000,
+    #'pageId': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -751,7 +1165,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/add
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AddressBookSync.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/syncAddressBook) in API Explorer.
@@ -764,6 +1177,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -773,7 +1190,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fav
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listFavoriteContacts) in API Explorer.
@@ -786,6 +1202,21 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'id': '<ENTER VALUE>',
+            'extensionId': '<ENTER VALUE>',
+            'contactId': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -795,7 +1226,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fav
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateFavoriteContactList) in API Explorer.
@@ -808,6 +1238,25 @@ HTTP post `/restapi/v1.0/account/{accountId}/directory/entries/search`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'searchString': '<ENTER VALUE>',
+    'showFederated': 'true',
+    'extensionType': 'User',
+    'orderBy': [
+        {
+            'index': 000,
+            'fieldName': 'firstName',
+            'direction': 'Asc'
+        }
+    ],
+    'page': 000,
+    'perPage': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -817,7 +1266,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/directory/entries/search')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/searchDirectoryEntries) in API Explorer.
@@ -830,6 +1278,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/directory/entries/{entryId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+entryId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -839,7 +1291,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/directory/entries/{entryId}
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readDirectoryEntry) in API Explorer.
@@ -852,6 +1303,18 @@ HTTP get `/restapi/v1.0/account/{accountId}/directory/entries`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'showFederated': 'true',
+    #'type': 'User',
+    #'page': '1',
+    #'perPage': '1000',
+    #'siteId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -861,7 +1324,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/directory/entries')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/listDirectoryEntries) in API Explorer.
@@ -874,6 +1336,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/directory/federation`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -883,7 +1348,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/directory/federation')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/FederationResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readAccountFederation) in API Explorer.
@@ -896,6 +1360,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'detailedTelephonyState': true,
+    #'sipData': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -905,7 +1379,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/pre
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetPresenceInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/readUserPresenceStatus) in API Explorer.
@@ -918,6 +1391,42 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'userStatus': 'Offline',
+    'dndStatus': 'TakeAllCalls',
+    'message': '<ENTER VALUE>',
+    'allowSeeMyPresence': true,
+    'ringOnMonitoredCall': true,
+    'pickUpCallsOnHold': true,
+    'activeCalls': [
+        {
+            'id': '<ENTER VALUE>',
+            'direction': 'Inbound',
+            'from': '<ENTER VALUE>',
+            'fromName': '<ENTER VALUE>',
+            'to': '<ENTER VALUE>',
+            'toName': '<ENTER VALUE>',
+            'startTime': '<ENTER VALUE>',
+            'telephonyStatus': '<ENTER VALUE>',
+            'sipData': {
+                'callId': '<ENTER VALUE>',
+                'toTag': '<ENTER VALUE>',
+                'fromTag': '<ENTER VALUE>',
+                'remoteUri': '<ENTER VALUE>',
+                'localUri': '<ENTER VALUE>',
+                'rcSessionId': '<ENTER VALUE>'
+            },
+            'sessionId': '<ENTER VALUE>',
+            'terminationType': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -927,7 +1436,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/pre
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PresenceInfoResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/updateUserPresenceStatus) in API Explorer.
@@ -940,6 +1448,17 @@ HTTP get `/restapi/v1.0/account/{accountId}/presence`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'detailedTelephonyState': true,
+    #'sipData': true,
+    #'page': 000,
+    #'perPage': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -949,7 +1468,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/presence')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AccountPresenceInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/readAccountPresence) in API Explorer.
@@ -962,6 +1480,13 @@ HTTP get `/restapi/v1.0/glip/chats`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'type': [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
+    #'recordCount': '30',
+    #'pageToken': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -971,7 +1496,6 @@ r = platform.get('/restapi/v1.0/glip/chats')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipChatsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listGlipChats) in API Explorer.
@@ -984,6 +1508,9 @@ HTTP get `/restapi/v1.0/glip/chats/{chatId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -993,7 +1520,6 @@ r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipChatInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/readGlipChat) in API Explorer.
@@ -1006,6 +1532,12 @@ HTTP get `/restapi/v1.0/glip/conversations`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'recordCount': '30',
+    #'pageToken': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1015,7 +1547,6 @@ r = platform.get('/restapi/v1.0/glip/conversations')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipConversationsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/listGlipConversations) in API Explorer.
@@ -1028,6 +1559,16 @@ HTTP post `/restapi/v1.0/glip/conversations`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'members': [
+        {
+            'id': '<ENTER VALUE>',
+            'email': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1037,7 +1578,6 @@ r = platform.post('/restapi/v1.0/glip/conversations')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/createGlipConversation) in API Explorer.
@@ -1050,6 +1590,9 @@ HTTP get `/restapi/v1.0/glip/conversations/{chatId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1059,7 +1602,6 @@ r = platform.get(f'/restapi/v1.0/glip/conversations/{chatId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/readGlipConversation) in API Explorer.
@@ -1072,6 +1614,12 @@ HTTP get `/restapi/v1.0/glip/teams`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'recordCount': '30',
+    #'pageToken': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1081,7 +1629,6 @@ r = platform.get('/restapi/v1.0/glip/teams')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipTeamsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/listGlipTeams) in API Explorer.
@@ -1094,6 +1641,19 @@ HTTP post `/restapi/v1.0/glip/teams`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'public': true,
+    'name': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>',
+    'members': [
+        {
+            'id': '<ENTER VALUE>',
+            'email': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1103,7 +1663,6 @@ r = platform.post('/restapi/v1.0/glip/teams')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/createGlipTeam) in API Explorer.
@@ -1116,6 +1675,9 @@ HTTP get `/restapi/v1.0/glip/teams/{chatId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1125,7 +1687,6 @@ r = platform.get(f'/restapi/v1.0/glip/teams/{chatId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipTeam) in API Explorer.
@@ -1138,6 +1699,16 @@ HTTP patch `/restapi/v1.0/glip/teams/{chatId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'public': true,
+    'name': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1147,7 +1718,6 @@ r = platform.patch(f'/restapi/v1.0/glip/teams/{chatId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipTeam) in API Explorer.
@@ -1159,6 +1729,9 @@ HTTP delete `/restapi/v1.0/glip/teams/{chatId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1180,6 +1753,9 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/join`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1199,6 +1775,9 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/leave`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1220,6 +1799,19 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/add`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'members': [
+        {
+            'id': '<ENTER VALUE>',
+            'email': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1239,6 +1831,18 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/remove`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'members': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -1260,6 +1864,9 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/archive`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1279,6 +1886,9 @@ HTTP post `/restapi/v1.0/glip/teams/{chatId}/unarchive`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1309,7 +1919,6 @@ r = platform.get('/restapi/v1.0/glip/everyone')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipEveryone) in API Explorer.
@@ -1322,6 +1931,12 @@ HTTP patch `/restapi/v1.0/glip/everyone`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'name': 000,
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1331,7 +1946,6 @@ r = platform.patch('/restapi/v1.0/glip/everyone')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipEveryone) in API Explorer.
@@ -1344,6 +1958,12 @@ HTTP get `/restapi/v1.0/glip/recent/chats`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'type': [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
+    #'recordCount': '30'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1353,7 +1973,6 @@ r = platform.get('/restapi/v1.0/glip/recent/chats')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listRecentChats) in API Explorer.
@@ -1366,6 +1985,11 @@ HTTP get `/restapi/v1.0/glip/favorites`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'recordCount': '30'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1375,7 +1999,6 @@ r = platform.get('/restapi/v1.0/glip/favorites')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listFavoriteChats) in API Explorer.
@@ -1387,6 +2010,9 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/favorite`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1408,6 +2034,9 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/unfavorite`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1427,6 +2056,9 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/read`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1448,6 +2080,9 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/unread`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1468,6 +2103,10 @@ HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+postId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1477,7 +2116,6 @@ r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/posts/{postId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPost) in API Explorer.
@@ -1490,6 +2128,15 @@ HTTP patch `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+postId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'text': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1499,7 +2146,6 @@ r = platform.patch(f'/restapi/v1.0/glip/chats/{chatId}/posts/{postId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/patchGlipPost) in API Explorer.
@@ -1511,6 +2157,10 @@ HTTP delete `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+postId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1532,6 +2182,15 @@ HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'recordCount': '30',
+    #'pageToken': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1541,7 +2200,6 @@ r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/posts')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPostsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPosts) in API Explorer.
@@ -1554,6 +2212,20 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/posts`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'text': '<ENTER VALUE>',
+    'attachments': [
+        {
+            'id': '<ENTER VALUE>',
+            'type': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1563,7 +2235,6 @@ r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/posts')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/createGlipPost) in API Explorer.
@@ -1576,6 +2247,12 @@ HTTP get `/restapi/v1.0/glip/events`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'recordCount': '30',
+    #'pageToken': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1585,7 +2262,6 @@ r = platform.get('/restapi/v1.0/glip/events')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventsInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readGlipEvents) in API Explorer.
@@ -1598,6 +2274,23 @@ HTTP post `/restapi/v1.0/glip/events`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'creatorId': '<ENTER VALUE>',
+    'title': '<ENTER VALUE>',
+    'startTime': '<ENTER VALUE>',
+    'endTime': '<ENTER VALUE>',
+    'allDay': true,
+    'recurrence': 'None',
+    'endingCondition': '<ENTER VALUE>',
+    'endingAfter': 000,
+    'endingOn': 'None',
+    'color': 'Black',
+    'location': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1607,7 +2300,6 @@ r = platform.post('/restapi/v1.0/glip/events')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEvent) in API Explorer.
@@ -1620,6 +2312,9 @@ HTTP get `/restapi/v1.0/glip/events/{eventId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+eventId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1629,7 +2324,6 @@ r = platform.get(f'/restapi/v1.0/glip/events/{eventId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readEvent) in API Explorer.
@@ -1642,6 +2336,26 @@ HTTP put `/restapi/v1.0/glip/events/{eventId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+eventId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'creatorId': '<ENTER VALUE>',
+    'title': '<ENTER VALUE>',
+    'startTime': '<ENTER VALUE>',
+    'endTime': '<ENTER VALUE>',
+    'allDay': true,
+    'recurrence': 'None',
+    'endingCondition': '<ENTER VALUE>',
+    'endingAfter': 000,
+    'endingOn': 'None',
+    'color': 'Black',
+    'location': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1651,7 +2365,6 @@ r = platform.put(f'/restapi/v1.0/glip/events/{eventId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/updateEvent) in API Explorer.
@@ -1663,6 +2376,9 @@ HTTP delete `/restapi/v1.0/glip/events/{eventId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+eventId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1684,6 +2400,26 @@ HTTP post `/restapi/v1.0/glip/groups/{groupId}/events`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+groupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'creatorId': '<ENTER VALUE>',
+    'title': '<ENTER VALUE>',
+    'startTime': '<ENTER VALUE>',
+    'endTime': '<ENTER VALUE>',
+    'allDay': true,
+    'recurrence': 'None',
+    'endingCondition': '<ENTER VALUE>',
+    'endingAfter': 000,
+    'endingOn': 'None',
+    'color': 'Black',
+    'location': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1693,7 +2429,6 @@ r = platform.post(f'/restapi/v1.0/glip/groups/{groupId}/events')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEventbyGroupId) in API Explorer.
@@ -1706,6 +2441,9 @@ HTTP get `/restapi/v1.0/glip/groups/{groupId}/events`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+groupId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1715,7 +2453,6 @@ r = platform.get(f'/restapi/v1.0/glip/groups/{groupId}/events')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/listGroupEvents) in API Explorer.
@@ -1728,6 +2465,22 @@ HTTP get `/restapi/v1.0/glip/chats/{chatId}/tasks`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'creationTimeTo': 'now',
+    #'creationTimeFrom': '<ENTER VALUE>',
+    #'creatorId': [ string ],
+    #'status': [ 'Pending', 'InProgress', 'Completed' ],
+    #'assignmentStatus': 'Unassigned',
+    #'assigneeId': [ string ],
+    #'assigneeStatus': 'Pending',
+    #'pageToken': '<ENTER VALUE>',
+    #'recordCount': '30'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1737,7 +2490,6 @@ r = platform.get(f'/restapi/v1.0/glip/chats/{chatId}/tasks')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/listChatTasks) in API Explorer.
@@ -1750,6 +2502,36 @@ HTTP post `/restapi/v1.0/glip/chats/{chatId}/tasks`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+chatId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'subject': '<ENTER VALUE>',
+    'assignees': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'completenessCondition': 'Simple',
+    'startDate': '<ENTER VALUE>',
+    'dueDate': '<ENTER VALUE>',
+    'color': 'Black',
+    'section': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>',
+    'recurrence': {
+        'schedule': 'None',
+        'endingCondition': 'None',
+        'endingAfter': 000,
+        'endingOn': '<ENTER VALUE>'
+    },
+    'attachments': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1759,7 +2541,6 @@ r = platform.post(f'/restapi/v1.0/glip/chats/{chatId}/tasks')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/createTask) in API Explorer.
@@ -1772,6 +2553,9 @@ HTTP get `/restapi/v1.0/glip/tasks/{taskId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1781,7 +2565,6 @@ r = platform.get(f'/restapi/v1.0/glip/tasks/{taskId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/readTask) in API Explorer.
@@ -1794,6 +2577,36 @@ HTTP patch `/restapi/v1.0/glip/tasks/{taskId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'subject': '<ENTER VALUE>',
+    'assignees': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'completenessCondition': 'Simple',
+    'startDate': '<ENTER VALUE>',
+    'dueDate': '<ENTER VALUE>',
+    'color': 'Black',
+    'section': '<ENTER VALUE>',
+    'description': '<ENTER VALUE>',
+    'recurrence': {
+        'schedule': 'None',
+        'endingCondition': 'None',
+        'endingAfter': 000,
+        'endingOn': '<ENTER VALUE>'
+    },
+    'attachments': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1803,7 +2616,6 @@ r = platform.patch(f'/restapi/v1.0/glip/tasks/{taskId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/patchTask) in API Explorer.
@@ -1815,6 +2627,9 @@ HTTP delete `/restapi/v1.0/glip/tasks/{taskId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -1836,6 +2651,20 @@ HTTP post `/restapi/v1.0/glip/tasks/{taskId}/complete`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'status': 'Incomplete',
+    'assignees': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'completenessPercentage': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1845,7 +2674,6 @@ r = platform.post(f'/restapi/v1.0/glip/tasks/{taskId}/complete')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/completeTask) in API Explorer.
@@ -1858,6 +2686,9 @@ HTTP get `/restapi/v1.0/glip/persons/{personId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+personId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1867,7 +2698,6 @@ r = platform.get(f'/restapi/v1.0/glip/persons/{personId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPersonInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPerson) in API Explorer.
@@ -1880,6 +2710,9 @@ HTTP get `/restapi/v1.0/glip/companies/{companyId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+companyId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1889,7 +2722,6 @@ r = platform.get(f'/restapi/v1.0/glip/companies/{companyId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipCompany.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipCompany) in API Explorer.
@@ -1902,6 +2734,9 @@ HTTP post `/restapi/v1.0/glip/groups/{groupId}/webhooks`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+groupId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1911,7 +2746,6 @@ r = platform.post(f'/restapi/v1.0/glip/groups/{groupId}/webhooks')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/createGlipGroupWebhook) in API Explorer.
@@ -1924,6 +2758,9 @@ HTTP get `/restapi/v1.0/glip/groups/{groupId}/webhooks`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+groupId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1933,7 +2770,6 @@ r = platform.get(f'/restapi/v1.0/glip/groups/{groupId}/webhooks')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipGroupWebhooks) in API Explorer.
@@ -1955,7 +2791,6 @@ r = platform.get('/restapi/v1.0/glip/webhooks')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipWebhooks) in API Explorer.
@@ -1968,6 +2803,9 @@ HTTP get `/restapi/v1.0/glip/webhooks/{webhookId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+webhookId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -1977,7 +2815,6 @@ r = platform.get(f'/restapi/v1.0/glip/webhooks/{webhookId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/readGlipWebhook) in API Explorer.
@@ -1989,6 +2826,9 @@ HTTP delete `/restapi/v1.0/glip/webhooks/{webhookId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+webhookId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2010,6 +2850,9 @@ HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/activate`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+webhookId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2029,6 +2872,9 @@ HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/suspend`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+webhookId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2059,7 +2905,6 @@ r = platform.get('/restapi/v1.0/glip/preferences')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GlipPreferencesInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPreferences) in API Explorer.
@@ -2072,6 +2917,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2081,7 +2930,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MeetingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/listMeetings) in API Explorer.
@@ -2094,6 +2942,37 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'topic': '<ENTER VALUE>',
+    'meetingType': '<ENTER VALUE>',
+    'schedule': {
+        'startTime': '<ENTER VALUE>',
+        'durationInMinutes': 000,
+        'timeZone': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'description': '<ENTER VALUE>'
+        }
+    },
+    'password': '<ENTER VALUE>',
+    'host': {
+        'id': '<ENTER VALUE>'
+    },
+    'allowJoinBeforeHost': true,
+    'startHostVideo': true,
+    'startParticipantsVideo': true,
+    'usePersonalMeetingId': true,
+    'audioOptions': [
+        '<ENTER VALUE>'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2103,7 +2982,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/me
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/createMeeting) in API Explorer.
@@ -2116,6 +2994,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{mee
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+meetingId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2125,7 +3008,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/readMeeting) in API Explorer.
@@ -2138,6 +3020,38 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{mee
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+meetingId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'topic': '<ENTER VALUE>',
+    'meetingType': '<ENTER VALUE>',
+    'schedule': {
+        'startTime': '<ENTER VALUE>',
+        'durationInMinutes': 000,
+        'timeZone': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'description': '<ENTER VALUE>'
+        }
+    },
+    'password': '<ENTER VALUE>',
+    'host': {
+        'id': '<ENTER VALUE>'
+    },
+    'allowJoinBeforeHost': true,
+    'startHostVideo': true,
+    'startParticipantsVideo': true,
+    'usePersonalMeetingId': true,
+    'audioOptions': [
+        '<ENTER VALUE>'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2147,7 +3061,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/updateMeeting) in API Explorer.
@@ -2159,6 +3072,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+meetingId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2180,6 +3098,11 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{me
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+meetingId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2200,6 +3123,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/serv
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2209,7 +3136,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MeetingServiceInfoResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readMeetingServiceInfo) in API Explorer.
@@ -2222,6 +3148,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-con
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2231,7 +3161,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AssistantsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistants) in API Explorer.
@@ -2244,6 +3173,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-con
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2253,7 +3186,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/mee
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AssistedUsersResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistedUsers) in API Explorer.
@@ -2275,7 +3207,6 @@ r = platform.get('/restapi/v1.0/subscription')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/RecordsCollectionResourceSubscriptionResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/listSubscriptions) in API Explorer.
@@ -2288,6 +3219,22 @@ HTTP post `/restapi/v1.0/subscription`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'eventFilters': [
+        '<ENTER VALUE>'
+    ],
+    'deliveryMode': {
+        'transportType': 'PubNub',
+        'address': '<ENTER VALUE>',
+        'encryption': true,
+        'certificateName': '<ENTER VALUE>',
+        'registrationId': '<ENTER VALUE>',
+        'verificationToken': '<ENTER VALUE>'
+    },
+    'expiresIn': '604800'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2297,7 +3244,6 @@ r = platform.post('/restapi/v1.0/subscription')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/createSubscription) in API Explorer.
@@ -2310,6 +3256,9 @@ HTTP get `/restapi/v1.0/subscription/{subscriptionId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+subscriptionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2319,7 +3268,6 @@ r = platform.get(f'/restapi/v1.0/subscription/{subscriptionId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/readSubscription) in API Explorer.
@@ -2332,6 +3280,30 @@ HTTP put `/restapi/v1.0/subscription/{subscriptionId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+subscriptionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'aggregated': true
+}
+
+# POST BODY
+body = {
+    'eventFilters': [
+        '<ENTER VALUE>'
+    ],
+    'deliveryMode': {
+        'transportType': 'PubNub',
+        'address': '<ENTER VALUE>',
+        'encryption': true,
+        'certificateName': '<ENTER VALUE>',
+        'registrationId': '<ENTER VALUE>',
+        'verificationToken': '<ENTER VALUE>'
+    },
+    'expiresIn': '604800'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2341,7 +3313,6 @@ r = platform.put(f'/restapi/v1.0/subscription/{subscriptionId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/updateSubscription) in API Explorer.
@@ -2353,6 +3324,9 @@ HTTP delete `/restapi/v1.0/subscription/{subscriptionId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+subscriptionId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2374,6 +3348,9 @@ HTTP post `/restapi/v1.0/subscription/{subscriptionId}/renew`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+subscriptionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2383,7 +3360,6 @@ r = platform.post(f'/restapi/v1.0/subscription/{subscriptionId}/renew')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/renewSubscription) in API Explorer.
@@ -2396,6 +3372,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profil
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2405,7 +3385,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/aut
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AuthProfileResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/readAuthorizationProfile) in API Explorer.
@@ -2418,6 +3397,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profil
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'permissionId': '<ENTER VALUE>',
+    #'targetExtensionId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2427,7 +3416,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/aut
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AuthProfileCheckResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/checkUserPermission) in API Explorer.
@@ -2440,6 +3428,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hou
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2449,7 +3441,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/bus
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetUserBusinessHoursResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readUserBusinessHours) in API Explorer.
@@ -2462,6 +3453,60 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hou
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        }
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2471,7 +3516,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/bus
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserBusinessHoursUpdateResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateUserBusinessHours) in API Explorer.
@@ -2484,6 +3528,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/business-hours`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2493,7 +3540,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/business-hours')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readCompanyBusinessHours) in API Explorer.
@@ -2506,6 +3552,59 @@ HTTP put `/restapi/v1.0/account/{accountId}/business-hours`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        }
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2515,7 +3614,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/business-hours')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateCompanyBusinessHours) in API Explorer.
@@ -2528,6 +3626,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-block
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2537,7 +3639,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readCallerBlockingSettings) in API Explorer.
@@ -2550,6 +3651,27 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-block
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'mode': 'Specific',
+    'noCallerId': 'BlockCallsAndFaxes',
+    'payPhones': 'Block',
+    'greetings': [
+        {
+            'type': '<ENTER VALUE>',
+            'preset': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2559,7 +3681,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateCallerBlockingSettings) in API Explorer.
@@ -2572,6 +3693,17 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-block
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': 000,
+    #'perPage': 000,
+    #'status': 'Blocked'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2581,7 +3713,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumbersList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/listBlockedAllowedNumbers) in API Explorer.
@@ -2594,6 +3725,17 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-bloc
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'label': '<ENTER VALUE>',
+    'status': 'Blocked'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2603,7 +3745,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ca
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/createBlockedAllowedNumber) in API Explorer.
@@ -2616,6 +3757,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-block
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+blockedNumberId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2625,7 +3771,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readBlockedAllowedNumber) in API Explorer.
@@ -2637,6 +3782,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-bl
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+blockedNumberId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2658,6 +3808,18 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-block
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+blockedNumberId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'label': '<ENTER VALUE>',
+    'status': 'Blocked'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2667,7 +3829,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateBlockedAllowedNumber) in API Explorer.
@@ -2680,6 +3841,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-n
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2689,7 +3860,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/for
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionForwardingNumberListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/listForwardingNumbers) in API Explorer.
@@ -2702,6 +3872,20 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'label': '<ENTER VALUE>',
+    'type': 'PhoneLine',
+    'device': {
+        'id': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2711,7 +3895,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fo
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/createForwardingNumber) in API Explorer.
@@ -2724,6 +3907,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-n
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+forwardingNumberId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2733,7 +3921,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/for
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/readForwardingNumber) in API Explorer.
@@ -2746,6 +3933,19 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-n
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+forwardingNumberId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'label': '<ENTER VALUE>',
+    'flipNumber': '<ENTER VALUE>',
+    'type': 'Home'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2755,7 +3955,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/for
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/updateForwardingNumber) in API Explorer.
@@ -2767,6 +3966,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwardin
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+forwardingNumberId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2788,6 +3992,18 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-ru
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'view': 'Simple',
+    #'enabledOnly': true,
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2797,7 +4013,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ans
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserAnsweringRuleList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listAnsweringRules) in API Explorer.
@@ -2810,6 +4025,156 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-r
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'enabled': true,
+    'type': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'callers': [
+        {
+            'callerId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        }
+    ],
+    'calledNumbers': [
+        {
+            'phoneNumber': '<ENTER VALUE>'
+        }
+    ],
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        },
+        'ranges': [
+            {
+                'from': '<ENTER VALUE>',
+                'to': '<ENTER VALUE>'
+            }
+        ],
+        'ref': 'BusinessHours'
+    },
+    'callHandlingAction': 'ForwardCalls',
+    'forwarding': {
+        'notifyMySoftPhones': true,
+        'notifyAdminSoftPhones': true,
+        'softPhonesRingCount': 000,
+        'ringingMode': 'Sequentially',
+        'rules': [
+            {
+                'index': 000,
+                'ringCount': 000,
+                'enabled': true,
+                'forwardingNumbers': [
+                    {
+                        'uri': '<ENTER VALUE>',
+                        'id': '<ENTER VALUE>',
+                        'phoneNumber': '<ENTER VALUE>',
+                        'label': '<ENTER VALUE>',
+                        'type': 'Home'
+                    }
+                ]
+            }
+        ],
+        'mobileTimeout': true
+    },
+    'unconditionalForwarding': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'queue': {
+        'transferMode': 'Rotating',
+        'fixedOrderAgents': [
+            {
+                'extension': {
+                    'id': '<ENTER VALUE>',
+                    'uri': '<ENTER VALUE>',
+                    'extensionNumber': '<ENTER VALUE>',
+                    'partnerId': '<ENTER VALUE>'
+                },
+                'index': 000
+            }
+        ],
+        'holdAudioInterruptionMode': 'Never',
+        'holdAudioInterruptionPeriod': 000,
+        'agentTimeout': 000,
+        'wrapUpTime': 000,
+        'holdTime': 000,
+        'maxCallers': 000,
+        'maxCallersAction': 'Voicemail'
+    },
+    'transfer': {
+        'extension': {
+            'id': '<ENTER VALUE>',
+            'uri': '<ENTER VALUE>',
+            'extensionNumber': '<ENTER VALUE>',
+            'partnerId': '<ENTER VALUE>'
+        }
+    },
+    'voicemail': {
+        'enabled': true,
+        'recipient': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>'
+        }
+    },
+    'greetings': [
+        {
+            'type': 'Introductory',
+            'usageType': 'UserExtensionAnsweringRule',
+            'preset': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            }
+        }
+    ],
+    'screening': 'Off'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2819,7 +4184,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/an
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createAnsweringRule) in API Explorer.
@@ -2832,6 +4196,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-ru
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'showInactiveNumbers': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2841,7 +4215,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ans
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readAnsweringRule) in API Explorer.
@@ -2854,6 +4227,146 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-ru
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'forwarding': {
+        'notifyMySoftPhones': true,
+        'notifyAdminSoftPhones': true,
+        'softPhonesRingCount': '1',
+        'ringingMode': 'Sequentially',
+        'rules': [
+            {
+                'index': 000,
+                'ringCount': 000,
+                'enabled': true,
+                'forwardingNumbers': [
+                    {
+                        'id': '<ENTER VALUE>',
+                        'type': 'Home'
+                    }
+                ]
+            }
+        ],
+        'mobileTimeout': true
+    },
+    'enabled': true,
+    'name': '<ENTER VALUE>',
+    'callers': [
+        {
+            'callerId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        }
+    ],
+    'calledNumbers': [
+        {
+            'phoneNumber': '<ENTER VALUE>'
+        }
+    ],
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        },
+        'ranges': [
+            {
+                'from': '<ENTER VALUE>',
+                'to': '<ENTER VALUE>'
+            }
+        ],
+        'ref': 'BusinessHours'
+    },
+    'callHandlingAction': 'ForwardCalls',
+    'unconditionalForwarding': {
+        'phoneNumber': '<ENTER VALUE>'
+    },
+    'queue': {
+        'transferMode': 'Rotating',
+        'fixedOrderAgents': [
+            {
+                'extension': {
+                    'id': '<ENTER VALUE>',
+                    'uri': '<ENTER VALUE>',
+                    'extensionNumber': '<ENTER VALUE>',
+                    'partnerId': '<ENTER VALUE>'
+                },
+                'index': 000
+            }
+        ],
+        'holdAudioInterruptionMode': 'Never',
+        'holdAudioInterruptionPeriod': 000,
+        'agentTimeout': 000,
+        'wrapUpTime': 000,
+        'holdTime': 000,
+        'maxCallers': 000,
+        'maxCallersAction': 'Voicemail'
+    },
+    'voicemail': {
+        'enabled': true,
+        'recipient': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>'
+        }
+    },
+    'greetings': [
+        {
+            'type': 'Introductory',
+            'usageType': 'UserExtensionAnsweringRule',
+            'preset': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            }
+        }
+    ],
+    'screening': 'Off',
+    'showInactiveNumbers': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2863,7 +4376,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/ans
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateAnsweringRule) in API Explorer.
@@ -2875,6 +4387,11 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -2896,6 +4413,96 @@ HTTP post `/restapi/v1.0/account/{accountId}/answering-rule`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'name': '<ENTER VALUE>',
+    'enabled': 'true',
+    'type': 'BusinessHours',
+    'callers': [
+        {
+            'callerId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        }
+    ],
+    'calledNumbers': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        },
+        'ranges': [
+            {
+                'from': '<ENTER VALUE>',
+                'to': '<ENTER VALUE>'
+            }
+        ],
+        'ref': 'BusinessHours'
+    },
+    'callHandlingAction': 'Operator',
+    'extension': {
+        'callerId': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'greetings': [
+        {
+            'type': 'Introductory',
+            'usageType': 'UserExtensionAnsweringRule',
+            'preset': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2905,7 +4512,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/answering-rule')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyAnsweringRule) in API Explorer.
@@ -2918,6 +4524,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/answering-rule`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2927,7 +4536,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/answering-rule')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCompanyAnsweringRules) in API Explorer.
@@ -2940,6 +4548,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2949,7 +4561,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCompanyAnsweringRule) in API Explorer.
@@ -2962,6 +4573,96 @@ HTTP put `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'enabled': 'true',
+    'name': '<ENTER VALUE>',
+    'callers': [
+        {
+            'callerId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        }
+    ],
+    'calledNumbers': [
+        {
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'schedule': {
+        'weeklyRanges': {
+            'monday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'tuesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'wednesday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'thursday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'friday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'saturday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ],
+            'sunday': [
+                {
+                    'from': '<ENTER VALUE>',
+                    'to': '<ENTER VALUE>'
+                }
+            ]
+        },
+        'ranges': [
+            {
+                'from': '<ENTER VALUE>',
+                'to': '<ENTER VALUE>'
+            }
+        ],
+        'ref': 'BusinessHours'
+    },
+    'callHandlingAction': 'Operator',
+    'extension': {
+        'callerId': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'greetings': [
+        {
+            'type': 'Introductory',
+            'usageType': 'UserExtensionAnsweringRule',
+            'preset': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -2971,7 +4672,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCompanyAnsweringRule) in API Explorer.
@@ -2983,6 +4683,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+ruleId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3004,6 +4708,14 @@ HTTP get `/restapi/v1.0/dictionary/greeting`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100',
+    #'type': 'Introductory',
+    #'usageType': 'UserExtensionAnsweringRule'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3013,7 +4725,6 @@ r = platform.get('/restapi/v1.0/dictionary/greeting')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DictionaryGreetingList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listStandardGreetings) in API Explorer.
@@ -3026,6 +4737,9 @@ HTTP get `/restapi/v1.0/dictionary/greeting/{greetingId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+greetingId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3035,7 +4749,6 @@ r = platform.get(f'/restapi/v1.0/dictionary/greeting/{greetingId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DictionaryGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readStandardGreeting) in API Explorer.
@@ -3048,6 +4761,9 @@ HTTP post `/restapi/v1.0/account/{accountId}/greeting`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3057,7 +4773,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/greeting')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CustomCompanyGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyGreeting) in API Explorer.
@@ -3070,6 +4785,10 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3079,7 +4798,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/gr
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCustomUserGreeting) in API Explorer.
@@ -3092,6 +4810,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting/{gr
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+greetingId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3101,7 +4824,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/gre
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCustomGreeting) in API Explorer.
@@ -3114,6 +4836,9 @@ HTTP post `/restapi/v1.0/account/{accountId}/ivr-prompts`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3123,7 +4848,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/ivr-prompts')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRPrompt) in API Explorer.
@@ -3136,6 +4860,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3145,7 +4872,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/ivr-prompts')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/IVRPrompts.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/listIVRPrompts) in API Explorer.
@@ -3158,6 +4884,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+promptId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3167,7 +4897,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRPrompt) in API Explorer.
@@ -3179,6 +4908,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+promptId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3200,6 +4933,15 @@ HTTP put `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+promptId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'filename': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3209,7 +4951,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRPrompt) in API Explorer.
@@ -3221,6 +4962,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}/content`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+promptId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3242,6 +4987,42 @@ HTTP post `/restapi/v1.0/account/{accountId}/ivr-menus`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'uri': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'extensionNumber': '<ENTER VALUE>',
+    'prompt': {
+        'mode': 'Audio',
+        'audio': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'localeCode': '<ENTER VALUE>'
+        },
+        'text': '<ENTER VALUE>',
+        'language': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>'
+        }
+    },
+    'actions': [
+        {
+            'input': '<ENTER VALUE>',
+            'action': 'Connect',
+            'extension': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>'
+            },
+            'phoneNumber': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3251,7 +5032,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/ivr-menus')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRMenu) in API Explorer.
@@ -3264,6 +5044,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+ivrMenuId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3273,7 +5057,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRMenu) in API Explorer.
@@ -3286,6 +5069,43 @@ HTTP put `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+ivrMenuId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'uri': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'extensionNumber': '<ENTER VALUE>',
+    'prompt': {
+        'mode': 'Audio',
+        'audio': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'localeCode': '<ENTER VALUE>'
+        },
+        'text': '<ENTER VALUE>',
+        'language': {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>'
+        }
+    },
+    'actions': [
+        {
+            'input': '<ENTER VALUE>',
+            'action': 'Connect',
+            'extension': {
+                'uri': '<ENTER VALUE>',
+                'id': '<ENTER VALUE>'
+            },
+            'phoneNumber': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3295,7 +5115,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRMenu) in API Explorer.
@@ -3308,6 +5127,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-recording`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3317,7 +5139,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-recording')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCallRecordingSettings) in API Explorer.
@@ -3330,6 +5151,29 @@ HTTP put `/restapi/v1.0/account/{accountId}/call-recording`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'onDemand': {
+        'enabled': true
+    },
+    'automatic': {
+        'enabled': true,
+        'outboundCallTones': true,
+        'outboundCallAnnouncement': true,
+        'allowMute': true,
+        'extensionCount': 000
+    },
+    'greetings': [
+        {
+            'type': 'StartRecording',
+            'mode': 'Default'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3339,7 +5183,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/call-recording')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCallRecordingSettings) in API Explorer.
@@ -3352,6 +5195,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-recording/extensions`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3361,7 +5207,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-recording/extensions')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallRecordingExtensions.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingExtensions) in API Explorer.
@@ -3373,6 +5218,34 @@ HTTP post `/restapi/v1.0/account/{accountId}/call-recording/bulk-assign`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'addedExtensions': {
+        'id': '<ENTER VALUE>',
+        'uri': '<ENTER VALUE>',
+        'extensionNumber': '<ENTER VALUE>',
+        'type': '<ENTER VALUE>',
+        'callDirection': 'Outbound'
+    },
+    'updatedExtensions': {
+        'id': '<ENTER VALUE>',
+        'uri': '<ENTER VALUE>',
+        'extensionNumber': '<ENTER VALUE>',
+        'type': '<ENTER VALUE>',
+        'callDirection': 'Outbound'
+    },
+    'removedExtensions': {
+        'id': '<ENTER VALUE>',
+        'uri': '<ENTER VALUE>',
+        'extensionNumber': '<ENTER VALUE>',
+        'type': '<ENTER VALUE>',
+        'callDirection': 'Outbound'
+    }
+}
 
 import os
 from ringcentral import SDK
@@ -3394,6 +5267,14 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'type': 'StartRecording'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3403,7 +5284,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-recording/custom-greet
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallRecordingCustomGreetings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingCustomGreetings) in API Explorer.
@@ -3415,6 +5295,9 @@ HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3436,6 +5319,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings/{
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+greetingId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3456,6 +5343,22 @@ HTTP post `/restapi/v1.0/client-info/sip-provision`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'device': [
+        {
+            'id': '<ENTER VALUE>',
+            'appExternalId': '<ENTER VALUE>',
+            'computerName': '<ENTER VALUE>'
+        }
+    ],
+    'sipInfo': [
+        {
+            'transport': 'UDP'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3465,7 +5368,6 @@ r = platform.post('/restapi/v1.0/client-info/sip-provision')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CreateSipRegistrationResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SIP/createSIPRegistration) in API Explorer.
@@ -3478,6 +5380,17 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/phone-number
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'usageType': [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber' ],
+    #'page': 000,
+    #'perPage': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3487,7 +5400,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/pho
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionPhoneNumbersResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listExtensionPhoneNumbers) in API Explorer.
@@ -3500,6 +5412,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3509,7 +5425,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtension) in API Explorer.
@@ -3522,6 +5437,78 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'status': 'Disabled',
+    'statusInfo': {
+        'comment': '<ENTER VALUE>',
+        'reason': 'Voluntarily'
+    },
+    'reason': '<ENTER VALUE>',
+    'comment': '<ENTER VALUE>',
+    'extensionNumber': '<ENTER VALUE>',
+    'contact': {
+        'firstName': '<ENTER VALUE>',
+        'lastName': '<ENTER VALUE>',
+        'company': '<ENTER VALUE>',
+        'jobTitle': '<ENTER VALUE>',
+        'email': '<ENTER VALUE>',
+        'businessPhone': '<ENTER VALUE>',
+        'mobilePhone': '<ENTER VALUE>',
+        'businessAddress': {
+            'country': '<ENTER VALUE>',
+            'state': '<ENTER VALUE>',
+            'city': '<ENTER VALUE>',
+            'street': '<ENTER VALUE>',
+            'zip': '<ENTER VALUE>'
+        },
+        'emailAsLoginName': true,
+        'pronouncedName': {
+            'type': 'Default',
+            'text': '<ENTER VALUE>'
+        },
+        'department': '<ENTER VALUE>'
+    },
+    'regionalSettings': {
+        'homeCountry': {
+            'id': '<ENTER VALUE>'
+        },
+        'timezone': {
+            'id': '<ENTER VALUE>'
+        },
+        'language': {
+            'id': '<ENTER VALUE>'
+        },
+        'greetingLanguage': {
+            'id': '<ENTER VALUE>'
+        },
+        'formattingLocale': {
+            'id': '<ENTER VALUE>'
+        },
+        'timeFormat': '12h'
+    },
+    'setupWizardState': 'NotStarted',
+    'partnerId': '<ENTER VALUE>',
+    'ivrPin': '<ENTER VALUE>',
+    'password': '<ENTER VALUE>',
+    'callQueueInfo': {
+        'slaGoal': 000,
+        'slaThresholdSeconds': 000,
+        'includeAbandonedCalls': true,
+        'abandonedThresholdSeconds': 000
+    },
+    'transition': [
+        {
+            'sendWelcomeEmailsToUsers': true,
+            'sendWelcomeEmail': true
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3531,7 +5518,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtension) in API Explorer.
@@ -3543,6 +5529,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3564,6 +5554,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3573,7 +5567,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtensionCallerId) in API Explorer.
@@ -3586,6 +5579,47 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'uri': '<ENTER VALUE>',
+    'byDevice': [
+        {
+            'device': {
+                'id': '<ENTER VALUE>',
+                'uri': '<ENTER VALUE>',
+                'phoneNumber': '<ENTER VALUE>'
+            },
+            'callerId': {
+                'type': '<ENTER VALUE>',
+                'phoneInfo': {
+                    'id': '<ENTER VALUE>',
+                    'uri': '<ENTER VALUE>',
+                    'phoneNumber': '<ENTER VALUE>'
+                }
+            }
+        }
+    ],
+    'byFeature': [
+        {
+            'feature': 'RingOut',
+            'callerId': {
+                'type': '<ENTER VALUE>',
+                'phoneInfo': {
+                    'id': '<ENTER VALUE>',
+                    'uri': '<ENTER VALUE>',
+                    'phoneNumber': '<ENTER VALUE>'
+                }
+            }
+        }
+    ],
+    'extensionNameForOutboundCalls': true,
+    'extensionNumberForInternalCalls': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3595,7 +5629,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/cal
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtensionCallerId) in API Explorer.
@@ -3608,6 +5641,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/grant`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3617,7 +5660,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/gra
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionGrantListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/listExtensionGrants) in API Explorer.
@@ -3629,6 +5671,14 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'type': 'User'
+}
 
 import os
 from ringcentral import SDK
@@ -3650,6 +5700,19 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'enabledUserIds': [
+        '<ENTER VALUE>'
+    ],
+    'disabledUserIds': [
+        '<ENTER VALUE>'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3670,6 +5733,18 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirele
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'siteId': '<ENTER VALUE>',
+    #'searchString': '<ENTER VALUE>',
+    #'orderBy': '<ENTER VALUE>',
+    #'perPage': 000,
+    #'page': '1'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3679,7 +5754,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/WirelessPointsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listWirelessPoints) in API Explorer.
@@ -3692,6 +5766,33 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirel
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'bssid': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'site': {
+        'id': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'emergencyAddress': {
+        'country': '<ENTER VALUE>',
+        'countryId': '<ENTER VALUE>',
+        'countryIsoCode': '<ENTER VALUE>',
+        'countryName': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'stateId': '<ENTER VALUE>',
+        'stateIsoCode': '<ENTER VALUE>',
+        'stateName': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3701,7 +5802,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createWirelessPoint) in API Explorer.
@@ -3714,6 +5814,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirele
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pointId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3723,7 +5827,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readWirelessPoint) in API Explorer.
@@ -3736,6 +5839,35 @@ HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirele
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pointId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'bssid': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'site': {
+        'id': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'emergencyAddress': {
+        'country': '<ENTER VALUE>',
+        'countryId': '<ENTER VALUE>',
+        'countryIsoCode': '<ENTER VALUE>',
+        'countryName': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'stateId': '<ENTER VALUE>',
+        'stateIsoCode': '<ENTER VALUE>',
+        'stateName': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3745,7 +5877,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateWirelessPoint) in API Explorer.
@@ -3757,6 +5888,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wir
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pointId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3778,6 +5913,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networ
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3787,7 +5925,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/NetworksList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listNetworks) in API Explorer.
@@ -3799,6 +5936,9 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/netwo
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -3820,6 +5960,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networ
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+networkId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3839,6 +5983,30 @@ HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networ
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+networkId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'name': '<ENTER VALUE>',
+    'site': '<ENTER VALUE>',
+    'publicIpRanges': [
+        {
+            'id': '<ENTER VALUE>',
+            'startIp': '<ENTER VALUE>',
+            'endIp': '<ENTER VALUE>'
+        }
+    ],
+    'privateIpRanges': [
+        {
+            'id': '<ENTER VALUE>',
+            'startIp': '<ENTER VALUE>',
+            'endIp': '<ENTER VALUE>'
+        }
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -3860,6 +6028,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/net
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+networkId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3880,6 +6052,21 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/device
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'siteId': '<ENTER VALUE>',
+    #'featureEnabled': true,
+    #'model': '<ENTER VALUE>',
+    #'compatibleOnly': true,
+    #'searchString': '<ENTER VALUE>',
+    #'orderBy': 'name',
+    #'perPage': 000,
+    #'page': '1'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3889,7 +6076,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ListDevicesAutomaticLocationUpdates.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listDevicesAutomaticLocationUpdates) in API Explorer.
@@ -3901,6 +6087,19 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devic
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'enabledDeviceIds': [
+        '<ENTER VALUE>'
+    ],
+    'disabledDeviceIds': [
+        '<ENTER VALUE>'
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -3922,6 +6121,18 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switch
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'siteId': '<ENTER VALUE>',
+    #'searchString': '<ENTER VALUE>',
+    #'orderBy': '<ENTER VALUE>',
+    #'perPage': 000,
+    #'page': '1'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3931,7 +6142,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SwitchesList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listAccountSwitches) in API Explorer.
@@ -3944,6 +6154,33 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switc
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'chassisId': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'site': {
+        'id': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'emergencyAddress': {
+        'country': '<ENTER VALUE>',
+        'countryId': '<ENTER VALUE>',
+        'countryIsoCode': '<ENTER VALUE>',
+        'countryName': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'stateId': '<ENTER VALUE>',
+        'stateIsoCode': '<ENTER VALUE>',
+        'stateName': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3953,7 +6190,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createSwitch) in API Explorer.
@@ -3966,6 +6202,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switch
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+switchId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3975,7 +6215,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readSwitch) in API Explorer.
@@ -3988,6 +6227,35 @@ HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switch
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+switchId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'chassisId': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'site': {
+        'id': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'emergencyAddress': {
+        'country': '<ENTER VALUE>',
+        'countryId': '<ENTER VALUE>',
+        'countryIsoCode': '<ENTER VALUE>',
+        'countryName': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'stateId': '<ENTER VALUE>',
+        'stateIsoCode': '<ENTER VALUE>',
+        'stateName': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -3997,7 +6265,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upda
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateSwitch) in API Explorer.
@@ -4009,6 +6276,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/swi
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+switchId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -4030,6 +6301,37 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switc
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'chassisId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4039,7 +6341,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CreateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleSwitches) in API Explorer.
@@ -4052,6 +6353,38 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switc
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'id': '<ENTER VALUE>',
+            'chassisId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4061,7 +6394,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UpdateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleSwitches) in API Explorer.
@@ -4074,6 +6406,37 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirel
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'bssid': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4083,7 +6446,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CreateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleWirelessPoints) in API Explorer.
@@ -4096,6 +6458,38 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirel
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'id': '<ENTER VALUE>',
+            'bssid': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4105,7 +6499,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UpdateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleWirelessPoints) in API Explorer.
@@ -4118,6 +6511,38 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wirel
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'id': '<ENTER VALUE>',
+            'bssid': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4127,7 +6552,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ValidateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleWirelessPoints) in API Explorer.
@@ -4140,6 +6564,38 @@ HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switc
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'records': [
+        {
+            'id': '<ENTER VALUE>',
+            'chassisId': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'site': {
+                'id': '<ENTER VALUE>',
+                'name': '<ENTER VALUE>'
+            },
+            'emergencyAddress': {
+                'country': '<ENTER VALUE>',
+                'countryId': '<ENTER VALUE>',
+                'countryIsoCode': '<ENTER VALUE>',
+                'countryName': '<ENTER VALUE>',
+                'state': '<ENTER VALUE>',
+                'stateId': '<ENTER VALUE>',
+                'stateIsoCode': '<ENTER VALUE>',
+                'stateName': '<ENTER VALUE>',
+                'city': '<ENTER VALUE>',
+                'street': '<ENTER VALUE>',
+                'street2': '<ENTER VALUE>',
+                'zip': '<ENTER VALUE>'
+            }
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4149,7 +6605,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/emergency-address-auto-upd
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ValidateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleSwitches) in API Explorer.
@@ -4162,6 +6617,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4171,7 +6630,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/not
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readNotificationSettings) in API Explorer.
@@ -4184,6 +6642,75 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'emailAddresses': [
+        '<ENTER VALUE>'
+    ],
+    'smsEmailAddresses': [
+        '<ENTER VALUE>'
+    ],
+    'advancedMode': true,
+    'voicemails': {
+        'notifyByEmail': true,
+        'notifyBySms': true,
+        'advancedEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'advancedSmsEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'includeAttachment': true,
+        'markAsRead': true
+    },
+    'inboundFaxes': {
+        'notifyByEmail': true,
+        'notifyBySms': true,
+        'advancedEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'advancedSmsEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'includeAttachment': true,
+        'markAsRead': true
+    },
+    'outboundFaxes': {
+        'notifyByEmail': true,
+        'notifyBySms': true,
+        'advancedEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'advancedSmsEmailAddresses': [
+            '<ENTER VALUE>'
+        ]
+    },
+    'inboundTexts': {
+        'notifyByEmail': true,
+        'notifyBySms': true,
+        'advancedEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'advancedSmsEmailAddresses': [
+            '<ENTER VALUE>'
+        ]
+    },
+    'missedCalls': {
+        'notifyByEmail': true,
+        'notifyBySms': true,
+        'advancedEmailAddresses': [
+            '<ENTER VALUE>'
+        ],
+        'advancedSmsEmailAddresses': [
+            '<ENTER VALUE>'
+        ]
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4193,7 +6720,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/not
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateNotificationSettings) in API Explorer.
@@ -4205,6 +6731,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-imag
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -4226,6 +6756,10 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-ima
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4245,6 +6779,10 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-imag
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+extensionId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -4266,6 +6804,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-imag
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+scaleSize = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4286,6 +6829,15 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'countryId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4295,7 +6847,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/con
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readConferencingSettings) in API Explorer.
@@ -4308,6 +6859,21 @@ HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumbers': [
+        {
+            'phoneNumber': '<ENTER VALUE>',
+            'default': true
+        }
+    ],
+    'allowJoinBeforeHost': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4317,7 +6883,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/con
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateConferencingSettings) in API Explorer.
@@ -4330,6 +6895,9 @@ HTTP get `/restapi/v1.0/account/{accountId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4339,7 +6907,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetAccountInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountInfo) in API Explorer.
@@ -4352,6 +6919,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/business-address`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4361,7 +6931,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/business-address')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountBusinessAddress) in API Explorer.
@@ -4374,6 +6943,22 @@ HTTP put `/restapi/v1.0/account/{accountId}/business-address`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'company': '<ENTER VALUE>',
+    'email': '<ENTER VALUE>',
+    'businessAddress': {
+        'country': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4383,7 +6968,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/business-address')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/updateAccountBusinessAddress) in API Explorer.
@@ -4396,6 +6980,9 @@ HTTP get `/restapi/v1.0/account/{accountId}/service-info`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4405,7 +6992,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/service-info')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetServiceInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountServiceInfo) in API Explorer.
@@ -4427,7 +7013,6 @@ r = platform.get('/restapi/v1.0/dictionary/language')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/LanguageList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLanguages) in API Explorer.
@@ -4440,6 +7025,9 @@ HTTP get `/restapi/v1.0/dictionary/language/{languageId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+languageId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4449,7 +7037,6 @@ r = platform.get(f'/restapi/v1.0/dictionary/language/{languageId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/LanguageInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readLanguage) in API Explorer.
@@ -4462,6 +7049,16 @@ HTTP get `/restapi/v1.0/dictionary/country`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'loginAllowed': true,
+    #'signupAllowed': true,
+    #'numberSelling': true,
+    #'page': '1',
+    #'perPage': '100',
+    #'freeSoftphoneLine': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4471,7 +7068,6 @@ r = platform.get('/restapi/v1.0/dictionary/country')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetCountryListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listCountries) in API Explorer.
@@ -4484,6 +7080,9 @@ HTTP get `/restapi/v1.0/dictionary/country/{countryId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+countryId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4493,7 +7092,6 @@ r = platform.get(f'/restapi/v1.0/dictionary/country/{countryId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetCountryInfoDictionaryResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readCountry) in API Explorer.
@@ -4506,6 +7104,15 @@ HTTP get `/restapi/v1.0/dictionary/location`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'orderBy': 'City',
+    #'page': '1',
+    #'perPage': '100',
+    #'stateId': '<ENTER VALUE>',
+    #'withNxx': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4515,7 +7122,6 @@ r = platform.get('/restapi/v1.0/dictionary/location')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetLocationListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLocations) in API Explorer.
@@ -4528,6 +7134,15 @@ HTTP get `/restapi/v1.0/dictionary/state`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'allCountries': true,
+    #'countryId': 000,
+    #'page': '1',
+    #'perPage': '100',
+    #'withPhoneNumbers': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4537,7 +7152,6 @@ r = platform.get('/restapi/v1.0/dictionary/state')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetStateListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listStates) in API Explorer.
@@ -4550,6 +7164,9 @@ HTTP get `/restapi/v1.0/dictionary/state/{stateId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+stateId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4559,7 +7176,6 @@ r = platform.get(f'/restapi/v1.0/dictionary/state/{stateId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetStateInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readState) in API Explorer.
@@ -4572,6 +7188,12 @@ HTTP get `/restapi/v1.0/dictionary/timezone`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4581,7 +7203,6 @@ r = platform.get('/restapi/v1.0/dictionary/timezone')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetTimezoneListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listTimezones) in API Explorer.
@@ -4594,6 +7215,15 @@ HTTP get `/restapi/v1.0/dictionary/timezone/{timezoneId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+timezoneId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4603,7 +7233,6 @@ r = platform.get(f'/restapi/v1.0/dictionary/timezone/{timezoneId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetTimezoneInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readTimezone) in API Explorer.
@@ -4616,6 +7245,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/phone-number`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100',
+    #'usageType': [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4625,7 +7264,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/phone-number')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/AccountPhoneNumbers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listAccountPhoneNumbers) in API Explorer.
@@ -4638,6 +7276,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/phone-number/{phoneNumberId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+phoneNumberId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4647,7 +7289,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/phone-number/{phoneNumberId
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CompanyPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/readAccountPhoneNumber) in API Explorer.
@@ -4660,6 +7301,19 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'extensionId': '<ENTER VALUE>',
+    #'email': '<ENTER VALUE>',
+    #'page': '1',
+    #'perPage': '100',
+    #'status': [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
+    #'type': [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4669,7 +7323,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/listExtensions) in API Explorer.
@@ -4682,6 +7335,92 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'contact': {
+        'firstName': '<ENTER VALUE>',
+        'lastName': '<ENTER VALUE>',
+        'company': '<ENTER VALUE>',
+        'jobTitle': '<ENTER VALUE>',
+        'email': '<ENTER VALUE>',
+        'businessPhone': '<ENTER VALUE>',
+        'mobilePhone': '<ENTER VALUE>',
+        'businessAddress': {
+            'country': '<ENTER VALUE>',
+            'state': '<ENTER VALUE>',
+            'city': '<ENTER VALUE>',
+            'street': '<ENTER VALUE>',
+            'zip': '<ENTER VALUE>'
+        },
+        'emailAsLoginName': true,
+        'pronouncedName': {
+            'type': 'Default',
+            'text': '<ENTER VALUE>'
+        },
+        'department': '<ENTER VALUE>'
+    },
+    'extensionNumber': '<ENTER VALUE>',
+    'password': '<ENTER VALUE>',
+    'references': [
+        {
+            'ref': '<ENTER VALUE>',
+            'type': 'PartnerId'
+        }
+    ],
+    'roles': [
+        {
+            'uri': '<ENTER VALUE>',
+            'id': '<ENTER VALUE>'
+        }
+    ],
+    'regionalSettings': {
+        'homeCountry': {
+            'id': '<ENTER VALUE>',
+            'uri': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'isoCode': '<ENTER VALUE>',
+            'callingCode': '<ENTER VALUE>'
+        },
+        'timezone': {
+            'id': '<ENTER VALUE>',
+            'uri': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'description': '<ENTER VALUE>'
+        },
+        'language': {
+            'id': '<ENTER VALUE>',
+            'uri': '<ENTER VALUE>',
+            'greeting': true,
+            'formattingLocale': true,
+            'localeCode': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>',
+            'ui': true
+        },
+        'greetingLanguage': {
+            'id': '<ENTER VALUE>',
+            'localeCode': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        },
+        'formattingLocale': {
+            'id': '<ENTER VALUE>',
+            'localeCode': '<ENTER VALUE>',
+            'name': '<ENTER VALUE>'
+        },
+        'timeFormat': '12h'
+    },
+    'setupWizardState': 'NotStarted',
+    'status': 'Enabled',
+    'statusInfo': {
+        'comment': '<ENTER VALUE>',
+        'reason': 'Voluntarily'
+    },
+    'type': 'User',
+    'hidden': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4691,7 +7430,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/extension')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ExtensionCreationResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/createExtension) in API Explorer.
@@ -4704,6 +7442,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/templates`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'type': 'UserSettings',
+    #'page': '<ENTER VALUE>',
+    #'perPage': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4713,7 +7461,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/templates')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserTemplates.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/listUserTemplates) in API Explorer.
@@ -4726,6 +7473,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/templates/{templateId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+templateId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4735,7 +7486,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/templates/{templateId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/TemplateInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/readUserTemplate) in API Explorer.
@@ -4748,6 +7498,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-queues`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100',
+    #'memberExtensionId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4757,7 +7517,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallQueues.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueues) in API Explorer.
@@ -4770,6 +7529,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/members`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4779,7 +7548,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-queues/{groupId}/membe
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallQueueMembers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueueMembers) in API Explorer.
@@ -4791,6 +7559,20 @@ HTTP post `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/bulk-assign`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'addedExtensionIds': [
+        '<ENTER VALUE>'
+    ],
+    'removedExtensionIds': [
+        '<ENTER VALUE>'
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -4812,6 +7594,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupI
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pagingOnlyGroupId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4821,7 +7613,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingO
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupUsers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupUsers) in API Explorer.
@@ -4834,6 +7625,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupI
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pagingOnlyGroupId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4843,7 +7644,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingO
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupDevices.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupDevices) in API Explorer.
@@ -4855,6 +7655,26 @@ HTTP post `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroup
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+pagingOnlyGroupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'addedUserIds': [
+        '<ENTER VALUE>'
+    ],
+    'removedUserIds': [
+        '<ENTER VALUE>'
+    ],
+    'addedDeviceIds': [
+        '<ENTER VALUE>'
+    ],
+    'removedDeviceIds': [
+        '<ENTER VALUE>'
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -4876,6 +7696,15 @@ HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4885,7 +7714,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/createCallMonitoringGroup) in API Explorer.
@@ -4898,6 +7726,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100',
+    #'memberExtensionId': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4907,7 +7745,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroups.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroups) in API Explorer.
@@ -4920,6 +7757,16 @@ HTTP put `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'id': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4929,7 +7776,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{gro
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/updateCallMonitoringGroup) in API Explorer.
@@ -4941,6 +7787,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -4962,6 +7812,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/mem
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'page': '1',
+    #'perPage': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -4971,7 +7831,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/call-monitoring-groups/{gro
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroupMemberList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroupMembers) in API Explorer.
@@ -4983,6 +7842,22 @@ HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/bu
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+groupId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'updatedExtensions': [
+        {
+            'id': '<ENTER VALUE>',
+            'permissions': [
+                'Monitoring'
+            ]
+        }
+    ]
+}
 
 import os
 from ringcentral import SDK
@@ -5004,6 +7879,19 @@ HTTP post `/restapi/v1.0/number-parser/parse`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'homeCountry': '<ENTER VALUE>',
+    #'nationalAsPriority': true
+}
+
+# POST BODY
+body = {
+    'originalStrings': [
+        '<ENTER VALUE>'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5013,7 +7901,6 @@ r = platform.post('/restapi/v1.0/number-parser/parse')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ParsePhoneNumberResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/parsePhoneNumber) in API Explorer.
@@ -5026,6 +7913,15 @@ HTTP get `/restapi/v1.0/account/{accountId}/device/{deviceId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+deviceId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'syncEmergencyAddress': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5035,7 +7931,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/device/{deviceId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetDeviceInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/readDevice) in API Explorer.
@@ -5048,6 +7943,34 @@ HTTP put `/restapi/v1.0/account/{accountId}/device/{deviceId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+deviceId = '<ENTER VALUE>'
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'emergencyServiceAddress': {
+        'customerName': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'country': '<ENTER VALUE>'
+    },
+    'extension': {
+        'id': '<ENTER VALUE>'
+    },
+    'phoneLines': {
+        'phoneLines': [
+            {
+                'id': '<ENTER VALUE>'
+            }
+        ]
+    },
+    'useAsCommonPhone': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5057,7 +7980,6 @@ r = platform.put(f'/restapi/v1.0/account/{accountId}/device/{deviceId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DeviceResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/updateDevice) in API Explorer.
@@ -5070,6 +7992,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/device`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+extensionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'linePooling': 'Host',
+    #'feature': 'Intercom'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5079,7 +8011,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/dev
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/GetExtensionDevicesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/listExtensionDevices) in API Explorer.
@@ -5121,7 +8052,6 @@ r = platform.get('/scim/v2/ServiceProviderConfig')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/ServiceProviderConfig.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/readServiceProviderConfig2) in API Explorer.
@@ -5134,6 +8064,13 @@ HTTP get `/scim/v2/Users`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'filter': '<ENTER VALUE>',
+    #'startIndex': '1',
+    #'count': '100'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5143,7 +8080,6 @@ r = platform.get('/scim/v2/Users')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaGet2) in API Explorer.
@@ -5156,6 +8092,52 @@ HTTP post `/scim/v2/Users`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'active': true,
+    'addresses': [
+        {
+            'country': '<ENTER VALUE>',
+            'locality': '<ENTER VALUE>',
+            'postalCode': '<ENTER VALUE>',
+            'region': '<ENTER VALUE>',
+            'streetAddress': '<ENTER VALUE>',
+            'type': 'work'
+        }
+    ],
+    'emails': [
+        {
+            'type': 'work',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'externalId': '<ENTER VALUE>',
+    'id': '<ENTER VALUE>',
+    'name': {
+        'familyName': '<ENTER VALUE>',
+        'givenName': '<ENTER VALUE>'
+    },
+    'phoneNumbers': [
+        {
+            'type': 'work',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'photos': [
+        {
+            'type': 'photo',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'schemas': [
+        'urn:ietf:params:scim:schemas:core:2.0:User'
+    ],
+    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User': {
+        'department': '<ENTER VALUE>'
+    },
+    'userName': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5165,7 +8147,6 @@ r = platform.post('/scim/v2/Users')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/createUser2) in API Explorer.
@@ -5178,6 +8159,16 @@ HTTP post `/scim/v2/Users/.search`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'count': 000,
+    'filter': '<ENTER VALUE>',
+    'schemas': [
+        'urn:ietf:params:scim:api:messages:2.0:SearchRequest'
+    ],
+    'startIndex': 000
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5187,7 +8178,6 @@ r = platform.post('/scim/v2/Users/.search')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaPost2) in API Explorer.
@@ -5200,6 +8190,9 @@ HTTP get `/scim/v2/Users/{id}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+id = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5209,7 +8202,6 @@ r = platform.get(f'/scim/v2/Users/{id}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/readUser2) in API Explorer.
@@ -5222,6 +8214,55 @@ HTTP put `/scim/v2/Users/{id}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+id = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'active': true,
+    'addresses': [
+        {
+            'country': '<ENTER VALUE>',
+            'locality': '<ENTER VALUE>',
+            'postalCode': '<ENTER VALUE>',
+            'region': '<ENTER VALUE>',
+            'streetAddress': '<ENTER VALUE>',
+            'type': 'work'
+        }
+    ],
+    'emails': [
+        {
+            'type': 'work',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'externalId': '<ENTER VALUE>',
+    'id': '<ENTER VALUE>',
+    'name': {
+        'familyName': '<ENTER VALUE>',
+        'givenName': '<ENTER VALUE>'
+    },
+    'phoneNumbers': [
+        {
+            'type': 'work',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'photos': [
+        {
+            'type': 'photo',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'schemas': [
+        'urn:ietf:params:scim:schemas:core:2.0:User'
+    ],
+    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User': {
+        'department': '<ENTER VALUE>'
+    },
+    'userName': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5231,7 +8272,6 @@ r = platform.put(f'/scim/v2/Users/{id}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/replaceUser2) in API Explorer.
@@ -5243,6 +8283,9 @@ HTTP delete `/scim/v2/Users/{id}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+id = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -5264,6 +8307,23 @@ HTTP patch `/scim/v2/Users/{id}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+id = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'Operations': [
+        {
+            'op': 'add',
+            'path': '<ENTER VALUE>',
+            'value': '<ENTER VALUE>'
+        }
+    ],
+    'schemas': [
+        'urn:ietf:params:scim:api:messages:2.0:PatchOp'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5273,7 +8333,6 @@ r = platform.patch(f'/scim/v2/Users/{id}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/patchUser2) in API Explorer.
@@ -5286,6 +8345,20 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/call-out`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'from': {
+        'deviceId': '<ENTER VALUE>'
+    },
+    'to': {
+        'phoneNumber': '<ENTER VALUE>',
+        'extensionNumber': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5295,7 +8368,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/call-out')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallSession.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/createCallOutCallSession) in API Explorer.
@@ -5308,6 +8380,16 @@ HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySession
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'timestamp': '<ENTER VALUE>',
+    #'timeout': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5317,7 +8399,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telepho
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallSessionObject.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallSessionStatus) in API Explorer.
@@ -5329,6 +8410,10 @@ HTTP delete `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySess
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -5350,6 +8435,11 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5359,7 +8449,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{teleph
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/holdCallParty) in API Explorer.
@@ -5372,6 +8461,11 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5381,7 +8475,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{teleph
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/unholdCallParty) in API Explorer.
@@ -5393,6 +8486,11 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -5414,6 +8512,18 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'voicemail': '<ENTER VALUE>',
+    'parkOrbit': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5423,7 +8533,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{teleph
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/transferCallParty) in API Explorer.
@@ -5436,6 +8545,17 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'phoneNumber': '<ENTER VALUE>',
+    'voicemail': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5445,7 +8565,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{teleph
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/forwardCallParty) in API Explorer.
@@ -5457,6 +8576,16 @@ HTTP post `/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/par
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'callFlipId': '<ENTER VALUE>'
+}
 
 import os
 from ringcentral import SDK
@@ -5478,6 +8607,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySession
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5487,7 +8621,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telepho
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallPartyStatus) in API Explorer.
@@ -5500,6 +8633,19 @@ HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessi
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'party': {
+        'muted': true,
+        'standAlone': true
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5509,7 +8655,6 @@ r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telep
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/updateCallParty) in API Explorer.
@@ -5521,6 +8666,11 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -5542,6 +8692,22 @@ HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessi
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+partyId = '<ENTER VALUE>'
+recordingId = '<ENTER VALUE>'
+
+# OPTIONAL QUERY PARAMETERS
+queryParams = {
+    #'brandId': '~'
+}
+
+# POST BODY
+body = {
+    'active': true
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5551,7 +8717,6 @@ r = platform.patch(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{telep
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/CallRecording.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/pauseResumeCallRecording) in API Explorer.
@@ -5564,6 +8729,17 @@ HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessio
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+telephonySessionId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'mode': 'Listen',
+    'deviceId': '<ENTER VALUE>',
+    'extensionNumber': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5573,7 +8749,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/telephony/sessions/{teleph
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/SuperviseCallSession.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/superviseCallSession) in API Explorer.
@@ -5585,6 +8760,10 @@ HTTP get `/restapi/v1.0/glip/data-export/{taskId}/archive/{archiveId}`
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
+archiveId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK
@@ -5606,6 +8785,18 @@ HTTP post `/restapi/v1.0/glip/data-export`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# POST BODY
+body = {
+    'dateFrom': '<ENTER VALUE>',
+    'dateTo': '<ENTER VALUE>',
+    'userIds': [
+        '<ENTER VALUE>'
+    ],
+    'chatIds': [
+        '<ENTER VALUE>'
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5615,7 +8806,6 @@ r = platform.post('/restapi/v1.0/glip/data-export')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/createDataExportTask) in API Explorer.
@@ -5628,6 +8818,9 @@ HTTP get `/restapi/v1.0/glip/data-export/{taskId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+taskId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5637,7 +8830,6 @@ r = platform.get(f'/restapi/v1.0/glip/data-export/{taskId}')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/readDataExportTask) in API Explorer.
@@ -5650,6 +8842,15 @@ HTTP post `/restapi/v1.0/account/{accountId}/message-store-report`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'dateFrom': '<ENTER VALUE>',
+    'dateTo': '<ENTER VALUE>'
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5659,7 +8860,6 @@ r = platform.post(f'/restapi/v1.0/account/{accountId}/message-store-report')
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/createMessageStoreReport) in API Explorer.
@@ -5672,6 +8872,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}`
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+taskId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5681,7 +8885,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/message-store-report/{taskI
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportTask) in API Explorer.
@@ -5694,6 +8897,10 @@ HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archiv
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+taskId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
@@ -5703,7 +8910,6 @@ r = platform.get(f'/restapi/v1.0/account/{accountId}/message-store-report/{taskI
 ```
 
 You can get response json data by `json = r.json()`
-
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReportArchive.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportArchive) in API Explorer.
@@ -5715,6 +8921,11 @@ HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archiv
 ```python
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
+
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+taskId = '<ENTER VALUE>'
+archiveId = '<ENTER VALUE>'
 
 import os
 from ringcentral import SDK

@@ -7,18 +7,12 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     enabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     disabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

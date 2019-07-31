@@ -9,13 +9,13 @@ const recordingId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //brandId: '<ENTER VALUE>'
+    //brandId: '~'
 }
 
 // POST BODY
 const body = {
     active: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

@@ -1,6 +1,33 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'bssid': '<ENTER VALUE>',
+    'name': '<ENTER VALUE>',
+    'site': {
+        'id': '<ENTER VALUE>',
+        'name': '<ENTER VALUE>'
+    },
+    'emergencyAddress': {
+        'country': '<ENTER VALUE>',
+        'countryId': '<ENTER VALUE>',
+        'countryIsoCode': '<ENTER VALUE>',
+        'countryName': '<ENTER VALUE>',
+        'state': '<ENTER VALUE>',
+        'stateId': '<ENTER VALUE>',
+        'stateIsoCode': '<ENTER VALUE>',
+        'stateName': '<ENTER VALUE>',
+        'city': '<ENTER VALUE>',
+        'street': '<ENTER VALUE>',
+        'street2': '<ENTER VALUE>',
+        'zip': '<ENTER VALUE>'
+    }
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

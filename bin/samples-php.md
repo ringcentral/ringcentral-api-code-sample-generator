@@ -1,4 +1,4 @@
-# RingCentral Node JS SDK Code Samples
+# RingCentral PHP SDK Code Samples
 
 
 
@@ -6,18 +6,20 @@
 
 HTTP get `/restapi`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetVersionsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersions) in API Explorer.
@@ -26,21 +28,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/{apiVersion}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const apiVersion = '<ENTER VALUE>';
+$apiVersion = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/${apiVersion}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/{$apiVersion}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetVersionResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/API-Info/readAPIVersion) in API Explorer.
@@ -49,15 +53,17 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/status`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/status`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/status");
+?>
 ```
 
 Response body is empty
@@ -68,41 +74,43 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //extensionNumber: '<ENTER VALUE>',
-    //showBlocked: true,
-    //phoneNumber: '<ENTER VALUE>',
-    //direction: [ 'Inbound', 'Outbound' ],
-    //sessionId: '<ENTER VALUE>',
-    //type: [ 'Voice', 'Fax' ],
-    //transport: [ 'PSTN', 'VoIP' ],
-    //view: 'Simple',
-    //withRecording: true,
-    //recordingType: 'Automatic',
-    //dateTo: '<ENTER VALUE>',
-    //dateFrom: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
-    //showDeleted: true
-}
+$queryParams = array(
+    //'extensionNumber' => '<ENTER VALUE>',
+    //'showBlocked' => 'true',
+    //'phoneNumber' => '<ENTER VALUE>',
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'sessionId' => '<ENTER VALUE>',
+    //'type' => array( 'Voice', 'Fax' ),
+    //'transport' => array( 'PSTN', 'VoIP' ),
+    //'view' => 'Simple',
+    //'withRecording' => true,
+    //'recordingType' => 'Automatic',
+    //'dateTo' => '<ENTER VALUE>',
+    //'dateFrom' => '<ENTER VALUE>',
+    //'page' => '1',
+    //'perPage' => '100',
+    //'showDeleted' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserCallLogResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallLog) in API Explorer.
@@ -111,29 +119,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //dateTo: '<ENTER VALUE>',
-    //phoneNumber: '<ENTER VALUE>',
-    //extensionNumber: '<ENTER VALUE>',
-    //type: [ 'Voice', 'Fax' ],
-    //direction: [ 'Inbound', 'Outbound' ],
-    //dateFrom: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'dateTo' => '<ENTER VALUE>',
+    //'phoneNumber' => '<ENTER VALUE>',
+    //'extensionNumber' => '<ENTER VALUE>',
+    //'type' => array( 'Voice', 'Fax' ),
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'dateFrom' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log");
+?>
 ```
 
 Response body is empty
@@ -144,33 +154,35 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log-sync`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //syncType: [ 'FSync', 'ISync' ],
-    //syncToken: '<ENTER VALUE>',
-    //dateFrom: '<ENTER VALUE>',
-    //recordCount: 000,
-    //statusGroup: [ 'Missed', 'All' ],
-    //view: 'Simple',
-    //showDeleted: true
-}
+$queryParams = array(
+    //'syncType' => array( 'FSync', 'ISync' ),
+    //'syncToken' => '<ENTER VALUE>',
+    //'dateFrom' => '<ENTER VALUE>',
+    //'recordCount' => 000,
+    //'statusGroup' => array( 'Missed', 'All' ),
+    //'view' => 'Simple',
+    //'showDeleted' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log-sync`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log-sync");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallLogSync.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/syncUserCallLog) in API Explorer.
@@ -179,28 +191,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{callRecordId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const callRecordId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$callRecordId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //view: 'Simple'
-}
+$queryParams = array(
+    //'view' => 'Simple'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/call-log/${callRecordId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/call-log/{$callRecordId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserCallLogRecord.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readUserCallRecord) in API Explorer.
@@ -209,31 +223,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/active-calls`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //direction: [ 'Inbound', 'Outbound' ],
-    //view: 'Simple',
-    //type: [ 'Voice', 'Fax' ],
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'view' => 'Simple',
+    //'type' => array( 'Voice', 'Fax' ),
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/active-calls`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/active-calls");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listExtensionActiveCalls) in API Explorer.
@@ -242,37 +258,39 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-log`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //extensionNumber: '<ENTER VALUE>',
-    //phoneNumber: '<ENTER VALUE>',
-    //direction: [ 'Inbound', 'Outbound' ],
-    //type: [ 'Voice', 'Fax' ],
-    //view: 'Simple',
-    //withRecording: true,
-    //recordingType: 'Automatic',
-    //dateFrom: '<ENTER VALUE>',
-    //dateTo: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
-    //sessionId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'extensionNumber' => '<ENTER VALUE>',
+    //'phoneNumber' => '<ENTER VALUE>',
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'type' => array( 'Voice', 'Fax' ),
+    //'view' => 'Simple',
+    //'withRecording' => true,
+    //'recordingType' => 'Automatic',
+    //'dateFrom' => '<ENTER VALUE>',
+    //'dateTo' => '<ENTER VALUE>',
+    //'page' => '1',
+    //'perPage' => '100',
+    //'sessionId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-log`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-log");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AccountCallLogResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallLog) in API Explorer.
@@ -281,22 +299,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-log/{callRecordId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const callRecordId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$callRecordId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-log/${callRecordId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-log/{$callRecordId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyCallLogRecord.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/readCompanyCallRecord) in API Explorer.
@@ -305,31 +325,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/active-calls`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //direction: [ 'Inbound', 'Outbound' ],
-    //view: 'Simple',
-    //type: [ 'Voice', 'Fax' ],
-    //transport: [ 'PSTN', 'VoIP' ],
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'view' => 'Simple',
+    //'type' => array( 'Voice', 'Fax' ),
+    //'transport' => array( 'PSTN', 'VoIP' ),
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/active-calls`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/active-calls");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ActiveCallsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Log/listCompanyActiveCalls) in API Explorer.
@@ -338,22 +360,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const recordingId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$recordingId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/recording/${recordingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/recording/{$recordingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetCallRecordingResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Recordings/readCallRecording) in API Explorer.
@@ -362,22 +386,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/recording/{recordingId}/content`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const recordingId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$recordingId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/recording/${recordingId}/content`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/recording/{$recordingId}/content");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Recordings/listCallRecordingData) in API Explorer.
 
@@ -385,36 +411,37 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/sms`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    from: {
-        phoneNumber: '<ENTER VALUE>'
-    },
-    to: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    text: '<ENTER VALUE>'
-}
+$body = array(
+    'from' => array(
+        'phoneNumber' => '<ENTER VALUE>'
+    ),
+    'to' => array(
+        array(
+            'phoneNumber' => '<ENTER VALUE>'
+        )  
+    ),
+    'text' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/sms`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/sms");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SMS/createSMSMessage) in API Explorer.
@@ -423,38 +450,38 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/company-pager`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    from: {
-        extensionId: '<ENTER VALUE>'
-    },
-    replyOn: 000,
-    text: '<ENTER VALUE>',
-    to: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'from' => array(
+        'extensionId' => '<ENTER VALUE>'
+    ),
+    'replyOn' => 000,
+    'text' => '<ENTER VALUE>',
+    'to' => array(
+        array(
+            'extensionId' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/company-pager`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/company-pager");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Pager-Messages/createInternalTextMessage) in API Explorer.
@@ -463,22 +490,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/fax`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/fax");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/FaxResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Fax/createFaxMessage) in API Explorer.
@@ -487,24 +516,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/fax-cover-page`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/fax-cover-page");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ListFaxCoverPagesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Fax/listFaxCoverPages) in API Explorer.
@@ -513,37 +544,39 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //availability: [ 'Alive', 'Deleted', 'Purged' ],
-    //conversationId: 000,
-    //dateFrom: '<ENTER VALUE>',
-    //dateTo: '<ENTER VALUE>',
-    //direction: [ 'Inbound', 'Outbound' ],
-    //distinctConversations: true,
-    //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
-    //readStatus: [ 'Read', 'Unread' ],
-    //page: 1,
-    //perPage: 100,
-    //phoneNumber: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'availability' => array( 'Alive', 'Deleted', 'Purged' ),
+    //'conversationId' => 000,
+    //'dateFrom' => '<ENTER VALUE>',
+    //'dateTo' => '<ENTER VALUE>',
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'distinctConversations' => true,
+    //'messageType' => array( 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ),
+    //'readStatus' => array( 'Read', 'Unread' ),
+    //'page' => '1',
+    //'perPage' => '100',
+    //'phoneNumber' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/listMessages) in API Explorer.
@@ -552,26 +585,28 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //conversationId: [ '<ENTER VALUE>' ],
-    //dateTo: '<ENTER VALUE>',
-    //type: 'Fax'
-}
+$queryParams = array(
+    //'conversationId' => array( string ),
+    //'dateTo' => '<ENTER VALUE>',
+    //'type' => 'All'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store");
+?>
 ```
 
 Response body is empty
@@ -582,23 +617,25 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const messageId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$messageId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessage) in API Explorer.
@@ -607,28 +644,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const messageId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$messageId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    readStatus: 'Read'
-}
+$body = array(
+    'readStatus' => 'Read'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessage) in API Explorer.
@@ -637,26 +676,28 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const messageId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$messageId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //purge: true,
-    //conversationId: 000
-}
+$queryParams = array(
+    //'purge' => true,
+    //'conversationId' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}");
+?>
 ```
 
 Response body is empty
@@ -667,29 +708,31 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-store/{messageId}/content/{attachmentId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const attachmentId = '<ENTER VALUE>';
-const messageId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$attachmentId = '<ENTER VALUE>';
+$messageId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //contentDisposition: 'Inline'
-}
+$queryParams = array(
+    //'contentDisposition' => 'Inline'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-store/${messageId}/content/${attachmentId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-store/{$messageId}/content/{$attachmentId}");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessageContent) in API Explorer.
 
@@ -697,35 +740,37 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/message-sync`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //conversationId: 000,
-    //dateFrom: '<ENTER VALUE>',
-    //dateTo: '<ENTER VALUE>',
-    //direction: [ 'Inbound', 'Outbound' ],
-    //distinctConversations: true,
-    //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
-    //recordCount: 000,
-    //syncToken: '<ENTER VALUE>',
-    //syncType: [ 'FSync', 'ISync' ]
-}
+$queryParams = array(
+    //'conversationId' => 000,
+    //'dateFrom' => '<ENTER VALUE>',
+    //'dateTo' => '<ENTER VALUE>',
+    //'direction' => array( 'Inbound', 'Outbound' ),
+    //'distinctConversations' => true,
+    //'messageType' => array( 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ),
+    //'recordCount' => 000,
+    //'syncToken' => '<ENTER VALUE>',
+    //'syncType' => array( 'FSync', 'ISync' )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/message-sync`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/message-sync");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetMessageSyncResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/syncMessages) in API Explorer.
@@ -734,21 +779,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/message-store-configuration`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-configuration`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/message-store-configuration");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/readMessageStoreConfiguration) in API Explorer.
@@ -757,26 +804,28 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/message-store-configuration`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    retentionPeriod: 000
-}
+$body = array(
+    'retentionPeriod' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/message-store-configuration`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/message-store-configuration");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MessageStoreConfiguration.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Store/updateMessageStoreConfiguration) in API Explorer.
@@ -785,40 +834,42 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    from: {
-        phoneNumber: '<ENTER VALUE>',
-        forwardingNumberId: '<ENTER VALUE>'
-    },
-    to: {
-        phoneNumber: '<ENTER VALUE>'
-    },
-    callerId: {
-        phoneNumber: '<ENTER VALUE>'
-    },
-    playPrompt: true,
-    country: {
-        id: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'from' => array(
+        'phoneNumber' => '<ENTER VALUE>',
+        'forwardingNumberId' => '<ENTER VALUE>'
+    ),
+    'to' => array(
+        'phoneNumber' => '<ENTER VALUE>'
+    ),
+    'callerId' => array(
+        'phoneNumber' => '<ENTER VALUE>'
+    ),
+    'playPrompt' => true,
+    'country' => array(
+        'id' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/ring-out");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/RingOut/createRingOutCall) in API Explorer.
@@ -827,23 +878,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/{ringoutId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const ringoutId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$ringoutId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out/${ringoutId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/ring-out/{$ringoutId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetRingOutStatusResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/RingOut/readRingOutCallStatus) in API Explorer.
@@ -852,20 +905,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/ring-out/{ringoutId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const ringoutId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$ringoutId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/ring-out/${ringoutId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/ring-out/{$ringoutId}");
+?>
 ```
 
 Response body is empty
@@ -876,31 +931,33 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //startsWith: '<ENTER VALUE>',
-    //sortBy: [ 'FirstName', 'LastName', 'Company' ],
-    //page: 1,
-    //perPage: 100,
-    //phoneNumber: [ '<ENTER VALUE>' ]
-}
+$queryParams = array(
+    //'startsWith' => '<ENTER VALUE>',
+    //'sortBy' => array( 'FirstName', 'LastName', 'Company' ),
+    //'page' => '1',
+    //'perPage' => '100',
+    //'phoneNumber' => array( string )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listContacts) in API Explorer.
@@ -909,73 +966,75 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //dialingPlan: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'dialingPlan' => '<ENTER VALUE>'
+)
 
 // POST BODY
-const body = {
-    firstName: '<ENTER VALUE>',
-    lastName: '<ENTER VALUE>',
-    middleName: '<ENTER VALUE>',
-    nickName: '<ENTER VALUE>',
-    company: '<ENTER VALUE>',
-    jobTitle: '<ENTER VALUE>',
-    email: '<ENTER VALUE>',
-    email2: '<ENTER VALUE>',
-    email3: '<ENTER VALUE>',
-    birthday: '<ENTER VALUE>',
-    webPage: '<ENTER VALUE>',
-    notes: '<ENTER VALUE>',
-    homePhone: '<ENTER VALUE>',
-    homePhone2: '<ENTER VALUE>',
-    businessPhone: '<ENTER VALUE>',
-    businessPhone2: '<ENTER VALUE>',
-    mobilePhone: '<ENTER VALUE>',
-    businessFax: '<ENTER VALUE>',
-    companyPhone: '<ENTER VALUE>',
-    assistantPhone: '<ENTER VALUE>',
-    carPhone: '<ENTER VALUE>',
-    otherPhone: '<ENTER VALUE>',
-    otherFax: '<ENTER VALUE>',
-    callbackPhone: '<ENTER VALUE>',
-    homeAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    },
-    businessAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    },
-    otherAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'firstName' => '<ENTER VALUE>',
+    'lastName' => '<ENTER VALUE>',
+    'middleName' => '<ENTER VALUE>',
+    'nickName' => '<ENTER VALUE>',
+    'company' => '<ENTER VALUE>',
+    'jobTitle' => '<ENTER VALUE>',
+    'email' => '<ENTER VALUE>',
+    'email2' => '<ENTER VALUE>',
+    'email3' => '<ENTER VALUE>',
+    'birthday' => '<ENTER VALUE>',
+    'webPage' => '<ENTER VALUE>',
+    'notes' => '<ENTER VALUE>',
+    'homePhone' => '<ENTER VALUE>',
+    'homePhone2' => '<ENTER VALUE>',
+    'businessPhone' => '<ENTER VALUE>',
+    'businessPhone2' => '<ENTER VALUE>',
+    'mobilePhone' => '<ENTER VALUE>',
+    'businessFax' => '<ENTER VALUE>',
+    'companyPhone' => '<ENTER VALUE>',
+    'assistantPhone' => '<ENTER VALUE>',
+    'carPhone' => '<ENTER VALUE>',
+    'otherPhone' => '<ENTER VALUE>',
+    'otherFax' => '<ENTER VALUE>',
+    'callbackPhone' => '<ENTER VALUE>',
+    'homeAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    ),
+    'businessAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    ),
+    'otherAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact`, body, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/createContact) in API Explorer.
@@ -984,23 +1043,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const contactId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$contactId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact/{$contactId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/readContact) in API Explorer.
@@ -1009,74 +1070,76 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const contactId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$contactId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //dialingPlan: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'dialingPlan' => '<ENTER VALUE>'
+)
 
 // POST BODY
-const body = {
-    firstName: '<ENTER VALUE>',
-    lastName: '<ENTER VALUE>',
-    middleName: '<ENTER VALUE>',
-    nickName: '<ENTER VALUE>',
-    company: '<ENTER VALUE>',
-    jobTitle: '<ENTER VALUE>',
-    email: '<ENTER VALUE>',
-    email2: '<ENTER VALUE>',
-    email3: '<ENTER VALUE>',
-    birthday: '<ENTER VALUE>',
-    webPage: '<ENTER VALUE>',
-    notes: '<ENTER VALUE>',
-    homePhone: '<ENTER VALUE>',
-    homePhone2: '<ENTER VALUE>',
-    businessPhone: '<ENTER VALUE>',
-    businessPhone2: '<ENTER VALUE>',
-    mobilePhone: '<ENTER VALUE>',
-    businessFax: '<ENTER VALUE>',
-    companyPhone: '<ENTER VALUE>',
-    assistantPhone: '<ENTER VALUE>',
-    carPhone: '<ENTER VALUE>',
-    otherPhone: '<ENTER VALUE>',
-    otherFax: '<ENTER VALUE>',
-    callbackPhone: '<ENTER VALUE>',
-    homeAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    },
-    businessAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    },
-    otherAddress: {
-        street: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'firstName' => '<ENTER VALUE>',
+    'lastName' => '<ENTER VALUE>',
+    'middleName' => '<ENTER VALUE>',
+    'nickName' => '<ENTER VALUE>',
+    'company' => '<ENTER VALUE>',
+    'jobTitle' => '<ENTER VALUE>',
+    'email' => '<ENTER VALUE>',
+    'email2' => '<ENTER VALUE>',
+    'email3' => '<ENTER VALUE>',
+    'birthday' => '<ENTER VALUE>',
+    'webPage' => '<ENTER VALUE>',
+    'notes' => '<ENTER VALUE>',
+    'homePhone' => '<ENTER VALUE>',
+    'homePhone2' => '<ENTER VALUE>',
+    'businessPhone' => '<ENTER VALUE>',
+    'businessPhone2' => '<ENTER VALUE>',
+    'mobilePhone' => '<ENTER VALUE>',
+    'businessFax' => '<ENTER VALUE>',
+    'companyPhone' => '<ENTER VALUE>',
+    'assistantPhone' => '<ENTER VALUE>',
+    'carPhone' => '<ENTER VALUE>',
+    'otherPhone' => '<ENTER VALUE>',
+    'otherFax' => '<ENTER VALUE>',
+    'callbackPhone' => '<ENTER VALUE>',
+    'homeAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    ),
+    'businessAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    ),
+    'otherAddress' => array(
+        'street' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`, body, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact/{$contactId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PersonalContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateContact) in API Explorer.
@@ -1085,20 +1148,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book/contact/{contactId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const contactId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$contactId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book/contact/${contactId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book/contact/{$contactId}");
+?>
 ```
 
 Response body is empty
@@ -1109,30 +1174,32 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/address-book-sync`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //syncType: [ 'FSync', 'ISync' ],
-    //syncToken: '<ENTER VALUE>',
-    //perPage: 000,
-    //pageId: 000
-}
+$queryParams = array(
+    //'syncType' => array( 'FSync', 'ISync' ),
+    //'syncToken' => '<ENTER VALUE>',
+    //'perPage' => 000,
+    //'pageId' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/address-book-sync`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/address-book-sync");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AddressBookSync.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/syncAddressBook) in API Explorer.
@@ -1141,22 +1208,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/favorite`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/favorite");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/listFavoriteContacts) in API Explorer.
@@ -1165,32 +1234,35 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/favorite`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'extensionId' => '<ENTER VALUE>',
+            'contactId' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/favorite`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/favorite");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/FavoriteContactList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/External-Contacts/updateFavoriteContactList) in API Explorer.
@@ -1199,36 +1271,39 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/directory/entries/search`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    searchString: '<ENTER VALUE>',
-    showFederated: true,
-    extensionType: 'User',
-    orderBy: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    page: 000,
-    perPage: 000
-}
+$body = array(
+    'searchString' => '<ENTER VALUE>',
+    'showFederated' => 'true',
+    'extensionType' => 'User',
+    'orderBy' => array(
+        array(
+            'index' => 000,
+            'fieldName' => 'firstName',
+            'direction' => 'Asc'
+        )  
+    ),
+    'page' => 000,
+    'perPage' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/directory/entries/search`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/directory/entries/search");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/searchDirectoryEntries) in API Explorer.
@@ -1237,22 +1312,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/directory/entries/{entryId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const entryId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$entryId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/entries/${entryId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/directory/entries/{$entryId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ContactResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readDirectoryEntry) in API Explorer.
@@ -1261,30 +1338,32 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/directory/entries`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //showFederated: true,
-    //type: 'User',
-    //page: '<ENTER VALUE>',
-    //perPage: 1000,
-    //siteId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'showFederated' => 'true',
+    //'type' => 'User',
+    //'page' => '1',
+    //'perPage' => '1000',
+    //'siteId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/entries`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/directory/entries");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DirectoryResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/listDirectoryEntries) in API Explorer.
@@ -1293,21 +1372,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/directory/federation`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/directory/federation`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/directory/federation");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/FederationResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Internal-Contacts/readAccountFederation) in API Explorer.
@@ -1316,28 +1397,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //detailedTelephonyState: true,
-    //sipData: true
-}
+$queryParams = array(
+    //'detailedTelephonyState' => true,
+    //'sipData' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/presence`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetPresenceInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/readUserPresenceStatus) in API Explorer.
@@ -1346,38 +1429,56 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/presence`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    userStatus: 'Offline',
-    dndStatus: 'TakeAllCalls',
-    message: '<ENTER VALUE>',
-    allowSeeMyPresence: true,
-    ringOnMonitoredCall: true,
-    pickUpCallsOnHold: true,
-    activeCalls: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'userStatus' => 'Offline',
+    'dndStatus' => 'TakeAllCalls',
+    'message' => '<ENTER VALUE>',
+    'allowSeeMyPresence' => true,
+    'ringOnMonitoredCall' => true,
+    'pickUpCallsOnHold' => true,
+    'activeCalls' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'direction' => 'Inbound',
+            'from' => '<ENTER VALUE>',
+            'fromName' => '<ENTER VALUE>',
+            'to' => '<ENTER VALUE>',
+            'toName' => '<ENTER VALUE>',
+            'startTime' => '<ENTER VALUE>',
+            'telephonyStatus' => '<ENTER VALUE>',
+            'sipData' => array(
+                'callId' => '<ENTER VALUE>',
+                'toTag' => '<ENTER VALUE>',
+                'fromTag' => '<ENTER VALUE>',
+                'remoteUri' => '<ENTER VALUE>',
+                'localUri' => '<ENTER VALUE>',
+                'rcSessionId' => '<ENTER VALUE>'
+            ),
+            'sessionId' => '<ENTER VALUE>',
+            'terminationType' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/presence`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/presence");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PresenceInfoResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/updateUserPresenceStatus) in API Explorer.
@@ -1386,29 +1487,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/presence`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //detailedTelephonyState: true,
-    //sipData: true,
-    //page: 000,
-    //perPage: 000
-}
+$queryParams = array(
+    //'detailedTelephonyState' => true,
+    //'sipData' => true,
+    //'page' => 000,
+    //'perPage' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/presence`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/presence");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AccountPresenceInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Presence/readAccountPresence) in API Explorer.
@@ -1417,25 +1520,27 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/chats`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: 30,
-    //pageToken: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'type' => array( 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ),
+    //'recordCount' => '30',
+    //'pageToken' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/chats`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/chats");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipChatsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listGlipChats) in API Explorer.
@@ -1444,21 +1549,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/chats/{chatId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipChatInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/readGlipChat) in API Explorer.
@@ -1467,24 +1574,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/conversations`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //recordCount: 30,
-    //pageToken: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'recordCount' => '30',
+    //'pageToken' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/conversations`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/conversations");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipConversationsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/listGlipConversations) in API Explorer.
@@ -1493,28 +1602,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/conversations`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    members: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'members' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'email' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/conversations`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/conversations");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/createGlipConversation) in API Explorer.
@@ -1523,21 +1634,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/conversations/{chatId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/conversations/${chatId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/conversations/{$chatId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipConversationInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Conversations/readGlipConversation) in API Explorer.
@@ -1546,24 +1659,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/teams`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //recordCount: 30,
-    //pageToken: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'recordCount' => '30',
+    //'pageToken' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/teams`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/teams");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipTeamsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/listGlipTeams) in API Explorer.
@@ -1572,31 +1687,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/teams`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    public: true,
-    name: '<ENTER VALUE>',
-    description: '<ENTER VALUE>',
-    members: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'public' => true,
+    'name' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>',
+    'members' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'email' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/createGlipTeam) in API Explorer.
@@ -1605,21 +1722,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/teams/{chatId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/teams/${chatId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/teams/{$chatId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipTeam) in API Explorer.
@@ -1628,28 +1747,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP patch `/restapi/v1.0/glip/teams/{chatId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    public: true,
-    name: '<ENTER VALUE>',
-    description: '<ENTER VALUE>'
-}
+$body = array(
+    'public' => true,
+    'name' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/glip/teams/${chatId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/glip/teams/{$chatId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipTeamInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipTeam) in API Explorer.
@@ -1658,18 +1779,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/glip/teams/{chatId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/glip/teams/${chatId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/glip/teams/{$chatId}");
+?>
 ```
 
 Response body is empty
@@ -1680,18 +1803,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/join`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/join`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/join");
+?>
 ```
 
 Response body is empty
@@ -1702,18 +1827,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/leave`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/leave`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/leave");
+?>
 ```
 
 Response body is empty
@@ -1724,29 +1851,30 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/add`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    members: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'members' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'email' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/add`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/add");
+?>
 ```
 
 Response body is empty
@@ -1757,28 +1885,29 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/remove`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    members: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'members' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/remove`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/remove");
+?>
 ```
 
 Response body is empty
@@ -1789,18 +1918,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/archive`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/archive`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/archive");
+?>
 ```
 
 Response body is empty
@@ -1811,18 +1942,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/teams/{chatId}/unarchive`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/teams/${chatId}/unarchive`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/teams/{$chatId}/unarchive");
+?>
 ```
 
 Response body is empty
@@ -1833,18 +1966,20 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/glip/everyone`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/everyone`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/everyone");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/readGlipEveryone) in API Explorer.
@@ -1853,24 +1988,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP patch `/restapi/v1.0/glip/everyone`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    name: 000,
-    description: '<ENTER VALUE>'
-}
+$body = array(
+    'name' => 000,
+    'description' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/glip/everyone`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/glip/everyone");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEveryoneInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Teams/patchGlipEveryone) in API Explorer.
@@ -1879,24 +2016,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/recent/chats`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: 30
-}
+$queryParams = array(
+    //'type' => array( 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ),
+    //'recordCount' => '30'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/recent/chats`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/recent/chats");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listRecentChats) in API Explorer.
@@ -1905,23 +2044,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/favorites`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //recordCount: 30
-}
+$queryParams = array(
+    //'recordCount' => '30'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/favorites`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/favorites");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipChatsListWithoutNavigation.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Chats/listFavoriteChats) in API Explorer.
@@ -1930,18 +2071,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/favorite`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/favorite`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/favorite");
+?>
 ```
 
 Response body is empty
@@ -1952,18 +2095,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/unfavorite`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/unfavorite`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/unfavorite");
+?>
 ```
 
 Response body is empty
@@ -1974,18 +2119,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/read`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/read`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/read");
+?>
 ```
 
 Response body is empty
@@ -1996,18 +2143,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/unread`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/unread`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/unread");
+?>
 ```
 
 Response body is empty
@@ -2018,22 +2167,24 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
-const postId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
+$postId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/posts/{$postId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPost) in API Explorer.
@@ -2042,27 +2193,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP patch `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
-const postId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
+$postId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    text: '<ENTER VALUE>'
-}
+$body = array(
+    'text' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/glip/chats/{$chatId}/posts/{$postId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/patchGlipPost) in API Explorer.
@@ -2071,19 +2224,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/glip/chats/{chatId}/posts/{postId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
-const postId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
+$postId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/glip/chats/${chatId}/posts/${postId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/glip/chats/{$chatId}/posts/{$postId}");
+?>
 ```
 
 Response body is empty
@@ -2094,27 +2249,29 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/glip/chats/{chatId}/posts`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //recordCount: 30,
-    //pageToken: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'recordCount' => '30',
+    //'pageToken' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/posts`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/posts");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPostsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/readGlipPosts) in API Explorer.
@@ -2123,32 +2280,34 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/posts`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    text: '<ENTER VALUE>',
-    attachments: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'text' => '<ENTER VALUE>',
+    'attachments' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'type' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/posts`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/posts");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPostInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Posts/createGlipPost) in API Explorer.
@@ -2157,24 +2316,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/events`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //recordCount: 30,
-    //pageToken: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'recordCount' => '30',
+    //'pageToken' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/events`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/events");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventsInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readGlipEvents) in API Explorer.
@@ -2183,35 +2344,37 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/events`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    creatorId: '<ENTER VALUE>',
-    title: '<ENTER VALUE>',
-    startTime: '<ENTER VALUE>',
-    endTime: '<ENTER VALUE>',
-    allDay: true,
-    recurrence: 'None',
-    endingCondition: '<ENTER VALUE>',
-    endingAfter: 000,
-    endingOn: None,
-    color: Black,
-    location: '<ENTER VALUE>',
-    description: '<ENTER VALUE>'
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'creatorId' => '<ENTER VALUE>',
+    'title' => '<ENTER VALUE>',
+    'startTime' => '<ENTER VALUE>',
+    'endTime' => '<ENTER VALUE>',
+    'allDay' => true,
+    'recurrence' => 'None',
+    'endingCondition' => '<ENTER VALUE>',
+    'endingAfter' => 000,
+    'endingOn' => 'None',
+    'color' => 'Black',
+    'location' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/events`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/events");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEvent) in API Explorer.
@@ -2220,21 +2383,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/events/{eventId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const eventId = '<ENTER VALUE>';
+$eventId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/events/${eventId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/events/{$eventId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/readEvent) in API Explorer.
@@ -2243,38 +2408,40 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/glip/events/{eventId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const eventId = '<ENTER VALUE>';
+$eventId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    creatorId: '<ENTER VALUE>',
-    title: '<ENTER VALUE>',
-    startTime: '<ENTER VALUE>',
-    endTime: '<ENTER VALUE>',
-    allDay: true,
-    recurrence: 'None',
-    endingCondition: '<ENTER VALUE>',
-    endingAfter: 000,
-    endingOn: None,
-    color: Black,
-    location: '<ENTER VALUE>',
-    description: '<ENTER VALUE>'
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'creatorId' => '<ENTER VALUE>',
+    'title' => '<ENTER VALUE>',
+    'startTime' => '<ENTER VALUE>',
+    'endTime' => '<ENTER VALUE>',
+    'allDay' => true,
+    'recurrence' => 'None',
+    'endingCondition' => '<ENTER VALUE>',
+    'endingAfter' => 000,
+    'endingOn' => 'None',
+    'color' => 'Black',
+    'location' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/glip/events/${eventId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/glip/events/{$eventId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/updateEvent) in API Explorer.
@@ -2283,18 +2450,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/glip/events/{eventId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const eventId = '<ENTER VALUE>';
+$eventId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/glip/events/${eventId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/glip/events/{$eventId}");
+?>
 ```
 
 Response body is empty
@@ -2305,38 +2474,40 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/groups/{groupId}/events`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const groupId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    creatorId: '<ENTER VALUE>',
-    title: '<ENTER VALUE>',
-    startTime: '<ENTER VALUE>',
-    endTime: '<ENTER VALUE>',
-    allDay: true,
-    recurrence: 'None',
-    endingCondition: '<ENTER VALUE>',
-    endingAfter: 000,
-    endingOn: None,
-    color: Black,
-    location: '<ENTER VALUE>',
-    description: '<ENTER VALUE>'
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'creatorId' => '<ENTER VALUE>',
+    'title' => '<ENTER VALUE>',
+    'startTime' => '<ENTER VALUE>',
+    'endTime' => '<ENTER VALUE>',
+    'allDay' => true,
+    'recurrence' => 'None',
+    'endingCondition' => '<ENTER VALUE>',
+    'endingAfter' => 000,
+    'endingOn' => 'None',
+    'color' => 'Black',
+    'location' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/groups/${groupId}/events`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/groups/{$groupId}/events");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/createEventbyGroupId) in API Explorer.
@@ -2345,21 +2516,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/groups/{groupId}/events`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const groupId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/groups/${groupId}/events`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/groups/{$groupId}/events");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipEventInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Calendar-Events/listGroupEvents) in API Explorer.
@@ -2368,34 +2541,36 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/chats/{chatId}/tasks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //creationTimeTo: '<ENTER VALUE>',
-    //creationTimeFrom: '<ENTER VALUE>',
-    //creatorId: [ '<ENTER VALUE>' ],
-    //status: [ 'Pending', 'InProgress', 'Completed' ],
-    //assignmentStatus: 'Unassigned',
-    //assigneeId: [ '<ENTER VALUE>' ],
-    //assigneeStatus: 'Pending',
-    //pageToken: '<ENTER VALUE>',
-    //recordCount: 30
-}
+$queryParams = array(
+    //'creationTimeTo' => 'now',
+    //'creationTimeFrom' => '<ENTER VALUE>',
+    //'creatorId' => array( string ),
+    //'status' => array( 'Pending', 'InProgress', 'Completed' ),
+    //'assignmentStatus' => 'Unassigned',
+    //'assigneeId' => array( string ),
+    //'assigneeStatus' => 'Pending',
+    //'pageToken' => '<ENTER VALUE>',
+    //'recordCount' => '30'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/chats/${chatId}/tasks`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/chats/{$chatId}/tasks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/listChatTasks) in API Explorer.
@@ -2404,50 +2579,50 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/chats/{chatId}/tasks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const chatId = '<ENTER VALUE>';
+$chatId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    subject: '<ENTER VALUE>',
-    assignees: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    completenessCondition: Simple,
-    startDate: '<ENTER VALUE>',
-    dueDate: '<ENTER VALUE>',
-    color: Black,
-    section: '<ENTER VALUE>',
-    description: '<ENTER VALUE>',
-    recurrence: {
-        schedule: None,
-        endingCondition: None,
-        endingAfter: 000,
-        endingOn: '<ENTER VALUE>'
-    },
-    attachments: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'subject' => '<ENTER VALUE>',
+    'assignees' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'completenessCondition' => 'Simple',
+    'startDate' => '<ENTER VALUE>',
+    'dueDate' => '<ENTER VALUE>',
+    'color' => 'Black',
+    'section' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>',
+    'recurrence' => array(
+        'schedule' => 'None',
+        'endingCondition' => 'None',
+        'endingAfter' => 000,
+        'endingOn' => '<ENTER VALUE>'
+    ),
+    'attachments' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/chats/${chatId}/tasks`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/chats/{$chatId}/tasks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/createTask) in API Explorer.
@@ -2456,21 +2631,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/tasks/{taskId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/tasks/${taskId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/tasks/{$taskId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/readTask) in API Explorer.
@@ -2479,50 +2656,50 @@ You can get response json data by `const json = r.json()`
 
 HTTP patch `/restapi/v1.0/glip/tasks/{taskId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    subject: '<ENTER VALUE>',
-    assignees: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    completenessCondition: 'Simple',
-    startDate: '<ENTER VALUE>',
-    dueDate: '<ENTER VALUE>',
-    color: 'Black',
-    section: '<ENTER VALUE>',
-    description: '<ENTER VALUE>',
-    recurrence: {
-        schedule: None,
-        endingCondition: 'None',
-        endingAfter: 000,
-        endingOn: '<ENTER VALUE>'
-    },
-    attachments: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'subject' => '<ENTER VALUE>',
+    'assignees' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'completenessCondition' => 'Simple',
+    'startDate' => '<ENTER VALUE>',
+    'dueDate' => '<ENTER VALUE>',
+    'color' => 'Black',
+    'section' => '<ENTER VALUE>',
+    'description' => '<ENTER VALUE>',
+    'recurrence' => array(
+        'schedule' => 'None',
+        'endingCondition' => 'None',
+        'endingAfter' => 000,
+        'endingOn' => '<ENTER VALUE>'
+    ),
+    'attachments' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/glip/tasks/${taskId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/glip/tasks/{$taskId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/patchTask) in API Explorer.
@@ -2531,18 +2708,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/glip/tasks/{taskId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/glip/tasks/${taskId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/glip/tasks/{$taskId}");
+?>
 ```
 
 Response body is empty
@@ -2553,33 +2732,34 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/tasks/{taskId}/complete`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    status: 'Incomplete',
-    assignees: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    completenessPercentage: 000
-}
+$body = array(
+    'status' => 'Incomplete',
+    'assignees' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'completenessPercentage' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/tasks/${taskId}/complete`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/tasks/{$taskId}/complete");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TaskList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Tasks/completeTask) in API Explorer.
@@ -2588,21 +2768,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/persons/{personId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const personId = '<ENTER VALUE>';
+$personId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/persons/${personId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/persons/{$personId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPersonInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPerson) in API Explorer.
@@ -2611,21 +2793,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/companies/{companyId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const companyId = '<ENTER VALUE>';
+$companyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/companies/${companyId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/companies/{$companyId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipCompany.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipCompany) in API Explorer.
@@ -2634,21 +2818,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/glip/groups/{groupId}/webhooks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const groupId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/groups/${groupId}/webhooks`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/groups/{$groupId}/webhooks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/createGlipGroupWebhook) in API Explorer.
@@ -2657,21 +2843,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/groups/{groupId}/webhooks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const groupId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/groups/${groupId}/webhooks`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/groups/{$groupId}/webhooks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipGroupWebhooks) in API Explorer.
@@ -2680,18 +2868,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/webhooks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/webhooks`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/webhooks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/listGlipWebhooks) in API Explorer.
@@ -2700,21 +2890,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/webhooks/{webhookId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const webhookId = '<ENTER VALUE>';
+$webhookId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/webhooks/${webhookId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/webhooks/{$webhookId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipWebhookList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Webhooks/readGlipWebhook) in API Explorer.
@@ -2723,18 +2915,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/glip/webhooks/{webhookId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const webhookId = '<ENTER VALUE>';
+$webhookId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/glip/webhooks/${webhookId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/glip/webhooks/{$webhookId}");
+?>
 ```
 
 Response body is empty
@@ -2745,18 +2939,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/activate`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const webhookId = '<ENTER VALUE>';
+$webhookId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/webhooks/${webhookId}/activate`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/webhooks/{$webhookId}/activate");
+?>
 ```
 
 Response body is empty
@@ -2767,18 +2963,20 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/glip/webhooks/{webhookId}/suspend`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const webhookId = '<ENTER VALUE>';
+$webhookId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/webhooks/${webhookId}/suspend`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/webhooks/{$webhookId}/suspend");
+?>
 ```
 
 Response body is empty
@@ -2789,18 +2987,20 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/glip/preferences`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/preferences`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/preferences");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GlipPreferencesInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Profile/readGlipPreferences) in API Explorer.
@@ -2809,22 +3009,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MeetingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/listMeetings) in API Explorer.
@@ -2833,51 +3035,51 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    topic: '<ENTER VALUE>',
-    meetingType: '<ENTER VALUE>',
-    schedule: {
-        startTime: '<ENTER VALUE>',
-        durationInMinutes: 000,
-        timeZone: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
-    },
-    password: '<ENTER VALUE>',
-    host: {
-        id: '<ENTER VALUE>'
-    },
-    allowJoinBeforeHost: true,
-    startHostVideo: true,
-    startParticipantsVideo: true,
-    usePersonalMeetingId: true,
-    audioOptions: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'topic' => '<ENTER VALUE>',
+    'meetingType' => '<ENTER VALUE>',
+    'schedule' => array(
+        'startTime' => '<ENTER VALUE>',
+        'durationInMinutes' => 000,
+        'timeZone' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'description' => '<ENTER VALUE>'
+        )
+    ),
+    'password' => '<ENTER VALUE>',
+    'host' => array(
+        'id' => '<ENTER VALUE>'
+    ),
+    'allowJoinBeforeHost' => true,
+    'startHostVideo' => true,
+    'startParticipantsVideo' => true,
+    'usePersonalMeetingId' => true,
+    'audioOptions' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/createMeeting) in API Explorer.
@@ -2886,23 +3088,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const meetingId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$meetingId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/readMeeting) in API Explorer.
@@ -2911,52 +3115,52 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const meetingId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$meetingId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    topic: '<ENTER VALUE>',
-    meetingType: '<ENTER VALUE>',
-    schedule: {
-        startTime: '<ENTER VALUE>',
-        durationInMinutes: 000,
-        timeZone: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
-    },
-    password: '<ENTER VALUE>',
-    host: {
-        id: '<ENTER VALUE>'
-    },
-    allowJoinBeforeHost: true,
-    startHostVideo: true,
-    startParticipantsVideo: true,
-    usePersonalMeetingId: true,
-    audioOptions: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'topic' => '<ENTER VALUE>',
+    'meetingType' => '<ENTER VALUE>',
+    'schedule' => array(
+        'startTime' => '<ENTER VALUE>',
+        'durationInMinutes' => 000,
+        'timeZone' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'description' => '<ENTER VALUE>'
+        )
+    ),
+    'password' => '<ENTER VALUE>',
+    'host' => array(
+        'id' => '<ENTER VALUE>'
+    ),
+    'allowJoinBeforeHost' => true,
+    'startHostVideo' => true,
+    'startParticipantsVideo' => true,
+    'usePersonalMeetingId' => true,
+    'audioOptions' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MeetingResponseResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Management/updateMeeting) in API Explorer.
@@ -2965,20 +3169,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const meetingId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$meetingId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}");
+?>
 ```
 
 Response body is empty
@@ -2989,20 +3195,22 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/{meetingId}/end`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const meetingId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$meetingId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/${meetingId}/end`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/{$meetingId}/end");
+?>
 ```
 
 Response body is empty
@@ -3013,22 +3221,24 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meeting/service-info`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meeting/service-info`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meeting/service-info");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MeetingServiceInfoResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readMeetingServiceInfo) in API Explorer.
@@ -3037,22 +3247,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-configuration/assistants`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meetings-configuration/assistants`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meetings-configuration/assistants");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AssistantsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistants) in API Explorer.
@@ -3061,22 +3273,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/meetings-configuration/assisted`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/meetings-configuration/assisted`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/meetings-configuration/assisted");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AssistedUsersResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Meeting-Configuration/readAssistedUsers) in API Explorer.
@@ -3085,18 +3299,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/subscription`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/subscription`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/subscription");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/RecordsCollectionResourceSubscriptionResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/listSubscriptions) in API Explorer.
@@ -3105,36 +3321,36 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/subscription`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    eventFilters: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    deliveryMode: {
-        transportType: 'PubNub',
-        address: '<ENTER VALUE>',
-        encryption: true,
-        certificateName: '<ENTER VALUE>',
-        registrationId: '<ENTER VALUE>',
-        verificationToken: '<ENTER VALUE>'
-    },
-    expiresIn: 604800
-}
+$body = array(
+    'eventFilters' => array(
+        '<ENTER VALUE>'  
+    ),
+    'deliveryMode' => array(
+        'transportType' => 'PubNub',
+        'address' => '<ENTER VALUE>',
+        'encryption' => true,
+        'certificateName' => '<ENTER VALUE>',
+        'registrationId' => '<ENTER VALUE>',
+        'verificationToken' => '<ENTER VALUE>'
+    ),
+    'expiresIn' => '604800'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/subscription`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/subscription");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/createSubscription) in API Explorer.
@@ -3143,21 +3359,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/subscription/{subscriptionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const subscriptionId = '<ENTER VALUE>';
+$subscriptionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/subscription/${subscriptionId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/subscription/{$subscriptionId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/readSubscription) in API Explorer.
@@ -3166,44 +3384,44 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/subscription/{subscriptionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const subscriptionId = '<ENTER VALUE>';
+$subscriptionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //aggregated: true
-}
+$queryParams = array(
+    //'aggregated' => true
+)
 
 // POST BODY
-const body = {
-    eventFilters: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    deliveryMode: {
-        transportType: 'PubNub',
-        address: '<ENTER VALUE>',
-        encryption: true,
-        certificateName: '<ENTER VALUE>',
-        registrationId: '<ENTER VALUE>',
-        verificationToken: '<ENTER VALUE>'
-    },
-    expiresIn: 604800
-}
+$body = array(
+    'eventFilters' => array(
+        '<ENTER VALUE>'  
+    ),
+    'deliveryMode' => array(
+        'transportType' => 'PubNub',
+        'address' => '<ENTER VALUE>',
+        'encryption' => true,
+        'certificateName' => '<ENTER VALUE>',
+        'registrationId' => '<ENTER VALUE>',
+        'verificationToken' => '<ENTER VALUE>'
+    ),
+    'expiresIn' => '604800'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/subscription/${subscriptionId}`, body, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/subscription/{$subscriptionId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/updateSubscription) in API Explorer.
@@ -3212,18 +3430,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/subscription/{subscriptionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const subscriptionId = '<ENTER VALUE>';
+$subscriptionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/subscription/${subscriptionId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/subscription/{$subscriptionId}");
+?>
 ```
 
 Response body is empty
@@ -3234,21 +3454,23 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/subscription/{subscriptionId}/renew`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const subscriptionId = '<ENTER VALUE>';
+$subscriptionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/subscription/${subscriptionId}/renew`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/subscription/{$subscriptionId}/renew");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SubscriptionInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Subscriptions/renewSubscription) in API Explorer.
@@ -3257,22 +3479,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/authz-profile`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/authz-profile");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AuthProfileResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/readAuthorizationProfile) in API Explorer.
@@ -3281,28 +3505,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/authz-profile/check`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //permissionId: '<ENTER VALUE>',
-    //targetExtensionId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'permissionId' => '<ENTER VALUE>',
+    //'targetExtensionId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/authz-profile/check`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/authz-profile/check");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AuthProfileCheckResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Permissions/checkUserPermission) in API Explorer.
@@ -3311,22 +3537,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/business-hours`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/business-hours");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetUserBusinessHoursResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readUserBusinessHours) in API Explorer.
@@ -3335,72 +3563,74 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/business-hours`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        }
-    }
-}
+$body = array(
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        )
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/business-hours`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/business-hours");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserBusinessHoursUpdateResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateUserBusinessHours) in API Explorer.
@@ -3409,21 +3639,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/business-hours`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/business-hours`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/business-hours");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/readCompanyBusinessHours) in API Explorer.
@@ -3432,71 +3664,73 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/business-hours`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        }
-    }
-}
+$body = array(
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        )
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/business-hours`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-hours");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyBusinessHours.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Business-Hours/updateCompanyBusinessHours) in API Explorer.
@@ -3505,22 +3739,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readCallerBlockingSettings) in API Explorer.
@@ -3529,35 +3765,41 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    mode: 'Specific',
-    noCallerId: 'BlockCallsAndFaxes',
-    payPhones: 'Block',
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'mode' => 'Specific',
+    'noCallerId' => 'BlockCallsAndFaxes',
+    'payPhones' => 'Block',
+    'greetings' => array(
+        array(
+            'type' => '<ENTER VALUE>',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallerBlockingSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateCallerBlockingSettings) in API Explorer.
@@ -3566,29 +3808,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 000,
-    //perPage: 000,
-    //status: 'Blocked'
-}
+$queryParams = array(
+    //'page' => 000,
+    //'perPage' => 000,
+    //'status' => 'Blocked'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumbersList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/listBlockedAllowedNumbers) in API Explorer.
@@ -3597,29 +3841,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    label: '<ENTER VALUE>',
-    status: Blocked
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'label' => '<ENTER VALUE>',
+    'status' => 'Blocked'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/createBlockedAllowedNumber) in API Explorer.
@@ -3628,23 +3874,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const blockedNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$blockedNumberId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers/{$blockedNumberId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/readBlockedAllowedNumber) in API Explorer.
@@ -3653,20 +3901,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const blockedNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$blockedNumberId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers/{$blockedNumberId}");
+?>
 ```
 
 Response body is empty
@@ -3677,30 +3927,32 @@ Response body is empty
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-blocking/phone-numbers/{blockedNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const blockedNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$blockedNumberId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    label: '<ENTER VALUE>',
-    status: Blocked
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'label' => '<ENTER VALUE>',
+    'status' => 'Blocked'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-blocking/phone-numbers/${blockedNumberId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-blocking/phone-numbers/{$blockedNumberId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/BlockedAllowedPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Blocking/updateBlockedAllowedNumber) in API Explorer.
@@ -3709,28 +3961,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionForwardingNumberListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/listForwardingNumbers) in API Explorer.
@@ -3739,32 +3993,34 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    label: '<ENTER VALUE>',
-    type: 'PhoneLine',
-    device: {
-        id: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'label' => '<ENTER VALUE>',
+    'type' => 'PhoneLine',
+    'device' => array(
+        'id' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/createForwardingNumber) in API Explorer.
@@ -3773,23 +4029,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const forwardingNumberId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$forwardingNumberId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number/{$forwardingNumberId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/readForwardingNumber) in API Explorer.
@@ -3798,31 +4056,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const forwardingNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$forwardingNumberId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    label: '<ENTER VALUE>',
-    flipNumber: '<ENTER VALUE>',
-    type: 'Home'
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'label' => '<ENTER VALUE>',
+    'flipNumber' => '<ENTER VALUE>',
+    'type' => 'Home'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number/{$forwardingNumberId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ForwardingNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Forwarding/updateForwardingNumber) in API Explorer.
@@ -3831,20 +4091,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/forwarding-number/{forwardingNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const forwardingNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$forwardingNumberId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/forwarding-number/${forwardingNumberId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/forwarding-number/{$forwardingNumberId}");
+?>
 ```
 
 Response body is empty
@@ -3855,30 +4117,32 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //view: 'Detailed',
-    //enabledOnly: true,
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'view' => 'Simple',
+    //'enabledOnly' => true,
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserAnsweringRuleList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listAnsweringRules) in API Explorer.
@@ -3887,149 +4151,170 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    enabled: true,
-    type: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    callers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    calledNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        },
-        ranges: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        ref: 'BusinessHours'
-    },
-    callHandlingAction: 'ForwardCalls',
-    forwarding: {
-        notifyMySoftPhones: true,
-        notifyAdminSoftPhones: true,
-        softPhonesRingCount: 000,
-        ringingMode: 'Sequentially',
-        rules: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        mobileTimeout: true
-    },
-    unconditionalForwarding: {
-        phoneNumber: '<ENTER VALUE>'
-    },
-    queue: {
-        transferMode: 'Rotating',
-        fixedOrderAgents: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        holdAudioInterruptionMode: 'Never',
-        holdAudioInterruptionPeriod: 000,
-        agentTimeout: 000,
-        wrapUpTime: 000,
-        holdTime: 000,
-        maxCallers: 000,
-        maxCallersAction: 'Voicemail'
-    },
-    transfer: {
-        extension: {
-            id: '<ENTER VALUE>',
-            uri: '<ENTER VALUE>',
-            extensionNumber: '<ENTER VALUE>',
-            partnerId: '<ENTER VALUE>'
-        }
-    },
-    voicemail: {
-        enabled: true,
-        recipient: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>'
-        }
-    },
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    screening: 'Off'
-}
+$body = array(
+    'enabled' => true,
+    'type' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'callers' => array(
+        array(
+            'callerId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        )  
+    ),
+    'calledNumbers' => array(
+        array(
+            'phoneNumber' => '<ENTER VALUE>'
+        )  
+    ),
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        ),
+        'ranges' => array(
+            array(
+                'from' => '<ENTER VALUE>',
+                'to' => '<ENTER VALUE>'
+            )  
+        ),
+        'ref' => 'BusinessHours'
+    ),
+    'callHandlingAction' => 'ForwardCalls',
+    'forwarding' => array(
+        'notifyMySoftPhones' => true,
+        'notifyAdminSoftPhones' => true,
+        'softPhonesRingCount' => 000,
+        'ringingMode' => 'Sequentially',
+        'rules' => array(
+            array(
+                'index' => 000,
+                'ringCount' => 000,
+                'enabled' => true,
+                'forwardingNumbers' => array(
+                    array(
+                        'uri' => '<ENTER VALUE>',
+                        'id' => '<ENTER VALUE>',
+                        'phoneNumber' => '<ENTER VALUE>',
+                        'label' => '<ENTER VALUE>',
+                        'type' => 'Home'
+                    )  
+                )
+            )  
+        ),
+        'mobileTimeout' => true
+    ),
+    'unconditionalForwarding' => array(
+        'phoneNumber' => '<ENTER VALUE>'
+    ),
+    'queue' => array(
+        'transferMode' => 'Rotating',
+        'fixedOrderAgents' => array(
+            array(
+                'extension' => array(
+                    'id' => '<ENTER VALUE>',
+                    'uri' => '<ENTER VALUE>',
+                    'extensionNumber' => '<ENTER VALUE>',
+                    'partnerId' => '<ENTER VALUE>'
+                ),
+                'index' => 000
+            )  
+        ),
+        'holdAudioInterruptionMode' => 'Never',
+        'holdAudioInterruptionPeriod' => 000,
+        'agentTimeout' => 000,
+        'wrapUpTime' => 000,
+        'holdTime' => 000,
+        'maxCallers' => 000,
+        'maxCallersAction' => 'Voicemail'
+    ),
+    'transfer' => array(
+        'extension' => array(
+            'id' => '<ENTER VALUE>',
+            'uri' => '<ENTER VALUE>',
+            'extensionNumber' => '<ENTER VALUE>',
+            'partnerId' => '<ENTER VALUE>'
+        )
+    ),
+    'voicemail' => array(
+        'enabled' => true,
+        'recipient' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>'
+        )
+    ),
+    'greetings' => array(
+        array(
+            'type' => 'Introductory',
+            'usageType' => 'UserExtensionAnsweringRule',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    ),
+    'screening' => 'Off'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createAnsweringRule) in API Explorer.
@@ -4038,28 +4323,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //showInactiveNumbers: true
-}
+$queryParams = array(
+    //'showInactiveNumbers' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readAnsweringRule) in API Explorer.
@@ -4068,142 +4355,160 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    forwarding: {
-        notifyMySoftPhones: true,
-        notifyAdminSoftPhones: true,
-        softPhonesRingCount: 1,
-        ringingMode: 'Sequentially',
-        rules: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        mobileTimeout: true
-    },
-    enabled: true,
-    name: '<ENTER VALUE>',
-    callers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    calledNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        },
-        ranges: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        ref: 'BusinessHours'
-    },
-    callHandlingAction: 'ForwardCalls',
-    unconditionalForwarding: {
-        phoneNumber: '<ENTER VALUE>'
-    },
-    queue: {
-        transferMode: 'Rotating',
-        fixedOrderAgents: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        holdAudioInterruptionMode: 'Never',
-        holdAudioInterruptionPeriod: 000,
-        agentTimeout: 000,
-        wrapUpTime: 000,
-        holdTime: 000,
-        maxCallers: 000,
-        maxCallersAction: 'Voicemail'
-    },
-    voicemail: {
-        enabled: true,
-        recipient: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>'
-        }
-    },
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    screening: 'Off',
-    showInactiveNumbers: true
-}
+$body = array(
+    'forwarding' => array(
+        'notifyMySoftPhones' => true,
+        'notifyAdminSoftPhones' => true,
+        'softPhonesRingCount' => '1',
+        'ringingMode' => 'Sequentially',
+        'rules' => array(
+            array(
+                'index' => 000,
+                'ringCount' => 000,
+                'enabled' => true,
+                'forwardingNumbers' => array(
+                    array(
+                        'id' => '<ENTER VALUE>',
+                        'type' => 'Home'
+                    )  
+                )
+            )  
+        ),
+        'mobileTimeout' => true
+    ),
+    'enabled' => true,
+    'name' => '<ENTER VALUE>',
+    'callers' => array(
+        array(
+            'callerId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        )  
+    ),
+    'calledNumbers' => array(
+        array(
+            'phoneNumber' => '<ENTER VALUE>'
+        )  
+    ),
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        ),
+        'ranges' => array(
+            array(
+                'from' => '<ENTER VALUE>',
+                'to' => '<ENTER VALUE>'
+            )  
+        ),
+        'ref' => 'BusinessHours'
+    ),
+    'callHandlingAction' => 'ForwardCalls',
+    'unconditionalForwarding' => array(
+        'phoneNumber' => '<ENTER VALUE>'
+    ),
+    'queue' => array(
+        'transferMode' => 'Rotating',
+        'fixedOrderAgents' => array(
+            array(
+                'extension' => array(
+                    'id' => '<ENTER VALUE>',
+                    'uri' => '<ENTER VALUE>',
+                    'extensionNumber' => '<ENTER VALUE>',
+                    'partnerId' => '<ENTER VALUE>'
+                ),
+                'index' => 000
+            )  
+        ),
+        'holdAudioInterruptionMode' => 'Never',
+        'holdAudioInterruptionPeriod' => 000,
+        'agentTimeout' => 000,
+        'wrapUpTime' => 000,
+        'holdTime' => 000,
+        'maxCallers' => 000,
+        'maxCallersAction' => 'Voicemail'
+    ),
+    'voicemail' => array(
+        'enabled' => true,
+        'recipient' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>'
+        )
+    ),
+    'greetings' => array(
+        array(
+            'type' => 'Introductory',
+            'usageType' => 'UserExtensionAnsweringRule',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    ),
+    'screening' => 'Off',
+    'showInactiveNumbers' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateAnsweringRule) in API Explorer.
@@ -4212,20 +4517,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/answering-rule/${ruleId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/answering-rule/{$ruleId}");
+?>
 ```
 
 Response body is empty
@@ -4236,104 +4543,110 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/answering-rule`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    name: '<ENTER VALUE>',
-    enabled: true,
-    type: 'BusinessHours',
-    callers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    calledNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        },
-        ranges: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        ref: 'BusinessHours'
-    },
-    callHandlingAction: 'Operator',
-    extension: {
-        callerId: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'name' => '<ENTER VALUE>',
+    'enabled' => 'true',
+    'type' => 'BusinessHours',
+    'callers' => array(
+        array(
+            'callerId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        )  
+    ),
+    'calledNumbers' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        ),
+        'ranges' => array(
+            array(
+                'from' => '<ENTER VALUE>',
+                'to' => '<ENTER VALUE>'
+            )  
+        ),
+        'ref' => 'BusinessHours'
+    ),
+    'callHandlingAction' => 'Operator',
+    'extension' => array(
+        'callerId' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'greetings' => array(
+        array(
+            'type' => 'Introductory',
+            'usageType' => 'UserExtensionAnsweringRule',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/answering-rule`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/answering-rule");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyAnsweringRule) in API Explorer.
@@ -4342,21 +4655,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/answering-rule`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/answering-rule`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/answering-rule");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCompanyAnsweringRules) in API Explorer.
@@ -4365,22 +4680,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/answering-rule/{$ruleId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCompanyAnsweringRule) in API Explorer.
@@ -4389,104 +4706,110 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    enabled: true,
-    name: '<ENTER VALUE>',
-    callers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    calledNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schedule: {
-        weeklyRanges: {
-            monday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            tuesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            wednesday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            thursday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            friday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            saturday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ],
-            sunday: [
-                {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                },
-                ]
-        },
-        ranges: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ],
-        ref: 'BusinessHours'
-    },
-    callHandlingAction: 'Operator',
-    extension: {
-        callerId: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'enabled' => 'true',
+    'name' => '<ENTER VALUE>',
+    'callers' => array(
+        array(
+            'callerId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        )  
+    ),
+    'calledNumbers' => array(
+        array(
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'schedule' => array(
+        'weeklyRanges' => array(
+            'monday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'tuesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'wednesday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'thursday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'friday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'saturday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            ),
+            'sunday' => array(
+                array(
+                    'from' => '<ENTER VALUE>',
+                    'to' => '<ENTER VALUE>'
+                )  
+            )
+        ),
+        'ranges' => array(
+            array(
+                'from' => '<ENTER VALUE>',
+                'to' => '<ENTER VALUE>'
+            )  
+        ),
+        'ref' => 'BusinessHours'
+    ),
+    'callHandlingAction' => 'Operator',
+    'extension' => array(
+        'callerId' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'greetings' => array(
+        array(
+            'type' => 'Introductory',
+            'usageType' => 'UserExtensionAnsweringRule',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/answering-rule/{$ruleId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyAnsweringRuleInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCompanyAnsweringRule) in API Explorer.
@@ -4495,19 +4818,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/answering-rule/{ruleId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const ruleId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$ruleId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/answering-rule/${ruleId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/answering-rule/{$ruleId}");
+?>
 ```
 
 Response body is empty
@@ -4518,26 +4843,28 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/dictionary/greeting`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100,
-    //type: 'Introductory',
-    //usageType: 'UserExtensionAnsweringRule'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100',
+    //'type' => 'Introductory',
+    //'usageType' => 'UserExtensionAnsweringRule'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/greeting`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/greeting");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DictionaryGreetingList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listStandardGreetings) in API Explorer.
@@ -4546,21 +4873,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/greeting/{greetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const greetingId = '<ENTER VALUE>';
+$greetingId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/greeting/${greetingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/greeting/{$greetingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DictionaryGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readStandardGreeting) in API Explorer.
@@ -4569,21 +4898,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/greeting`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/greeting`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/greeting");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CustomCompanyGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCompanyGreeting) in API Explorer.
@@ -4592,22 +4923,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/greeting`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/greeting");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/createCustomUserGreeting) in API Explorer.
@@ -4616,23 +4949,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting/{greetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const greetingId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$greetingId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/greeting/${greetingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/greeting/{$greetingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCustomGreeting) in API Explorer.
@@ -4641,21 +4976,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/ivr-prompts`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/ivr-prompts`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/ivr-prompts");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRPrompt) in API Explorer.
@@ -4664,21 +5001,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/ivr-prompts");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/IVRPrompts.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/listIVRPrompts) in API Explorer.
@@ -4687,22 +5026,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const promptId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$promptId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRPrompt) in API Explorer.
@@ -4711,19 +5052,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const promptId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$promptId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}");
+?>
 ```
 
 Response body is empty
@@ -4734,27 +5077,29 @@ Response body is empty
 
 HTTP put `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const promptId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$promptId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    filename: '<ENTER VALUE>'
-}
+$body = array(
+    'filename' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PromptInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRPrompt) in API Explorer.
@@ -4763,22 +5108,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/ivr-prompts/{promptId}/content`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const promptId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$promptId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-prompts/${promptId}/content`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/ivr-prompts/{$promptId}/content");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRPromptContent) in API Explorer.
 
@@ -4786,49 +5133,56 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/ivr-menus`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    uri: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    extensionNumber: '<ENTER VALUE>',
-    prompt: {
-        mode: 'Audio',
-        audio: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            localeCode: '<ENTER VALUE>'
-        },
-        text: '<ENTER VALUE>',
-        language: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>'
-        }
-    },
-    actions: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'uri' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'extensionNumber' => '<ENTER VALUE>',
+    'prompt' => array(
+        'mode' => 'Audio',
+        'audio' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'localeCode' => '<ENTER VALUE>'
+        ),
+        'text' => '<ENTER VALUE>',
+        'language' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>'
+        )
+    ),
+    'actions' => array(
+        array(
+            'input' => '<ENTER VALUE>',
+            'action' => 'Connect',
+            'extension' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>'
+            ),
+            'phoneNumber' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/ivr-menus`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/ivr-menus");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/createIVRMenu) in API Explorer.
@@ -4837,22 +5191,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const ivrMenuId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$ivrMenuId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/ivr-menus/${ivrMenuId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/ivr-menus/{$ivrMenuId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/readIVRMenu) in API Explorer.
@@ -4861,50 +5217,57 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/ivr-menus/{ivrMenuId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const ivrMenuId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$ivrMenuId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    uri: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    extensionNumber: '<ENTER VALUE>',
-    prompt: {
-        mode: 'Audio',
-        audio: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            localeCode: '<ENTER VALUE>'
-        },
-        text: '<ENTER VALUE>',
-        language: {
-            uri: '<ENTER VALUE>',
-            id: '<ENTER VALUE>'
-        }
-    },
-    actions: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'uri' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'extensionNumber' => '<ENTER VALUE>',
+    'prompt' => array(
+        'mode' => 'Audio',
+        'audio' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'localeCode' => '<ENTER VALUE>'
+        ),
+        'text' => '<ENTER VALUE>',
+        'language' => array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>'
+        )
+    ),
+    'actions' => array(
+        array(
+            'input' => '<ENTER VALUE>',
+            'action' => 'Connect',
+            'extension' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>'
+            ),
+            'phoneNumber' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/ivr-menus/${ivrMenuId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/ivr-menus/{$ivrMenuId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/IVRMenuInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Routing/updateIVRMenu) in API Explorer.
@@ -4913,21 +5276,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-recording`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-recording");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/readCallRecordingSettings) in API Explorer.
@@ -4936,41 +5301,43 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/call-recording`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    onDemand: {
-        enabled: true
-    },
-    automatic: {
-        enabled: true,
-        outboundCallTones: true,
-        outboundCallAnnouncement: true,
-        allowMute: true,
-        extensionCount: 000
-    },
-    greetings: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'onDemand' => array(
+        'enabled' => true
+    ),
+    'automatic' => array(
+        'enabled' => true,
+        'outboundCallTones' => true,
+        'outboundCallAnnouncement' => true,
+        'allowMute' => true,
+        'extensionCount' => 000
+    ),
+    'greetings' => array(
+        array(
+            'type' => 'StartRecording',
+            'mode' => 'Default'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/call-recording`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-recording");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallRecordingSettingsResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/updateCallRecordingSettings) in API Explorer.
@@ -4979,21 +5346,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-recording/extensions`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording/extensions`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-recording/extensions");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallRecordingExtensions.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingExtensions) in API Explorer.
@@ -5002,43 +5371,45 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/call-recording/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    addedExtensions: {
-        id: '<ENTER VALUE>',
-        uri: '<ENTER VALUE>',
-        extensionNumber: '<ENTER VALUE>',
-        type: '<ENTER VALUE>',
-        callDirection: 'Outbound'
-    },
-    updatedExtensions: {
-        id: '<ENTER VALUE>',
-        uri: '<ENTER VALUE>',
-        extensionNumber: '<ENTER VALUE>',
-        type: '<ENTER VALUE>',
-        callDirection: 'Outbound'
-    },
-    removedExtensions: {
-        id: '<ENTER VALUE>',
-        uri: '<ENTER VALUE>',
-        extensionNumber: '<ENTER VALUE>',
-        type: '<ENTER VALUE>',
-        callDirection: 'Outbound'
-    }
-}
+$body = array(
+    'addedExtensions' => array(
+        'id' => '<ENTER VALUE>',
+        'uri' => '<ENTER VALUE>',
+        'extensionNumber' => '<ENTER VALUE>',
+        'type' => '<ENTER VALUE>',
+        'callDirection' => 'Outbound'
+    ),
+    'updatedExtensions' => array(
+        'id' => '<ENTER VALUE>',
+        'uri' => '<ENTER VALUE>',
+        'extensionNumber' => '<ENTER VALUE>',
+        'type' => '<ENTER VALUE>',
+        'callDirection' => 'Outbound'
+    ),
+    'removedExtensions' => array(
+        'id' => '<ENTER VALUE>',
+        'uri' => '<ENTER VALUE>',
+        'extensionNumber' => '<ENTER VALUE>',
+        'type' => '<ENTER VALUE>',
+        'callDirection' => 'Outbound'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-recording/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-recording/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -5049,26 +5420,28 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //type: 'StartRecording'
-}
+$queryParams = array(
+    //'type' => 'StartRecording'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-recording/custom-greetings");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallRecordingCustomGreetings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Rule-Management/listCallRecordingCustomGreetings) in API Explorer.
@@ -5077,18 +5450,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/call-recording/custom-greetings");
+?>
 ```
 
 Response body is empty
@@ -5099,19 +5474,21 @@ Response body is empty
 
 HTTP delete `/restapi/v1.0/account/{accountId}/call-recording/custom-greetings/{greetingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const greetingId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$greetingId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-recording/custom-greetings/${greetingId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/call-recording/custom-greetings/{$greetingId}");
+?>
 ```
 
 Response body is empty
@@ -5122,34 +5499,36 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/client-info/sip-provision`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    device: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    sipInfo: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'device' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'appExternalId' => '<ENTER VALUE>',
+            'computerName' => '<ENTER VALUE>'
+        )  
+    ),
+    'sipInfo' => array(
+        array(
+            'transport' => 'UDP'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/client-info/sip-provision`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/client-info/sip-provision");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CreateSipRegistrationResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SIP/createSIPRegistration) in API Explorer.
@@ -5158,29 +5537,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/phone-number`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber' ],
-    //page: 000,
-    //perPage: 000
-}
+$queryParams = array(
+    //'usageType' => array( 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber' ),
+    //'page' => 000,
+    //'perPage' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/phone-number`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/phone-number");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionPhoneNumbersResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listExtensionPhoneNumbers) in API Explorer.
@@ -5189,22 +5570,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtension) in API Explorer.
@@ -5213,91 +5596,92 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    status: 'Disabled',
-    statusInfo: {
-        comment: '<ENTER VALUE>',
-        reason: 'Voluntarily'
-    },
-    reason: '<ENTER VALUE>',
-    comment: '<ENTER VALUE>',
-    extensionNumber: '<ENTER VALUE>',
-    contact: {
-        firstName: '<ENTER VALUE>',
-        lastName: '<ENTER VALUE>',
-        company: '<ENTER VALUE>',
-        jobTitle: '<ENTER VALUE>',
-        email: '<ENTER VALUE>',
-        businessPhone: '<ENTER VALUE>',
-        mobilePhone: '<ENTER VALUE>',
-        businessAddress: {
-            country: '<ENTER VALUE>',
-            state: '<ENTER VALUE>',
-            city: '<ENTER VALUE>',
-            street: '<ENTER VALUE>',
-            zip: '<ENTER VALUE>'
-        },
-        emailAsLoginName: true,
-        pronouncedName: {
-            type: 'Default',
-            text: '<ENTER VALUE>'
-        },
-        department: '<ENTER VALUE>'
-    },
-    regionalSettings: {
-        homeCountry: {
-            id: '<ENTER VALUE>'
-        },
-        timezone: {
-            id: '<ENTER VALUE>'
-        },
-        language: {
-            id: '<ENTER VALUE>'
-        },
-        greetingLanguage: {
-            id: '<ENTER VALUE>'
-        },
-        formattingLocale: {
-            id: '<ENTER VALUE>'
-        },
-        timeFormat: 12h
-    },
-    setupWizardState: 'NotStarted',
-    partnerId: '<ENTER VALUE>',
-    ivrPin: '<ENTER VALUE>',
-    password: '<ENTER VALUE>',
-    callQueueInfo: {
-        slaGoal: 000,
-        slaThresholdSeconds: 000,
-        includeAbandonedCalls: true,
-        abandonedThresholdSeconds: 000
-    },
-    transition: [
-        {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'status' => 'Disabled',
+    'statusInfo' => array(
+        'comment' => '<ENTER VALUE>',
+        'reason' => 'Voluntarily'
+    ),
+    'reason' => '<ENTER VALUE>',
+    'comment' => '<ENTER VALUE>',
+    'extensionNumber' => '<ENTER VALUE>',
+    'contact' => array(
+        'firstName' => '<ENTER VALUE>',
+        'lastName' => '<ENTER VALUE>',
+        'company' => '<ENTER VALUE>',
+        'jobTitle' => '<ENTER VALUE>',
+        'email' => '<ENTER VALUE>',
+        'businessPhone' => '<ENTER VALUE>',
+        'mobilePhone' => '<ENTER VALUE>',
+        'businessAddress' => array(
+            'country' => '<ENTER VALUE>',
+            'state' => '<ENTER VALUE>',
+            'city' => '<ENTER VALUE>',
+            'street' => '<ENTER VALUE>',
+            'zip' => '<ENTER VALUE>'
+        ),
+        'emailAsLoginName' => true,
+        'pronouncedName' => array(
+            'type' => 'Default',
+            'text' => '<ENTER VALUE>'
+        ),
+        'department' => '<ENTER VALUE>'
+    ),
+    'regionalSettings' => array(
+        'homeCountry' => array(
+            'id' => '<ENTER VALUE>'
+        ),
+        'timezone' => array(
+            'id' => '<ENTER VALUE>'
+        ),
+        'language' => array(
+            'id' => '<ENTER VALUE>'
+        ),
+        'greetingLanguage' => array(
+            'id' => '<ENTER VALUE>'
+        ),
+        'formattingLocale' => array(
+            'id' => '<ENTER VALUE>'
+        ),
+        'timeFormat' => '12h'
+    ),
+    'setupWizardState' => 'NotStarted',
+    'partnerId' => '<ENTER VALUE>',
+    'ivrPin' => '<ENTER VALUE>',
+    'password' => '<ENTER VALUE>',
+    'callQueueInfo' => array(
+        'slaGoal' => 000,
+        'slaThresholdSeconds' => 000,
+        'includeAbandonedCalls' => true,
+        'abandonedThresholdSeconds' => 000
+    ),
+    'transition' => array(
+        array(
+            'sendWelcomeEmailsToUsers' => true,
+            'sendWelcomeEmail' => true
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtension) in API Explorer.
@@ -5306,19 +5690,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/extension/{extensionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/extension/${extensionId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}");
+?>
 ```
 
 Response body is empty
@@ -5329,22 +5715,24 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-id`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-id");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readExtensionCallerId) in API Explorer.
@@ -5353,43 +5741,61 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/caller-id`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    uri: '<ENTER VALUE>',
-    byDevice: [
-        {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    byFeature: [
-        {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    extensionNameForOutboundCalls: true,
-    extensionNumberForInternalCalls: true
-}
+$body = array(
+    'uri' => '<ENTER VALUE>',
+    'byDevice' => array(
+        array(
+            'device' => array(
+                'id' => '<ENTER VALUE>',
+                'uri' => '<ENTER VALUE>',
+                'phoneNumber' => '<ENTER VALUE>'
+            ),
+            'callerId' => array(
+                'type' => '<ENTER VALUE>',
+                'phoneInfo' => array(
+                    'id' => '<ENTER VALUE>',
+                    'uri' => '<ENTER VALUE>',
+                    'phoneNumber' => '<ENTER VALUE>'
+                )
+            )
+        )  
+    ),
+    'byFeature' => array(
+        array(
+            'feature' => 'RingOut',
+            'callerId' => array(
+                'type' => '<ENTER VALUE>',
+                'phoneInfo' => array(
+                    'id' => '<ENTER VALUE>',
+                    'uri' => '<ENTER VALUE>',
+                    'phoneNumber' => '<ENTER VALUE>'
+                )
+            )
+        )  
+    ),
+    'extensionNameForOutboundCalls' => true,
+    'extensionNumberForInternalCalls' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/caller-id`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/caller-id");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ExtensionCallerIdInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateExtensionCallerId) in API Explorer.
@@ -5398,28 +5804,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/grant`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/grant`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/grant");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionGrantListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/listExtensionGrants) in API Explorer.
@@ -5428,23 +5836,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //type: 'User'
-}
+$queryParams = array(
+    //'type' => 'User'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/users`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users");
+?>
 ```
 
 Response body is empty
@@ -5455,32 +5865,30 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/users/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    enabledUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    disabledUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'enabledUserIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'disabledUserIds' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/users/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/users/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -5491,30 +5899,32 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //siteId: '<ENTER VALUE>',
-    //searchString: '<ENTER VALUE>',
-    //orderBy: '<ENTER VALUE>',
-    //perPage: 000,
-    //page: 1
-}
+$queryParams = array(
+    //'siteId' => '<ENTER VALUE>',
+    //'searchString' => '<ENTER VALUE>',
+    //'orderBy' => '<ENTER VALUE>',
+    //'perPage' => 000,
+    //'page' => '1'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/WirelessPointsList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listWirelessPoints) in API Explorer.
@@ -5523,45 +5933,47 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    bssid: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    site: {
-        id: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    emergencyAddress: {
-        country: '<ENTER VALUE>',
-        countryId: '<ENTER VALUE>',
-        countryIsoCode: '<ENTER VALUE>',
-        countryName: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        stateId: '<ENTER VALUE>',
-        stateIsoCode: '<ENTER VALUE>',
-        stateName: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        street2: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'bssid' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'site' => array(
+        'id' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'emergencyAddress' => array(
+        'country' => '<ENTER VALUE>',
+        'countryId' => '<ENTER VALUE>',
+        'countryIsoCode' => '<ENTER VALUE>',
+        'countryName' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'stateId' => '<ENTER VALUE>',
+        'stateIsoCode' => '<ENTER VALUE>',
+        'stateName' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'street2' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createWirelessPoint) in API Explorer.
@@ -5570,22 +5982,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pointId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pointId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points/{$pointId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readWirelessPoint) in API Explorer.
@@ -5594,47 +6008,49 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pointId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pointId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    bssid: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    site: {
-        id: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    emergencyAddress: {
-        country: '<ENTER VALUE>',
-        countryId: '<ENTER VALUE>',
-        countryIsoCode: '<ENTER VALUE>',
-        countryName: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        stateId: '<ENTER VALUE>',
-        stateIsoCode: '<ENTER VALUE>',
-        stateName: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        street2: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'bssid' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'site' => array(
+        'id' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'emergencyAddress' => array(
+        'country' => '<ENTER VALUE>',
+        'countryId' => '<ENTER VALUE>',
+        'countryIsoCode' => '<ENTER VALUE>',
+        'countryName' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'stateId' => '<ENTER VALUE>',
+        'stateIsoCode' => '<ENTER VALUE>',
+        'stateName' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'street2' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points/{$pointId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/WirelessPointInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateWirelessPoint) in API Explorer.
@@ -5643,19 +6059,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points/{pointId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pointId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pointId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points/${pointId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points/{$pointId}");
+?>
 ```
 
 Response body is empty
@@ -5666,21 +6084,23 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/NetworksList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listNetworks) in API Explorer.
@@ -5689,18 +6109,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks");
+?>
 ```
 
 Response body is empty
@@ -5711,19 +6133,21 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const networkId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$networkId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks/{$networkId}");
+?>
 ```
 
 Response body is empty
@@ -5734,37 +6158,41 @@ Response body is empty
 
 HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const networkId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$networkId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    name: '<ENTER VALUE>',
-    site: '<ENTER VALUE>',
-    publicIpRanges: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    privateIpRanges: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'name' => '<ENTER VALUE>',
+    'site' => '<ENTER VALUE>',
+    'publicIpRanges' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'startIp' => '<ENTER VALUE>',
+            'endIp' => '<ENTER VALUE>'
+        )  
+    ),
+    'privateIpRanges' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'startIp' => '<ENTER VALUE>',
+            'endIp' => '<ENTER VALUE>'
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks/{$networkId}");
+?>
 ```
 
 Response body is empty
@@ -5775,19 +6203,21 @@ Response body is empty
 
 HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/networks/{networkId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const networkId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$networkId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/networks/${networkId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/networks/{$networkId}");
+?>
 ```
 
 Response body is empty
@@ -5798,33 +6228,35 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //siteId: '<ENTER VALUE>',
-    //featureEnabled: true,
-    //model: '<ENTER VALUE>',
-    //compatibleOnly: true,
-    //searchString: '<ENTER VALUE>',
-    //orderBy: '<ENTER VALUE>',
-    //perPage: 000,
-    //page: 1
-}
+$queryParams = array(
+    //'siteId' => '<ENTER VALUE>',
+    //'featureEnabled' => true,
+    //'model' => '<ENTER VALUE>',
+    //'compatibleOnly' => true,
+    //'searchString' => '<ENTER VALUE>',
+    //'orderBy' => 'name',
+    //'perPage' => 000,
+    //'page' => '1'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/devices`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ListDevicesAutomaticLocationUpdates.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listDevicesAutomaticLocationUpdates) in API Explorer.
@@ -5833,34 +6265,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/devices/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    enabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        },
-        ],
-    disabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'enabledDeviceIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'disabledDeviceIds' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/devices/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/devices/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -5871,30 +6299,32 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //siteId: '<ENTER VALUE>',
-    //searchString: '<ENTER VALUE>',
-    //orderBy: '<ENTER VALUE>',
-    //perPage: 000,
-    //page: 1
-}
+$queryParams = array(
+    //'siteId' => '<ENTER VALUE>',
+    //'searchString' => '<ENTER VALUE>',
+    //'orderBy' => '<ENTER VALUE>',
+    //'perPage' => 000,
+    //'page' => '1'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SwitchesList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/listAccountSwitches) in API Explorer.
@@ -5903,45 +6333,47 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    chassisId: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    site: {
-        id: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    emergencyAddress: {
-        country: '<ENTER VALUE>',
-        countryId: '<ENTER VALUE>',
-        countryIsoCode: '<ENTER VALUE>',
-        countryName: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        stateId: '<ENTER VALUE>',
-        stateIsoCode: '<ENTER VALUE>',
-        stateName: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        street2: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'chassisId' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'site' => array(
+        'id' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'emergencyAddress' => array(
+        'country' => '<ENTER VALUE>',
+        'countryId' => '<ENTER VALUE>',
+        'countryIsoCode' => '<ENTER VALUE>',
+        'countryName' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'stateId' => '<ENTER VALUE>',
+        'stateIsoCode' => '<ENTER VALUE>',
+        'stateName' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'street2' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createSwitch) in API Explorer.
@@ -5950,22 +6382,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const switchId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$switchId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches/{$switchId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/readSwitch) in API Explorer.
@@ -5974,47 +6408,49 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const switchId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$switchId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    chassisId: '<ENTER VALUE>',
-    name: '<ENTER VALUE>',
-    site: {
-        id: '<ENTER VALUE>',
-        name: '<ENTER VALUE>'
-    },
-    emergencyAddress: {
-        country: '<ENTER VALUE>',
-        countryId: '<ENTER VALUE>',
-        countryIsoCode: '<ENTER VALUE>',
-        countryName: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        stateId: '<ENTER VALUE>',
-        stateIsoCode: '<ENTER VALUE>',
-        stateName: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        street2: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'chassisId' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>',
+    'site' => array(
+        'id' => '<ENTER VALUE>',
+        'name' => '<ENTER VALUE>'
+    ),
+    'emergencyAddress' => array(
+        'country' => '<ENTER VALUE>',
+        'countryId' => '<ENTER VALUE>',
+        'countryIsoCode' => '<ENTER VALUE>',
+        'countryName' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'stateId' => '<ENTER VALUE>',
+        'stateIsoCode' => '<ENTER VALUE>',
+        'stateName' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'street2' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches/{$switchId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SwitchInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateSwitch) in API Explorer.
@@ -6023,19 +6459,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches/{switchId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const switchId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$switchId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches/${switchId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches/{$switchId}");
+?>
 ```
 
 Response body is empty
@@ -6046,32 +6484,51 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-create`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'chassisId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-create`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-create");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CreateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleSwitches) in API Explorer.
@@ -6080,31 +6537,52 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-update`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'chassisId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-update`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-update");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UpdateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleSwitches) in API Explorer.
@@ -6113,32 +6591,51 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-create`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'bssid' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-create`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-create");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CreateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/createMultipleWirelessPoints) in API Explorer.
@@ -6147,31 +6644,52 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-update`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'bssid' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-update`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-update");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UpdateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/updateMultipleWirelessPoints) in API Explorer.
@@ -6180,31 +6698,52 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/wireless-points-bulk-validate`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'bssid' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/wireless-points-bulk-validate`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/wireless-points-bulk-validate");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ValidateMultipleWirelessPointsResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleWirelessPoints) in API Explorer.
@@ -6213,31 +6752,52 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/emergency-address-auto-update/switches-bulk-validate`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    records: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'records' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'chassisId' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'site' => array(
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            ),
+            'emergencyAddress' => array(
+                'country' => '<ENTER VALUE>',
+                'countryId' => '<ENTER VALUE>',
+                'countryIsoCode' => '<ENTER VALUE>',
+                'countryName' => '<ENTER VALUE>',
+                'state' => '<ENTER VALUE>',
+                'stateId' => '<ENTER VALUE>',
+                'stateIsoCode' => '<ENTER VALUE>',
+                'stateName' => '<ENTER VALUE>',
+                'city' => '<ENTER VALUE>',
+                'street' => '<ENTER VALUE>',
+                'street2' => '<ENTER VALUE>',
+                'zip' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/emergency-address-auto-update/switches-bulk-validate`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/emergency-address-auto-update/switches-bulk-validate");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ValidateMultipleSwitchesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Automatic-Location-Updates/validateMultipleSwitches) in API Explorer.
@@ -6246,22 +6806,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/notification-settings`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/notification-settings");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readNotificationSettings) in API Explorer.
@@ -6270,111 +6832,89 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/notification-settings`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    emailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    smsEmailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    advancedMode: true,
-    voicemails: {
-        notifyByEmail: true,
-        notifyBySms: true,
-        advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        includeAttachment: true,
-        markAsRead: true
-    },
-    inboundFaxes: {
-        notifyByEmail: true,
-        notifyBySms: true,
-        advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        includeAttachment: true,
-        markAsRead: true
-    },
-    outboundFaxes: {
-        notifyByEmail: true,
-        notifyBySms: true,
-        advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ]
-    },
-    inboundTexts: {
-        notifyByEmail: true,
-        notifyBySms: true,
-        advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ]
-    },
-    missedCalls: {
-        notifyByEmail: true,
-        notifyBySms: true,
-        advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ],
-        advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            },
-            ]
-    }
-}
+$body = array(
+    'emailAddresses' => array(
+        '<ENTER VALUE>'  
+    ),
+    'smsEmailAddresses' => array(
+        '<ENTER VALUE>'  
+    ),
+    'advancedMode' => true,
+    'voicemails' => array(
+        'notifyByEmail' => true,
+        'notifyBySms' => true,
+        'advancedEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'advancedSmsEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'includeAttachment' => true,
+        'markAsRead' => true
+    ),
+    'inboundFaxes' => array(
+        'notifyByEmail' => true,
+        'notifyBySms' => true,
+        'advancedEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'advancedSmsEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'includeAttachment' => true,
+        'markAsRead' => true
+    ),
+    'outboundFaxes' => array(
+        'notifyByEmail' => true,
+        'notifyBySms' => true,
+        'advancedEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'advancedSmsEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        )
+    ),
+    'inboundTexts' => array(
+        'notifyByEmail' => true,
+        'notifyBySms' => true,
+        'advancedEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'advancedSmsEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        )
+    ),
+    'missedCalls' => array(
+        'notifyByEmail' => true,
+        'notifyBySms' => true,
+        'advancedEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        ),
+        'advancedSmsEmailAddresses' => array(
+            '<ENTER VALUE>'  
+        )
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/notification-settings`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/notification-settings");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/NotificationSettings.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateNotificationSettings) in API Explorer.
@@ -6383,22 +6923,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readUserProfileImage) in API Explorer.
 
@@ -6406,19 +6948,21 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+?>
 ```
 
 Response body is empty
@@ -6429,19 +6973,21 @@ Response body is empty
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const extensionId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+?>
 ```
 
 Response body is empty
@@ -6452,23 +6998,25 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image/{scaleSize}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
-const scaleSize = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+$scaleSize = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/profile-image/${scaleSize}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image/{$scaleSize}");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readScaledPofileImage) in API Explorer.
 
@@ -6476,27 +7024,29 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //countryId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'countryId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/conferencing`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/readConferencingSettings) in API Explorer.
@@ -6505,33 +7055,35 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/extension/{extensionId}/conferencing`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    allowJoinBeforeHost: true
-}
+$body = array(
+    'phoneNumbers' => array(
+        array(
+            'phoneNumber' => '<ENTER VALUE>',
+            'default' => true
+        )  
+    ),
+    'allowJoinBeforeHost' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/conferencing`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/conferencing");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetConferencingInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/User-Settings/updateConferencingSettings) in API Explorer.
@@ -6540,21 +7092,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetAccountInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountInfo) in API Explorer.
@@ -6563,21 +7117,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/business-address`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/business-address`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/business-address");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountBusinessAddress) in API Explorer.
@@ -6586,34 +7142,36 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/business-address`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    company: '<ENTER VALUE>',
-    email: '<ENTER VALUE>',
-    businessAddress: {
-        country: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'company' => '<ENTER VALUE>',
+    'email' => '<ENTER VALUE>',
+    'businessAddress' => array(
+        'country' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/business-address`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/business-address");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AccountBusinessAddressResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/updateAccountBusinessAddress) in API Explorer.
@@ -6622,21 +7180,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/service-info`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/service-info`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/service-info");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetServiceInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Company/readAccountServiceInfo) in API Explorer.
@@ -6645,18 +7205,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/language`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/language`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/language");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/LanguageList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLanguages) in API Explorer.
@@ -6665,21 +7227,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/language/{languageId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const languageId = '<ENTER VALUE>';
+$languageId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/language/${languageId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/language/{$languageId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/LanguageInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readLanguage) in API Explorer.
@@ -6688,28 +7252,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/country`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //loginAllowed: true,
-    //signupAllowed: true,
-    //numberSelling: true,
-    //page: 1,
-    //perPage: 100,
-    //freeSoftphoneLine: true
-}
+$queryParams = array(
+    //'loginAllowed' => true,
+    //'signupAllowed' => true,
+    //'numberSelling' => true,
+    //'page' => '1',
+    //'perPage' => '100',
+    //'freeSoftphoneLine' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/country`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/country");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetCountryListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listCountries) in API Explorer.
@@ -6718,21 +7284,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/country/{countryId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const countryId = '<ENTER VALUE>';
+$countryId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/country/${countryId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/country/{$countryId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetCountryInfoDictionaryResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readCountry) in API Explorer.
@@ -6741,27 +7309,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/location`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //orderBy: 'Npa',
-    //page: 1,
-    //perPage: 100,
-    //stateId: '<ENTER VALUE>',
-    //withNxx: true
-}
+$queryParams = array(
+    //'orderBy' => 'City',
+    //'page' => '1',
+    //'perPage' => '100',
+    //'stateId' => '<ENTER VALUE>',
+    //'withNxx' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/location`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/location");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetLocationListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listLocations) in API Explorer.
@@ -6770,27 +7340,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/state`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //allCountries: true,
-    //countryId: 000,
-    //page: 1,
-    //perPage: 100,
-    //withPhoneNumbers: true
-}
+$queryParams = array(
+    //'allCountries' => true,
+    //'countryId' => 000,
+    //'page' => '1',
+    //'perPage' => '100',
+    //'withPhoneNumbers' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/state`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/state");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetStateListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listStates) in API Explorer.
@@ -6799,21 +7371,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/state/{stateId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const stateId = '<ENTER VALUE>';
+$stateId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/state/${stateId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/state/{$stateId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetStateInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readState) in API Explorer.
@@ -6822,24 +7396,26 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/timezone`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/timezone`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/timezone");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetTimezoneListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/listTimezones) in API Explorer.
@@ -6848,27 +7424,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/dictionary/timezone/{timezoneId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const timezoneId = '<ENTER VALUE>';
+$timezoneId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/dictionary/timezone/${timezoneId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/dictionary/timezone/{$timezoneId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetTimezoneInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Regional-Settings/readTimezone) in API Explorer.
@@ -6877,28 +7455,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/phone-number`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100,
-    //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100',
+    //'usageType' => array( 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/phone-number`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/phone-number");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/AccountPhoneNumbers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/listAccountPhoneNumbers) in API Explorer.
@@ -6907,22 +7487,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/phone-number/{phoneNumberId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const phoneNumberId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$phoneNumberId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/phone-number/${phoneNumberId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/phone-number/{$phoneNumberId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CompanyPhoneNumberInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/readAccountPhoneNumber) in API Explorer.
@@ -6931,31 +7513,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //extensionId: '<ENTER VALUE>',
-    //email: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
-    //status: [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
-    //type: [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
-}
+$queryParams = array(
+    //'extensionId' => '<ENTER VALUE>',
+    //'email' => '<ENTER VALUE>',
+    //'page' => '1',
+    //'perPage' => '100',
+    //'status' => array( 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ),
+    //'type' => array( 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionListResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/listExtensions) in API Explorer.
@@ -6964,104 +7548,106 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/extension`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    contact: {
-        firstName: '<ENTER VALUE>',
-        lastName: '<ENTER VALUE>',
-        company: '<ENTER VALUE>',
-        jobTitle: '<ENTER VALUE>',
-        email: '<ENTER VALUE>',
-        businessPhone: '<ENTER VALUE>',
-        mobilePhone: '<ENTER VALUE>',
-        businessAddress: {
-            country: '<ENTER VALUE>',
-            state: '<ENTER VALUE>',
-            city: '<ENTER VALUE>',
-            street: '<ENTER VALUE>',
-            zip: '<ENTER VALUE>'
-        },
-        emailAsLoginName: true,
-        pronouncedName: {
-            type: 'Default',
-            text: '<ENTER VALUE>'
-        },
-        department: '<ENTER VALUE>'
-    },
-    extensionNumber: '<ENTER VALUE>',
-    password: '<ENTER VALUE>',
-    references: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    roles: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    regionalSettings: {
-        homeCountry: {
-            id: '<ENTER VALUE>',
-            uri: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            isoCode: '<ENTER VALUE>',
-            callingCode: '<ENTER VALUE>'
-        },
-        timezone: {
-            id: '<ENTER VALUE>',
-            uri: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        },
-        language: {
-            id: '<ENTER VALUE>',
-            uri: '<ENTER VALUE>',
-            greeting: true,
-            formattingLocale: true,
-            localeCode: '<ENTER VALUE>',
-            name: '<ENTER VALUE>',
-            ui: true
-        },
-        greetingLanguage: {
-            id: '<ENTER VALUE>',
-            localeCode: '<ENTER VALUE>',
-            name: '<ENTER VALUE>'
-        },
-        formattingLocale: {
-            id: '<ENTER VALUE>',
-            localeCode: '<ENTER VALUE>',
-            name: '<ENTER VALUE>'
-        },
-        timeFormat: '12h'
-    },
-    setupWizardState: NotStarted,
-    status: 'Enabled',
-    statusInfo: {
-        comment: '<ENTER VALUE>',
-        reason: 'Voluntarily'
-    },
-    type: 'User',
-    hidden: true
-}
+$body = array(
+    'contact' => array(
+        'firstName' => '<ENTER VALUE>',
+        'lastName' => '<ENTER VALUE>',
+        'company' => '<ENTER VALUE>',
+        'jobTitle' => '<ENTER VALUE>',
+        'email' => '<ENTER VALUE>',
+        'businessPhone' => '<ENTER VALUE>',
+        'mobilePhone' => '<ENTER VALUE>',
+        'businessAddress' => array(
+            'country' => '<ENTER VALUE>',
+            'state' => '<ENTER VALUE>',
+            'city' => '<ENTER VALUE>',
+            'street' => '<ENTER VALUE>',
+            'zip' => '<ENTER VALUE>'
+        ),
+        'emailAsLoginName' => true,
+        'pronouncedName' => array(
+            'type' => 'Default',
+            'text' => '<ENTER VALUE>'
+        ),
+        'department' => '<ENTER VALUE>'
+    ),
+    'extensionNumber' => '<ENTER VALUE>',
+    'password' => '<ENTER VALUE>',
+    'references' => array(
+        array(
+            'ref' => '<ENTER VALUE>',
+            'type' => 'PartnerId'
+        )  
+    ),
+    'roles' => array(
+        array(
+            'uri' => '<ENTER VALUE>',
+            'id' => '<ENTER VALUE>'
+        )  
+    ),
+    'regionalSettings' => array(
+        'homeCountry' => array(
+            'id' => '<ENTER VALUE>',
+            'uri' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'isoCode' => '<ENTER VALUE>',
+            'callingCode' => '<ENTER VALUE>'
+        ),
+        'timezone' => array(
+            'id' => '<ENTER VALUE>',
+            'uri' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'description' => '<ENTER VALUE>'
+        ),
+        'language' => array(
+            'id' => '<ENTER VALUE>',
+            'uri' => '<ENTER VALUE>',
+            'greeting' => true,
+            'formattingLocale' => true,
+            'localeCode' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>',
+            'ui' => true
+        ),
+        'greetingLanguage' => array(
+            'id' => '<ENTER VALUE>',
+            'localeCode' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        ),
+        'formattingLocale' => array(
+            'id' => '<ENTER VALUE>',
+            'localeCode' => '<ENTER VALUE>',
+            'name' => '<ENTER VALUE>'
+        ),
+        'timeFormat' => '12h'
+    ),
+    'setupWizardState' => 'NotStarted',
+    'status' => 'Enabled',
+    'statusInfo' => array(
+        'comment' => '<ENTER VALUE>',
+        'reason' => 'Voluntarily'
+    ),
+    'type' => 'User',
+    'hidden' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/extension`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ExtensionCreationResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/createExtension) in API Explorer.
@@ -7070,28 +7656,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/templates`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //type: 'UserSettings',
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'type' => 'UserSettings',
+    //'page' => '<ENTER VALUE>',
+    //'perPage' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/templates`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/templates");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserTemplates.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/listUserTemplates) in API Explorer.
@@ -7100,22 +7688,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/templates/{templateId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const templateId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$templateId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/templates/${templateId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/templates/{$templateId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/TemplateInfo.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Extensions/readUserTemplate) in API Explorer.
@@ -7124,28 +7714,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-queues`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100,
-    //memberExtensionId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100',
+    //'memberExtensionId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-queues`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallQueues.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueues) in API Explorer.
@@ -7154,28 +7746,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/members`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-queues/${groupId}/members`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/members");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallQueueMembers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Queues/listCallQueueMembers) in API Explorer.
@@ -7184,33 +7778,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/call-queues/{groupId}/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    addedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    removedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'addedExtensionIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'removedExtensionIds' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-queues/${groupId}/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-queues/{$groupId}/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -7221,28 +7813,30 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/users`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pagingOnlyGroupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/users`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/users");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupUsers.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupUsers) in API Explorer.
@@ -7251,28 +7845,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/devices`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pagingOnlyGroupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/devices`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/devices");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/PagingOnlyGroupDevices.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Paging-Only-Groups/listPagingGroupDevices) in API Explorer.
@@ -7281,43 +7877,37 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/paging-only-groups/{pagingOnlyGroupId}/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const pagingOnlyGroupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$pagingOnlyGroupId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    addedUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    removedUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    addedDeviceIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    removedDeviceIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'addedUserIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'removedUserIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'addedDeviceIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'removedDeviceIds' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/paging-only-groups/${pagingOnlyGroupId}/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/paging-only-groups/{$pagingOnlyGroupId}/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -7328,27 +7918,29 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    name: '<ENTER VALUE>'
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-monitoring-groups`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/createCallMonitoringGroup) in API Explorer.
@@ -7357,28 +7949,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100,
-    //memberExtensionId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100',
+    //'memberExtensionId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-monitoring-groups`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroups.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroups) in API Explorer.
@@ -7387,28 +7981,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    id: '<ENTER VALUE>',
-    name: '<ENTER VALUE>'
-}
+$body = array(
+    'id' => '<ENTER VALUE>',
+    'name' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroup.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/updateCallMonitoringGroup) in API Explorer.
@@ -7417,19 +8013,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}");
+?>
 ```
 
 Response body is empty
@@ -7440,28 +8038,30 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/members`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //page: 1,
-    //perPage: 100
-}
+$queryParams = array(
+    //'page' => '1',
+    //'perPage' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}/members`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/members");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallMonitoringGroupMemberList.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Monitoring-Groups/listCallMonitoringGroupMembers) in API Explorer.
@@ -7470,29 +8070,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/call-monitoring-groups/{groupId}/bulk-assign`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const groupId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$groupId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    updatedExtensions: [
-        {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'updatedExtensions' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'permissions' => array(
+                'Monitoring'  
+            )
+        )  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/call-monitoring-groups/${groupId}/bulk-assign`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/call-monitoring-groups/{$groupId}/bulk-assign");
+?>
 ```
 
 Response body is empty
@@ -7503,33 +8107,33 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/number-parser/parse`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //homeCountry: '<ENTER VALUE>',
-    //nationalAsPriority: true
-}
+$queryParams = array(
+    //'homeCountry' => '<ENTER VALUE>',
+    //'nationalAsPriority' => true
+)
 
 // POST BODY
-const body = {
-    originalStrings: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'originalStrings' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/number-parser/parse`, body, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/number-parser/parse");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ParsePhoneNumberResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Phone-Numbers/parsePhoneNumber) in API Explorer.
@@ -7538,27 +8142,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/device/{deviceId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const deviceId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$deviceId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //syncEmergencyAddress: true
-}
+$queryParams = array(
+    //'syncEmergencyAddress' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/device/${deviceId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/device/{$deviceId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetDeviceInfoResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/readDevice) in API Explorer.
@@ -7567,47 +8173,48 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/restapi/v1.0/account/{accountId}/device/{deviceId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const deviceId = '<ENTER VALUE>';
-const accountId = '<ENTER VALUE>';
+$deviceId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    emergencyServiceAddress: {
-        customerName: '<ENTER VALUE>',
-        street: '<ENTER VALUE>',
-        street2: '<ENTER VALUE>',
-        city: '<ENTER VALUE>',
-        zip: '<ENTER VALUE>',
-        state: '<ENTER VALUE>',
-        country: '<ENTER VALUE>'
-    },
-    extension: {
-        id: '<ENTER VALUE>'
-    },
-    phoneLines: {
-        phoneLines: [
-            {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            },
-            ]
-    },
-    useAsCommonPhone: true
-}
+$body = array(
+    'emergencyServiceAddress' => array(
+        'customerName' => '<ENTER VALUE>',
+        'street' => '<ENTER VALUE>',
+        'street2' => '<ENTER VALUE>',
+        'city' => '<ENTER VALUE>',
+        'zip' => '<ENTER VALUE>',
+        'state' => '<ENTER VALUE>',
+        'country' => '<ENTER VALUE>'
+    ),
+    'extension' => array(
+        'id' => '<ENTER VALUE>'
+    ),
+    'phoneLines' => array(
+        'phoneLines' => array(
+            array(
+                'id' => '<ENTER VALUE>'
+            )  
+        )
+    ),
+    'useAsCommonPhone' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/restapi/v1.0/account/${accountId}/device/${deviceId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/restapi/v1.0/account/{$accountId}/device/{$deviceId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DeviceResource.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/updateDevice) in API Explorer.
@@ -7616,28 +8223,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/extension/{extensionId}/device`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const extensionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //linePooling: 'Host',
-    //feature: 'Intercom'
-}
+$queryParams = array(
+    //'linePooling' => 'Host',
+    //'feature' => 'Intercom'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/extension/${extensionId}/device`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/device");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/GetExtensionDevicesResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Devices/listExtensionDevices) in API Explorer.
@@ -7646,15 +8255,17 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/scim/v2/health`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/scim/v2/health`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/scim/v2/health");
+?>
 ```
 
 Response body is empty
@@ -7665,18 +8276,20 @@ Response body is empty
 
 HTTP get `/scim/v2/ServiceProviderConfig`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/scim/v2/ServiceProviderConfig`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/scim/v2/ServiceProviderConfig");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/ServiceProviderConfig.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/readServiceProviderConfig2) in API Explorer.
@@ -7685,25 +8298,27 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/scim/v2/Users`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //filter: '<ENTER VALUE>',
-    //startIndex: 1,
-    //count: 100
-}
+$queryParams = array(
+    //'filter' => '<ENTER VALUE>',
+    //'startIndex' => '1',
+    //'count' => '100'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/scim/v2/Users`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/scim/v2/Users");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaGet2) in API Explorer.
@@ -7712,67 +8327,66 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/scim/v2/Users`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    active: true,
-    addresses: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    emails: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    externalId: '<ENTER VALUE>',
-    id: '<ENTER VALUE>',
-    name: {
-        familyName: '<ENTER VALUE>',
-        givenName: '<ENTER VALUE>'
-    },
-    phoneNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    photos: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        },
-        ],
-    urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
-        department: '<ENTER VALUE>'
-    },
-    userName: '<ENTER VALUE>'
-}
+$body = array(
+    'active' => true,
+    'addresses' => array(
+        array(
+            'country' => '<ENTER VALUE>',
+            'locality' => '<ENTER VALUE>',
+            'postalCode' => '<ENTER VALUE>',
+            'region' => '<ENTER VALUE>',
+            'streetAddress' => '<ENTER VALUE>',
+            'type' => 'work'
+        )  
+    ),
+    'emails' => array(
+        array(
+            'type' => 'work',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'externalId' => '<ENTER VALUE>',
+    'id' => '<ENTER VALUE>',
+    'name' => array(
+        'familyName' => '<ENTER VALUE>',
+        'givenName' => '<ENTER VALUE>'
+    ),
+    'phoneNumbers' => array(
+        array(
+            'type' => 'work',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'photos' => array(
+        array(
+            'type' => 'photo',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'schemas' => array(
+        'urn:ietf:params:scim:schemas:core:2.0:User'  
+    ),
+    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => array(
+        'department' => '<ENTER VALUE>'
+    ),
+    'userName' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/scim/v2/Users`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/scim/v2/Users");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/createUser2) in API Explorer.
@@ -7781,31 +8395,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/scim/v2/Users/.search`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    count: 000,
-    filter: '<ENTER VALUE>',
-    schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        },
-        ],
-    startIndex: 000
-}
+$body = array(
+    'count' => 000,
+    'filter' => '<ENTER VALUE>',
+    'schemas' => array(
+        'urn:ietf:params:scim:api:messages:2.0:SearchRequest'  
+    ),
+    'startIndex' => 000
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/scim/v2/Users/.search`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/scim/v2/Users/.search");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserSearchResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/searchViaPost2) in API Explorer.
@@ -7814,21 +8427,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/scim/v2/Users/{id}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const id = '<ENTER VALUE>';
+$id = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/scim/v2/Users/${id}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/scim/v2/Users/{$id}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/readUser2) in API Explorer.
@@ -7837,70 +8452,69 @@ You can get response json data by `const json = r.json()`
 
 HTTP put `/scim/v2/Users/{id}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const id = '<ENTER VALUE>';
+$id = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    active: true,
-    addresses: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    emails: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    externalId: '<ENTER VALUE>',
-    id: '<ENTER VALUE>',
-    name: {
-        familyName: '<ENTER VALUE>',
-        givenName: '<ENTER VALUE>'
-    },
-    phoneNumbers: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    photos: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        },
-        ],
-    urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
-        department: '<ENTER VALUE>'
-    },
-    userName: '<ENTER VALUE>'
-}
+$body = array(
+    'active' => true,
+    'addresses' => array(
+        array(
+            'country' => '<ENTER VALUE>',
+            'locality' => '<ENTER VALUE>',
+            'postalCode' => '<ENTER VALUE>',
+            'region' => '<ENTER VALUE>',
+            'streetAddress' => '<ENTER VALUE>',
+            'type' => 'work'
+        )  
+    ),
+    'emails' => array(
+        array(
+            'type' => 'work',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'externalId' => '<ENTER VALUE>',
+    'id' => '<ENTER VALUE>',
+    'name' => array(
+        'familyName' => '<ENTER VALUE>',
+        'givenName' => '<ENTER VALUE>'
+    ),
+    'phoneNumbers' => array(
+        array(
+            'type' => 'work',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'photos' => array(
+        array(
+            'type' => 'photo',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'schemas' => array(
+        'urn:ietf:params:scim:schemas:core:2.0:User'  
+    ),
+    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => array(
+        'department' => '<ENTER VALUE>'
+    ),
+    'userName' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.put(`/scim/v2/Users/${id}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->put("/scim/v2/Users/{$id}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/replaceUser2) in API Explorer.
@@ -7909,18 +8523,20 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/scim/v2/Users/{id}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const id = '<ENTER VALUE>';
+$id = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/scim/v2/Users/${id}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/scim/v2/Users/{$id}");
+?>
 ```
 
 Response body is empty
@@ -7931,38 +8547,37 @@ Response body is empty
 
 HTTP patch `/scim/v2/Users/{id}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const id = '<ENTER VALUE>';
+$id = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    Operations: [
-        {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        },
-        ],
-    schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'Operations' => array(
+        array(
+            'op' => 'add',
+            'path' => '<ENTER VALUE>',
+            'value' => '<ENTER VALUE>'
+        )  
+    ),
+    'schemas' => array(
+        'urn:ietf:params:scim:api:messages:2.0:PatchOp'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/scim/v2/Users/${id}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/scim/v2/Users/{$id}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/UserResponse.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/SCIM/patchUser2) in API Explorer.
@@ -7971,32 +8586,34 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/call-out`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    from: {
-        deviceId: '<ENTER VALUE>'
-    },
-    to: {
-        phoneNumber: '<ENTER VALUE>',
-        extensionNumber: '<ENTER VALUE>'
-    }
-}
+$body = array(
+    'from' => array(
+        'deviceId' => '<ENTER VALUE>'
+    ),
+    'to' => array(
+        'phoneNumber' => '<ENTER VALUE>',
+        'extensionNumber' => '<ENTER VALUE>'
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/call-out`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/call-out");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallSession.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/createCallOutCallSession) in API Explorer.
@@ -8005,28 +8622,30 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //timestamp: '<ENTER VALUE>',
-    //timeout: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'timestamp' => '<ENTER VALUE>',
+    //'timeout' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}`, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallSessionObject.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallSessionStatus) in API Explorer.
@@ -8035,19 +8654,21 @@ You can get response json data by `const json = r.json()`
 
 HTTP delete `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.delete(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->delete("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}");
+?>
 ```
 
 Response body is empty
@@ -8058,23 +8679,25 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/hold`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/hold`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/hold");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/holdCallParty) in API Explorer.
@@ -8083,23 +8706,25 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/unhold`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/unhold`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/unhold");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/unholdCallParty) in API Explorer.
@@ -8108,20 +8733,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/reject`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/reject`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/reject");
+?>
 ```
 
 Response body is empty
@@ -8132,30 +8759,32 @@ Response body is empty
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/transfer`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    voicemail: '<ENTER VALUE>',
-    parkOrbit: '<ENTER VALUE>'
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'voicemail' => '<ENTER VALUE>',
+    'parkOrbit' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/transfer`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/transfer");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/transferCallParty) in API Explorer.
@@ -8164,29 +8793,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/forward`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    phoneNumber: '<ENTER VALUE>',
-    voicemail: '<ENTER VALUE>'
-}
+$body = array(
+    'phoneNumber' => '<ENTER VALUE>',
+    'voicemail' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/forward`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/forward");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/forwardCallParty) in API Explorer.
@@ -8195,25 +8826,27 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/flip`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    callFlipId: '<ENTER VALUE>'
-}
+$body = array(
+    'callFlipId' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/flip`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/flip");
+?>
 ```
 
 Response body is empty
@@ -8224,23 +8857,25 @@ Response body is empty
 
 HTTP get `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/readCallPartyStatus) in API Explorer.
@@ -8249,31 +8884,33 @@ You can get response json data by `const json = r.json()`
 
 HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    party: {
-        muted: true,
-        standAlone: true
-    }
-}
+$body = array(
+    'party' => array(
+        'muted' => true,
+        'standAlone' => true
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallParty.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/updateCallParty) in API Explorer.
@@ -8282,20 +8919,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/recordings`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/recordings");
+?>
 ```
 
 Response body is empty
@@ -8306,34 +8945,36 @@ Response body is empty
 
 HTTP patch `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/parties/{partyId}/recordings/{recordingId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
-const partyId = '<ENTER VALUE>';
-const recordingId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
+$partyId = '<ENTER VALUE>';
+$recordingId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
-const queryParams = {
-    //brandId: '<ENTER VALUE>'
-}
+$queryParams = array(
+    //'brandId' => '~'
+)
 
 // POST BODY
-const body = {
-    active: true
-}
+$body = array(
+    'active' => true
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.patch(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/parties/${partyId}/recordings/${recordingId}`, body, queryParams);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->patch("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/parties/{$partyId}/recordings/{$recordingId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/CallRecording.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/pauseResumeCallRecording) in API Explorer.
@@ -8342,29 +8983,31 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/telephony/sessions/{telephonySessionId}/supervise`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const telephonySessionId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$telephonySessionId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    mode: 'Listen',
-    deviceId: '<ENTER VALUE>',
-    extensionNumber: '<ENTER VALUE>'
-}
+$body = array(
+    'mode' => 'Listen',
+    'deviceId' => '<ENTER VALUE>',
+    'extensionNumber' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/telephony/sessions/${telephonySessionId}/supervise`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/telephony/sessions/{$telephonySessionId}/supervise");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/SuperviseCallSession.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Call-Control/superviseCallSession) in API Explorer.
@@ -8373,22 +9016,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/data-export/{taskId}/archive/{archiveId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
-const archiveId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
+$archiveId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/data-export/${taskId}/archive/${archiveId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/data-export/{$taskId}/archive/{$archiveId}");
+?>
 ```
 
-You can get response binary data by `const buffer = await r.response().buffer()`
+You can get response binary data by `$binary = $r->response()->raw()`
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/readComplianceArchive) in API Explorer.
 
@@ -8396,34 +9041,32 @@ You can get response binary data by `const buffer = await r.response().buffer()`
 
 HTTP post `/restapi/v1.0/glip/data-export`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // POST BODY
-const body = {
-    dateFrom: '<ENTER VALUE>',
-    dateTo: '<ENTER VALUE>',
-    userIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ],
-    chatIds: [
-        {
-            type: '<ENTER VALUE>'
-        },
-        ]
-}
+$body = array(
+    'dateFrom' => '<ENTER VALUE>',
+    'dateTo' => '<ENTER VALUE>',
+    'userIds' => array(
+        '<ENTER VALUE>'  
+    ),
+    'chatIds' => array(
+        '<ENTER VALUE>'  
+    )
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/glip/data-export`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/glip/data-export");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/createDataExportTask) in API Explorer.
@@ -8432,21 +9075,23 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/glip/data-export/{taskId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const taskId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/glip/data-export/${taskId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/glip/data-export/{$taskId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/DataExportTask.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Glip-Compliance-Exports/readDataExportTask) in API Explorer.
@@ -8455,27 +9100,29 @@ You can get response json data by `const json = r.json()`
 
 HTTP post `/restapi/v1.0/account/{accountId}/message-store-report`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
 
 // POST BODY
-const body = {
-    dateFrom: '<ENTER VALUE>',
-    dateTo: '<ENTER VALUE>'
-}
+$body = array(
+    'dateFrom' => '<ENTER VALUE>',
+    'dateTo' => '<ENTER VALUE>'
+)
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.post(`/restapi/v1.0/account/${accountId}/message-store-report`, body);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->post("/restapi/v1.0/account/{$accountId}/message-store-report");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/createMessageStoreReport) in API Explorer.
@@ -8484,22 +9131,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const taskId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/message-store-report/{$taskId}");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReport.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportTask) in API Explorer.
@@ -8508,22 +9157,24 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archive`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const taskId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}/archive`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/message-store-report/{$taskId}/archive");
+?>
 ```
 
-You can get response json data by `const json = r.json()`
+You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/MessageStoreReportArchive.json)
 
 [Try it out](https://developer.ringcentral.com/api-reference/Message-Exports/readMessageStoreReportArchive) in API Explorer.
@@ -8532,20 +9183,22 @@ You can get response json data by `const json = r.json()`
 
 HTTP get `/restapi/v1.0/account/{accountId}/message-store-report/{taskId}/archive/{archiveId}`
 
-```js
+```php
+<?php
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
 // PATH PARAMETERS
-const accountId = '<ENTER VALUE>';
-const taskId = '<ENTER VALUE>';
-const archiveId = '<ENTER VALUE>';
+$accountId = '<ENTER VALUE>';
+$taskId = '<ENTER VALUE>';
+$archiveId = '<ENTER VALUE>';
 
-const SDK = require('ringcentral');
-const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
-const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.get(`/restapi/v1.0/account/${accountId}/message-store-report/${taskId}/archive/${archiveId}`);
+require('vendor/autoload.php');
+$rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
+$platform = $rcsdk->platform();
+$platform->login(getenv('username'), getenv('extension'), getenv('password'));
+$r = $platform->get("/restapi/v1.0/account/{$accountId}/message-store-report/{$taskId}/archive/{$archiveId}");
+?>
 ```
 
 Response body is empty

@@ -2,6 +2,27 @@
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
+// PATH PARAMETERS
+$accountId = '<ENTER VALUE>';
+$extensionId = '<ENTER VALUE>';
+
+// POST BODY
+$body = array(
+    'mode' => 'Specific',
+    'noCallerId' => 'BlockCallsAndFaxes',
+    'payPhones' => 'Block',
+    'greetings' => array(
+        array(
+            'type' => '<ENTER VALUE>',
+            'preset' => array(
+                'uri' => '<ENTER VALUE>',
+                'id' => '<ENTER VALUE>',
+                'name' => '<ENTER VALUE>'
+            )
+        )  
+    )
+)
+
 require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();

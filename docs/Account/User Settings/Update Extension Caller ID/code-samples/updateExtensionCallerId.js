@@ -10,21 +10,37 @@ const body = {
     uri: '<ENTER VALUE>',
     byDevice: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            device: {
+                id: '<ENTER VALUE>',
+                uri: '<ENTER VALUE>',
+                phoneNumber: '<ENTER VALUE>'
+            },
+            callerId: {
+                type: '<ENTER VALUE>',
+                phoneInfo: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    phoneNumber: '<ENTER VALUE>'
+                }
+            }
+        },
     ],
     byFeature: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            feature: 'RingOut',
+            callerId: {
+                type: '<ENTER VALUE>',
+                phoneInfo: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    phoneNumber: '<ENTER VALUE>'
+                }
+            }
+        },
     ],
     extensionNameForOutboundCalls: true,
     extensionNumberForInternalCalls: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

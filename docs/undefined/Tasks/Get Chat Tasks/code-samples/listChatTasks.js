@@ -6,15 +6,15 @@ const chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //creationTimeTo: '<ENTER VALUE>',
+    //creationTimeTo: 'now',
     //creationTimeFrom: '<ENTER VALUE>',
-    //creatorId: [ '<ENTER VALUE>' ],
+    //creatorId: [ string ],
     //status: [ 'Pending', 'InProgress', 'Completed' ],
     //assignmentStatus: 'Unassigned',
-    //assigneeId: [ '<ENTER VALUE>' ],
+    //assigneeId: [ string ],
     //assigneeStatus: 'Pending',
     //pageToken: '<ENTER VALUE>',
-    //recordCount: 30
+    //recordCount: '30'
 }
 
 const SDK = require('ringcentral');

@@ -2,6 +2,30 @@
 // https://developers.ringcentral.com/my-account.html#/applications
 // Find your credentials at the above url, set them as environment variables, or enter them below
 
+// PATH PARAMETERS
+$accountId = '<ENTER VALUE>';
+$networkId = '<ENTER VALUE>';
+
+// POST BODY
+$body = array(
+    'name' => '<ENTER VALUE>',
+    'site' => '<ENTER VALUE>',
+    'publicIpRanges' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'startIp' => '<ENTER VALUE>',
+            'endIp' => '<ENTER VALUE>'
+        )  
+    ),
+    'privateIpRanges' => array(
+        array(
+            'id' => '<ENTER VALUE>',
+            'startIp' => '<ENTER VALUE>',
+            'endIp' => '<ENTER VALUE>'
+        )  
+    )
+)
+
 require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();

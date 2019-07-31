@@ -55,7 +55,7 @@ const body = {
         state: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

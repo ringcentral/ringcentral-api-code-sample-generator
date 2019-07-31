@@ -6,8 +6,8 @@ const timezoneId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');

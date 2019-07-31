@@ -26,11 +26,16 @@ const body = {
     },
     actions: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            input: '<ENTER VALUE>',
+            action: 'Connect',
+            extension: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>'
+            },
+            phoneNumber: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

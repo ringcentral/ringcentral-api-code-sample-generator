@@ -1,6 +1,29 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'onDemand': {
+        'enabled': true
+    },
+    'automatic': {
+        'enabled': true,
+        'outboundCallTones': true,
+        'outboundCallAnnouncement': true,
+        'allowMute': true,
+        'extensionCount': 000
+    },
+    'greetings': [
+        {
+            'type': 'StartRecording',
+            'mode': 'Default'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

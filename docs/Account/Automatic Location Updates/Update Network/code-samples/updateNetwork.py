@@ -1,6 +1,30 @@
 # https://developers.ringcentral.com/my-account.html#/applications
 # Find your credentials at the above url, set them as environment variables, or enter them below
 
+# PATH PARAMETERS
+accountId = '<ENTER VALUE>'
+networkId = '<ENTER VALUE>'
+
+# POST BODY
+body = {
+    'name': '<ENTER VALUE>',
+    'site': '<ENTER VALUE>',
+    'publicIpRanges': [
+        {
+            'id': '<ENTER VALUE>',
+            'startIp': '<ENTER VALUE>',
+            'endIp': '<ENTER VALUE>'
+        }
+    ],
+    'privateIpRanges': [
+        {
+            'id': '<ENTER VALUE>',
+            'startIp': '<ENTER VALUE>',
+            'endIp': '<ENTER VALUE>'
+        }
+    ]
+}
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])

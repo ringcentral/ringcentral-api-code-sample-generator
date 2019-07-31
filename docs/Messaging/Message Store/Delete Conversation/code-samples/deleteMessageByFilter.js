@@ -7,9 +7,9 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //conversationId: [ '<ENTER VALUE>' ],
+    //conversationId: [ string ],
     //dateTo: '<ENTER VALUE>',
-    //type: 'Fax'
+    //type: 'All'
 }
 
 const SDK = require('ringcentral');

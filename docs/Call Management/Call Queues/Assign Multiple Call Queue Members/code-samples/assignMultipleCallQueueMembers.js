@@ -8,16 +8,12 @@ const groupId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     addedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     removedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

@@ -11,9 +11,9 @@ const queryParams = {
     //model: '<ENTER VALUE>',
     //compatibleOnly: true,
     //searchString: '<ENTER VALUE>',
-    //orderBy: '<ENTER VALUE>',
+    //orderBy: 'name',
     //perPage: 000,
-    //page: 1
+    //page: '1'
 }
 
 const SDK = require('ringcentral');

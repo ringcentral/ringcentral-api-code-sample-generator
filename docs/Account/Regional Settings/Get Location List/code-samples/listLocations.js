@@ -3,9 +3,9 @@
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //orderBy: 'Npa',
-    //page: 1,
-    //perPage: 100,
+    //orderBy: 'City',
+    //page: '1',
+    //perPage: '100',
     //stateId: '<ENTER VALUE>',
     //withNxx: true
 }

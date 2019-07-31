@@ -3,7 +3,7 @@
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30
+    //recordCount: '30'
 }
 
 const SDK = require('ringcentral');

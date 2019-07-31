@@ -7,17 +7,18 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     searchString: '<ENTER VALUE>',
-    showFederated: true,
+    showFederated: 'true',
     extensionType: 'User',
     orderBy: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            index: 000,
+            fieldName: 'firstName',
+            direction: 'Asc'
+        },
     ],
     page: 000,
     perPage: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

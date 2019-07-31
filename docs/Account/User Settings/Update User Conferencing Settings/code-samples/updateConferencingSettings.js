@@ -9,12 +9,12 @@ const extensionId = '<ENTER VALUE>';
 const body = {
     phoneNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            phoneNumber: '<ENTER VALUE>',
+            default: true
+        },
     ],
     allowJoinBeforeHost: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

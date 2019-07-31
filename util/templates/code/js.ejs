@@ -16,15 +16,30 @@ const <%= pathParam.name %> = '<ENTER VALUE>';
 if (operation.parameters && (queryParams = operation.parameters.filter(param => param.in === 'query')).length > 0) {
     %>
 // OPTIONAL QUERY PARAMETERS
-const queryParams = <%- defs.renderGetDef(queryParams) %>
+const queryParams = <%- ejs.render(object, {
+    properties: queryParams,
+    optional: true,
+    depth: 1
+}) %>
 <%
 }
 
 if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
     const def = defs.loadDefinition(postParams.schema['$ref'].substring(postParams.schema['$ref'].lastIndexOf('/') + 1))
+
+    const convert = (subdef) => Object.entries(subdef.properties).map(([name, property]) => {
+        property.name = name
+        return property
+    })
+
+    const render = (subdef, depth, render) => ejs.render(object, {
+        properties: convert(subdef),
+        depth: depth,
+        render: render
+    })
     %>
 // POST BODY
-const body = <%- defs.renderPostDef(def) %>
+const body = <%- render(def, 1, render) %>;
     <%_
 }
 -%>

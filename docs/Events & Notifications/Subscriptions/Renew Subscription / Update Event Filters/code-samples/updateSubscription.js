@@ -12,9 +12,7 @@ const queryParams = {
 // POST BODY
 const body = {
     eventFilters: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     deliveryMode: {
         transportType: 'PubNub',
@@ -24,8 +22,8 @@ const body = {
         registrationId: '<ENTER VALUE>',
         verificationToken: '<ENTER VALUE>'
     },
-    expiresIn: 604800
-}
+    expiresIn: '604800'
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

@@ -67,12 +67,11 @@ const body = {
     },
     transition: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            sendWelcomeEmailsToUsers: true,
+            sendWelcomeEmail: true
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

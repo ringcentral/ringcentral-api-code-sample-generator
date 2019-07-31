@@ -13,10 +13,14 @@ const body = {
     greetings: [
         {
             type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

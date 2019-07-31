@@ -79,7 +79,7 @@ const extensionId = '<ENTER VALUE>';
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //extensionNumber: '<ENTER VALUE>',
-    //showBlocked: true,
+    //showBlocked: 'true',
     //phoneNumber: '<ENTER VALUE>',
     //direction: [ 'Inbound', 'Outbound' ],
     //sessionId: '<ENTER VALUE>',
@@ -90,8 +90,8 @@ const queryParams = {
     //recordingType: 'Automatic',
     //dateTo: '<ENTER VALUE>',
     //dateFrom: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //showDeleted: true
 }
 
@@ -222,8 +222,8 @@ const queryParams = {
     //direction: [ 'Inbound', 'Outbound' ],
     //view: 'Simple',
     //type: [ 'Voice', 'Fax' ],
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -260,8 +260,8 @@ const queryParams = {
     //recordingType: 'Automatic',
     //dateFrom: '<ENTER VALUE>',
     //dateTo: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //sessionId: '<ENTER VALUE>'
 }
 
@@ -318,8 +318,8 @@ const queryParams = {
     //view: 'Simple',
     //type: [ 'Voice', 'Fax' ],
     //transport: [ 'PSTN', 'VoIP' ],
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -400,12 +400,11 @@ const body = {
     },
     to: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            phoneNumber: '<ENTER VALUE>'
+        },
     ],
     text: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -440,12 +439,10 @@ const body = {
     text: '<ENTER VALUE>',
     to: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            extensionId: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -493,8 +490,8 @@ HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -531,8 +528,8 @@ const queryParams = {
     //distinctConversations: true,
     //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
     //readStatus: [ 'Read', 'Unread' ],
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //phoneNumber: '<ENTER VALUE>'
 }
 
@@ -562,9 +559,9 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //conversationId: [ '<ENTER VALUE>' ],
+    //conversationId: [ string ],
     //dateTo: '<ENTER VALUE>',
-    //type: 'Fax'
+    //type: 'All'
 }
 
 const SDK = require('ringcentral');
@@ -619,7 +616,7 @@ const messageId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     readStatus: 'Read'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -767,7 +764,7 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     retentionPeriod: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -809,7 +806,7 @@ const body = {
     country: {
         id: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -888,9 +885,9 @@ const extensionId = '<ENTER VALUE>';
 const queryParams = {
     //startsWith: '<ENTER VALUE>',
     //sortBy: [ 'FirstName', 'LastName', 'Company' ],
-    //page: 1,
-    //perPage: 100,
-    //phoneNumber: [ '<ENTER VALUE>' ]
+    //page: '1',
+    //perPage: '100',
+    //phoneNumber: [ string ]
 }
 
 const SDK = require('ringcentral');
@@ -966,7 +963,7 @@ const body = {
         state: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1067,7 +1064,7 @@ const body = {
         state: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1177,11 +1174,12 @@ const extensionId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            extensionId: '<ENTER VALUE>',
+            contactId: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1209,17 +1207,18 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     searchString: '<ENTER VALUE>',
-    showFederated: true,
+    showFederated: 'true',
     extensionType: 'User',
     orderBy: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            index: 000,
+            fieldName: 'firstName',
+            direction: 'Asc'
+        },
     ],
     page: 000,
     perPage: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1270,10 +1269,10 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //showFederated: true,
+    //showFederated: 'true',
     //type: 'User',
-    //page: '<ENTER VALUE>',
-    //perPage: 1000,
+    //page: '1',
+    //perPage: '1000',
     //siteId: '<ENTER VALUE>'
 }
 
@@ -1364,11 +1363,27 @@ const body = {
     pickUpCallsOnHold: true,
     activeCalls: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            direction: 'Inbound',
+            from: '<ENTER VALUE>',
+            fromName: '<ENTER VALUE>',
+            to: '<ENTER VALUE>',
+            toName: '<ENTER VALUE>',
+            startTime: '<ENTER VALUE>',
+            telephonyStatus: '<ENTER VALUE>',
+            sipData: {
+                callId: '<ENTER VALUE>',
+                toTag: '<ENTER VALUE>',
+                fromTag: '<ENTER VALUE>',
+                remoteUri: '<ENTER VALUE>',
+                localUri: '<ENTER VALUE>',
+                rcSessionId: '<ENTER VALUE>'
+            },
+            sessionId: '<ENTER VALUE>',
+            terminationType: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1424,7 +1439,7 @@ HTTP get `/restapi/v1.0/glip/chats`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: 30,
+    //recordCount: '30',
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1473,7 +1488,7 @@ HTTP get `/restapi/v1.0/glip/conversations`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30,
+    //recordCount: '30',
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1501,11 +1516,11 @@ HTTP post `/restapi/v1.0/glip/conversations`
 const body = {
     members: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            email: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1552,7 +1567,7 @@ HTTP get `/restapi/v1.0/glip/teams`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30,
+    //recordCount: '30',
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1583,11 +1598,11 @@ const body = {
     description: '<ENTER VALUE>',
     members: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            email: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1640,7 +1655,7 @@ const body = {
     public: true,
     name: '<ENTER VALUE>',
     description: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1735,12 +1750,11 @@ const chatId = '<ENTER VALUE>';
 const body = {
     members: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            email: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1768,11 +1782,10 @@ const chatId = '<ENTER VALUE>';
 const body = {
     members: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1861,7 +1874,7 @@ HTTP patch `/restapi/v1.0/glip/everyone`
 const body = {
     name: 000,
     description: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -1886,7 +1899,7 @@ HTTP get `/restapi/v1.0/glip/recent/chats`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: 30
+    //recordCount: '30'
 }
 
 const SDK = require('ringcentral');
@@ -1911,7 +1924,7 @@ HTTP get `/restapi/v1.0/glip/favorites`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30
+    //recordCount: '30'
 }
 
 const SDK = require('ringcentral');
@@ -2053,7 +2066,7 @@ const postId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     text: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2103,7 +2116,7 @@ const chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30,
+    //recordCount: '30',
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -2135,11 +2148,11 @@ const body = {
     text: '<ENTER VALUE>',
     attachments: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            type: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2163,7 +2176,7 @@ HTTP get `/restapi/v1.0/glip/events`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: 30,
+    //recordCount: '30',
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -2202,7 +2215,7 @@ const body = {
     color: 'Black',
     location: '<ENTER VALUE>',
     description: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2265,7 +2278,7 @@ const body = {
     color: 'Black',
     location: '<ENTER VALUE>',
     description: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2327,7 +2340,7 @@ const body = {
     color: 'Black',
     location: '<ENTER VALUE>',
     description: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2377,15 +2390,15 @@ const chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //creationTimeTo: '<ENTER VALUE>',
+    //creationTimeTo: 'now',
     //creationTimeFrom: '<ENTER VALUE>',
-    //creatorId: [ '<ENTER VALUE>' ],
+    //creatorId: [ string ],
     //status: [ 'Pending', 'InProgress', 'Completed' ],
     //assignmentStatus: 'Unassigned',
-    //assigneeId: [ '<ENTER VALUE>' ],
+    //assigneeId: [ string ],
     //assigneeStatus: 'Pending',
     //pageToken: '<ENTER VALUE>',
-    //recordCount: 30
+    //recordCount: '30'
 }
 
 const SDK = require('ringcentral');
@@ -2416,9 +2429,8 @@ const body = {
     subject: '<ENTER VALUE>',
     assignees: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     completenessCondition: 'Simple',
     startDate: '<ENTER VALUE>',
@@ -2434,11 +2446,10 @@ const body = {
     },
     attachments: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2491,9 +2502,8 @@ const body = {
     subject: '<ENTER VALUE>',
     assignees: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     completenessCondition: 'Simple',
     startDate: '<ENTER VALUE>',
@@ -2509,11 +2519,10 @@ const body = {
     },
     attachments: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2565,12 +2574,11 @@ const body = {
     status: 'Incomplete',
     assignees: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     completenessPercentage: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2864,11 +2872,9 @@ const body = {
     startParticipantsVideo: true,
     usePersonalMeetingId: true,
     audioOptions: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -2943,11 +2949,9 @@ const body = {
     startParticipantsVideo: true,
     usePersonalMeetingId: true,
     audioOptions: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3112,9 +3116,7 @@ HTTP post `/restapi/v1.0/subscription`
 // POST BODY
 const body = {
     eventFilters: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     deliveryMode: {
         transportType: 'PubNub',
@@ -3124,8 +3126,8 @@ const body = {
         registrationId: '<ENTER VALUE>',
         verificationToken: '<ENTER VALUE>'
     },
-    expiresIn: 604800
-}
+    expiresIn: '604800'
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3181,9 +3183,7 @@ const queryParams = {
 // POST BODY
 const body = {
     eventFilters: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     deliveryMode: {
         transportType: 'PubNub',
@@ -3193,8 +3193,8 @@ const body = {
         registrationId: '<ENTER VALUE>',
         verificationToken: '<ENTER VALUE>'
     },
-    expiresIn: 604800
-}
+    expiresIn: '604800'
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3349,49 +3349,49 @@ const body = {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         }
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3445,49 +3445,49 @@ const body = {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         }
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3545,10 +3545,14 @@ const body = {
     greetings: [
         {
             type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3610,7 +3614,7 @@ const body = {
     phoneNumber: '<ENTER VALUE>',
     label: '<ENTER VALUE>',
     status: 'Blocked'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3691,7 +3695,7 @@ const body = {
     phoneNumber: '<ENTER VALUE>',
     label: '<ENTER VALUE>',
     status: 'Blocked'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3719,8 +3723,8 @@ const extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -3755,7 +3759,7 @@ const body = {
     device: {
         id: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3813,7 +3817,7 @@ const body = {
     label: '<ENTER VALUE>',
     flipNumber: '<ENTER VALUE>',
     type: 'Home'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -3865,10 +3869,10 @@ const extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //view: 'Detailed',
+    //view: 'Simple',
     //enabledOnly: true,
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -3902,66 +3906,65 @@ const body = {
     name: '<ENTER VALUE>',
     callers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            callerId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
     ],
     calledNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            phoneNumber: '<ENTER VALUE>'
+        },
     ],
     schedule: {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         },
         ranges: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                from: '<ENTER VALUE>',
+                to: '<ENTER VALUE>'
+            },
         ],
         ref: 'BusinessHours'
     },
@@ -3973,9 +3976,19 @@ const body = {
         ringingMode: 'Sequentially',
         rules: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                index: 000,
+                ringCount: 000,
+                enabled: true,
+                forwardingNumbers: [
+                    {
+                        uri: '<ENTER VALUE>',
+                        id: '<ENTER VALUE>',
+                        phoneNumber: '<ENTER VALUE>',
+                        label: '<ENTER VALUE>',
+                        type: 'Home'
+                    },
+                ]
+            },
         ],
         mobileTimeout: true
     },
@@ -3986,9 +3999,14 @@ const body = {
         transferMode: 'Rotating',
         fixedOrderAgents: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                extension: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    extensionNumber: '<ENTER VALUE>',
+                    partnerId: '<ENTER VALUE>'
+                },
+                index: 000
+            },
         ],
         holdAudioInterruptionMode: 'Never',
         holdAudioInterruptionPeriod: 000,
@@ -4015,12 +4033,17 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'Introductory',
+            usageType: 'UserExtensionAnsweringRule',
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ],
     screening: 'Off'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4082,13 +4105,20 @@ const body = {
     forwarding: {
         notifyMySoftPhones: true,
         notifyAdminSoftPhones: true,
-        softPhonesRingCount: 1,
+        softPhonesRingCount: '1',
         ringingMode: 'Sequentially',
         rules: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                index: 000,
+                ringCount: 000,
+                enabled: true,
+                forwardingNumbers: [
+                    {
+                        id: '<ENTER VALUE>',
+                        type: 'Home'
+                    },
+                ]
+            },
         ],
         mobileTimeout: true
     },
@@ -4096,66 +4126,65 @@ const body = {
     name: '<ENTER VALUE>',
     callers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            callerId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
     ],
     calledNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            phoneNumber: '<ENTER VALUE>'
+        },
     ],
     schedule: {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         },
         ranges: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                from: '<ENTER VALUE>',
+                to: '<ENTER VALUE>'
+            },
         ],
         ref: 'BusinessHours'
     },
@@ -4167,9 +4196,14 @@ const body = {
         transferMode: 'Rotating',
         fixedOrderAgents: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                extension: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    extensionNumber: '<ENTER VALUE>',
+                    partnerId: '<ENTER VALUE>'
+                },
+                index: 000
+            },
         ],
         holdAudioInterruptionMode: 'Never',
         holdAudioInterruptionPeriod: 000,
@@ -4188,13 +4222,18 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'Introductory',
+            usageType: 'UserExtensionAnsweringRule',
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ],
     screening: 'Off',
     showInactiveNumbers: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4246,70 +4285,69 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     name: '<ENTER VALUE>',
-    enabled: true,
+    enabled: 'true',
     type: 'BusinessHours',
     callers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            callerId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
     ],
     calledNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     schedule: {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         },
         ranges: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                from: '<ENTER VALUE>',
+                to: '<ENTER VALUE>'
+            },
         ],
         ref: 'BusinessHours'
     },
@@ -4320,11 +4358,16 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'Introductory',
+            usageType: 'UserExtensionAnsweringRule',
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4399,70 +4442,69 @@ const ruleId = '<ENTER VALUE>';
 
 // POST BODY
 const body = {
-    enabled: true,
+    enabled: 'true',
     name: '<ENTER VALUE>',
     callers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            callerId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>'
+        },
     ],
     calledNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>'
+        },
     ],
     schedule: {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         },
         ranges: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                from: '<ENTER VALUE>',
+                to: '<ENTER VALUE>'
+            },
         ],
         ref: 'BusinessHours'
     },
@@ -4473,11 +4515,16 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'Introductory',
+            usageType: 'UserExtensionAnsweringRule',
+            preset: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4524,8 +4571,8 @@ HTTP get `/restapi/v1.0/dictionary/greeting`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //type: 'Introductory',
     //usageType: 'UserExtensionAnsweringRule'
 }
@@ -4745,7 +4792,7 @@ const promptId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     filename: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4815,11 +4862,16 @@ const body = {
     },
     actions: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            input: '<ENTER VALUE>',
+            action: 'Connect',
+            extension: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>'
+            },
+            phoneNumber: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4891,11 +4943,16 @@ const body = {
     },
     actions: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            input: '<ENTER VALUE>',
+            action: 'Connect',
+            extension: {
+                uri: '<ENTER VALUE>',
+                id: '<ENTER VALUE>'
+            },
+            phoneNumber: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -4957,11 +5014,11 @@ const body = {
     },
     greetings: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'StartRecording',
+            mode: 'Default'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5032,7 +5089,7 @@ const body = {
         type: '<ENTER VALUE>',
         callDirection: 'Outbound'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5130,17 +5187,17 @@ HTTP post `/restapi/v1.0/client-info/sip-provision`
 const body = {
     device: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            appExternalId: '<ENTER VALUE>',
+            computerName: '<ENTER VALUE>'
+        },
     ],
     sipInfo: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            transport: 'UDP'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5283,12 +5340,11 @@ const body = {
     },
     transition: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            sendWelcomeEmailsToUsers: true,
+            sendWelcomeEmail: true
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5366,21 +5422,37 @@ const body = {
     uri: '<ENTER VALUE>',
     byDevice: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            device: {
+                id: '<ENTER VALUE>',
+                uri: '<ENTER VALUE>',
+                phoneNumber: '<ENTER VALUE>'
+            },
+            callerId: {
+                type: '<ENTER VALUE>',
+                phoneInfo: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    phoneNumber: '<ENTER VALUE>'
+                }
+            }
+        },
     ],
     byFeature: [
         {
-            description: '<ENTER VALUE>',
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            feature: 'RingOut',
+            callerId: {
+                type: '<ENTER VALUE>',
+                phoneInfo: {
+                    id: '<ENTER VALUE>',
+                    uri: '<ENTER VALUE>',
+                    phoneNumber: '<ENTER VALUE>'
+                }
+            }
+        },
     ],
     extensionNameForOutboundCalls: true,
     extensionNumberForInternalCalls: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5408,8 +5480,8 @@ const extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -5465,16 +5537,12 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     enabledUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     disabledUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5504,7 +5572,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: '<ENTER VALUE>',
     //perPage: 000,
-    //page: 1
+    //page: '1'
 }
 
 const SDK = require('ringcentral');
@@ -5552,7 +5620,7 @@ const body = {
         street2: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5625,7 +5693,7 @@ const body = {
         street2: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5748,17 +5816,19 @@ const body = {
     site: '<ENTER VALUE>',
     publicIpRanges: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            startIp: '<ENTER VALUE>',
+            endIp: '<ENTER VALUE>'
+        },
     ],
     privateIpRanges: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            startIp: '<ENTER VALUE>',
+            endIp: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5812,9 +5882,9 @@ const queryParams = {
     //model: '<ENTER VALUE>',
     //compatibleOnly: true,
     //searchString: '<ENTER VALUE>',
-    //orderBy: '<ENTER VALUE>',
+    //orderBy: 'name',
     //perPage: 000,
-    //page: 1
+    //page: '1'
 }
 
 const SDK = require('ringcentral');
@@ -5843,18 +5913,12 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     enabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     disabledDeviceIds: [
-        {
-            type: '<ENTER VALUE>',
-            description: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -5884,7 +5948,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: '<ENTER VALUE>',
     //perPage: 000,
-    //page: 1
+    //page: '1'
 }
 
 const SDK = require('ringcentral');
@@ -5932,7 +5996,7 @@ const body = {
         street2: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6005,7 +6069,7 @@ const body = {
         street2: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6057,12 +6121,29 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            chassisId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6091,11 +6172,30 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            chassisId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6124,12 +6224,29 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            bssid: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6158,11 +6275,30 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            bssid: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6191,11 +6327,30 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            bssid: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6224,11 +6379,30 @@ const accountId = '<ENTER VALUE>';
 const body = {
     records: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            chassisId: '<ENTER VALUE>',
+            name: '<ENTER VALUE>',
+            site: {
+                id: '<ENTER VALUE>',
+                name: '<ENTER VALUE>'
+            },
+            emergencyAddress: {
+                country: '<ENTER VALUE>',
+                countryId: '<ENTER VALUE>',
+                countryIsoCode: '<ENTER VALUE>',
+                countryName: '<ENTER VALUE>',
+                state: '<ENTER VALUE>',
+                stateId: '<ENTER VALUE>',
+                stateIsoCode: '<ENTER VALUE>',
+                stateName: '<ENTER VALUE>',
+                city: '<ENTER VALUE>',
+                street: '<ENTER VALUE>',
+                street2: '<ENTER VALUE>',
+                zip: '<ENTER VALUE>'
+            }
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6281,28 +6455,20 @@ const extensionId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     emailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     smsEmailAddresses: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     advancedMode: true,
     voicemails: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         includeAttachment: true,
         markAsRead: true
@@ -6311,14 +6477,10 @@ const body = {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         includeAttachment: true,
         markAsRead: true
@@ -6327,45 +6489,33 @@ const body = {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     },
     inboundTexts: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     },
     missedCalls: {
         notifyByEmail: true,
         notifyBySms: true,
         advancedEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ],
         advancedSmsEmailAddresses: [
-            {
-                type: '<ENTER VALUE>'
-            }
+            '<ENTER VALUE>',
         ]
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6517,12 +6667,12 @@ const extensionId = '<ENTER VALUE>';
 const body = {
     phoneNumbers: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            phoneNumber: '<ENTER VALUE>',
+            default: true
+        },
     ],
     allowJoinBeforeHost: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6604,7 +6754,7 @@ const body = {
         street: '<ENTER VALUE>',
         zip: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -6697,8 +6847,8 @@ const queryParams = {
     //loginAllowed: true,
     //signupAllowed: true,
     //numberSelling: true,
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //freeSoftphoneLine: true
 }
 
@@ -6747,9 +6897,9 @@ HTTP get `/restapi/v1.0/dictionary/location`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //orderBy: 'Npa',
-    //page: 1,
-    //perPage: 100,
+    //orderBy: 'City',
+    //page: '1',
+    //perPage: '100',
     //stateId: '<ENTER VALUE>',
     //withNxx: true
 }
@@ -6778,8 +6928,8 @@ HTTP get `/restapi/v1.0/dictionary/state`
 const queryParams = {
     //allCountries: true,
     //countryId: 000,
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //withPhoneNumbers: true
 }
 
@@ -6828,8 +6978,8 @@ HTTP get `/restapi/v1.0/dictionary/timezone`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -6857,8 +7007,8 @@ const timezoneId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '<ENTER VALUE>',
-    //perPage: '<ENTER VALUE>'
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -6886,8 +7036,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
 }
 
@@ -6942,8 +7092,8 @@ const accountId = '<ENTER VALUE>';
 const queryParams = {
     //extensionId: '<ENTER VALUE>',
     //email: '<ENTER VALUE>',
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //status: [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
     //type: [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
 }
@@ -6999,15 +7149,15 @@ const body = {
     password: '<ENTER VALUE>',
     references: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            ref: '<ENTER VALUE>',
+            type: 'PartnerId'
+        },
     ],
     roles: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            uri: '<ENTER VALUE>',
+            id: '<ENTER VALUE>'
+        },
     ],
     regionalSettings: {
         homeCountry: {
@@ -7052,7 +7202,7 @@ const body = {
     },
     type: 'User',
     hidden: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7133,8 +7283,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //memberExtensionId: '<ENTER VALUE>'
 }
 
@@ -7164,8 +7314,8 @@ const groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -7195,16 +7345,12 @@ const groupId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     addedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     removedExtensionIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7231,8 +7377,8 @@ const pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -7261,8 +7407,8 @@ const pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -7292,26 +7438,18 @@ const pagingOnlyGroupId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     addedUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     removedUserIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     addedDeviceIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     removedDeviceIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7339,7 +7477,7 @@ const accountId = '<ENTER VALUE>';
 const body = {
     id: '<ENTER VALUE>',
     name: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7366,8 +7504,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //memberExtensionId: '<ENTER VALUE>'
 }
 
@@ -7399,7 +7537,7 @@ const groupId = '<ENTER VALUE>';
 const body = {
     id: '<ENTER VALUE>',
     name: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7450,8 +7588,8 @@ const groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: 1,
-    //perPage: 100
+    //page: '1',
+    //perPage: '100'
 }
 
 const SDK = require('ringcentral');
@@ -7482,11 +7620,13 @@ const groupId = '<ENTER VALUE>';
 const body = {
     updatedExtensions: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            permissions: [
+                'Monitoring',
+            ]
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7516,11 +7656,9 @@ const queryParams = {
 // POST BODY
 const body = {
     originalStrings: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7592,13 +7730,12 @@ const body = {
     phoneLines: {
         phoneLines: [
             {
-                type: '<ENTER VALUE>',
-                properties: '<ENTER VALUE>'
-            }
+                id: '<ENTER VALUE>'
+            },
         ]
     },
     useAsCommonPhone: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7692,8 +7829,8 @@ HTTP get `/scim/v2/Users`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //filter: '<ENTER VALUE>',
-    //startIndex: 1,
-    //count: 100
+    //startIndex: '1',
+    //count: '100'
 }
 
 const SDK = require('ringcentral');
@@ -7721,17 +7858,19 @@ const body = {
     active: true,
     addresses: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            country: '<ENTER VALUE>',
+            locality: '<ENTER VALUE>',
+            postalCode: '<ENTER VALUE>',
+            region: '<ENTER VALUE>',
+            streetAddress: '<ENTER VALUE>',
+            type: 'work'
+        },
     ],
     emails: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     externalId: '<ENTER VALUE>',
     id: '<ENTER VALUE>',
@@ -7741,29 +7880,24 @@ const body = {
     },
     phoneNumbers: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     photos: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'photo',
+            value: '<ENTER VALUE>'
+        },
     ],
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:schemas:core:2.0:User',
     ],
     urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
         department: '<ENTER VALUE>'
     },
     userName: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7790,13 +7924,10 @@ const body = {
     count: 000,
     filter: '<ENTER VALUE>',
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:api:messages:2.0:SearchRequest',
     ],
     startIndex: 000
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7849,17 +7980,19 @@ const body = {
     active: true,
     addresses: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            country: '<ENTER VALUE>',
+            locality: '<ENTER VALUE>',
+            postalCode: '<ENTER VALUE>',
+            region: '<ENTER VALUE>',
+            streetAddress: '<ENTER VALUE>',
+            type: 'work'
+        },
     ],
     emails: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     externalId: '<ENTER VALUE>',
     id: '<ENTER VALUE>',
@@ -7869,29 +8002,24 @@ const body = {
     },
     phoneNumbers: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'work',
+            value: '<ENTER VALUE>'
+        },
     ],
     photos: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            type: 'photo',
+            value: '<ENTER VALUE>'
+        },
     ],
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:schemas:core:2.0:User',
     ],
     urn:ietf:params:scim:schemas:extension:enterprise:2.0:User: {
         department: '<ENTER VALUE>'
     },
     userName: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7942,18 +8070,15 @@ const id = '<ENTER VALUE>';
 const body = {
     Operations: [
         {
-            type: '<ENTER VALUE>',
-            required: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            op: 'add',
+            path: '<ENTER VALUE>',
+            value: '<ENTER VALUE>'
+        },
     ],
     schemas: [
-        {
-            type: '<ENTER VALUE>',
-            enum: '<ENTER VALUE>'
-        }
+        'urn:ietf:params:scim:api:messages:2.0:PatchOp',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -7987,7 +8112,7 @@ const body = {
         phoneNumber: '<ENTER VALUE>',
         extensionNumber: '<ENTER VALUE>'
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8146,7 +8271,7 @@ const body = {
     phoneNumber: '<ENTER VALUE>',
     voicemail: '<ENTER VALUE>',
     parkOrbit: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8177,7 +8302,7 @@ const partyId = '<ENTER VALUE>';
 const body = {
     phoneNumber: '<ENTER VALUE>',
     voicemail: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8207,7 +8332,7 @@ const partyId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     callFlipId: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8264,7 +8389,7 @@ const body = {
         muted: true,
         standAlone: true
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8318,13 +8443,13 @@ const recordingId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //brandId: '<ENTER VALUE>'
+    //brandId: '~'
 }
 
 // POST BODY
 const body = {
     active: true
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8355,7 +8480,7 @@ const body = {
     mode: 'Listen',
     deviceId: '<ENTER VALUE>',
     extensionNumber: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8405,16 +8530,12 @@ const body = {
     dateFrom: '<ENTER VALUE>',
     dateTo: '<ENTER VALUE>',
     userIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ],
     chatIds: [
-        {
-            type: '<ENTER VALUE>'
-        }
+        '<ENTER VALUE>',
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
@@ -8466,7 +8587,7 @@ const accountId = '<ENTER VALUE>';
 const body = {
     dateFrom: '<ENTER VALUE>',
     dateTo: '<ENTER VALUE>'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

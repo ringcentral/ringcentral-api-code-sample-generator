@@ -15,8 +15,8 @@ const queryParams = {
     //distinctConversations: true,
     //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
     //readStatus: [ 'Read', 'Unread' ],
-    //page: 1,
-    //perPage: 100,
+    //page: '1',
+    //perPage: '100',
     //phoneNumber: '<ENTER VALUE>'
 }
 

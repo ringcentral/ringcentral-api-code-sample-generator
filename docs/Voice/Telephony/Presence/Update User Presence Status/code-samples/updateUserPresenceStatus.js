@@ -15,11 +15,27 @@ const body = {
     pickUpCallsOnHold: true,
     activeCalls: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            direction: 'Inbound',
+            from: '<ENTER VALUE>',
+            fromName: '<ENTER VALUE>',
+            to: '<ENTER VALUE>',
+            toName: '<ENTER VALUE>',
+            startTime: '<ENTER VALUE>',
+            telephonyStatus: '<ENTER VALUE>',
+            sipData: {
+                callId: '<ENTER VALUE>',
+                toTag: '<ENTER VALUE>',
+                fromTag: '<ENTER VALUE>',
+                remoteUri: '<ENTER VALUE>',
+                localUri: '<ENTER VALUE>',
+                rcSessionId: '<ENTER VALUE>'
+            },
+            sessionId: '<ENTER VALUE>',
+            terminationType: '<ENTER VALUE>'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

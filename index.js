@@ -222,10 +222,12 @@ function generateCodeSamples() {
 
                     // Render and write the template located at './util/templates/' for the current language
                     const code = ejs.render(fs.readFileSync(path.resolve(`./util/templates/code/${language}.ejs`), 'utf8'), {
+                        ejs: ejs,
                         url: url,
                         method: method,
                         operation: operation,
-                        defs: require(path.resolve('./util/definitions'))
+                        defs: require(path.resolve('./util/definitions')),
+                        object: fs.readFileSync(path.resolve(`./util/templates/objects/${language}.ejs`), 'utf8')
                     })
 
                     fs.writeFileSync(opPath, code)

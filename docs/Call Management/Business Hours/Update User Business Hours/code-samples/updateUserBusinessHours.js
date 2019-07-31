@@ -11,49 +11,49 @@ const body = {
         weeklyRanges: {
             monday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             tuesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             wednesday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             thursday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             friday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             saturday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ],
             sunday: [
                 {
-                    type: '<ENTER VALUE>',
-                    properties: '<ENTER VALUE>'
-                }
+                    from: '<ENTER VALUE>',
+                    to: '<ENTER VALUE>'
+                },
             ]
         }
     }
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

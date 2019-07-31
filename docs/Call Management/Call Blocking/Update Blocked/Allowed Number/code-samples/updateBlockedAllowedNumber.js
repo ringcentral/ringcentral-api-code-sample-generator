@@ -11,7 +11,7 @@ const body = {
     phoneNumber: '<ENTER VALUE>',
     label: '<ENTER VALUE>',
     status: 'Blocked'
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});

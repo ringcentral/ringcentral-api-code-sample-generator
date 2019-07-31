@@ -5,17 +5,17 @@
 const body = {
     device: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            id: '<ENTER VALUE>',
+            appExternalId: '<ENTER VALUE>',
+            computerName: '<ENTER VALUE>'
+        },
     ],
     sipInfo: [
         {
-            type: '<ENTER VALUE>',
-            properties: '<ENTER VALUE>'
-        }
+            transport: 'UDP'
+        },
     ]
-}
+};
 
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
