@@ -7,8 +7,8 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'usageType' => array( 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' )
 )
 

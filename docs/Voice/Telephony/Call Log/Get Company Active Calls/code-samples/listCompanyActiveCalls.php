@@ -11,8 +11,8 @@ $queryParams = array(
     //'view' => 'Simple',
     //'type' => array( 'Voice', 'Fax' ),
     //'transport' => array( 'PSTN', 'VoIP' ),
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');

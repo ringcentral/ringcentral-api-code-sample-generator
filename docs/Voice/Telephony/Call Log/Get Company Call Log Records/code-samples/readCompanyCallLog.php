@@ -16,8 +16,8 @@ $queryParams = array(
     //'recordingType' => 'Automatic',
     //'dateFrom' => '<ENTER VALUE>',
     //'dateTo' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'sessionId' => '<ENTER VALUE>'
 )
 

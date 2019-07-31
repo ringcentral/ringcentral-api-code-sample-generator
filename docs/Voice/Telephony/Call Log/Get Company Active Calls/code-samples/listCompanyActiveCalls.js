@@ -10,8 +10,8 @@ const queryParams = {
     //view: 'Simple',
     //type: [ 'Voice', 'Fax' ],
     //transport: [ 'PSTN', 'VoIP' ],
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');

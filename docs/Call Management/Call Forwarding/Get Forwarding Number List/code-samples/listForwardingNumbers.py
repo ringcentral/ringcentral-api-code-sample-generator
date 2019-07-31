@@ -7,8 +7,8 @@ extensionId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os

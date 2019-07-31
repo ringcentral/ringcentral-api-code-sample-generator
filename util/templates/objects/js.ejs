@@ -1,7 +1,7 @@
 {
 <%
 const valOf = (property, depth) => {
-    if (property.default) return `'${property.default}'`
+    if (property.default) return property.type === 'string' ? `'${property.default}'` : property.default
     if (property.type === 'boolean') return 'true'
     if (property.type === 'integer') return '000'
     if (property.enum) return `'${property.enum[0]}'`

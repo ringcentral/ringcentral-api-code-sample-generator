@@ -3,7 +3,7 @@
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30'
+    #'recordCount': 30
 }
 
 import os

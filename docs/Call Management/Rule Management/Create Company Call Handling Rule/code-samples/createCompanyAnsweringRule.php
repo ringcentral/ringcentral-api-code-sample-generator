@@ -8,7 +8,7 @@ $accountId = '<ENTER VALUE>';
 // POST BODY
 $body = array(
     'name' => '<ENTER VALUE>',
-    'enabled' => 'true',
+    'enabled' => true,
     'type' => 'BusinessHours',
     'callers' => array(
         array(

@@ -7,7 +7,7 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     name: '<ENTER VALUE>',
-    enabled: 'true',
+    enabled: true,
     type: 'BusinessHours',
     callers: [
         {

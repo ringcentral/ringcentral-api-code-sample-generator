@@ -7,8 +7,8 @@ $queryParams = array(
     //'loginAllowed' => true,
     //'signupAllowed' => true,
     //'numberSelling' => true,
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'freeSoftphoneLine' => true
 )
 

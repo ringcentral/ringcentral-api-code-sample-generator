@@ -9,8 +9,8 @@ $accountId = '<ENTER VALUE>';
 $queryParams = array(
     //'extensionId' => '<ENTER VALUE>',
     //'email' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'status' => array( 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ),
     //'type' => array( 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' )
 )

@@ -10,8 +10,8 @@ queryParams = {
     #'direction': [ 'Inbound', 'Outbound' ],
     #'view': 'Simple',
     #'type': [ 'Voice', 'Fax' ],
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os

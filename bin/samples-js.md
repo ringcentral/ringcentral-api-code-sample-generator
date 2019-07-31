@@ -79,7 +79,7 @@ const extensionId = '<ENTER VALUE>';
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //extensionNumber: '<ENTER VALUE>',
-    //showBlocked: 'true',
+    //showBlocked: true,
     //phoneNumber: '<ENTER VALUE>',
     //direction: [ 'Inbound', 'Outbound' ],
     //sessionId: '<ENTER VALUE>',
@@ -90,8 +90,8 @@ const queryParams = {
     //recordingType: 'Automatic',
     //dateTo: '<ENTER VALUE>',
     //dateFrom: '<ENTER VALUE>',
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //showDeleted: true
 }
 
@@ -222,8 +222,8 @@ const queryParams = {
     //direction: [ 'Inbound', 'Outbound' ],
     //view: 'Simple',
     //type: [ 'Voice', 'Fax' ],
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -260,8 +260,8 @@ const queryParams = {
     //recordingType: 'Automatic',
     //dateFrom: '<ENTER VALUE>',
     //dateTo: '<ENTER VALUE>',
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //sessionId: '<ENTER VALUE>'
 }
 
@@ -318,8 +318,8 @@ const queryParams = {
     //view: 'Simple',
     //type: [ 'Voice', 'Fax' ],
     //transport: [ 'PSTN', 'VoIP' ],
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -490,8 +490,8 @@ HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -528,8 +528,8 @@ const queryParams = {
     //distinctConversations: true,
     //messageType: [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
     //readStatus: [ 'Read', 'Unread' ],
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //phoneNumber: '<ENTER VALUE>'
 }
 
@@ -885,8 +885,8 @@ const extensionId = '<ENTER VALUE>';
 const queryParams = {
     //startsWith: '<ENTER VALUE>',
     //sortBy: [ 'FirstName', 'LastName', 'Company' ],
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //phoneNumber: [ string ]
 }
 
@@ -1207,7 +1207,7 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     searchString: '<ENTER VALUE>',
-    showFederated: 'true',
+    showFederated: true,
     extensionType: 'User',
     orderBy: [
         {
@@ -1269,10 +1269,10 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //showFederated: 'true',
+    //showFederated: true,
     //type: 'User',
     //page: '1',
-    //perPage: '1000',
+    //perPage: 1000,
     //siteId: '<ENTER VALUE>'
 }
 
@@ -1439,7 +1439,7 @@ HTTP get `/restapi/v1.0/glip/chats`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1488,7 +1488,7 @@ HTTP get `/restapi/v1.0/glip/conversations`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1567,7 +1567,7 @@ HTTP get `/restapi/v1.0/glip/teams`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -1899,7 +1899,7 @@ HTTP get `/restapi/v1.0/glip/recent/chats`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //type: [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    //recordCount: '30'
+    //recordCount: 30
 }
 
 const SDK = require('ringcentral');
@@ -1924,7 +1924,7 @@ HTTP get `/restapi/v1.0/glip/favorites`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30'
+    //recordCount: 30
 }
 
 const SDK = require('ringcentral');
@@ -2116,7 +2116,7 @@ const chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -2176,7 +2176,7 @@ HTTP get `/restapi/v1.0/glip/events`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 
@@ -2398,7 +2398,7 @@ const queryParams = {
     //assigneeId: [ string ],
     //assigneeStatus: 'Pending',
     //pageToken: '<ENTER VALUE>',
-    //recordCount: '30'
+    //recordCount: 30
 }
 
 const SDK = require('ringcentral');
@@ -3126,7 +3126,7 @@ const body = {
         registrationId: '<ENTER VALUE>',
         verificationToken: '<ENTER VALUE>'
     },
-    expiresIn: '604800'
+    expiresIn: 604800
 };
 
 const SDK = require('ringcentral');
@@ -3193,7 +3193,7 @@ const body = {
         registrationId: '<ENTER VALUE>',
         verificationToken: '<ENTER VALUE>'
     },
-    expiresIn: '604800'
+    expiresIn: 604800
 };
 
 const SDK = require('ringcentral');
@@ -3723,8 +3723,8 @@ const extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -4105,7 +4105,7 @@ const body = {
     forwarding: {
         notifyMySoftPhones: true,
         notifyAdminSoftPhones: true,
-        softPhonesRingCount: '1',
+        softPhonesRingCount: 1,
         ringingMode: 'Sequentially',
         rules: [
             {
@@ -4285,7 +4285,7 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     name: '<ENTER VALUE>',
-    enabled: 'true',
+    enabled: true,
     type: 'BusinessHours',
     callers: [
         {
@@ -4442,7 +4442,7 @@ const ruleId = '<ENTER VALUE>';
 
 // POST BODY
 const body = {
-    enabled: 'true',
+    enabled: true,
     name: '<ENTER VALUE>',
     callers: [
         {
@@ -4571,8 +4571,8 @@ HTTP get `/restapi/v1.0/dictionary/greeting`
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //type: 'Introductory',
     //usageType: 'UserExtensionAnsweringRule'
 }
@@ -5572,7 +5572,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: '<ENTER VALUE>',
     //perPage: 000,
-    //page: '1'
+    //page: 1
 }
 
 const SDK = require('ringcentral');
@@ -5884,7 +5884,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: 'name',
     //perPage: 000,
-    //page: '1'
+    //page: 1
 }
 
 const SDK = require('ringcentral');
@@ -5948,7 +5948,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: '<ENTER VALUE>',
     //perPage: 000,
-    //page: '1'
+    //page: 1
 }
 
 const SDK = require('ringcentral');
@@ -6847,8 +6847,8 @@ const queryParams = {
     //loginAllowed: true,
     //signupAllowed: true,
     //numberSelling: true,
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //freeSoftphoneLine: true
 }
 
@@ -6898,8 +6898,8 @@ HTTP get `/restapi/v1.0/dictionary/location`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //orderBy: 'City',
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //stateId: '<ENTER VALUE>',
     //withNxx: true
 }
@@ -6928,8 +6928,8 @@ HTTP get `/restapi/v1.0/dictionary/state`
 const queryParams = {
     //allCountries: true,
     //countryId: 000,
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //withPhoneNumbers: true
 }
 
@@ -7036,8 +7036,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //usageType: [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
 }
 
@@ -7092,8 +7092,8 @@ const accountId = '<ENTER VALUE>';
 const queryParams = {
     //extensionId: '<ENTER VALUE>',
     //email: '<ENTER VALUE>',
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //status: [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
     //type: [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
 }
@@ -7283,8 +7283,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //memberExtensionId: '<ENTER VALUE>'
 }
 
@@ -7314,8 +7314,8 @@ const groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -7377,8 +7377,8 @@ const pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -7407,8 +7407,8 @@ const pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -7504,8 +7504,8 @@ const accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100',
+    //page: 1,
+    //perPage: 100,
     //memberExtensionId: '<ENTER VALUE>'
 }
 
@@ -7588,8 +7588,8 @@ const groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //page: '1',
-    //perPage: '100'
+    //page: 1,
+    //perPage: 100
 }
 
 const SDK = require('ringcentral');
@@ -7829,8 +7829,8 @@ HTTP get `/scim/v2/Users`
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //filter: '<ENTER VALUE>',
-    //startIndex: '1',
-    //count: '100'
+    //startIndex: 1,
+    //count: 100
 }
 
 const SDK = require('ringcentral');

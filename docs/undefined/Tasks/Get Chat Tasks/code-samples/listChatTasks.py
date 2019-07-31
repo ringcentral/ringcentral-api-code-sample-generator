@@ -14,7 +14,7 @@ queryParams = {
     #'assigneeId': [ string ],
     #'assigneeStatus': 'Pending',
     #'pageToken': '<ENTER VALUE>',
-    #'recordCount': '30'
+    #'recordCount': 30
 }
 
 import os

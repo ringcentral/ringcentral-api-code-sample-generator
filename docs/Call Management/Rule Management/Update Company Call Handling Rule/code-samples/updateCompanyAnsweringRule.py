@@ -7,7 +7,7 @@ ruleId = '<ENTER VALUE>'
 
 # POST BODY
 body = {
-    'enabled': 'true',
+    'enabled': true,
     'name': '<ENTER VALUE>',
     'callers': [
         {

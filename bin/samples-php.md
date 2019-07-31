@@ -86,7 +86,7 @@ $extensionId = '<ENTER VALUE>';
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'extensionNumber' => '<ENTER VALUE>',
-    //'showBlocked' => 'true',
+    //'showBlocked' => true,
     //'phoneNumber' => '<ENTER VALUE>',
     //'direction' => array( 'Inbound', 'Outbound' ),
     //'sessionId' => '<ENTER VALUE>',
@@ -97,8 +97,8 @@ $queryParams = array(
     //'recordingType' => 'Automatic',
     //'dateTo' => '<ENTER VALUE>',
     //'dateFrom' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'showDeleted' => true
 )
 
@@ -237,8 +237,8 @@ $queryParams = array(
     //'direction' => array( 'Inbound', 'Outbound' ),
     //'view' => 'Simple',
     //'type' => array( 'Voice', 'Fax' ),
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -277,8 +277,8 @@ $queryParams = array(
     //'recordingType' => 'Automatic',
     //'dateFrom' => '<ENTER VALUE>',
     //'dateTo' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'sessionId' => '<ENTER VALUE>'
 )
 
@@ -339,8 +339,8 @@ $queryParams = array(
     //'view' => 'Simple',
     //'type' => array( 'Voice', 'Fax' ),
     //'transport' => array( 'PSTN', 'VoIP' ),
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -523,8 +523,8 @@ HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -563,8 +563,8 @@ $queryParams = array(
     //'distinctConversations' => true,
     //'messageType' => array( 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ),
     //'readStatus' => array( 'Read', 'Unread' ),
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'phoneNumber' => '<ENTER VALUE>'
 )
 
@@ -944,8 +944,8 @@ $extensionId = '<ENTER VALUE>';
 $queryParams = array(
     //'startsWith' => '<ENTER VALUE>',
     //'sortBy' => array( 'FirstName', 'LastName', 'Company' ),
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'phoneNumber' => array( string )
 )
 
@@ -1282,7 +1282,7 @@ $accountId = '<ENTER VALUE>';
 // POST BODY
 $body = array(
     'searchString' => '<ENTER VALUE>',
-    'showFederated' => 'true',
+    'showFederated' => true,
     'extensionType' => 'User',
     'orderBy' => array(
         array(
@@ -1348,10 +1348,10 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'showFederated' => 'true',
+    //'showFederated' => true,
     //'type' => 'User',
     //'page' => '1',
-    //'perPage' => '1000',
+    //'perPage' => 1000,
     //'siteId' => '<ENTER VALUE>'
 )
 
@@ -1528,7 +1528,7 @@ HTTP get `/restapi/v1.0/glip/chats`
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'type' => array( 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ),
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 
@@ -1581,7 +1581,7 @@ HTTP get `/restapi/v1.0/glip/conversations`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 
@@ -1666,7 +1666,7 @@ HTTP get `/restapi/v1.0/glip/teams`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 
@@ -2024,7 +2024,7 @@ HTTP get `/restapi/v1.0/glip/recent/chats`
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'type' => array( 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ),
-    //'recordCount' => '30'
+    //'recordCount' => 30
 )
 
 require('vendor/autoload.php');
@@ -2051,7 +2051,7 @@ HTTP get `/restapi/v1.0/glip/favorites`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30'
+    //'recordCount' => 30
 )
 
 require('vendor/autoload.php');
@@ -2259,7 +2259,7 @@ $chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 
@@ -2323,7 +2323,7 @@ HTTP get `/restapi/v1.0/glip/events`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 
@@ -2559,7 +2559,7 @@ $queryParams = array(
     //'assigneeId' => array( string ),
     //'assigneeStatus' => 'Pending',
     //'pageToken' => '<ENTER VALUE>',
-    //'recordCount' => '30'
+    //'recordCount' => 30
 )
 
 require('vendor/autoload.php');
@@ -3339,7 +3339,7 @@ $body = array(
         'registrationId' => '<ENTER VALUE>',
         'verificationToken' => '<ENTER VALUE>'
     ),
-    'expiresIn' => '604800'
+    'expiresIn' => 604800
 )
 
 require('vendor/autoload.php');
@@ -3410,7 +3410,7 @@ $body = array(
         'registrationId' => '<ENTER VALUE>',
         'verificationToken' => '<ENTER VALUE>'
     ),
-    'expiresIn' => '604800'
+    'expiresIn' => 604800
 )
 
 require('vendor/autoload.php');
@@ -3972,8 +3972,8 @@ $extensionId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -4370,7 +4370,7 @@ $body = array(
     'forwarding' => array(
         'notifyMySoftPhones' => true,
         'notifyAdminSoftPhones' => true,
-        'softPhonesRingCount' => '1',
+        'softPhonesRingCount' => 1,
         'ringingMode' => 'Sequentially',
         'rules' => array(
             array(
@@ -4554,7 +4554,7 @@ $accountId = '<ENTER VALUE>';
 // POST BODY
 $body = array(
     'name' => '<ENTER VALUE>',
-    'enabled' => 'true',
+    'enabled' => true,
     'type' => 'BusinessHours',
     'callers' => array(
         array(
@@ -4717,7 +4717,7 @@ $ruleId = '<ENTER VALUE>';
 
 // POST BODY
 $body = array(
-    'enabled' => 'true',
+    'enabled' => true,
     'name' => '<ENTER VALUE>',
     'callers' => array(
         array(
@@ -4850,8 +4850,8 @@ HTTP get `/restapi/v1.0/dictionary/greeting`
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'type' => 'Introductory',
     //'usageType' => 'UserExtensionAnsweringRule'
 )
@@ -5913,7 +5913,7 @@ $queryParams = array(
     //'searchString' => '<ENTER VALUE>',
     //'orderBy' => '<ENTER VALUE>',
     //'perPage' => 000,
-    //'page' => '1'
+    //'page' => 1
 )
 
 require('vendor/autoload.php');
@@ -6245,7 +6245,7 @@ $queryParams = array(
     //'searchString' => '<ENTER VALUE>',
     //'orderBy' => 'name',
     //'perPage' => 000,
-    //'page' => '1'
+    //'page' => 1
 )
 
 require('vendor/autoload.php');
@@ -6313,7 +6313,7 @@ $queryParams = array(
     //'searchString' => '<ENTER VALUE>',
     //'orderBy' => '<ENTER VALUE>',
     //'perPage' => 000,
-    //'page' => '1'
+    //'page' => 1
 )
 
 require('vendor/autoload.php');
@@ -7262,8 +7262,8 @@ $queryParams = array(
     //'loginAllowed' => true,
     //'signupAllowed' => true,
     //'numberSelling' => true,
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'freeSoftphoneLine' => true
 )
 
@@ -7317,8 +7317,8 @@ HTTP get `/restapi/v1.0/dictionary/location`
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'orderBy' => 'City',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'stateId' => '<ENTER VALUE>',
     //'withNxx' => true
 )
@@ -7349,8 +7349,8 @@ HTTP get `/restapi/v1.0/dictionary/state`
 $queryParams = array(
     //'allCountries' => true,
     //'countryId' => 000,
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'withPhoneNumbers' => true
 )
 
@@ -7465,8 +7465,8 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'usageType' => array( 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' )
 )
 
@@ -7525,8 +7525,8 @@ $accountId = '<ENTER VALUE>';
 $queryParams = array(
     //'extensionId' => '<ENTER VALUE>',
     //'email' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'status' => array( 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ),
     //'type' => array( 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' )
 )
@@ -7724,8 +7724,8 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'memberExtensionId' => '<ENTER VALUE>'
 )
 
@@ -7757,8 +7757,8 @@ $groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -7824,8 +7824,8 @@ $pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -7856,8 +7856,8 @@ $pagingOnlyGroupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -7959,8 +7959,8 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'memberExtensionId' => '<ENTER VALUE>'
 )
 
@@ -8049,8 +8049,8 @@ $groupId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');
@@ -8306,8 +8306,8 @@ HTTP get `/scim/v2/Users`
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'filter' => '<ENTER VALUE>',
-    //'startIndex' => '1',
-    //'count' => '100'
+    //'startIndex' => 1,
+    //'count' => 100
 )
 
 require('vendor/autoload.php');

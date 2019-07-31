@@ -5,8 +5,8 @@
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'filter' => '<ENTER VALUE>',
-    //'startIndex' => '1',
-    //'count' => '100'
+    //'startIndex' => 1,
+    //'count' => 100
 )
 
 require('vendor/autoload.php');

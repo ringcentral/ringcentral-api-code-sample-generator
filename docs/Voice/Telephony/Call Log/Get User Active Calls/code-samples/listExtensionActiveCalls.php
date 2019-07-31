@@ -11,8 +11,8 @@ $queryParams = array(
     //'direction' => array( 'Inbound', 'Outbound' ),
     //'view' => 'Simple',
     //'type' => array( 'Voice', 'Fax' ),
-    //'page' => '1',
-    //'perPage' => '100'
+    //'page' => 1,
+    //'perPage' => 100
 )
 
 require('vendor/autoload.php');

@@ -4,8 +4,8 @@
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'orderBy': 'City',
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'stateId': '<ENTER VALUE>',
     #'withNxx': true
 }

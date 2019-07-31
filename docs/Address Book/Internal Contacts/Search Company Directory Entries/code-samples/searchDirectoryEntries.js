@@ -7,7 +7,7 @@ const accountId = '<ENTER VALUE>';
 // POST BODY
 const body = {
     searchString: '<ENTER VALUE>',
-    showFederated: 'true',
+    showFederated: true,
     extensionType: 'User',
     orderBy: [
         {

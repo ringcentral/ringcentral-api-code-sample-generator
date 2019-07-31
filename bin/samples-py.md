@@ -82,7 +82,7 @@ extensionId = '<ENTER VALUE>'
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'extensionNumber': '<ENTER VALUE>',
-    #'showBlocked': 'true',
+    #'showBlocked': true,
     #'phoneNumber': '<ENTER VALUE>',
     #'direction': [ 'Inbound', 'Outbound' ],
     #'sessionId': '<ENTER VALUE>',
@@ -93,8 +93,8 @@ queryParams = {
     #'recordingType': 'Automatic',
     #'dateTo': '<ENTER VALUE>',
     #'dateFrom': '<ENTER VALUE>',
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'showDeleted': true
 }
 
@@ -229,8 +229,8 @@ queryParams = {
     #'direction': [ 'Inbound', 'Outbound' ],
     #'view': 'Simple',
     #'type': [ 'Voice', 'Fax' ],
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -268,8 +268,8 @@ queryParams = {
     #'recordingType': 'Automatic',
     #'dateFrom': '<ENTER VALUE>',
     #'dateTo': '<ENTER VALUE>',
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'sessionId': '<ENTER VALUE>'
 }
 
@@ -328,8 +328,8 @@ queryParams = {
     #'view': 'Simple',
     #'type': [ 'Voice', 'Fax' ],
     #'transport': [ 'PSTN', 'VoIP' ],
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -506,8 +506,8 @@ HTTP get `/restapi/v1.0/dictionary/fax-cover-page`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -545,8 +545,8 @@ queryParams = {
     #'distinctConversations': true,
     #'messageType': [ 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ],
     #'readStatus': [ 'Read', 'Unread' ],
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'phoneNumber': '<ENTER VALUE>'
 }
 
@@ -914,8 +914,8 @@ extensionId = '<ENTER VALUE>'
 queryParams = {
     #'startsWith': '<ENTER VALUE>',
     #'sortBy': [ 'FirstName', 'LastName', 'Company' ],
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'phoneNumber': [ string ]
 }
 
@@ -1244,7 +1244,7 @@ accountId = '<ENTER VALUE>'
 # POST BODY
 body = {
     'searchString': '<ENTER VALUE>',
-    'showFederated': 'true',
+    'showFederated': true,
     'extensionType': 'User',
     'orderBy': [
         {
@@ -1308,10 +1308,10 @@ accountId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'showFederated': 'true',
+    #'showFederated': true,
     #'type': 'User',
     #'page': '1',
-    #'perPage': '1000',
+    #'perPage': 1000,
     #'siteId': '<ENTER VALUE>'
 }
 
@@ -1483,7 +1483,7 @@ HTTP get `/restapi/v1.0/glip/chats`
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'type': [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    #'recordCount': '30',
+    #'recordCount': 30,
     #'pageToken': '<ENTER VALUE>'
 }
 
@@ -1534,7 +1534,7 @@ HTTP get `/restapi/v1.0/glip/conversations`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30',
+    #'recordCount': 30,
     #'pageToken': '<ENTER VALUE>'
 }
 
@@ -1616,7 +1616,7 @@ HTTP get `/restapi/v1.0/glip/teams`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30',
+    #'recordCount': 30,
     #'pageToken': '<ENTER VALUE>'
 }
 
@@ -1961,7 +1961,7 @@ HTTP get `/restapi/v1.0/glip/recent/chats`
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'type': [ 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ],
-    #'recordCount': '30'
+    #'recordCount': 30
 }
 
 import os
@@ -1987,7 +1987,7 @@ HTTP get `/restapi/v1.0/glip/favorites`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30'
+    #'recordCount': 30
 }
 
 import os
@@ -2187,7 +2187,7 @@ chatId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30',
+    #'recordCount': 30,
     #'pageToken': '<ENTER VALUE>'
 }
 
@@ -2249,7 +2249,7 @@ HTTP get `/restapi/v1.0/glip/events`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'recordCount': '30',
+    #'recordCount': 30,
     #'pageToken': '<ENTER VALUE>'
 }
 
@@ -2478,7 +2478,7 @@ queryParams = {
     #'assigneeId': [ string ],
     #'assigneeStatus': 'Pending',
     #'pageToken': '<ENTER VALUE>',
-    #'recordCount': '30'
+    #'recordCount': 30
 }
 
 import os
@@ -3232,7 +3232,7 @@ body = {
         'registrationId': '<ENTER VALUE>',
         'verificationToken': '<ENTER VALUE>'
     },
-    'expiresIn': '604800'
+    'expiresIn': 604800
 }
 
 import os
@@ -3301,7 +3301,7 @@ body = {
         'registrationId': '<ENTER VALUE>',
         'verificationToken': '<ENTER VALUE>'
     },
-    'expiresIn': '604800'
+    'expiresIn': 604800
 }
 
 import os
@@ -3847,8 +3847,8 @@ extensionId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -4237,7 +4237,7 @@ body = {
     'forwarding': {
         'notifyMySoftPhones': true,
         'notifyAdminSoftPhones': true,
-        'softPhonesRingCount': '1',
+        'softPhonesRingCount': 1,
         'ringingMode': 'Sequentially',
         'rules': [
             {
@@ -4419,7 +4419,7 @@ accountId = '<ENTER VALUE>'
 # POST BODY
 body = {
     'name': '<ENTER VALUE>',
-    'enabled': 'true',
+    'enabled': true,
     'type': 'BusinessHours',
     'callers': [
         {
@@ -4579,7 +4579,7 @@ ruleId = '<ENTER VALUE>'
 
 # POST BODY
 body = {
-    'enabled': 'true',
+    'enabled': true,
     'name': '<ENTER VALUE>',
     'callers': [
         {
@@ -4710,8 +4710,8 @@ HTTP get `/restapi/v1.0/dictionary/greeting`
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'type': 'Introductory',
     #'usageType': 'UserExtensionAnsweringRule'
 }
@@ -5742,7 +5742,7 @@ queryParams = {
     #'searchString': '<ENTER VALUE>',
     #'orderBy': '<ENTER VALUE>',
     #'perPage': 000,
-    #'page': '1'
+    #'page': 1
 }
 
 import os
@@ -6064,7 +6064,7 @@ queryParams = {
     #'searchString': '<ENTER VALUE>',
     #'orderBy': 'name',
     #'perPage': 000,
-    #'page': '1'
+    #'page': 1
 }
 
 import os
@@ -6130,7 +6130,7 @@ queryParams = {
     #'searchString': '<ENTER VALUE>',
     #'orderBy': '<ENTER VALUE>',
     #'perPage': 000,
-    #'page': '1'
+    #'page': 1
 }
 
 import os
@@ -7054,8 +7054,8 @@ queryParams = {
     #'loginAllowed': true,
     #'signupAllowed': true,
     #'numberSelling': true,
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'freeSoftphoneLine': true
 }
 
@@ -7107,8 +7107,8 @@ HTTP get `/restapi/v1.0/dictionary/location`
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'orderBy': 'City',
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'stateId': '<ENTER VALUE>',
     #'withNxx': true
 }
@@ -7138,8 +7138,8 @@ HTTP get `/restapi/v1.0/dictionary/state`
 queryParams = {
     #'allCountries': true,
     #'countryId': 000,
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'withPhoneNumbers': true
 }
 
@@ -7250,8 +7250,8 @@ accountId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'usageType': [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
 }
 
@@ -7308,8 +7308,8 @@ accountId = '<ENTER VALUE>'
 queryParams = {
     #'extensionId': '<ENTER VALUE>',
     #'email': '<ENTER VALUE>',
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'status': [ 'Enabled', 'Disabled', 'NotActivated', 'Unassigned' ],
     #'type': [ 'User', 'FaxUser', 'VirtualUser', 'DigitalUser', 'Department', 'Announcement', 'Voicemail', 'SharedLinesGroup', 'PagingOnly', 'IvrMenu', 'ApplicationExtension', 'ParkLocation', 'Limited', 'Bot' ]
 }
@@ -7503,8 +7503,8 @@ accountId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'memberExtensionId': '<ENTER VALUE>'
 }
 
@@ -7535,8 +7535,8 @@ groupId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -7600,8 +7600,8 @@ pagingOnlyGroupId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -7631,8 +7631,8 @@ pagingOnlyGroupId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -7731,8 +7731,8 @@ accountId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'memberExtensionId': '<ENTER VALUE>'
 }
 
@@ -7818,8 +7818,8 @@ groupId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100'
+    #'page': 1,
+    #'perPage': 100
 }
 
 import os
@@ -8067,8 +8067,8 @@ HTTP get `/scim/v2/Users`
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
     #'filter': '<ENTER VALUE>',
-    #'startIndex': '1',
-    #'count': '100'
+    #'startIndex': 1,
+    #'count': 100
 }
 
 import os

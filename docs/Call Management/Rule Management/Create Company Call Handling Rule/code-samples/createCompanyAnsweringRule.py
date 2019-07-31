@@ -7,7 +7,7 @@ accountId = '<ENTER VALUE>'
 # POST BODY
 body = {
     'name': '<ENTER VALUE>',
-    'enabled': 'true',
+    'enabled': true,
     'type': 'BusinessHours',
     'callers': [
         {

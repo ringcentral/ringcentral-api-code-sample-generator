@@ -7,10 +7,10 @@ $accountId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'showFederated' => 'true',
+    //'showFederated' => true,
     //'type' => 'User',
     //'page' => '1',
-    //'perPage' => '1000',
+    //'perPage' => 1000,
     //'siteId' => '<ENTER VALUE>'
 )
 

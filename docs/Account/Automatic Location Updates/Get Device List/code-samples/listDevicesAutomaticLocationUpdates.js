@@ -13,7 +13,7 @@ const queryParams = {
     //searchString: '<ENTER VALUE>',
     //orderBy: 'name',
     //perPage: 000,
-    //page: '1'
+    //page: 1
 }
 
 const SDK = require('ringcentral');

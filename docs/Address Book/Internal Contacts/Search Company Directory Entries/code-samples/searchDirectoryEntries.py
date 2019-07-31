@@ -7,7 +7,7 @@ accountId = '<ENTER VALUE>'
 # POST BODY
 body = {
     'searchString': '<ENTER VALUE>',
-    'showFederated': 'true',
+    'showFederated': true,
     'extensionType': 'User',
     'orderBy': [
         {

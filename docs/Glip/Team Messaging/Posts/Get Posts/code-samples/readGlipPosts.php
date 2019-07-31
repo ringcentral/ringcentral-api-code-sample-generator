@@ -7,7 +7,7 @@ $chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 

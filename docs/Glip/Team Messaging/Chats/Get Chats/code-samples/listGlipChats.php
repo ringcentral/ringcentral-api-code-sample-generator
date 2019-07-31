@@ -5,7 +5,7 @@
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'type' => array( 'Everyone', 'Group', 'Personal', 'Direct', 'Team' ),
-    //'recordCount' => '30',
+    //'recordCount' => 30,
     //'pageToken' => '<ENTER VALUE>'
 )
 

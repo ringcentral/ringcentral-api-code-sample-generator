@@ -9,7 +9,7 @@ $extensionId = '<ENTER VALUE>';
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'extensionNumber' => '<ENTER VALUE>',
-    //'showBlocked' => 'true',
+    //'showBlocked' => true,
     //'phoneNumber' => '<ENTER VALUE>',
     //'direction' => array( 'Inbound', 'Outbound' ),
     //'sessionId' => '<ENTER VALUE>',
@@ -20,8 +20,8 @@ $queryParams = array(
     //'recordingType' => 'Automatic',
     //'dateTo' => '<ENTER VALUE>',
     //'dateFrom' => '<ENTER VALUE>',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'showDeleted' => true
 )
 

@@ -14,7 +14,7 @@ body = {
         'registrationId': '<ENTER VALUE>',
         'verificationToken': '<ENTER VALUE>'
     },
-    'expiresIn': '604800'
+    'expiresIn': 604800
 }
 
 import os

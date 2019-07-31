@@ -5,8 +5,8 @@
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
     //'orderBy' => 'City',
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'stateId' => '<ENTER VALUE>',
     //'withNxx' => true
 )

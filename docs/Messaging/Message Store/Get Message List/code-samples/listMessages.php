@@ -16,8 +16,8 @@ $queryParams = array(
     //'distinctConversations' => true,
     //'messageType' => array( 'Fax', 'SMS', 'VoiceMail', 'Pager', 'Text' ),
     //'readStatus' => array( 'Read', 'Unread' ),
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'phoneNumber' => '<ENTER VALUE>'
 )
 

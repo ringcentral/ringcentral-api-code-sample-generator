@@ -11,7 +11,7 @@ $queryParams = array(
     //'searchString' => '<ENTER VALUE>',
     //'orderBy' => '<ENTER VALUE>',
     //'perPage' => 000,
-    //'page' => '1'
+    //'page' => 1
 )
 
 require('vendor/autoload.php');

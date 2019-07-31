@@ -9,8 +9,8 @@ extensionId = '<ENTER VALUE>'
 queryParams = {
     #'startsWith': '<ENTER VALUE>',
     #'sortBy': [ 'FirstName', 'LastName', 'Company' ],
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'phoneNumber': [ string ]
 }
 

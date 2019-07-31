@@ -11,7 +11,7 @@ body = {
     'forwarding': {
         'notifyMySoftPhones': true,
         'notifyAdminSoftPhones': true,
-        'softPhonesRingCount': '1',
+        'softPhonesRingCount': 1,
         'ringingMode': 'Sequentially',
         'rules': [
             {

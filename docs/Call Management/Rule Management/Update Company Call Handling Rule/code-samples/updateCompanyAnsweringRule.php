@@ -8,7 +8,7 @@ $ruleId = '<ENTER VALUE>';
 
 // POST BODY
 $body = array(
-    'enabled' => 'true',
+    'enabled' => true,
     'name' => '<ENTER VALUE>',
     'callers' => array(
         array(

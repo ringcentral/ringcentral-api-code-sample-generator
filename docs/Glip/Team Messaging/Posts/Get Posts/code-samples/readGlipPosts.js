@@ -6,7 +6,7 @@ const chatId = '<ENTER VALUE>';
 
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
-    //recordCount: '30',
+    //recordCount: 30,
     //pageToken: '<ENTER VALUE>'
 }
 

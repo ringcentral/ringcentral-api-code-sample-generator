@@ -8,7 +8,7 @@ $accountId = '<ENTER VALUE>';
 // POST BODY
 $body = array(
     'searchString' => '<ENTER VALUE>',
-    'showFederated' => 'true',
+    'showFederated' => true,
     'extensionType' => 'User',
     'orderBy' => array(
         array(

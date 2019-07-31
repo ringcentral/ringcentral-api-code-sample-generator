@@ -10,8 +10,8 @@ $extensionId = '<ENTER VALUE>';
 $queryParams = array(
     //'startsWith' => '<ENTER VALUE>',
     //'sortBy' => array( 'FirstName', 'LastName', 'Company' ),
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'phoneNumber' => array( string )
 )
 

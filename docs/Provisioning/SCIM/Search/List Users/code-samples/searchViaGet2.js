@@ -4,8 +4,8 @@
 // OPTIONAL QUERY PARAMETERS
 const queryParams = {
     //filter: '<ENTER VALUE>',
-    //startIndex: '1',
-    //count: '100'
+    //startIndex: 1,
+    //count: 100
 }
 
 const SDK = require('ringcentral');

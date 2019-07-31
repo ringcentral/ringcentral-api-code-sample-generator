@@ -15,7 +15,7 @@ $queryParams = array(
     //'assigneeId' => array( string ),
     //'assigneeStatus' => 'Pending',
     //'pageToken' => '<ENTER VALUE>',
-    //'recordCount' => '30'
+    //'recordCount' => 30
 )
 
 require('vendor/autoload.php');

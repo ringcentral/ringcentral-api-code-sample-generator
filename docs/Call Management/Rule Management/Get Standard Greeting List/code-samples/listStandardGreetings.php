@@ -4,8 +4,8 @@
 
 // OPTIONAL QUERY PARAMETERS
 $queryParams = array(
-    //'page' => '1',
-    //'perPage' => '100',
+    //'page' => 1,
+    //'perPage' => 100,
     //'type' => 'Introductory',
     //'usageType' => 'UserExtensionAnsweringRule'
 )

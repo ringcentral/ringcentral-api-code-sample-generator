@@ -6,8 +6,8 @@ accountId = '<ENTER VALUE>'
 
 # OPTIONAL QUERY PARAMETERS
 queryParams = {
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'usageType': [ 'MainCompanyNumber', 'AdditionalCompanyNumber', 'CompanyNumber', 'DirectNumber', 'CompanyFaxNumber', 'ForwardedNumber', 'ForwardedCompanyNumber', 'ContactCenterNumber', 'ConferencingNumber', 'MeetingsNumber' ]
 }
 

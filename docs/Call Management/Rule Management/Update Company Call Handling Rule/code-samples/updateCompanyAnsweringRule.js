@@ -7,7 +7,7 @@ const ruleId = '<ENTER VALUE>';
 
 // POST BODY
 const body = {
-    enabled: 'true',
+    enabled: true,
     name: '<ENTER VALUE>',
     callers: [
         {

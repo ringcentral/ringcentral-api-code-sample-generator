@@ -5,8 +5,8 @@
 queryParams = {
     #'allCountries': true,
     #'countryId': 000,
-    #'page': '1',
-    #'perPage': '100',
+    #'page': 1,
+    #'perPage': 100,
     #'withPhoneNumbers': true
 }
 
