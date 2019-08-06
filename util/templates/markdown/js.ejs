@@ -6,6 +6,11 @@ for (const url in endpoints) {
     const endpoint = endpoints[url]
     for (const method in endpoint) {
         const operation = endpoint[method];
+        
+        // Ignore OAuth endpoints
+        // ex: '/restapi/oauth/authorize' gets ignored
+        if (url.match(/^'?\/[^\/]*\/oauth/)) continue
+
         const sampleCodePath = samples.filePathTo(operation, 'js')
         if(!fs.existsSync(sampleCodePath)) continue
         %>

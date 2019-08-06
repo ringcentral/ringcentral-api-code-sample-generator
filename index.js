@@ -175,9 +175,6 @@ function generateCodeSamples() {
         languages.push(filename.substring(0, filename.indexOf('.')))
     })
 
-    // Creates the reverse of 'x-tag-groups', aka 'tag' => 'x-group-tag' instead of the other way around
-    let xtaggroup = samples.xtaggroup
-
     const ejs = require('ejs')
 
     for (const language of languages) {
@@ -263,7 +260,6 @@ function generateLookupJson() {
     }
 
     var lookup = {}
-    let xtaggroup = samples.xtaggroup
 
     const languages = fs.readdirSync(path.resolve('./util/templates/code')).map(file => {
         return file.substring(0, file.indexOf('.'))
