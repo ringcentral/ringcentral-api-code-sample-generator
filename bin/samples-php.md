@@ -499,13 +499,23 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax`
 $accountId = '<ENTER VALUE>';
 $extensionId = '<ENTER VALUE>';
 
+$recipient = '<ENTER VALUE>';
+
 require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/fax");
-?>
-```
+
+$request = $rcsdk->createMultipartBuilder()
+    ->setBody(array(
+     'to' => array(array('phoneNumber' => $recipient)),
+     'faxResolution' => 'High',
+    ))
+    ->add(fopen('fax.jpg', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/fax");
+
+$r = $platform->sendRequest($request);
+?>```
 
 You can get response json data by `$json = r->json();`
 - `json` is an object with [this definition](./bin/definitions/FaxResponse.json)
@@ -4910,7 +4920,16 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/greeting");
+
+$request = $rcsdk->createMultipartBuilder()
+    ->setBody(array(
+        'type' => 'Company'
+    ))
+    ->add('binary', 'mygreeting.wav');
+    ->add(fopen('./mygreeting.wav', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/greeting");
+
+$r = $platform->sendRequest($request);
 ?>
 ```
 
@@ -4932,11 +4951,23 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting`
 $accountId = '<ENTER VALUE>';
 $extensionId = '<ENTER VALUE>';
 
+$answeringRuleId = '<ENTER VALUE>';
+
 require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/greeting");
+
+$request = $rcsdk->createMultipartBuilder()
+    ->setBody(array(
+        'type' => 'Voicemail',
+        'answeringRule' => array('id' => $answeringRuleId)
+    ))
+    ->add('binary', 'mygreeting.wav');
+    ->add(fopen('./mygreeting.wav', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/greeting");
+
+$r = $platform->sendRequest($request);
 ?>
 ```
 
@@ -4988,7 +5019,16 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/ivr-prompts");
+
+$request = $rcsdk->createMultipartBuilder()
+    ->setBody(array(
+        'name' => 'My Prompt'
+    ))
+    ->add('attachment', 'myprompt.mp3');
+    ->add(fopen('./myprompt.mp3', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/ivr-prompts");
+
+$r = $platform->sendRequest($request);
 ?>
 ```
 
@@ -6961,7 +7001,13 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->post("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+
+$request = $rcsdk->createMultipartBuilder()
+    ->add('image', 'alice_smith.gif');
+    ->add(fopen('./alice_smith.gif', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+
+$r = $platform->sendRequest($request);
 ?>
 ```
 
@@ -6986,7 +7032,13 @@ require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform->put("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+
+$request = $rcsdk->createMultipartBuilder()
+    ->add('image', 'alice_smith.gif');
+    ->add(fopen('./alice_smith.gif', 'r'))
+    ->request("/restapi/v1.0/account/{$accountId}/extension/{$extensionId}/profile-image");
+
+$r = $platform->sendRequest($request);
 ?>
 ```
 

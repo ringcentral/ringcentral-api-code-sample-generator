@@ -9,4 +9,15 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/greeting')
+
+builder = rcsdk.create_multipart_builder()
+builder.set_body({
+    'type': 'Company'
+})
+
+binary = ('mygreeting.wav', open('mygreeting.wav','r').read(), 'audio/wav')
+builder.add(binary)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/greeting')
+
+resp = platform.send_request(request)

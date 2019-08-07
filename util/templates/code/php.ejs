@@ -14,7 +14,10 @@ $<%= pathParam.name %> = '<ENTER VALUE>';
     }
 }
 
+let args = []
+
 if (operation.parameters && (queryParams = operation.parameters.filter(param => param.in === 'query')).length > 0) {
+    args.unshift('$queryParams')
     %>
 // OPTIONAL QUERY PARAMETERS
 $queryParams = <%- ejs.render(object, {
@@ -26,6 +29,7 @@ $queryParams = <%- ejs.render(object, {
 }
 
 if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
+    args.unshift('$body')
     const def = defs.loadDefinition(postParams.schema['$ref'].substring(postParams.schema['$ref'].lastIndexOf('/') + 1))
 
     const convert = (subdef) => Object.entries(subdef.properties).map(([name, property]) => {
@@ -43,11 +47,14 @@ if (operation.parameters && (postParams = operation.parameters.find(param => par
 $body = <%- render(def, 1, render) %>
     <%_
 }
+
+if (operation.parameters && operation.parameters.some(param => param.in === 'formData')) args.unshift('$formData')
+if (args.length > 0) args.unshift('')
 -%>
 
 require('vendor/autoload.php');
 $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), getenv('serverURL'));
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
-$r = $platform-><%= method %>("<%= url.replace(/{/g, '{$') %>"<%= (postParams ? ', $body' : '') + (queryParams && queryParams.length > 0 ? ', $queryParams' : '') %>);
+$r = $platform-><%= method %>("<%= url.replace(/{/g, '{$') %>"<%= args.join(', ') %>);
 ?>

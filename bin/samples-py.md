@@ -483,12 +483,27 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax`
 accountId = '<ENTER VALUE>'
 extensionId = '<ENTER VALUE>'
 
+recipient = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax')
+
+builder = rcsdk.create_multipart_builder()
+builder.set_body({
+    'to': [{'phoneNumber': recipient}],
+    'faxResolution': "High",
+    'coverPageText': "This is a demo Fax page from Python"
+})
+
+attachment = ('fax.jpg', open('fax.jpg','r').read(), 'image/jpeg')
+builder.add(attachment)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax')
+
+resp = platform.send_request(request)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4769,7 +4784,18 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/greeting')
+
+builder = rcsdk.create_multipart_builder()
+builder.set_body({
+    'type': 'Company'
+})
+
+binary = ('mygreeting.wav', open('mygreeting.wav','r').read(), 'audio/wav')
+builder.add(binary)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/greeting')
+
+resp = platform.send_request(request)
 ```
 
 You can get response json data by `json = r.json()`
@@ -4789,13 +4815,26 @@ HTTP post `/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting`
 accountId = '<ENTER VALUE>'
 extensionId = '<ENTER VALUE>'
 
+answeringRuleId = '<ENTER VALUE>'
+
 import os
 from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting')
-```
+
+builder = rcsdk.create_multipart_builder()
+builder.set_body({
+    'type': 'Voicemail',
+    'answeringRule': { 'id': answeringRuleId }
+})
+
+attachment = ('mygreeting.wav', open('mygreeting.wav','r').read(), 'audio/wav')
+builder.add(attachment)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/greeting')
+
+resp = platform.send_request(request)```
 
 You can get response json data by `json = r.json()`
 - `json` is an object with [this definition](./bin/definitions/CustomUserGreetingInfo.json)
@@ -4844,7 +4883,18 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/ivr-prompts')
+
+builder = rcsdk.create_multipart_builder()
+builder.set_body({
+    'name': 'My Prompt'
+})
+
+attachment = ('myprompt.mp3', open('myprompt.mp3','r').read(), 'audio/mp3')
+builder.add(attachment)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/ivr-prompts')
+
+resp = platform.send_request(request)
 ```
 
 You can get response json data by `json = r.json()`
@@ -6765,8 +6815,13 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.post(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image')
-```
+
+image = ('alice_smith.gif', open('alice_smith.gif','r').read(), 'image/gif')
+builder.add(image)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image')
+
+resp = platform.send_request(request)```
 
 Response body is empty
 
@@ -6789,8 +6844,15 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.put(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image')
-```
+
+builder = rcsdk.create_multipart_builder()
+
+image = ('alice_smith.gif', open('alice_smith.gif','r').read(), 'image/gif')
+builder.add(image)
+
+request = builder.request(f'/restapi/v1.0/account/{accountId}/extension/{extensionId}/profile-image')
+
+resp = platform.send_request(request)```
 
 Response body is empty
 

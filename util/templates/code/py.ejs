@@ -13,7 +13,10 @@ if (operation.parameters && (pathParams = operation.parameters.filter(param => p
     }
 }
 
+let args = []
+
 if (operation.parameters && (queryParams = operation.parameters.filter(param => param.in === 'query')).length > 0) {
+    args.unshift('queryParams')
     %>
 # OPTIONAL QUERY PARAMETERS
 queryParams = <%- ejs.render(object, {
@@ -25,6 +28,7 @@ queryParams = <%- ejs.render(object, {
 }
 
 if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
+    args.unshift('body')
     const def = defs.loadDefinition(postParams.schema['$ref'].substring(postParams.schema['$ref'].lastIndexOf('/') + 1))
 
     const convert = (subdef) => Object.entries(subdef.properties).map(([name, property]) => {
@@ -42,6 +46,9 @@ if (operation.parameters && (postParams = operation.parameters.find(param => par
 body = <%- render(def, 1, render) %>
     <%_
 }
+
+if (operation.parameters && operation.parameters.some(param => param.in === 'formData')) args.unshift('formData')
+if (args.length > 0) args.unshift('')
 -%>
 
 import os
@@ -49,4 +56,4 @@ from ringcentral import SDK
 rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serverURL'])
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
-r = platform.<%= method %>(<%= url.includes('{') ? 'f' : '' %>'<%= url %>'<%= (postParams ? ', body' : '') + (queryParams && queryParams.length > 0 ? ', queryParams' : '') %>)
+r = platform.<%= method %>(<%= url.includes('{') ? 'f' : '' %>'<%= url %>'<%= args.join(', ') %>)
