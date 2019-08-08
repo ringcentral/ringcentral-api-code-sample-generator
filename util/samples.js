@@ -21,7 +21,7 @@ yaml.safeLoad(fs.readFileSync(path.resolve('./bin/x-tag-groups.yml'), 'utf8'))['
 })
 
 function dirPathTo(operation) {
-    return path.resolve(`./docs/${(xtaggroup[operation.tags[0]] || 'UNDEFINED').replace(/\//g, ' - ')}/${operation.tags[0]}/${operation.summary}/code-samples/`)
+    return path.resolve(`./docs/${(xtaggroup[operation.tags[0]] || 'UNDEFINED').replace(/\//g, ' - ')}/${operation.tags[0].replace(/\//g, '-')}/${operation.summary.replace(/\//g, '-')}/code-samples/`)
 }
 
 function filePathTo(operation, suffix) {
