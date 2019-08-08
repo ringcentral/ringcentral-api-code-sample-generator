@@ -55,6 +55,7 @@ x-tag-groups:
       - Notes
       - Posts
       - Teams
+      - Tasks
   - name: Meetings
     popular: true
     tags:
