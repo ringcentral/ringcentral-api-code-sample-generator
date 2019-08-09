@@ -14,22 +14,22 @@ After cloning the repository, navigate to root directory and install the require
 
 The package contains a number of scripts that each provide independent functionality
 
--   `npm run all`
+-   `yarn all`
     Runs all of the below scripts, in order of their necessity. Run this if you are not interested in isolating any specific operation.
 
--   `npm run sync`
+-   `yarn sync`
     Syncs the local .yml specs with a remote copy on RC's GitLab. *NOTE: this step is absolutely necessary before you can run any of the subsequent generation scripts. On timeout or error, ensure you have access to [GitLab](https://git.ringcentral.com/) from your browser, your VPN may need to be enabled.*
 
--   `npm run defs`
+-   `yarn defs`
     Generates the object definitions that are consumed and returned by the API. *NOTE: this step is necessary before you can run any of the subsequent generation scripts.*
 
--   `npm run code`
+-   `yarn code`
     Generates the sample code as per the templates in [./util/templates/code/]() and writes it to the file system in the [docs]() directory. *NOTE: if a code sample already exists for a certain operation, it will NOT be regenerated. This allows the manual overriding of a specific operation which will persist through following runs.*
 
--   `npm run json`
+-   `yarn json`
     Generates the "master lookup table" containing code samples for all languages for all operations based on the samples on file. It outputs to [./bin/samples.json]().
 
--   `npm run mkdn`
+-   `yarn mkdn`
     Generates the "master markdown" documents for each language based on the templates in [./util/templates/markdown/](). These output to [./bin/samples-\<lang\>.md]() and could perhaps be bundled with each SDK.
 
 More specific and development only scripts can be found in [./package.json]()
