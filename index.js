@@ -10,6 +10,8 @@ const path = require('path')
 const yaml = require('js-yaml')
 const fs = require('fs')
 
+require('dotenv').config()
+
 // Splits command line args, running the corresponding scripts
 // we slice the first two args ('node' invocation and the current file 'index.js')
 var commands = process.argv.slice(2).map(arg => arg.replace('-', ''));
@@ -53,10 +55,10 @@ async function downloadSpec() {
     return new Promise((resolve, reject) => {
         console.log(' + downloading spec')
 
-        const https = require(path.resolve('./util/https')) // Not to be confused with Node's built-in HTTPs module
+        const https = require(path.resolve(`${process.env.LIB_DIR}https`)) // Not to be confused with Node's built-in HTTPs module
 
         var spec
-        https.get('https://git.ringcentral.com/dpw-xmn/dpw-api-explorer/raw/master/packages/dpw-api-explorer/swagger-files/rc-platform.yml').then((data) => {
+        https.get(process.env.SWAGGER_SPEC_REMOTE).then((data) => {
             spec = yaml.safeLoad(data)
 
             // remove duplicate scim endpoints
@@ -93,7 +95,9 @@ async function downloadSpec() {
                 }
             }
 
-            fs.writeFileSync(path.resolve('./bin/rc-platform.yml'), yaml.safeDump(spec))
+            fs.mkdirSync(path.resolve(process.env.DOWNLOADED_SPECS), { recursive: true })
+
+            fs.writeFileSync(path.resolve(`${process.env.DOWNLOADED_SPECS}rc-platform.yml`), yaml.safeDump(spec))
 
             console.log(' - spec downloaded')
 
@@ -114,10 +118,10 @@ async function downloadXTagGroups() {
 
         var specTemplate
 
-        const https = require(path.resolve('./util/https'))
-        https.get('https://git.ringcentral.com/platform/api-metadata-specs/raw/master/scripts/api-reference-template.yml').then((data) => {
+        const https = require(path.resolve(`${process.env.LIB_DIR}https`))
+        https.get(process.env.X_TAG_GROUPS_REMOTE).then((data) => {
             xtaggroups = { 'x-tag-groups': yaml.safeLoad(data)['x-tag-groups'] }
-            fs.writeFileSync(path.resolve('./bin/x-tag-groups.yml'), yaml.safeDump(xtaggroups))
+            fs.writeFileSync(path.resolve(`${process.env.DOWNLOADED_SPECS}x-tag-groups.yml`), yaml.safeDump(xtaggroups))
 
             console.log(' - tag groups downloaded')
 
@@ -131,21 +135,17 @@ async function downloadXTagGroups() {
 
 /*
     This function generates the full API response type definitions from the rc-platform.yml
-    These response definitions are stored at './bin/definitions/RESPONSE_TYPE'
+    These response definitions are stored at './out/definitions/RESPONSE_TYPE'
 */
 function generateDefs() {
     console.log(' + generating definitions')
 
-    const dPath = path.resolve('./bin/definitions/')
+    const dPath = path.resolve(process.env.DEFINITIONS)
 
-    const definitions = require(path.resolve('./util/definitions'))
-    const spec = require(path.resolve('./util/OpenAPISpec')).load()
+    const definitions = require(path.resolve(`${process.env.LIB_DIR}definitions`))
+    const spec = require(path.resolve(`${process.env.LIB_DIR}spec`)).load()
 
-    if (!fs.existsSync(dPath)) {
-        // These 'Sync' methods, despite being usually avoided to avoid process-blocking
-        // are all perfectly fine within the context of run-once-then-exit
-        fs.mkdirSync(dPath)
-    }
+    fs.mkdirSync(dPath, { recursive: true })
 
     // Generate all Definitions
     for (const definition in spec.definitions) {
@@ -161,17 +161,17 @@ function generateDefs() {
     This function generates sample code for access to every API endpoint in multiple languages:
         (Js/Node, C#, Python, PHP)
 
-    it consumes './bin/platform.yml' and produces the samples located in './docs/'
+    it consumes './out/spec/platform.yml' and produces the samples located in './out/code-samples'
 */
 function generateCodeSamples() {
     console.log(' + generating code samples')
 
-    const samples = require(path.resolve('./util/samples'))
-    const endpoints = require(path.resolve('./util/OpenAPISpec')).load().paths
+    const samples = require(path.resolve(`${process.env.LIB_DIR}samples`))
+    const endpoints = require(path.resolve(`${process.env.LIB_DIR}spec`)).load().paths
 
-    // Only parses languages for which there exists a template in './util/templates'
+    // Only parses languages for which there exists a template
     let languages = []
-    fs.readdirSync('./util/templates/code').forEach(filename => {
+    fs.readdirSync(`${process.env.TMPL_DIR}code`).forEach(filename => {
         languages.push(filename.substring(0, filename.indexOf('.')))
     })
 
@@ -193,9 +193,9 @@ function generateCodeSamples() {
                 const opDir = samples.dirPathTo(operation)
 
                 // opPath is the file-system path for a specific endpoint
-                // ex: './docs/Glip/Posts/Create Post/code-samples/createGlipPost.js'
+                // ex: './Glip/Posts/Create Post/code-samples/createGlipPost.js'
                 //
-                //      ./docs                                  (root)
+                //      ./                                      (root)
                 //          ./Glip/                             (x-tag-group)
                 //              ./Chats
                 //              ./Posts/                        (tag)
@@ -206,29 +206,29 @@ function generateCodeSamples() {
                 //                  './Get Post/'
                 //          ./Messaging/
 
-                const opPath = samples.filePathTo(operation, language)
-
                 // if the folder to the file doesn't already exist, create it
-                fs.mkdirSync(opDir, {
-                    recursive: true
-                })
+                fs.mkdirSync(opDir, { recursive: true })
+
+                let override = samples.overridePathTo(operation, language)
+                let code
 
                 // Only output the code if there exists none already: to allow manual
                 // overrides of the auto-generated samples in edge cases
-                if (!fs.existsSync(opPath)) {
-
-                    // Render and write the template located at './util/templates/' for the current language
-                    const code = ejs.render(fs.readFileSync(path.resolve(`./util/templates/code/${language}.ejs`), 'utf8'), {
+                if (!fs.existsSync(override)) {
+                    // Render and write the template for the current language
+                    code = ejs.render(fs.readFileSync(path.resolve(`${process.env.TMPL_DIR}code/${language}.ejs`), 'utf8'), {
                         ejs: ejs,
                         url: url,
                         method: method,
                         operation: operation,
-                        defs: require(path.resolve('./util/definitions')),
-                        object: fs.readFileSync(path.resolve(`./util/templates/objects/${language}.ejs`), 'utf8')
+                        defs: require(path.resolve(`${process.env.LIB_DIR}definitions`)),
+                        object: fs.readFileSync(path.resolve(`${process.env.TMPL_DIR}objects/${language}.ejs`), 'utf8')
                     })
-
-                    fs.writeFileSync(opPath, code)
+                } else {
+                    code = fs.readFileSync(override)
                 }
+
+                fs.writeFileSync(samples.filePathTo(operation, language), code)
             }
         }
     }
@@ -247,8 +247,8 @@ function generateCodeSamples() {
 function generateLookupJson() {
     console.log(' + generating lookup table')
 
-    const samples = require(path.resolve('./util/samples'))
-    const endpoints = require(path.resolve('./util/OpenAPISpec')).load().paths
+    const samples = require(path.resolve(`${process.env.LIB_DIR}samples`))
+    const endpoints = require(path.resolve(`${process.env.LIB_DIR}spec`)).load().paths
 
     // Only parses languages for which there exists a template in './util/templates'
     let friendlyName = {
@@ -261,7 +261,7 @@ function generateLookupJson() {
 
     var lookup = {}
 
-    const languages = fs.readdirSync(path.resolve('./util/templates/code')).map(file => {
+    const languages = fs.readdirSync(path.resolve(`${process.env.TMPL_DIR}code`)).map(file => {
         return file.substring(0, file.indexOf('.'))
     })
 
@@ -287,7 +287,7 @@ function generateLookupJson() {
         }
     }
 
-    fs.writeFileSync(path.resolve('./bin/samples.json'), JSON.stringify(lookup, null, 2))
+    fs.writeFileSync(path.resolve(`${process.env.OUTPUT}samples.json`), JSON.stringify(lookup, null, 2))
 
     console.log(' - lookup table generated')
 }
@@ -297,22 +297,23 @@ function generateLookupJson() {
 function generateMarkdown() {
     console.log(' + generating markdown')
 
-    const languages = fs.readdirSync(path.resolve('./util/templates/markdown')).map(file => {
+    const languages = fs.readdirSync(path.resolve(`${process.env.TMPL_DIR}markdown`)).map(file => {
         return file.substring(0, file.indexOf('.'))
     })
 
     const ejs = require('ejs')
 
     for (const language of languages) {
-        let md = ejs.render(fs.readFileSync(`./util/templates/markdown/${language}.ejs`, 'utf8'), {
+        let md = ejs.render(fs.readFileSync(`${process.env.TMPL_DIR}/markdown/${language}.ejs`, 'utf8'), {
             fs: fs,
             path: path,
-            samples: require(path.resolve('./util/samples')),
-            defs: require(path.resolve('./util/definitions')),
-            endpoints: require(path.resolve('./util/OpenAPISpec')).load().paths
+            samples: require(path.resolve(`${process.env.LIB_DIR}samples`)),
+            defs: require(path.resolve(`${process.env.LIB_DIR}definitions`)),
+            endpoints: require(path.resolve(`${process.env.LIB_DIR}spec`)).load().paths
         })
 
-        fs.writeFileSync(path.resolve(`./bin/samples-${language}.md`), md)
+        fs.mkdirSync(path.resolve(process.env.MARKDOWN_OUTPUT), { recursive: true })
+        fs.writeFileSync(path.resolve(`${process.env.MARKDOWN_OUTPUT}/samples-${language}.md`), md)
     }
 
     console.log(' - markdown generated')

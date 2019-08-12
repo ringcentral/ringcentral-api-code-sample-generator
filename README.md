@@ -6,30 +6,30 @@ It additionally provides scripts to generate markdown documentation corresponden
 
 ## Setup
 
-Requires [Node.js](https://nodejs.org/en/) (recommended v12.6.0 or higher) and [Yarn](https://yarnpkg.com/en/docs/install).
+Requires [Node.js](https://nodejs.org/en/) (recommended v12.6.0 or higher).
 
-After cloning the repository, navigate to root directory and install the required dependencies using `yarn install`.
+After cloning the repository, navigate to root directory and install the required dependencies using `npm install`.
 
 ## Usage
 
 The package contains a number of scripts that each provide independent functionality
 
--   `yarn all`
+-   `npm run all`
     Runs all of the below scripts, in order of their necessity. Run this if you are not interested in isolating any specific operation.
 
--   `yarn sync`
+-   `npm run sync`
     Syncs the local .yml specs with a remote copy on RC's GitLab. *NOTE: this step is absolutely necessary before you can run any of the subsequent generation scripts. On timeout or error, ensure you have access to [GitLab](https://git.ringcentral.com/) from your browser, your VPN may need to be enabled.*
 
--   `yarn defs`
+-   `npm run defs`
     Generates the object definitions that are consumed and returned by the API. *NOTE: this step is necessary before you can run any of the subsequent generation scripts.*
 
--   `yarn code`
+-   `npm run code`
     Generates the sample code as per the templates in [./util/templates/code/]() and writes it to the file system in the [docs]() directory. *NOTE: if a code sample already exists for a certain operation, it will NOT be regenerated. This allows the manual overriding of a specific operation which will persist through following runs.*
 
--   `yarn json`
+-   `npm run json`
     Generates the "master lookup table" containing code samples for all languages for all operations based on the samples on file. It outputs to [./bin/samples.json]().
 
--   `yarn mkdn`
+-   `npm run mkdn`
     Generates the "master markdown" documents for each language based on the templates in [./util/templates/markdown/](). These output to [./bin/samples-\<lang\>.md]() and could perhaps be bundled with each SDK.
 
 More specific and development only scripts can be found in [./package.json]()

@@ -1,5 +1,4 @@
-.env
-yarn-error.log
 rc-platform.yml
 /node_modules
 /bin/definitions/*
+/out
