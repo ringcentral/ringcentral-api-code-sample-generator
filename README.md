@@ -44,6 +44,8 @@ During the process of code generation, the script will check for the existence o
 
 ## Editing Templates and Adding Additional Languages
 
+-   All templates use (ejs)[https://ejs.co/]
+
 -   To edit the format for an existing language you may edit the code templates in [./tmpl/code/](./tmpl/code/). These changes will be reflected upon the next execution of sample code generation.
 
 -   If you are adding a new language, simply create a new template in [./util/templates/code/]() as well as an object template in [./util/templates/code/](). The code directory contains boilerplates for language-specific SDK calls, and the objects templates define that language's object structure (Ex: Javascript => `{ a: b }`, PHP => `array( a => b ))`. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./util/templates/markdown/](). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb'). Keep this consistent; likewise with the markdown.

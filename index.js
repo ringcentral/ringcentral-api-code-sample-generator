@@ -1,28 +1,36 @@
 /*
-    Entry point, the contains jump-off points for every function in the repository
+    package:            RingCentral API Sample Code Generator
+    original author:    https://github.com/drewligman
+    description:        Entry point, contains jump-off points for every function in the repository
 
-    Specifiy specific scripts on the command line: [-spec, -defs, -code, -json]
-        $ node index -spec
-    Order of arguments determines the order of execution
+    to use:
+        Specifiy specific scripts on the command line: [-spec, -defs, -code, -json]
+            $ node index -spec
+        Order of arguments determines the order of execution
 */
 
 const path = require('path')
 const yaml = require('js-yaml')
 const fs = require('fs')
 
-require('dotenv').config()
-
-// Splits command line args, running the corresponding scripts
-// we slice the first two args ('node' invocation and the current file 'index.js')
-var commands = process.argv.slice(2).map(arg => arg.replace('-', ''));
-if (commands.length == 0) {
-    console.log('No arguments specifed: exiting...')
-    return
+if(require.main === module) {
+    require('dotenv').config()
+    // we slice the first two args ('node' invocation and the current file 'index.js')
+    var commands = process.argv.slice(2).map(arg => arg.replace('-', ''));
+    if (commands.length == 0) {
+        console.log('No arguments specifed: exiting...')
+        return
+    }
+    run(commands)
+} else {
+    module.exports = {
+        run: run
+    }
 }
-run(commands)
 
 function run(args) {
-    // Array.prototype.shift() == popFront()
+    // Expects an array of arguments
+    // Array.prototype.shift() is the equivalent to a popFront()
     let arg = args.shift()
     if (arg) {
         let p
@@ -47,9 +55,9 @@ function run(args) {
     Borrowed heavily from code written by Tyler Liu:
     https://github.com/ringcentral/RingCentral.Net/blob/master/code-generator/adjust.js
 
-    This function automatically downloads the latest OpenAPI spec from
-    "https://netstorage.ringcentral.com/dpw/api-reference/specs/rc-platform.yml"
-    and prepares it to be consumed by the sample code generator
+    This function automatically downloads the latest OpenAPI spec from GITLAB and prepares
+    it to be consumed by the sample code generator. The remote "OpenAPI" spec resource can be
+    edited in '.env'
 */
 async function downloadSpec() {
     return new Promise((resolve, reject) => {
@@ -61,7 +69,9 @@ async function downloadSpec() {
         https.get(process.env.SWAGGER_SPEC_REMOTE).then((data) => {
             spec = yaml.safeLoad(data)
 
-            // remove duplicate scim endpoints
+            // Some manual changes are necessary. These are copied directly from Tyler Liu's code and may
+            // eventually become uncessary when the remote OpenAPI spec is updated to fix these issues.
+
             delete spec.paths['/scim/health'] // Replaced by '/scim/v2/health'
             delete spec.paths['/scim/Users'] // Replaced by '/scim/v2/Users'
             delete spec.paths['/scim/ServiceProviderConfig']
@@ -85,7 +95,6 @@ async function downloadSpec() {
                 })
             }
 
-            // Add additional definitions
             spec.definitions['CustomCompanyGreetingAnsweringRuleInfo'] = spec.definitions['CustomGreetingAnsweringRuleInfoRequest'] = {
                 type: 'object',
                 properties: {
@@ -110,7 +119,8 @@ async function downloadSpec() {
 
 /*
     This function downloads the latest (master) version of the template used by the Api Reference
-    and copies the 'x-tag-groups' property to a local file.
+    and copies the 'x-tag-groups' property to a local file. The remote resource can be specified in
+    the '.env'
 */
 async function downloadXTagGroups() {
     return new Promise((resolve, reject) => {
@@ -135,7 +145,7 @@ async function downloadXTagGroups() {
 
 /*
     This function generates the full API response type definitions from the rc-platform.yml
-    These response definitions are stored at './out/definitions/RESPONSE_TYPE'
+    These response definitions are stored at './out/defs/RESPONSE_TYPE'
 */
 function generateDefs() {
     console.log(' + generating definitions')
@@ -196,15 +206,15 @@ function generateCodeSamples() {
                 // ex: './Glip/Posts/Create Post/code-samples/createGlipPost.js'
                 //
                 //      ./                                      (root)
-                //          ./Glip/                             (x-tag-group)
-                //              ./Chats
-                //              ./Posts/                        (tag)
-                //                  './Create Post/'            (summary)
+                //          ./glip-team-messaging/              (x-tag-group)
+                //              ./chats
+                //              ./posts/                        (tag)
+                //                  './create-post/'            (summary)
                 //                      ./code-samples
                 //                          ./createGlipPost.js (operationId)
-                //                  './Delete Post/'
-                //                  './Get Post/'
-                //          ./Messaging/
+                //                  './delete-post/'
+                //                  './get-post/'
+                //          ./messaging/
 
                 // if the folder to the file doesn't already exist, create it
                 fs.mkdirSync(opDir, { recursive: true })
@@ -212,8 +222,8 @@ function generateCodeSamples() {
                 let override = samples.overridePathTo(operation, language)
                 let code
 
-                // Only output the code if there exists none already: to allow manual
-                // overrides of the auto-generated samples in edge cases
+                // If an override exists for this specific operation, do not generate a new one
+                // simply copy from the override directory
                 if (!fs.existsSync(override)) {
                     // Render and write the template for the current language
                     code = ejs.render(fs.readFileSync(path.resolve(`${process.env.TMPL_DIR}code/${language}.ejs`), 'utf8'), {
@@ -242,7 +252,7 @@ function generateCodeSamples() {
     This file generates the 'lookup table' master json file containing all code samples for use by the Api Reference Site
         (as of July 19, 2019, this lookup file is necessary but may potentially be phased out in the future)
 
-    it consumes the sample code located in './docs' and outputs to './bin/samples.json'
+    it consumes the sample code located in './out/code' and outputs to './out/samples.json'
 */
 function generateLookupJson() {
     console.log(' + generating lookup table')
@@ -250,7 +260,6 @@ function generateLookupJson() {
     const samples = require(path.resolve(`${process.env.LIB_DIR}samples`))
     const endpoints = require(path.resolve(`${process.env.LIB_DIR}spec`)).load().paths
 
-    // Only parses languages for which there exists a template in './util/templates'
     let friendlyName = {
         'js': 'javascript',
         'cs': 'csharp',
@@ -265,16 +274,13 @@ function generateLookupJson() {
         return file.substring(0, file.indexOf('.'))
     })
 
-    // for every language for which there exists a template in './util/templates'
+    // for every language for which there exists a template in './tmpl/code'
     for (const language of languages) {
         lookup[friendlyName[language]] = {}
-
-        // for every endpoint
         for (const url in endpoints) {
             const endpoint = endpoints[url]
 
-            // and for every method at those endpoints
-            // these last two loops are essentially just looping through every possible operation
+            // these last two loops are just looping through every possible operation
             for (const method in endpoint) {
                 const operation = endpoint[method]
 
