@@ -44,7 +44,7 @@ During the process of code generation, the script will check for the existence o
 
 ## Editing Templates and Adding Additional Languages
 
--   All templates use [ejs](https://ejs.co/)
+-   All templates use [EJS](https://ejs.co/)
 
 -   To edit the format for an existing language you may edit the code templates in [./tmpl/code/](./tmpl/code/). These changes will be reflected upon the next execution of sample code generation.
 
@@ -53,3 +53,7 @@ During the process of code generation, the script will check for the existence o
 ## License
 
 MIT
+
+## Credits
+
+Originally Authored by [Drew Ligman](https://github.com/drewligman), 2019
