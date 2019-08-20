@@ -52,8 +52,8 @@ During the process of code generation, the script will check for the existence o
 
 ## Credits
 
-[Drew Ligman](https://github.com/drewligman) - original author
-[Tyler Long](https://github.com/tylerlong) - wrote the [original version](https://github.com/tylerlong/sample-code-generator) of this package
+-   [Drew Ligman](https://github.com/drewligman) - original author
+-   [Tyler Long](https://github.com/tylerlong) - wrote the [original version](https://github.com/tylerlong/sample-code-generator) of this package
 
 ## License
 
