@@ -36,14 +36,14 @@ if (operation.parameters && (postParams = operation.parameters.find(param => par
         return property
     })
 
-    const render = (subdef, depth, render) => ejs.render(object, {
+    const render = (subdef, depth) => ejs.render(object, {
         properties: convert(subdef),
         depth: depth,
         render: render
     })
     %>
 // POST BODY
-const body = <%- render(def, 1, render) %>;
+const body = <%- render(def, 1) %>;
     <%_
 }
 
@@ -54,5 +54,8 @@ if (args.length > 0) args.unshift('')
 const SDK = require('ringcentral');
 const rcsdk = new SDK({server: process.env.serverURL, appKey: process.env.clientId, appSecret: process.env.clientSecret});
 const platform = rcsdk.platform();
-await platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password });
-const r = await platform.<%= method %>(`<%= url.replace(/{/g, '${') %>`<%= args.join(', ') %>);
+platform.login({ username: process.env.username, extension: process.env.extension, password: process.env.password }).then(() => {
+    platform.<%= method %>(`<%= url.replace(/{/g, '${') %>`<%= args.join(', ') %>).then((r) => {
+        // PROCESS RESPONSE
+    });
+});

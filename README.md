@@ -12,35 +12,41 @@ After cloning the repository, navigate to root directory and install the require
 
 ## Usage
 
-The package contains a number of scripts that each provide independent functionality
+The package contains a number of scripts that each provide (in)dependent functionality
 
 -   `npm run all`
     Runs all of the below scripts, in order of their necessity. Run this if you are not interested in isolating any specific operation.
 
 -   `npm run sync`
-    Syncs the local .yml specs with a remote copy on RC's GitLab. *NOTE: this step is absolutely necessary before you can run any of the subsequent generation scripts. On timeout or error, ensure you have access to [GitLab](https://git.ringcentral.com/) from your browser, your VPN may need to be enabled.*
+    Downloads the .yml specs with a remote copy on RC's GitLab. Remote resources are specified as the environment variables **SWAGGER_SPEC_REMOTE** and **X_TAG_GROUPS_REMOTE**. *NOTE: this step is absolutely necessary before you can run any of the subsequent generation scripts. On timeout or error, ensure you have access to [GitLab](https://git.ringcentral.com/) from your browser, your VPN may need to be enabled.*
 
 -   `npm run defs`
     Generates the object definitions that are consumed and returned by the API. *NOTE: this step is necessary before you can run any of the subsequent generation scripts.*
 
 -   `npm run code`
-    Generates the sample code as per the templates in [./util/templates/code/]() and writes it to the file system in the [docs]() directory. *NOTE: if a code sample already exists for a certain operation, it will NOT be regenerated. This allows the manual overriding of a specific operation which will persist through following runs.*
+    Generates the sample code as per the templates in [./tmpl/](./tmpl/) and writes it to the directory specified by the **CODE_SAMPLES_OUTPUT** environment variable (default: [./out/code/](./out/code))
 
 -   `npm run json`
-    Generates the "master lookup table" containing code samples for all languages for all operations based on the samples on file. It outputs to [./bin/samples.json]().
+    Generates the "master lookup table" containing code samples for all operations (and in all languages) based on the previously generated code samples. It outputs to the directory specified by the **OUTPUT** environment variable (default: [./out/samples.json](./out/samples.json))
 
 -   `npm run mkdn`
-    Generates the "master markdown" documents for each language based on the templates in [./util/templates/markdown/](). These output to [./bin/samples-\<lang\>.md]() and could perhaps be bundled with each SDK.
+    Generates the "master markdown" documents for each language based on the templates in [./tmpl/markdown/](./tmpl/markdown/). These output to the directory specified by the **MARKDOWN_OUTPUT** environment variable (default: [./out/mkdn/](./out/mkdn/)). These markdown files contain language-specific information and would be useful if bundled inside each language's SDK.
 
-More specific and development only scripts can be found in [./package.json]()
+More specific and development only scripts can be found in [./package.json](./package.json)
 
-## Editing Code / Adding Additional Languages
+## Overrides
 
--   To edit a sample for a specific operation, it is sufficient to edit it directly on the file system. Simply navigate to an operation within [./docs]() and make the required changes. All future generations (json, mkdn) will reflect these changes. Please push these manual changes back to GitHub for others.
+Sometimes it is necessary to alter the automatically generated code for a specific operation: whether to correct artifacts of an erroneous swagger spec, correct template errors in edge-cases, or any number of other reasons.
 
--   To edit the format for an existing language you may edit the code templates in [./util/templates/code/]() and [./util/templates/objects/](). These changes will not be reflected in the future code generation unless you delete existing samples. This behavior is not recommended as it may also delete others' manual changes, be very careful if you choose to make these universal changes.
+To allow for this behavior, this framework allows users to manually override any operation's generated sample code.These overrides can be found in the [./overrides/](./overrides/) directory and follow the same file-hierarchy as the code found in [./out/mkdn/](./out/mkdn/).
 
--   If you are adding a new language, simply create a new template in [./util/templates/code/]() as well as an object template in [./util/templates/code/](), and regenerate the required documents. The code directory contains boilerplates for language-specific SDK calls, and the objects templates define that language's object structure (Ex: Javascript => `{ a: b }`, PHP => `array( a => b ))`. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./util/templates/markdown/](). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb') so try to keep this consistent, likewise with the markdown.
+During the process of code generation, the script will check for the existence of an override; in the case it is found, the script will simply use the contents of that file in the place of the automatically generated one. Any and all changes to these override files will be copied verbatim to the final output.
+
+## Editing Templates and Adding Additional Languages
+
+-   To edit the format for an existing language you may edit the code templates in [./tmpl/code/](./tmpl/code/). These changes will be reflected upon the next execution of sample code generation.
+
+-   If you are adding a new language, simply create a new template in [./util/templates/code/]() as well as an object template in [./util/templates/code/](). The code directory contains boilerplates for language-specific SDK calls, and the objects templates define that language's object structure (Ex: Javascript => `{ a: b }`, PHP => `array( a => b ))`. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./util/templates/markdown/](). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb'). Keep this consistent; likewise with the markdown.
 
 ## License
 

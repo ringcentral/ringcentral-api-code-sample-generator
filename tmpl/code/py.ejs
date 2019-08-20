@@ -36,14 +36,14 @@ if (operation.parameters && (postParams = operation.parameters.find(param => par
         return property
     })
 
-    const render = (subdef, depth, render) => ejs.render(object, {
+    const render = (subdef, depth) => ejs.render(object, {
         properties: convert(subdef),
         depth: depth,
         render: render
     })
     %>
 # POST BODY
-body = <%- render(def, 1, render) %>
+body = <%- render(def, 1) %>
     <%_
 }
 
@@ -57,3 +57,4 @@ rcsdk = SDK(os.environ['clientId'], os.environ['clientSecret'], os.environ['serv
 platform = rcsdk.platform()
 platform.login(os.environ['username'], os.environ['extension'], os.environ['password'])
 r = platform.<%= method %>(<%= url.includes('{') ? 'f' : '' %>'<%= url %>'<%= args.join(', ') %>)
+# PROCESS RESPONSE

@@ -37,14 +37,14 @@ if (operation.parameters && (postParams = operation.parameters.find(param => par
         return property
     })
 
-    const render = (subdef, depth, render) => ejs.render(object, {
+    const render = (subdef, depth) => ejs.render(object, {
         properties: convert(subdef),
         depth: depth,
         render: render
     })
     %>
 // POST BODY
-$body = <%- render(def, 1, render) %>
+$body = <%- render(def, 1) %>;
     <%_
 }
 
@@ -57,4 +57,5 @@ $rcsdk = new RingCentral\SDK\SDK(getenv('clientId'), getenv('clientSecret'), get
 $platform = $rcsdk->platform();
 $platform->login(getenv('username'), getenv('extension'), getenv('password'));
 $r = $platform-><%= method %>("<%= url.replace(/{/g, '{$') %>"<%= args.join(', ') %>);
+// PROCESS RESPONSE
 ?>
