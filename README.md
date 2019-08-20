@@ -50,10 +50,11 @@ During the process of code generation, the script will check for the existence o
 
 -   If you are adding a new language, simply create a new template in [./tmpl/code/](./tmpl/code/) as well as an object template in [./tmpl/objects/](./tmpl/objects/). The code directory contains boilerplates for language-specific SDK calls, and the objects templates define that language's object structure (Ex: Javascript => `{ a: b }`, PHP => `array( a => b ))`. If you want to generate a markdown document to accompany this addition, you must additionally create a template for that language in [./tmpl/markdown/](./tmpl/markdown/). The name of the templates will be used as the file suffix for the code samples generated for each language (Ex: Javascript => '.js', PHP => '.php', Python => '.py', CSharp => '.cs', Ruby => '.rb'). Keep this consistent; likewise with the markdown.
 
+## Credits
+
+[Drew Ligman](https://github.com/drewligman) - original author
+[Tyler Long](https://github.com/tylerlong) - wrote the [original version](https://github.com/tylerlong/sample-code-generator) of this package
+
 ## License
 
 MIT
-
-## Credits
-
-Originally Authored by [Drew Ligman](https://github.com/drewligman), 2019
