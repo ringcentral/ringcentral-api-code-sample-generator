@@ -38,7 +38,7 @@ More specific and development only scripts can be found in [./package.json](./pa
 
 Sometimes it is necessary to alter the automatically generated code for a specific operation: whether to correct artifacts of an erroneous swagger spec, correct template errors in edge-cases, or any number of other reasons.
 
-To allow for this behavior, this framework allows users to manually override any operation's generated sample code.These overrides can be found in the [./overrides/](./overrides/) directory and follow the same file-hierarchy as the code found in [./out/mkdn/](./out/mkdn/).
+To allow for this behavior, this framework allows users to manually override any operation's generated sample code. These overrides can be found in the [./overrides/](./overrides/) directory and follow the same file-hierarchy as the code found in [./out/code/](./out/code/).
 
 During the process of code generation, the script will check for the existence of an override; in the case it is found, the script will simply use the contents of that file in the place of the automatically generated one. Any and all changes to these override files will be copied verbatim to the final output.
 
