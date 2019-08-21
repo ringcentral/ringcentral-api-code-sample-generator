@@ -1,0 +1,29 @@
+# RingCentral Node JS SDK Code Samples
+
+
+<%
+for (const url in endpoints) {
+    const endpoint = endpoints[url]
+    for (const method in endpoint) {
+        const operation = endpoint[method];
+
+        // Ignore OAuth endpoints
+        // ex: '/restapi/oauth/authorize' gets ignored
+        if (url.match(/^'?\/[^\/]*\/oauth/)) continue
+
+        const sampleCodePath = samples.filePathTo(operation, 'cs')
+        if(!fs.existsSync(sampleCodePath)) continue
+        %>
+## <%= operation.summary %>
+
+HTTP <%= method %> `<%= url %>`
+
+```cs
+<%- fs.readFileSync(sampleCodePath, 'utf8') -%>
+```
+
+[Try it out](https://developer.ringcentral.com/api-reference/<%= operation.tags[0].replace(/ /g, '-') %>/<%= operation.operationId %>) in API Explorer.
+        <%_
+    }
+}
+%>

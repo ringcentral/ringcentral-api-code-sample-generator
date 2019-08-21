@@ -1,0 +1,91 @@
+// https://developers.ringcentral.com/my-account.html#/applications
+// Find your credentials at the above url, set them as environment variables, or enter them below
+<%
+
+const capFirst = s => s.charAt(0).toUpperCase() + s.substring(1)
+const lowFirst = s => s.charAt(0).toLowerCase() + s.substring(1)
+
+let pathParams, queryParams, postParams
+if (operation.parameters && (pathParams = operation.parameters.filter(param => param.in === 'path')).length > 0) {
+    %>
+// PATH PARAMETERS
+    <%_
+    for (pathParam of pathParams) {
+        -%>
+string <%= pathParam.name %> = "<ENTER VALUE>";
+        <%_
+    }
+}
+
+let args = []
+
+if (operation.parameters && (queryParams = operation.parameters.filter(param => param.in === 'query')).length > 0) {
+    const schema = `${operation.operationId}Parameters`
+    const schemaPascal = capFirst(schema)
+    const schemaCamel = lowFirst(schema)
+
+    args.unshift(schemaCamel)
+
+    %>
+// OPTIONAL QUERY PARAMETERS
+<%= schemaPascal %> <%= schemaCamel %> = <%- ejs.render(object, {
+    properties: queryParams,
+    optional: true,
+    depth: 1,
+    schema: schemaPascal
+}) %>;
+<%
+}
+
+if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
+    const schema = postParams.schema.$ref.substring(postParams.schema.$ref.lastIndexOf('/') + 1)
+    const schemaPascal = capFirst(schema)
+    const schemaCamel = lowFirst(schema)
+
+    args.unshift(schemaCamel)
+
+    const def = defs.loadDefinition(schemaCamel)
+
+    const convert = (subdef) => Object.entries(subdef.properties).map(([name, property]) => {
+        property.name = name
+        return property
+    })
+
+    const render = (subdef, depth, schema) => ejs.render(object, {
+        properties: convert(subdef),
+        depth: depth,
+        schema: schema,
+        render: render
+    })
+    %>
+// POST BODY
+<%- schemaPascal %> <%= schemaCamel %> = <%- render(def, 1, schemaPascal) %>;
+    <%_
+}
+
+if (operation.parameters && operation.parameters.some(param => param.in === 'formData')) args.unshift('formData')
+-%>
+
+RestClient rc = new RestClient(
+    Environment.GetEnvironmentVariable("clientId"),
+    Environment.GetEnvironmentVariable("clientSecret"),
+    false
+);
+await rc.Authorize(
+    Environment.GetEnvironmentVariable("username"),
+    Environment.GetEnvironmentVariable("extension"),
+    Environment.GetEnvironmentVariable("password")
+);
+var r = await rc.<%= url.split('/').map(s => {
+        if(/{\w+}/g.test(s))
+            // "{parameter}" => "(parameter)"
+            return `(${s.slice(1, -1)}).`
+        else
+            // "message-store-configuration" => "MessageStoreConfiguration"
+            return s.split('-').map(t => capFirst(t)).join("")
+    }).join('').
+        // "restapi/v1.0/" => "Restapi()."
+        // Also if end of string doesn't end with a ").", add "()."
+        // For endpoints like "...Extension(extensionId).CallLogSync" => "...CallLogSync()."
+        replace(/(?:V[\d\.]+)|(?<!\)\.)$/g, "().") + capFirst(method) %>(<%= args.join(', ') %>);
+// PROCESS RESPONSE

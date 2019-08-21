@@ -6,7 +6,7 @@ const valOf = (property, depth) => {
     if (property.type === 'integer') return '000'
     if (property.enum) return `'${property.enum[0]}'`
     if (property.type === 'string') return `'<ENTER VALUE>'`
-    if (property.type === 'object') return render(property, depth + 1, render)
+    if (property.type === 'object') return render(property, depth + 1)
     if (property.type === 'array') {
         if (locals.optional) {
             return `[ ${property.items.enum ? property.items.enum.map(i => `'${i}'`).join(', ') : property.items.type} ]`
@@ -14,7 +14,7 @@ const valOf = (property, depth) => {
             return `[\n${'    '.repeat(depth + 1)}${valOf(property.items, depth + 1)}\n${'    '.repeat(depth)}]`
         }
     }
-    return property.type
+    return
 }
 
 properties.forEach((property, i) => {

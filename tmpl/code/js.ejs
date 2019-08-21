@@ -23,13 +23,13 @@ const queryParams = <%- ejs.render(object, {
     properties: queryParams,
     optional: true,
     depth: 1
-}) %>
+}) %>;
 <%
 }
 
 if (operation.parameters && (postParams = operation.parameters.find(param => param.name === 'body'))) {
     args.unshift('body')
-    const def = defs.loadDefinition(postParams.schema['$ref'].substring(postParams.schema['$ref'].lastIndexOf('/') + 1))
+    const def = defs.loadDefinition(postParams.schema.$ref.substring(postParams.schema.$ref.lastIndexOf('/') + 1))
 
     const convert = (subdef) => Object.entries(subdef.properties).map(([name, property]) => {
         property.name = name

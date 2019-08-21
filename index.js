@@ -194,7 +194,7 @@ function generateCodeSamples() {
             // ex: '/restapi/oauth/authorize' gets ignored
             if (url.match(/^'?\/[^\/]*\/oauth/)) continue
 
-            for (const method in endpoint) {
+            for (let method in endpoint) {
                 const operation = endpoint[method]
                 if (operation.deprecated) continue
 
@@ -221,6 +221,19 @@ function generateCodeSamples() {
 
                 let override = samples.overridePathTo(operation, language)
                 let code
+
+                // For the C# SDK ONLY (maybe java later?)
+                // the naming convention uses a ".List()" & ".Get()" for cases where two operations exist at a single endpoint.
+                // Example:
+                // HTTP GET "/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log" uses ".List()"
+                // HTTP GET "/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log/{callRecordId}" uses ".Get()"
+                if(['cs' /*, 'java' */].includes(language) && method === 'get' && !url.endsWith('}')) {
+                    const regexEscapedUrl = `^${url.replace(/[\{\}\\]/g, '\\$&')}\/\{\\w+?\}$`
+                    const urlPattern = new RegExp(regexEscapedUrl)
+                    if(Object.keys(endpoints).some(ep => urlPattern.test(ep))) {
+                        method = 'list'
+                    }
+                }
 
                 // If an override exists for this specific operation, do not generate a new one
                 // simply copy from the override directory
