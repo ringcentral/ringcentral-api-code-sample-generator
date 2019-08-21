@@ -76,16 +76,14 @@ await rc.Authorize(
     Environment.GetEnvironmentVariable("extension"),
     Environment.GetEnvironmentVariable("password")
 );
-var r = await rc.<%= url.split('/').map(s => {
-        if(/{\w+}/g.test(s))
-            // "{parameter}" => "(parameter)"
-            return `(${s.slice(1, -1)}).`
-        else
-            // "message-store-configuration" => "MessageStoreConfiguration"
-            return s.split('-').map(t => capFirst(t)).join("")
-    }).join('').
-        // "restapi/v1.0/" => "Restapi()."
-        // Also if end of string doesn't end with a ").", add "()."
-        // For endpoints like "...Extension(extensionId).CallLogSync" => "...CallLogSync()."
-        replace(/(?:V[\d\.]+)|(?<!\)\.)$/g, "().") + capFirst(method) %>(<%= args.join(', ') %>);
+var r = await rc.<%= url.replace(/\/\{/g, "{").split('/').map(s => {
+    if(/^$|^v[\d\.]+$/.test(s)) return '' // Matches empty string or version number ("v1.0", etc)
+    const match = /^([^{]+)(?:{([^}]+?)})?$/.exec(s)
+    // if there is no second matching group, meaning it was something like /restapi/
+    // with no following "/{...}", then add "()."
+    // Also necessary for endpoints like "...Extension(extensionId).CallLogSync" => "...CallLogSync()."
+    const suffix = match[2] ? `(${match[2]}).` : '().'
+    // "message-store-configuration" => "MessageStoreConfiguration"
+    return match[1].split('-').map(t => capFirst(t)).join('') + suffix
+}).join('') + capFirst(method) %>(<%= args.join(', ') %>);
 // PROCESS RESPONSE
