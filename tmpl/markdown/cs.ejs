@@ -21,7 +21,22 @@ HTTP <%= method %> `<%= url %>`
 ```cs
 <%- fs.readFileSync(sampleCodePath, 'utf8') -%>
 ```
-
+        <%_
+        responseType = defs.getResponseType(operation.responses)
+        if (!responseType) {
+            %>
+- `r` is an empty string
+            <%_
+        } else if (responseType === 'byte[]') {
+            %>
+- `r` is of type `byte[]`
+            <%_
+        } else {
+            %>
+- `r` is of type [<%= responseType %>](https://github.com/ringcentral/RingCentral.Net/blob/master/RingCentral.Net/Definitions/<%= responseType %>.cs)
+            <%_
+        }
+        %>
 [Try it out](https://developer.ringcentral.com/api-reference/<%= operation.tags[0].replace(/ /g, '-') %>/<%= operation.operationId %>) in API Explorer.
         <%_
     }
